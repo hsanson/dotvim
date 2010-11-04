@@ -104,3 +104,26 @@ set encoding=utf-8
 " Terminal encoding used for input and terminal display
 " Make sure your terminal is configured with the same encoding.
 set tenc=utf-8
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" NERDTree Plugin
+""
+"" Installation:
+""  - Make sure you have pathogen.vim installed an enabled.
+""  - cd ~/.vim
+""  - mkdir -p bundle
+""  - git submodule add https://github.com/scrooloose/nerdtree.git bundle/nerdtree
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set the window width
+let g:NERDTreeWinSize = 35
+" Set the window position
+let g:NERDTreeWinPos = "left"
+" Auto centre
+let g:NERDTreeAutoCenter = 0
+" Not Highlight the cursor line
+let g:NERDTreeHighlightCursorline = 0
+" Don't change working directory when opening files
+set noautochdir
+let g:NERDTreeChDirMode = 2
+" Show bookmarks list
+let g:NERDTreeShowBookmarks = 1
