@@ -23,8 +23,10 @@ set path=/usr/include,/usr/local/include,**;$HOME
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Sane plugin management using Pathogen.vim
 ""
-"" Download the pathogen plugin for easier vim plugin management.
+"" Resources:
+""   http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/
 ""
+"" Installation:
 ""   mkdir -p ~/.vim/autoload
 ""   cd ~/.vim/autoload
 ""   wget --no-check-certificate https://github.com/tpope/vim-pathogen/raw/master/autoload/pathogen.vim
