@@ -32,11 +32,11 @@ set path=/usr/include,/usr/local/include,**;$HOME
 ""   wget --no-check-certificate https://github.com/tpope/vim-pathogen/raw/master/autoload/pathogen.vim
 ""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enable the pathogen plugin. Make sure you do this before enabling filetype detection.
+filetype off " Needed so pathogen also loads ftdetect plugins.
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-" Enable per filetype plugins and indents
+" Re-enable per filetype plugins and indents
 filetype plugin indent on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -166,3 +166,36 @@ let g:neocomplcache_enable_smart_case = 1             " Use smart case
 let g:neocomplcache_enable_camel_case_completion = 1  " Use camel case completion
 let g:neocomplcache_enable_underbar_completion = 1    " Use underbar completion
 let g:neocomplcache_min_syntax_length = 3
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" VimOutliner Plugin
+"" 
+"" Description:
+""  Outliner plugin for Vim.
+""
+"" Installation:
+""  - Make sure you have pathogen.vim installed an enabled.
+""  - cd ~/.vim
+""  - mkdir -p bundle
+""  - mkdir -p bundle/outliner
+""  - cd bundle/outliner
+""  - wget http://www.troubleshooters.com/projects/alt-vimoutliner-litt/download/0.3.4/vimoutliner-0.3.4.tgz
+""  - tar xvfz vimoutliner-0.3.4.tgz
+""  - mv vimoutliner-0.3.4/* ./
+""  - rm -rf vimoutliner-0.3.4*
+""
+"" Fix:
+""  - Edit bundle/outliner/ftdetect/vo_base.vim and remove everything except the
+""    two au! commands:
+""
+""       au! BufRead,BufNewFile *.otl»·»·setfiletype vo_base
+""       au! BufRead,BufNewFile *.oln»·»·setfiletype xoutliner 
+""
+""  - Edit bundle/outliner/ftplugin/vo_base.vim and change the tabstop/shiftwidth to 2
+""
+""       setlocal tabstop=2
+""       setlocal shiftwidth=2
+""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vo_modules_load = "checkbox:hoist"
+
