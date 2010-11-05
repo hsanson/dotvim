@@ -149,3 +149,20 @@ set laststatus=2
 set statusline=%{VCSCommandGetStatusLine()}[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
 "set statusline=[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Neocomplcache Plugin
+"" 
+"" Description:
+""  A auto-complete plugin that actually works!
+""
+"" Installation:
+""  - Make sure you have pathogen.vim installed an enabled.
+""  - cd ~/.vim
+""  - mkdir -p bundle
+""  - git submodule add https://github.com/Shougo/neocomplcache.git bundle/neocomplcache
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:neocomplcache_enable_at_startup = 1             " Enable neocomplcache
+let g:neocomplcache_enable_smart_case = 1             " Use smart case
+let g:neocomplcache_enable_camel_case_completion = 1  " Use camel case completion
+let g:neocomplcache_enable_underbar_completion = 1    " Use underbar completion
+let g:neocomplcache_min_syntax_length = 3
