@@ -36,7 +36,7 @@ filetype off " Needed so pathogen also loads ftdetect plugins.
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-" Re-enable per filetype plugins and indents
+" Re-enable per filetype plugins and indents after loading pathogen plugin
 filetype plugin indent on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -229,6 +229,8 @@ let g:neocomplcache_min_syntax_length = 3
 ""       setlocal tabstop=2
 ""       setlocal shiftwidth=2
 ""
+"" Resources:
+""  http://www.troubleshooters.com/projects/alt-vimoutliner-litt/
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vo_modules_load = "checkbox:hoist"
 
