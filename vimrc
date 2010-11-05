@@ -245,3 +245,18 @@ let g:vo_modules_load = "checkbox:hoist"
 ""  - git submodule add https://github.com/tomtom/tgpg_vim.git bundle/tgpg
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Matchit Plugin
+"" 
+"" Description:
+""  Allows you to configure % to match more than just single characters.
+""
+"" Installation:
+""  - Make sure you have pathogen.vim installed an enabled.
+""  - cd ~/.vim
+""  - mkdir -p bundle/matchit
+""  - wget http://www.vim.org/scripts/download_script.php?src_id=8196 --output-document=matchit.zip
+""  - unzip -d bundle/matchit matchit.zip
+""  - rm -f matchit.zip
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
