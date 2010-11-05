@@ -10,3 +10,6 @@
 [submodule "bundle/neocomplcache"]
 	path = bundle/neocomplcache
 	url = https://github.com/Shougo/neocomplcache.git
+[submodule "bundle/tgpg"]
+	path = bundle/tgpg
+	url = https://github.com/tomtom/tgpg_vim.git

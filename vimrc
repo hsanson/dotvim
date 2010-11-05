@@ -199,3 +199,16 @@ let g:neocomplcache_min_syntax_length = 3
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vo_modules_load = "checkbox:hoist"
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" tGPG Plugin
+"" 
+"" Description:
+""  tGPG Plugin for transparent editing of encrypted files.
+""
+"" Installation:
+""  - Make sure you have pathogen.vim installed an enabled.
+""  - cd ~/.vim
+""  - mkdir -p bundle
+""  - git submodule add https://github.com/tomtom/tgpg_vim.git bundle/tgpg
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
