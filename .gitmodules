@@ -13,3 +13,6 @@
 [submodule "bundle/tgpg"]
 	path = bundle/tgpg
 	url = https://github.com/tomtom/tgpg_vim.git
+[submodule "bundle/ack"]
+	path = bundle/ack
+	url = https://github.com/mileszs/ack.vim.git

@@ -107,6 +107,31 @@ set encoding=utf-8
 " Make sure your terminal is configured with the same encoding.
 set tenc=utf-8
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Improve QuickFix Window
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Always open the quickfix window when running make, grep, grepadd and vimgrep
+autocmd QuickfixCmdPost make,grep,grepadd,vimgrep :botright cwindow
+map <F6> <ESC>:cN<CR>                " Jump to prev error or warn
+map <F7> <ESC>:cn<CR>                " Jump to next error or warn
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Ack Plugin
+""
+"" Installation:
+""  - sudo aptitude install ack-grep
+""  - Make sure you have pathogen.vim installed an enabled.
+""  - cd ~/.vim
+""  - mkdir -p bundle
+""  - git submodule add https://github.com/mileszs/ack.vim.git bundle/ack
+"" Usage:
+""  - :Ack [options] {pattern} [{directory}]
+"" Resources:
+""   http://betterthangrep.com/
+""   http://amaslov.wordpress.com/2009/04/23/vim-ack-instead-of-grep/
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" NERDTree Plugin
 ""
