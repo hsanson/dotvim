@@ -129,3 +129,23 @@ set noautochdir
 let g:NERDTreeChDirMode = 2
 " Show bookmarks list
 let g:NERDTreeShowBookmarks = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" VCSCommand Plugin
+"" 
+"" Description:
+""  This plugin enables a generic interface to all common source version control
+""  systems (e.g. svn, git, hg, cvs). If you only use Git you may consider to
+""  use the vim-fugitive plugin instead.
+""
+"" Installation:
+""  - Make sure you have pathogen.vim installed an enabled.
+""  - cd ~/.vim
+""  - mkdir -p bundle
+""  - git submodule add git://repo.or.cz/vcscommand.git bundle/vcscommand
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:VCSCommandEnableBufferSetup = 1
+set laststatus=2
+set statusline=%{VCSCommandGetStatusLine()}[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
+"set statusline=[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
+
