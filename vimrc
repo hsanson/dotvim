@@ -63,6 +63,14 @@ set tabstop=2
 set softtabstop=2
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Improve Vim's Command Line Autocompletion
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set wildmode=full wildmenu              " Command-line tab completion
+set infercase                           " AutoComplete in Vim
+set completeopt=longest,menu,menuone
+set wildignore+=*.o,*.obj,*.pyc,*.DS_STORE,*.db,*.swc
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Word Wrap
 "
 " Auto formatting options. These determine where lines will be broken when
