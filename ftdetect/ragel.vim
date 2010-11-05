@@ -1,1 +1,1 @@
-au BufRead,BufNewFile *.rl       setlocal filetype=ragel
+au BufRead,BufNewFile *.rl setlocal filetype=ragel
