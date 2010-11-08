@@ -342,6 +342,38 @@ set laststatus=2
 set statusline=%{VCSCommandGetStatusLine()}[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" OmniCppComplete
+""
+"" Description:
+""  Vim comes with several omnifunctions to enable autocomplete of serveral
+""  laguages but it lacks a omnifunction for C++. This plugin add this omnifunction
+""  to enable autocompletion of C++ code.
+""
+"" Prerequisites:
+""  - Make sure you have the base system packages installed including git-core.
+""  - Make sure you have the pathogen.vim plugin installed correctly.
+""
+"" Installation:
+""  $ wget http://www.vim.org/scripts/download_script.php?src_id=7722 -O \
+""  $      /tmp/omnicppcomplete-0.41.zip
+""  $ mkdir -p $HOME/.vim/bundle/omnicppcomplete
+""  $ unzip -d $HOME/.vim/bundle/omnicppcomplete  /tmp/omnicppcomplete-0.41.zip
+""
+"" Resources:
+""  http://www.vim.org/scripts/script.php?script_id=1520
+""  http://vim.wikia.com/wiki/C%2B%2B_code_completion
+""  http://design.liberta.co.za/articles/code-completion-intellisense-for-cpp-in-vim-with-omnicppcomplete/
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let OmniCpp_NamespaceSearch = 1
+let OmniCpp_GlobalScopeSearch = 1
+let OmniCpp_ShowAccess = 1
+let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
+let OmniCpp_MayCompleteDot = 1 " autocomplete after .
+let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
+let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
+let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Neocomplcache Plugin
 ""
 "" Description:
