@@ -392,7 +392,7 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 ""  $ mkdir -p $HOME/.vim/bundle
 ""  $ git submodule add https://github.com/Shougo/neocomplcache.git $HOME/.vim/bundle/neocomplcache
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:neocomplcache_enable_at_startup = 1             " Enable neocomplcache
+let g:neocomplcache_enable_at_startup = 0             " Enable neocomplcache
 let g:neocomplcache_enable_smart_case = 1             " Use smart case
 let g:neocomplcache_enable_camel_case_completion = 1  " Use camel case completion
 let g:neocomplcache_enable_underbar_completion = 1    " Use underbar completion
