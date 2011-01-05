@@ -461,6 +461,7 @@ let g:neocomplcache_min_syntax_length = 3
 ""
 "" Resources:
 ""  http://www.troubleshooters.com/projects/alt-vimoutliner-litt/
+""  http://www.vim.org/scripts/script.php?script_id=1878
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vo_modules_load = "checkbox:hoist"
 
@@ -518,6 +519,26 @@ let g:vo_modules_load = "checkbox:hoist"
 ""  "Look ma, I'm *HTML!"     cs"<q>      <q>Look ma, I'm HTML!</q>
 ""  if *x>3 {                 ysW(        if ( x>3 ) {
 ""  my $str = *whee!;         vlllls'     my $str = 'whee!';
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Vim-preview Plugin
+""
+"" Description:
+""  Allows to generate and preview HTML documents in a browser.
+""
+"" Prerequisites:
+""  - Make sure you have the base system packages installed including git-core.
+""  - Make sure you have the pathogen.vim plugin installed correctly.
+""
+"" Installation:
+""  $ sudo gem install RedCloth github-markup bluecloth
+""  $ mkdir -p $HOME/.vim/bundle
+""  $ git submodule add https://github.com/greyblake/vim-preview.git $HOME/.vim/bundle/preview
+""
+"" Usage:
+""  <leader>P will process markdown, textile, rdoc and html files and load them
+""  in a browser.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
