@@ -225,6 +225,13 @@ set completeopt=longest,menu,menuone
 set wildignore+=*.o,*.obj,*.pyc,*.DS_STORE,*.db,*.swc
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" TOhtml
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let html_use_css = 1
+let html_ignore_folding = 1
+let html_number_lines = 0
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Word Wrap
 "
 " Auto formatting options. These determine where lines will be broken when
