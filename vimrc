@@ -159,6 +159,25 @@ filetype plugin indent on
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" HAML and SCSS Filetype and syntax
+""
+"" Description:
+""  Add syntax higliting to the powerfull HAML templating systema and SCSS CSS
+""  generator.
+""
+"" Prerequisites:
+""  - Make sure you have the base system packages installed including git-core.
+""  - Make sure you have the pathogen.vim plugin installed correctly.
+""  - Depending on the version control system you want make sure you have
+""    the corresponding tools (e.g. subversion, mercurial, git-core, etc.)
+""
+"" Installation:
+""  $ mkdir -p $HOME/.vim/bundle
+""  $ cd $HOME/.vim
+""  $ git submodule add https://github.com/tpope/vim-haml.git bundle/vim-haml
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Look and Feel Settings
 ""
 "" Description:
