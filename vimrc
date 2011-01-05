@@ -450,6 +450,15 @@ let g:neocomplcache_min_syntax_length = 3
 ""  $ sed '/setlocal tabstop=4/c setlocal tabstop=2' $HOME/.vim/bundle/outliner/ftplugin/vo_base.vim > /tmp/vo_base.1.vim
 ""  $ sed '/setlocal shiftwidth=4/c setlocal shiftwidth=2' /tmp/vo_base.1.vim > $HOME/.vim/bundle/outliner/ftplugin/vo_base.vim
 ""
+"" Fix Color Scheme:
+""  The default vimoutliner comes with two hard-coded color schemes that are far
+""  from pretty. Fortunately there is an alternative syntax file that allows
+""  vimoutliner to use your favorite color scheme.
+""
+""  $ wget http://www.vim.org/scripts/download_script.php?src_id=7043 -O /tmp/colorfix.tar.gz
+""  $ tar xvfz /tmp/colorfix.tar.gz -C /tmp
+""  $ cp /tmp/vimoutliner-colorscheme-fix-0.2b/syntax/vo_base.vim $HOME/.vim/bundle/outliner/syntax/vo_base.vim
+""
 "" Resources:
 ""  http://www.troubleshooters.com/projects/alt-vimoutliner-litt/
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
