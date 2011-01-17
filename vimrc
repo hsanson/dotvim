@@ -216,6 +216,12 @@ set shiftwidth=2
 set tabstop=2
 set softtabstop=2
 
+" Folding options
+set foldmethod=syntax
+let ruby_fold = 1
+let ruby_no_comment_fold = 1
+let g:sh_fold_enabled= 4
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Improve Vim's Command Line Autocompletion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
