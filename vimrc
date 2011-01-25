@@ -337,6 +337,9 @@ let g:ackprg="ack-grep -a -R -H --nocolor --nogroup --column"
 let g:NERDTreeWinSize = 35
 " Set the window position
 let g:NERDTreeWinPos = "left"
+" Colorful
+let g:NERDChristmasTree = 1
+let g:NERDTreeHighlightCursorline = 1
 " Auto centre
 let g:NERDTreeAutoCenter = 0
 " Not Highlight the cursor line
@@ -346,6 +349,9 @@ set noautochdir
 let g:NERDTreeChDirMode = 2
 " Show bookmarks list
 let g:NERDTreeShowBookmarks = 1
+" Open automatically on vim start and keep it open on new tabs
+autocmd VimEnter * NERDTree
+autocmd BufEnter * NERDTreeMirror
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" NERDTree Commenter
