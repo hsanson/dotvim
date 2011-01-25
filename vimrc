@@ -438,6 +438,11 @@ let g:neocomplcache_min_syntax_length = 3
 ""  for all kinds of things like tasks/todo lists, instruction manuals,
 ""  presentations and even some people have written books with this.
 ""
+"" Notes:
+""  This plugin was good a few years ago but the new Easy Notes plugin (see
+""  below) is far superior in several aspects. I recommend that plugin instead
+""  of this one.
+""
 "" Prerequisites:
 ""  - Make sure you have the base system packages installed including wget.
 ""  - Make sure you have the pathogen.vim plugin installed correctly.
@@ -470,6 +475,26 @@ let g:neocomplcache_min_syntax_length = 3
 ""  http://www.vim.org/scripts/script.php?script_id=1878
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vo_modules_load = "checkbox:hoist"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Easy Notes Plugin
+""
+"" Installation:
+""  $ mkdir -p $HOME/.vim/bundle/notes
+""  $ wget http://peterodding.com/code/vim/downloads/notes -O /tmp/notes.zip
+""  $ unzip /tmp/notes.zip -d $HOME/.vim/bundle/notes
+""
+"" Usage:
+""  In vim use :NewNote tp create a new note.
+""  Notes are stored in ~/.vim/bundle/notes/misc/notes/user so we can create a
+""  NERDTree bookmark to it and have our notes easily available.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" This plugin assumes it is intalled directly in ~/.vim dir but we use pathogen
+" plugin so we must update the expected paths accordingly.
+let g:notes_directory = '~/.vim/bundle/notes/misc/notes/user'
+let g:notes_shadowdir = '~/.vim/bundle/notes/misc/notes/shadow'
+let g:notes_indexfile = '~/.vim/bundle/notes/misc/notes/index.sqlite3'
+let g:notes_indexscript = '~/.vim/bundle/notes/misc/notes/scanner.py'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" tGPG Plugin

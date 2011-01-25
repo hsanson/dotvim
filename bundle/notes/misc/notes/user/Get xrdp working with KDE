@@ -1,0 +1,101 @@
+Get xrdp working with KDE
+
+# Problem Statement
+
+KDE4 [1] looks horrible when accessed remotely via vnc [2] and since xrdp [3]
+is simply a proxy that depends on vnc we get the same horrble look when
+accessing KDE using Windows RDP client.
+
+The usual response from KDE developers is that vnc is bad and you should
+change your vnc server or use another remote desktop technology so I tested
+all vnc server implementations I found and I can tell that x11vnc is the only
+one that is simple and works correctly with KDE4 so the solution to my
+problem was simple: get xrdp to work with x11vnc.
+
+# Configure KDE4 with x11vnc server
+
+This cannot be more easy. In Ubuntu simply install the package:
+{{{sh
+sudo aptitude install x11vnc
+}}}
+
+then in a terminal (konsole) run this command:
+{{{sh
+x11vnc -usepw -display :0 -forever -repeat -noxdamage -xkb
+}}}
+
+The first time you run this command it will ask you to input a password.
+Choose any one you like and remember it because you will need it to connect
+remotely to x11vnc.  The -noxdamage option is only needed if you have desktop
+effects enabled in plasma. If you have these plasma effects enabled and you
+do not use the -noxdamage option You will see some XDamage errors in the
+x11vnc output. You can also ask x11vnc to turn off the monitor when a remote
+client connects using the -clientdpms option and to lock the screen when the
+client disconnects using the -gone option:
+{{{sh
+ -gone &#39;qdbus org.freedesktop.ScreenSaver &#47;ScreenSaver Lock&#39;
+}}}
+But the -clientdpms and -gone options are not working very well. For example
+is difficult to recover the session from the desktop unless the remote client
+disconnects.
+
+# Configure KDE4 with xrdp server
+
+1. Install the xrdp packages:
+{{{sh
+sudo aptitude install xrdp
+}}}
+
+2. Edit the /etc/xrdp/xrdp.ini file and add an entry like:
+{{{dosini
+[MyHOME]
+name=MyHOME
+lib=libvnc.so
+ip=127.0.0.1
+port=5900
+password=ask
+      }}}
+3. Finally restart xrdp service:
+{{{sh
+sudo service xrdp restart
+}}}
+
+# Accessing remotely you KDE session via Windows RDP client
+
+In a windows machine open the remote desktop client (usually found in
+accessories) and input your KDE machine IP address.  After the connection is
+established you will get a popup with some options including the one we
+created above (MyHOME) so select it, input the password you set to x11vnc and
+enjoy.
+
+# Troubleshooting
+
+If you use Gnome instead of KDE you be encounter a bug that messes up the
+keyboard [6]. To fix it you must disable the keyboard plugin of the
+gnome-settings-daemon using hte gconf-editor. To do this open the
+gconf-editor and select the the folder:
+{{{
+/apps/gnome_settings_daemon/plugins/keyboard
+}}}
+
+and set the active option to False.
+
+To get the japanese kana key (top left) to work you need to apply a patch
+[7] and install the patched deb:
+{{{sh
+sudo apt-get install build-essential fakeroot dpkg-dev
+sudo apt-get source xrdp
+sudo apt-get build-dep xrdp
+sudo patch -p0 < ~/Patches/xrdp-japanese.patch
+dpkg-buildpackage -rfakeroot -b
+}}}
+
+# Resources
+
+  • [1] www.kde.org
+  • [2] http://en.wikipedia.org/wiki/Virtual_Network_Computing
+  • [3] http://xrdp.sourceforge.net
+  • [4] http://forum.xbmc.org/showthread.php?t=74791
+  • [5] http://adrianpopagh.blogspot.com/2010/06/connecting-with-remote-desktop-rdp-to.html
+  • [6] https://bugs.launchpad.net/ubuntu/+source/xrdp/+bug/320393
+  • [7] http://blogs.sun.com/thaniwa/entry/ja_xrdp
