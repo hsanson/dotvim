@@ -330,7 +330,8 @@ let g:ackprg="ack-grep -a -R -H --nocolor --nogroup --column"
 ""
 "" Installation:
 ""  $ mkdir -p $HOME/.vim/bundle
-""  $ git submodule add https://github.com/scrooloose/nerdtree.git $HOME/.vim/bundle/nerdtree
+""  $ cd $HOME/.vim
+""  $ git submodule add https://github.com/scrooloose/nerdtree.git bundle/nerdtree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set the window width
 let g:NERDTreeWinSize = 35
@@ -346,6 +347,28 @@ let g:NERDTreeChDirMode = 2
 " Show bookmarks list
 let g:NERDTreeShowBookmarks = 1
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" NERDTree Commenter
+""
+"" Description:
+""  Easy commenting of source code.
+""
+"" Prerequisites:
+""  - Make sure you have the base system packages installed including git-core.
+""  - Make sure you have the pathogen.vim plugin installed correctly.
+""
+"" Usage:
+""  - cl - Comment line or visual block
+""  - cn - Comment line or visual block forcing nesting
+""  - cs - Comment line or visual block sexily
+""  - cA - Add commend at the end of line and enter insert mode.
+""  - ca - Change comment delimiter
+""
+"" Installation:
+""  $ mkdir -p $HOME/.vim/bundle
+""  $ cd $HOME/.vim
+""  $ git submodule add https://github.com/scrooloose/nerdcommenter.git bundle/nerdcommenter
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" VCSCommand Plugin
 ""
