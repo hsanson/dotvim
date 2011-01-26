@@ -1,0 +1,67 @@
+MP3 Artwork
+
+# Introduction
+
+I needed a command line (cli) application that would allow me to embed cover
+art to my MP3 collection in order to get the covers diplay correctly in my
+wife's iPhone and my own gPhone (HTC-Hero). After months looking I finally
+found the ideal tool: eyed3.
+
+
+# Embedding cover art in MP3 files
+
+In Ubuntu/Kubuntu install ImageMagick and Eyed3 with the following command:
+{{{sh
+sudo aptitude install imagemagick eyed3
+}}}
+Then get your cover art in JPG or PNG format using your favorite cover art
+download tool (I use amarok) or scan your original CD case. Finally use this
+command to embed the image in the MP3 files:
+{{{sh
+convert AlbumArt.jpg -resize 300x300\> AlbumArt.jpg
+eyeD3 --add-image AlbumArt.jpg:FRONT_COVER *.mp3
+}}}
+The first command uses ImageMagick to resize the image if any dimension is
+larger than 300px. The second command adds the cover art to all the MP3
+files present in the current directory. You can of course use the full path
+of the location where the MP3 files are located or better write a bash
+script to apply the covert art to all your MP3 collection.
+
+Note that the cover image is called AlbumArt.jpg and that the resize
+operation overwrites it. If you prefer to keep the original change the name
+of the output to something else. Also you can embed more than one image to
+each MP3 and assign it different types like FRONT_COVER, BACK_COVER, MEDIA,
+etc. Check eyeD3 help for more information.
+
+The embedded cover art will display correctly in iTunes, iPhone and gPhone
+without problems.
+
+# Android cover art for Ogg/Vorbis and MP3 files
+
+All my Japanese music is in Ogg/Vorbis format mostly because MP3 players
+cannot agree in the metadata encoding for Japanese characters. Each MP3
+player I have tried (including Amarok) use a custom (i.e. no standard) way
+to save non ASCII characters making it impossible to display Japanese
+correctly in all devices/players I use.
+
+In the other hand Ogg/Vorbis displays the Japanese correctly in all players
+I use (Amarok/gPhone/ffmpeg/mplayer). The problem I had was with cover art
+until recently.
+
+To get my Android phone to correctly display the cover art I had to organize
+my music in different folders by album and in each album create an
+AlbumArt.jpg file that will be used as cover art for all Ogg/Vorbis files
+inside that album/folder.
+
+  > |--Aerosmith
+  > |    |-- Armageddon
+  > |            |-- AlbumArt.jpg
+  > |            |-- I Dont Want To Miss A Thing.ogg
+  > |--Shakira
+  >     |-- Laundry Service
+  >              |--AlbumArt.jpg
+  >              |--Eyes Like Yours.ogg
+
+With this layout both Amarok and my Android Phone display the AlbumArt,jpg
+for all the ogg/mp3 files contained inside the same folder. The cover art
+image MUST be called AlbumArt or Android won't recognize it.

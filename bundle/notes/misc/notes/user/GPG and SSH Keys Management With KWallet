@@ -1,0 +1,144 @@
+GPG and SSH Keys Management With KWallet
+
+# Introduction
+
+Here I present a simple way to handle SSH and GPG keys easily in KDE4 and with
+the following advantage:
+
+  • Works great with KDE4 that ships with Kubuntu Maverick Meerkat and may
+    work in other KDE distributions without too much trouble.
+  • Use Kwallet as the passphrase manager so you unlock Kwallet once on
+    login and from there it will handle all passphrase requests.
+  • Works great with automated tasks (via cron or incron) that use SSH key
+    authentication (e.g. famous rsync unexplained error 255).
+
+# Pre-requisities
+
+Considering that you are reading this post because you need a better way
+to manage you ssh and gpg keys then it is safe to assume you have already
+generated your ssh/gpg keys and that you know how to use them.
+
+## Disable KDE4 from starting ssh-agent
+
+Kubuntu 10.10 by default starts the ssh-agent causing some conflicts with this
+setup based on keychain. This default ssh-agent does not seem to use kwallet and
+certainly does not work with kmail/mutt so I prefer to disable it and enable
+keychain instead.
+
+To disable the default ssh-agent edit the /etc/X11/Xsession.options file
+and comment out the line that says “use-ssh-agent”.
+
+## Disable KDE4 from starting the gpg-agent
+
+As with ssh-agent KDE4 also enables the gpg-agent but again this does not use
+Kwallet and did not work correclty with Kmail nor Mutt.
+
+To disable the default gpg-agent edit the ~/.gnupg/gpg.conf file and
+comment out the line that says use-agent.
+
+# SSH/GPG Key management with KWallet
+
+With the default ssh and gpg agents disabled now we can configure KDE to use
+keychain/KWallet to handle both ssh and gpg keys for all terminal and KDE
+applications. 
+
+## Install all required packages
+{{{sh
+sudo aptitude install keychain ksshaskpass kwalletcli
+}}}
+## Configure KWallet as gpg-agent pinentry program
+
+Edit the ~/.gnupg/gpg-agent.conf and replace or insert the pinentry-program
+line so it contains the pientry-kwallet programs set:
+{{{conf
+#pinentry•program /usr/bin/ksshaskpass —nograb
+pinentry•program /usr/bin/pinentry-kwallet  # This is the important line
+no-grab
+default•cache-ttl 3600
+disable•scdaemon
+allow•mark-trusted
+}}}
+With this configuration every program that requests a gpg key secret pass will load the
+pinentry-kwallet program to ask for the pass. The point here is that this
+program will ask the pass once and register it with Kwallet. Any subsequent
+request will get the pass directly from Kwallet.
+
+## Configure KWallet as ssh askpass program
+
+Any program that request the pass for a SSH key will load the program specified
+by the SSH_ASKPASS environment variable. What we want is to set this variable to
+ksshaskpass that is KWallet aware. Similar to the pinentry-kwallet program used
+for gpg-keys this ksshaskpass program also stores the pass in KWallet so
+subsequent requests are autmatically answered by KWallet without user
+intervention.
+
+The best way I found to set the SSH_ASKPASS environment variable globally to all
+the KDE session is to create a bash script inside the ~/.kde/env directory.
+This way the script is loaded when we log into KDE and and the SSH_ASKPASS
+environment is set for all applications during that session:
+
+{{{sh
+#!/bin/sh
+################################################################################
+# Load keychain to handle ssh and gpg keys
+################################################################################
+if [ -f /usr/bin/keychain ]; then
+  if [ -f /usr/bin/ksshaskpass ]; then
+    export SSH_ASKPASS=/usr/bin/ksshaskpass
+  else
+    export SSH_ASKPASS=/usr/bin/askpass
+  fi
+  /usr/bin/keychain
+  $HOME/.keychain/`hostname`-sh
+  $HOME/.keychain/`hostname`-sh-gpg
+fi
+}}}
+Take the script above and copy to ~/.kde/env/keychain.sh and you will be set.
+This script apart from setting the SSH_ASKPASS environment variable to
+ksshaskpass it alsinvokes keychain which starts the ssh-agent and gpg-agent
+daemons and sets some environment variables so all terminal and KDE applications
+can use them.
+
+The advantage of using keychain to mange the agents instead of the default KDE
+is that keychain makes sure only one agent of each kind (gpg or ssh) is started.
+Using the default setup I ended with several agents each for every terminal and
+a different one of KDE applications.
+
+# Load your keys
+
+Finally we must load our ssh/gpg keys into keychain. The best place to do
+this is with the KDE Autostart scripts. Simply create a script, say
+add_keys.sh, into you ~/.kde/Autostart folder that contains something
+like:
+{{{sh
+#!/bin/sh
+################################################################################
+# Load keychain to handle ssh and gpg keys
+################################################################################
+if [ -f /usr/bin/keychain ]; then
+ /usr/bin/keychain id_rsa 0x12345 0x23456
+ $HOME/.keychain/`hostname`-sh
+ $HOME/.keychain/`hostname`-sh-gpg
+fi
+}}}
+what this Autostart script does is to load your ssh key (id_rsa) and gpg
+keys (0x12345, 0x23456) into keychain. The next time you log into a KDE
+session this script will ask you if you want to give keychain access to
+Kwallet and then ask all the registered key passphrases. Once registered
+with kwallet all your applications will be able to use these keys without
+asking you for the passphrase each time thank to the ksshaskpass and
+pinentry-kwallet programs.
+
+XXX Do not add the keys in the keychain.sh script inside the ~/.kde/env/ folder
+because this script is called before we have the X server running. In this case
+the pinentry-kwallet or ksshaskpass programs won’t be able to prompt you for the
+passphrases and the KDE session will hang there and never load.
+
+# Final notes
+
+Make sure the env and Autostart scripts have exec privileges:
+{{{sh
+chmod +x ~/.kde/env/keychain.sh
+chmod +x ~/.kde/Autostart/add_key.sh
+}}}
+
