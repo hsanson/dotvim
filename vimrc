@@ -609,6 +609,29 @@ let g:notes_indexscript = '~/.vim/bundle/notes/misc/notes/scanner.py'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Command-T Plugin
+""
+"" Description:
+""  Implements TextMate command-T file search functionality.
+""
+"" Prerequisites:
+""  - Make sure you have the base system packages installed including git-core.
+""  - Make sure you have the pathogen.vim plugin installed correctly.
+""
+"" Installation:
+""  $ sudo aptitude install ruby ruby-dev rake
+""  $ mkdir -p $HOME/.vim/bundle
+""  $ cd $HOME/.vim
+""  $ git submodule add git://git.wincent.com/command-t.git bundle/command-t
+""  $ cd bundle/command-t
+""  $ rake make
+""
+"" Usage:
+""  <leader>P will process markdown, textile, rdoc and html files and load them
+""  in a browser.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Initial Git Commit
 ""
 "" Description:
