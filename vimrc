@@ -349,9 +349,6 @@ set noautochdir
 let g:NERDTreeChDirMode = 2
 " Show bookmarks list
 let g:NERDTreeShowBookmarks = 1
-" Open automatically on vim start and keep it open on new tabs
-autocmd VimEnter * NERDTree
-autocmd BufEnter * NERDTreeMirror
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" NERDTree Commenter
