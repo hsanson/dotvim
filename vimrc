@@ -138,15 +138,21 @@ filetype plugin indent on
 ""  # Set omnifunctions for each filetype:
 ""  $ echo "setlocal omnifunc=csscomplete#CompleteCSS" > $HOME/.vim/ftplugin/css.vim
 ""  $ echo "setlocal omnifunc=ccomplete#Complete" > $HOME/.vim/ftplugin/c.vim
+""  $ echo "let c_no_comment_fold = 1" >> $HOME/.vim/ftplugin/c.vim
+""  $ echo "setlocal foldmethod=syntax" >> $HOME/.vim/ftplugin/c.vim
 ""  $ echo "let g:rubycomplete_buffer_loading = 1" > $HOME/.vim/ftplugin/eruby.vim
 ""  $ echo "let g:rubycomplete_rails = 1" >> $HOME/.vim/ftplugin/eruby.vim
 ""  $ echo "let g:rubycomplete_classes_in_global = 1" >> $HOME/.vim/ftplugin/eruby.vim
+""  $ echo "let ruby_fold = 1" >> $HOME/.vim/ftplugin/eruby.vim
+""  $ echo "let ruby_no_comment_fold = 1" >> $HOME/.vim/ftplugin/eruby.vim
 ""  $ echo "setlocal omnifunc=rubycomplete#Complete" >> $HOME/.vim/ftplugin/eruby.vim
+""  $ echo "setlocal foldmethod=syntax" >> $HOME/.vim/ftplugin/eruby.vim
 ""  $ cp -f $HOME/.vim/ftplugin/eruby.vim $HOME/.vim/ftplugin/ruby.vim
 ""  $ echo "setlocal omnifunc=htmlcomplete#CompleteTags" > $HOME/.vim/ftplugin/html.vim
 ""  $ cp -f $HOME/.vim/ftplugin/html.vim $HOME/.vim/ftplugin/markdown.vim
 ""  $ echo "setlocal omnifunc=javacomplete#Complete" > $HOME/.vim/ftplugin/java.vim
 ""  $ echo "setlocal completefunc=javacomplete#CompleteParamsInfo" >> $HOME/.vim/ftplugin/java.vim
+""  $ echo "setlocal foldmethod=syntax" >> $HOME/.vim/ftplugin/java.vim
 ""  $ echo "setlocal omnifunc=javascriptcomplete#CompleteJS" > $HOME/.vim/ftplugin/javascript.vim
 ""  $ echo "setlocal noexpandtab" > $HOME/.vim/ftplugin/make.vim
 ""  $ echo "setlocal omnifunc=phpcomplete#CompletePHP" > $HOME/.vim/ftplugin/php.vim
@@ -154,7 +160,11 @@ filetype plugin indent on
 ""  $ echo "setlocal omnifunc=pythoncomplete#Complete" >> $HOME/.vim/ftplugin/python.vim
 ""  # type /ref{fig: and press <C-n> to autocomplete references
 ""  $ echo "setlocal iskeyword+=:" > $HOME/.vim/ftplugin/tex.vim
+""  $ echp "let g:tex_fold_enabled=1" >> $HOME/.vim/ftplugin/tex.vim
+""  $ echo "setlocal foldmethod=syntax" >> $HOME/.vim/ftplugin/tex.vim
 ""  $ echo "setlocal omnifunc=xmlcomplete#CompleteTags" > $HOME/.vim/ftplugin/xml.vim
+""  $ echo "let g:xml_syntax_folding=1" >> $HOME/.vim/ftplugin/xml.vim
+""  $ echo "setlocal foldmethod=syntax" >> $HOME/.vim/ftplugin/xml.vim
 ""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
