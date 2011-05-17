@@ -624,12 +624,17 @@ let g:notes_indexscript = '~/.vim/bundle/notes/misc/notes/scanner.py'
 ""  $ cd $HOME/.vim
 ""  $ git submodule add git://git.wincent.com/command-t.git bundle/command-t
 ""  $ cd bundle/command-t
-""  $ rake make
+""  $ /var/lib/gems/1.8/bin/rake make
 ""
 "" Usage:
 ""  <leader>P will process markdown, textile, rdoc and html files and load them
 ""  in a browser.
+""
+"" Notes:
+""  This plugin maps <C-s> to open files in split windows. Unfortunately in
+""  Konsole this key combination is set to handle terminal flow control.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:CommandTAcceptSelectionSplitMap = '<C-b>'  " Remap the split open key.
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Initial Git Commit
