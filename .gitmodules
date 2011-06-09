@@ -31,3 +31,9 @@
 [submodule "bundle/command-t"]
 	path = bundle/command-t
 	url = git://git.wincent.com/command-t.git
+[submodule "bundle/tagbar"]
+	path = bundle/tagbar
+	url = git://github.com/majutsushi/tagbar
+[submodule "bundle/rubycomplete"]
+	path = bundle/rubycomplete
+	url = https://github.com/vim-scripts/rubycomplete.vim.git

@@ -226,11 +226,12 @@ set shiftwidth=2
 set tabstop=2
 set softtabstop=2
 
-" Folding options
-"set foldmethod=syntax
-"let ruby_fold = 1
-"let ruby_no_comment_fold = 1
-"let g:sh_fold_enabled= 4
+" Don't screw up folds when inserting text that might affect them, until
+" leaving insert mode. Foldmethod is local to the window. Protect against
+" screwing up folding when switching between windows.
+" http://vim.wikia.com/wiki/Keep_folds_closed_while_inserting_text
+autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
+autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Improve Vim's Command Line Autocompletion
@@ -269,6 +270,10 @@ set textwidth=80    " Force wrap for lines longer than 80 characters
 "set lbr            " Force wrap at word boundaries not chars
 "nnoremap k gk      " Enable navigation within long lines (up)
 "nnoremap j gj      " Enable navigation within long lines (down)
+
+" Highligth any text that goes beyond our 80 char width
+highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Character encoding settings
@@ -547,6 +552,25 @@ let g:notes_indexscript = '~/.vim/bundle/notes/misc/notes/scanner.py'
 ""  $ mkdir -p $HOME/.vim/bundle
 ""  $ git submodule add https://github.com/tomtom/tgpg_vim.git $HOME/.vim/bundle/tgpg
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" TagBar Plugin and Ruby omnicomplete plugin
+""
+"" Description:
+""  Tlist replacement with scoping.
+""
+"" Prerequisites:
+""  - Make sure you have the base system packages installed including git-core.
+""  - Make sure you have the pathogen.vim plugin installed correctly.
+""
+"" Installation:
+""  $ cd $HOME/.vim
+""  $ mkdir -p bundle
+""  $ git submodule add git://github.com/majutsushi/tagbar bundle/tagbar
+""  $ git submodule add https://github.com/vim-scripts/rubycomplete.vim.git bundle/rubycomplete
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set complete=.,w,b,u,t
+set tags=./.tags;$HOME
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Matchit Plugin
