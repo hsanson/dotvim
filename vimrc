@@ -410,9 +410,48 @@ let g:NERDTreeShowBookmarks = 1
 ""  $ mkdir -p $HOME/.vim/bundle
 ""  $ git submodule add git://repo.or.cz/vcscommand.git $HOME/.vim/bundle/vcscommand
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:VCSCommandEnableBufferSetup = 1
+"let g:VCSCommandEnableBufferSetup = 1
+"set laststatus=2
+"set statusline=%{VCSCommandGetStatusLine()}[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Vim Fugitive
+""
+"" Description:
+""  Best git wrapper for vim.
+""
+"" Prerequisites:
+""  - Make sure you have the base system packages installed including git-core.
+""  - Make sure you have the pathogen.vim plugin installed correctly.
+""
+"" Installation:
+""  $ mkdir -p $HOME/.vim/bundle
+""  $ git submodule add git://github.com/tpope/vim-fugitive.git $HOME/.vim/bundle/fugitive
+""
+"" Resources:
+""  https://github.com/tpope/vim-fugitive
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set laststatus=2
-set statusline=%{VCSCommandGetStatusLine()}[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
+set statusline=%{fugitive#statusline()}[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Vim Rails
+""
+"" Description:
+""
+"" Prerequisites:
+""  - Make sure you have the base system packages installed including git-core.
+""  - Make sure you have the pathogen.vim plugin installed correctly.
+""
+"" Installation:
+""  $ mkdir -p $HOME/.vim/bundle
+""  $ git submodule add git://github.com/tpope/vim-rails.git $HOME/.vim/bundle/vim-rails
+""  $ git submodule add git://github.com/tpope/vim-endwise.git $HOME/.vim/bundle/endwise
+""
+"" Resources:
+""  https://github.com/tpope/vim-rails
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" OmniCppComplete

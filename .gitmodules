@@ -37,3 +37,12 @@
 [submodule "bundle/rubycomplete"]
 	path = bundle/rubycomplete
 	url = https://github.com/vim-scripts/rubycomplete.vim.git
+[submodule "/home/ryujin/.vim/bundle/vim-rails"]
+	path = /home/ryujin/.vim/bundle/vim-rails
+	url = git://github.com/tpope/vim-rails.git
+[submodule "/home/ryujin/.vim/bundle/endwise"]
+	path = /home/ryujin/.vim/bundle/endwise
+	url = git://github.com/tpope/vim-endwise.git
+[submodule "/home/ryujin/.vim/bundle/fugitive"]
+	path = /home/ryujin/.vim/bundle/fugitive
+	url = git://github.com/tpope/vim-fugitive.git
