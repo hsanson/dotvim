@@ -560,9 +560,9 @@ let g:vo_modules_load = "checkbox:hoist"
 "" Easy Notes Plugin
 ""
 "" Installation:
-""  $ mkdir -p $HOME/.vim/bundle/notes
-""  $ wget http://peterodding.com/code/vim/downloads/notes -O /tmp/notes.zip
-""  $ unzip /tmp/notes.zip -d $HOME/.vim/bundle/notes
+""  $ mkdir -p $HOME/.vim/bundle
+""  $ mkdir -p $HOME/Notes $HOME/Notes/.shadow
+""  $ git submodule add https://github.com/xolox/vim-notes.git $HOME/.vim/bundle/notes
 ""
 "" Usage:
 ""  In vim use :NewNote tp create a new note.
@@ -571,9 +571,9 @@ let g:vo_modules_load = "checkbox:hoist"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " This plugin assumes it is intalled directly in ~/.vim dir but we use pathogen
 " plugin so we must update the expected paths accordingly.
-let g:notes_directory = '~/.vim/bundle/notes/misc/notes/user'
-let g:notes_shadowdir = '~/.vim/bundle/notes/misc/notes/shadow'
-let g:notes_indexfile = '~/.vim/bundle/notes/misc/notes/index.sqlite3'
+let g:notes_directory = '~/Notes'
+let g:notes_shadowdir = '~/Notes/.shadow'
+let g:notes_indexfile = '~/Notes/.index.sqlite3'
 let g:notes_indexscript = '~/.vim/bundle/notes/misc/notes/scanner.py'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

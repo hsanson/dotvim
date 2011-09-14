@@ -46,3 +46,6 @@
 [submodule "/home/ryujin/.vim/bundle/fugitive"]
 	path = /home/ryujin/.vim/bundle/fugitive
 	url = git://github.com/tpope/vim-fugitive.git
+[submodule "/home/ryujin/.vim/bundle/notes"]
+	path = /home/ryujin/.vim/bundle/notes
+	url = https://github.com/xolox/vim-notes.git
