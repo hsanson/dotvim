@@ -214,7 +214,7 @@ colors vividchalk                     " My current favorite color scheme.
 " Show tabs and tailing spaces.
 " Note: to insert the middle point press ctrl+k .M in insert mode
 :set list
-:set listchars=tab:»·,trail:⋅,nbsp:⋅
+:set listchars=tab:»·,trail:·,nbsp:·
 
 " By default insert spaces instead of tabs. This may be overriden by the
 " configuration inside ftplugin directory.
@@ -232,6 +232,10 @@ set softtabstop=2
 " http://vim.wikia.com/wiki/Keep_folds_closed_while_inserting_text
 autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
 autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
+
+" Unfold new opened buffers
+" http://vim.wikia.com/wiki/All_folds_open_when_open_a_file
+autocmd Syntax c,cpp,vim,xml,html,xhtml,perl,java normal zR
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Improve Vim's Command Line Autocompletion
@@ -296,6 +300,11 @@ set encoding=utf-8
 " Terminal encoding used for input and terminal display
 " Make sure your terminal is configured with the same encoding.
 set tenc=utf-8
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Map make for easy access
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <F5> <ESC>:make<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Improve QuickFix Window
@@ -571,8 +580,9 @@ let g:vo_modules_load = "checkbox:hoist"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " This plugin assumes it is intalled directly in ~/.vim dir but we use pathogen
 " plugin so we must update the expected paths accordingly.
+let g:notes_suffix = '.txt'
 let g:notes_directory = '~/Notes'
-let g:notes_shadowdir = '~/Notes/.shadow'
+"let g:notes_shadowdir = '~/Notes/.shadow'
 let g:notes_indexfile = '~/Notes/.index.sqlite3'
 let g:notes_indexscript = '~/.vim/bundle/notes/misc/notes/scanner.py'
 
