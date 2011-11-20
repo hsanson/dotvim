@@ -3,9 +3,9 @@
 ""  This vimrc is my default vim configuration file.
 ""
 "" Prerequisites:
-""  - This configuration has been tested only on Ubuntu/Kubuntu version 10.10. It
-""    may work in lower Ubuntu versions and other Debian distributions but there
-""    is no guarantee.
+""  - This configuration has been tested only on Ubuntu/Kubuntu version 10.10 
+""    and 11.10. It may work in lower Ubuntu versions and other Debian 
+""    distributions but there is no guarantee.
 ""
 "" Installation:
 ""  The instructions here install the required software packages and sets our
@@ -64,8 +64,8 @@
 "" Vim base install
 ""
 "" Prerequisites:
-""  A running Ubuntu/Kubuntu system 10.10.
-""  Basic knowledge of Git and K/Ubuntu administration.
+""  A running Ubuntu/Kubuntu system 10.10 or 11.10.
+""  Basic knowledge of Git and X/K/Ubuntu administration.
 ""  A $HOME/.vim directory created and with this configuration file inside it.
 ""
 "" Installation:
@@ -166,6 +166,7 @@ filetype plugin indent on
 ""  $ echo "let g:xml_syntax_folding=1" >> $HOME/.vim/ftplugin/xml.vim
 ""  $ echo "setlocal foldmethod=syntax" >> $HOME/.vim/ftplugin/xml.vim
 ""
+""  $ git submodule add https://github.com/kchmck/vim-coffee-script.git bundle/vim-coffee-script
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -265,19 +266,22 @@ set formatoptions=tcqmM
 " '\n' character at the break place and without line breaks that only displays
 " text as wrapped but there is no actual break added to the text.
 
-" Word wrap with line breaks.
-" Use "gq}" to wrap the current paragraph if it is not well formatted.
+" To enable word wrap with line breaks use the textwidth option below.
+" Note: Use "gq}" to wrap the current paragraph if it is not well formatted.
+
 set textwidth=80    " Force wrap for lines longer than 80 characters
 
-" Vim Tip #989: Word wrap without line breaks lines.
+" To enable word wrap without actual line breaks comment textwidth option above
+" and enable the four options below (Vim Tip #989):
+
 "set wrap           " Force wrap for lines linger than the vim window
 "set lbr            " Force wrap at word boundaries not chars
 "nnoremap k gk      " Enable navigation within long lines (up)
 "nnoremap j gj      " Enable navigation within long lines (down)
 
-" Highligth any text that goes beyond our 80 char width
-highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+" Mark the textwidth column with a white color to know when we passed the limit.
+set colorcolumn=+0,+1,+2,+3
+highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Character encoding settings
@@ -394,34 +398,9 @@ let g:NERDTreeShowBookmarks = 1
 "" Installation:
 ""  $ mkdir -p $HOME/.vim/bundle
 ""  $ cd $HOME/.vim
-""  $ git submodule add https://github.com/scrooloose/nerdcommenter.git bundle/nerdcommenter
+""  $ git submodule add https://github.com/scrooloose/nerdcommenter.git \
+""                                   bundle/nerdcommenter
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" VCSCommand Plugin
-""
-"" Description:
-""  This plugin enables a generic interface to all common source version control
-""  systems (e.g. svn, git, hg, cvs). This also sets the statusline so it shows
-""  information about the versioning of the current buffer.
-""
-"" Prerequisites:
-""  - Make sure you have the base system packages installed including git-core.
-""  - Make sure you have the pathogen.vim plugin installed correctly.
-""  - Depending on the version control system you want make sure you have
-""    the corresponding tools (e.g. subversion, mercurial, git-core, etc.)
-""
-"" Notes:
-""  - If you only use Git for all you projects you may consider installing the
-""    vim-fugitive plugin that only supports Git. But is smaller and more
-""    powerful than the VCSCommand Git module.
-""
-"" Installation:
-""  $ mkdir -p $HOME/.vim/bundle
-""  $ git submodule add git://repo.or.cz/vcscommand.git $HOME/.vim/bundle/vcscommand
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"let g:VCSCommandEnableBufferSetup = 1
-"set laststatus=2
-"set statusline=%{VCSCommandGetStatusLine()}[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Vim Fugitive
@@ -435,7 +414,8 @@ let g:NERDTreeShowBookmarks = 1
 ""
 "" Installation:
 ""  $ mkdir -p $HOME/.vim/bundle
-""  $ git submodule add git://github.com/tpope/vim-fugitive.git $HOME/.vim/bundle/fugitive
+""  $ git submodule add git://github.com/tpope/vim-fugitive.git \
+""                                                 $HOME/.vim/bundle/fugitive
 ""
 "" Resources:
 ""  https://github.com/tpope/vim-fugitive
@@ -454,13 +434,14 @@ set statusline=%{fugitive#statusline()}[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%
 ""
 "" Installation:
 ""  $ mkdir -p $HOME/.vim/bundle
-""  $ git submodule add git://github.com/tpope/vim-rails.git $HOME/.vim/bundle/vim-rails
-""  $ git submodule add git://github.com/tpope/vim-endwise.git $HOME/.vim/bundle/endwise
+""  $ git submodule add git://github.com/tpope/vim-rails.git \
+""                                              $HOME/.vim/bundle/vim-rails
+""  $ git submodule add git://github.com/tpope/vim-endwise.git \\
+""                                              $HOME/.vim/bundle/endwise
 ""
 "" Resources:
 ""  https://github.com/tpope/vim-rails
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" OmniCppComplete
@@ -511,59 +492,15 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 ""
 "" Installation:
 ""  $ mkdir -p $HOME/.vim/bundle
-""  $ git submodule add https://github.com/Shougo/neocomplcache.git $HOME/.vim/bundle/neocomplcache
+""  $ git submodule add https://github.com/Shougo/neocomplcache.git \
+""                                            $HOME/.vim/bundle/neocomplcache
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:neocomplcache_enable_at_startup = 0             " Enable neocomplcache
-let g:neocomplcache_enable_smart_case = 1             " Use smart case
-let g:neocomplcache_enable_camel_case_completion = 1  " Use camel case completion
-let g:neocomplcache_enable_underbar_completion = 1    " Use underbar completion
+let g:neocomplcache_enable_at_startup = 1             "Enable neocomplcache
+let g:neocomplcache_enable_smart_case = 1             "Use smart case
+let g:neocomplcache_enable_camel_case_completion = 1  "Use camelcase completion
+let g:neocomplcache_enable_underbar_completion = 1    "Use underbar completion
 let g:neocomplcache_min_syntax_length = 3
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" VimOutliner Plugin
-""
-"" Description:
-""  An Outliner plugin for vim that allows you to create nice outline documents
-""  for all kinds of things like tasks/todo lists, instruction manuals,
-""  presentations and even some people have written books with this.
-""
-"" Notes:
-""  This plugin was good a few years ago but the new Easy Notes plugin (see
-""  below) is far superior in several aspects. I recommend that plugin instead
-""  of this one.
-""
-"" Prerequisites:
-""  - Make sure you have the base system packages installed including wget.
-""  - Make sure you have the pathogen.vim plugin installed correctly.
-""
-"" Installation:
-""  $ mkdir -p $HOME/.vim/bundle/outliner
-""  $ wget http://www.troubleshooters.com/projects/alt-vimoutliner-litt/download/0.3.4/vimoutliner-0.3.4.tgz \
-""  $    -O /tmp/vimoutliner-0.3.4.tgz
-""  $ tar xvfz /tmp/vimoutliner-0.3.4.tgz -C /tmp
-""  $ cp -rf /tmp/vimoutliner-0.3.4/* $HOME/.vim/bundle/outliner
-""  $ rm -rf /tmp/vimoutliner-0.3.4*
-""  # The current outliner does not load under pathogen. Here we fix this:
-""  $ cat $HOME/.vim/bundle/outliner/ftdetect/vo_base.vim | egrep  au! > /tmp/vo_base.vim
-""  $ cp -f /tmp/vo_base.vim $HOME/.vim/bundle/outliner/ftdetect/vo_base.vim
-""  # I prefer two spaces instead of 4 for tabs:
-""  $ sed '/setlocal tabstop=4/c setlocal tabstop=2' $HOME/.vim/bundle/outliner/ftplugin/vo_base.vim > /tmp/vo_base.1.vim
-""  $ sed '/setlocal shiftwidth=4/c setlocal shiftwidth=2' /tmp/vo_base.1.vim > $HOME/.vim/bundle/outliner/ftplugin/vo_base.vim
-""
-"" Fix Color Scheme:
-""  The default vimoutliner comes with two hard-coded color schemes that are far
-""  from pretty. Fortunately there is an alternative syntax file that allows
-""  vimoutliner to use your favorite color scheme.
-""
-""  $ wget http://www.vim.org/scripts/download_script.php?src_id=7043 -O /tmp/colorfix.tar.gz
-""  $ tar xvfz /tmp/colorfix.tar.gz -C /tmp
-""  $ cp /tmp/vimoutliner-colorscheme-fix-0.2b/syntax/vo_base.vim $HOME/.vim/bundle/outliner/syntax/vo_base.vim
-""
-"" Resources:
-""  http://www.troubleshooters.com/projects/alt-vimoutliner-litt/
-""  http://www.vim.org/scripts/script.php?script_id=1878
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:vo_modules_load = "checkbox:hoist"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Easy Notes Plugin
@@ -571,12 +508,15 @@ let g:vo_modules_load = "checkbox:hoist"
 "" Installation:
 ""  $ mkdir -p $HOME/.vim/bundle
 ""  $ mkdir -p $HOME/Notes $HOME/Notes/.shadow
-""  $ git submodule add https://github.com/xolox/vim-notes.git $HOME/.vim/bundle/notes
+""  $ git submodule add https://github.com/xolox/vim-notes.git \
+""                                                   $HOME/.vim/bundle/notes
 ""
 "" Usage:
 ""  In vim use :NewNote tp create a new note.
-""  Notes are stored in ~/.vim/bundle/notes/misc/notes/user so we can create a
-""  NERDTree bookmark to it and have our notes easily available.
+"" 
+"" Notes:
+""  You may create a Nerdtree Bookmark to the g:notes_directory folder to
+""  have quick access to your notes.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " This plugin assumes it is intalled directly in ~/.vim dir but we use pathogen
 " plugin so we must update the expected paths accordingly.
@@ -599,7 +539,8 @@ let g:notes_indexscript = '~/.vim/bundle/notes/misc/notes/scanner.py'
 ""
 "" Installation:
 ""  $ mkdir -p $HOME/.vim/bundle
-""  $ git submodule add https://github.com/tomtom/tgpg_vim.git $HOME/.vim/bundle/tgpg
+""  $ git submodule add https://github.com/tomtom/tgpg_vim.git \
+""                                                    $HOME/.vim/bundle/tgpg
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -616,7 +557,8 @@ let g:notes_indexscript = '~/.vim/bundle/notes/misc/notes/scanner.py'
 ""  $ cd $HOME/.vim
 ""  $ mkdir -p bundle
 ""  $ git submodule add git://github.com/majutsushi/tagbar bundle/tagbar
-""  $ git submodule add https://github.com/vim-scripts/rubycomplete.vim.git bundle/rubycomplete
+""  $ git submodule add https://github.com/vim-scripts/rubycomplete.vim.git \
+""                                                   bundle/rubycomplete
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set complete=.,w,b,u,t
 set tags=./.tags;$HOME
@@ -633,7 +575,8 @@ set tags=./.tags;$HOME
 ""
 "" Installation:
 ""  $ mkdir -p $HOME/.vim/bundle/matchit
-""  $ wget http://www.vim.org/scripts/download_script.php?src_id=8196 --output-document=/tmp/matchit.zip
+""  $ wget http://www.vim.org/scripts/download_script.php?src_id=8196 \
+""                                          --output-document=/tmp/matchit.zip
 ""  $ unzip -d $HOME/.vim/bundle/matchit /tmp/matchit.zip
 ""  $ rm -f /tmp/matchit.zip
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -650,7 +593,8 @@ set tags=./.tags;$HOME
 ""
 "" Installation:
 ""  $ mkdir -p $HOME/.vim/bundle
-""  $ git submodule add https://github.com/tpope/vim-surround.git $HOME/.vim/bundle/surround
+""  $ git submodule add https://github.com/tpope/vim-surround.git \
+""                                                  $HOME/.vim/bundle/surround
 ""
 "" Usage:
 ""  Old text                  Command     New text ~
@@ -674,7 +618,8 @@ set tags=./.tags;$HOME
 "" Installation:
 ""  $ sudo gem install RedCloth github-markup bluecloth
 ""  $ mkdir -p $HOME/.vim/bundle
-""  $ git submodule add https://github.com/greyblake/vim-preview.git $HOME/.vim/bundle/preview
+""  $ git submodule add https://github.com/greyblake/vim-preview.git \
+""                                                  $HOME/.vim/bundle/preview
 ""
 "" Usage:
 ""  <leader>P will process markdown, textile, rdoc and html files and load them
@@ -723,4 +668,42 @@ let g:CommandTAcceptSelectionSplitMap = '<C-b>'  " Remap the split open key.
 ""  $ cd $HOME/.vim
 ""  $ git add .
 ""  $ git commit -m "Initial vim configuration"
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Deprecated Plugins.
+"" The following plugins were replaced with better ones.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" VCSCommand Plugin
+""
+"" Description:
+""  This plugin enables a generic interface to all common source version control
+""  systems (e.g. svn, git, hg, cvs). This also sets the statusline so it shows
+""  information about the versioning of the current buffer.
+""
+"" Prerequisites:
+""  - Make sure you have the base system packages installed including git-core.
+""  - Make sure you have the pathogen.vim plugin installed correctly.
+""  - Depending on the version control system you want make sure you have
+""    the corresponding tools (e.g. subversion, mercurial, git-core, etc.)
+""
+"" Notes:
+""  - If you only use Git for all you projects you may consider installing the
+""    vim-fugitive plugin that only supports Git. But is smaller and more
+""    powerful than the VCSCommand Git module.
+""
+"" Installation:
+""  $ mkdir -p $HOME/.vim/bundle
+""  $ git submodule add git://repo.or.cz/vcscommand.git $HOME/.vim/bundle/vcscommand
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"let g:VCSCommandEnableBufferSetup = 1
+"set laststatus=2
+"set statusline=%{VCSCommandGetStatusLine()}[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
+
 
