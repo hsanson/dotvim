@@ -23,7 +23,16 @@
 ""  instructions in this file. At the end you will have a powerful vim
 ""  configuration that you can then further modify to fit your tastes.
 ""
-""  - Remove all your vim configurations if you have: 
+""  - Install vim and some additional support packages:
+""
+""    sudo aptitude install vim-gtk vim-ruby vim-common
+""    sudo aptitude install git-core wget sed  ack-grep exuberant-ctags
+""
+""    Even if you do not plan to use the GUI version of vim it is better to
+""    install it since it adds some additional support like +xterm_clipboard
+""    that allows copy/paste to the window manager clipboard (KDE, Gnome, Xfce)
+""
+""  - Remove all your vim configurations if you have:
 ""
 ""    rm -rf $HOME/.vim*
 ""
@@ -44,40 +53,9 @@
 ""    cd $HOME/.vim
 ""    git init
 ""
-""  From here there are two paths you may follow to complete the configuration.
-""  The firt method is to read this vimrc file step by step executing the
-""  Installation steps in each section. This is the  prefered method for first
-""  timers because it will allow you to familiarize yourself with this config.
-""
-""  The second (faster) option is to extract all the Installation steps into a
-""  bash script and run the script. When the script finishes you will have
-""  everything setup automagically for you. To extract and execute this magic
-""  bash script follow these instructions:
-""
-""    cat $HOME/.vim/vimrc | grep "\"\"  \\$" | cut -d' ' -f4- > $HOME/vim-install.sh
-""    chmod +x $HOME/vim-install.sh
-""    $HOME/vim-install.sh  # run the script
-""
+""  Now make sure you read this file section by section since there are some
+""  additional steps needed to get a fully functional vimrc configuration.
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Vim base install
-""
-"" Prerequisites:
-""  A running Ubuntu/Kubuntu system 10.10 or 11.10.
-""  Basic knowledge of Git and X/K/Ubuntu administration.
-""  A $HOME/.vim directory created and with this configuration file inside it.
-""
-"" Installation:
-""  $ #!/usr/bin/env bash
-""  $ set -o errexit
-""  $ sudo aptitude install vim-ruby vim-common ack-grep exuberant-ctags
-""  $ sudo aptitude install git-core wget sed
-""
-"" Resources:
-""  http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/
-""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" General Settings
@@ -100,24 +78,23 @@ set path=/usr/include,/usr/local/include,**;$HOME
 "" Pathogen Plugin
 ""
 "" Description:
-""  This vim plugin allows easy management of other plugins in bundles.
+""  This vim plugin allows easy management of other plugins in bundles that 
+""  is cleaner that mixing all plugin files inside the .vim folder.
 ""
 "" Installation:
-""  $ mkdir -p $HOME/.vim/autoload
-""  $ wget --no-check-certificate \
-""  $  https://github.com/tpope/vim-pathogen/raw/master/autoload/pathogen.vim \
-""  $  -O $HOME/.vim/autolad/pathogen.vim
+""  mkdir -p $HOME/.vim/autoload
+""  wget --no-check-certificate \
+""     https://github.com/tpope/vim-pathogen/raw/master/autoload/pathogen.vim \
+""     -O $HOME/.vim/autolad/pathogen.vim
 ""
 "" Resources:
 ""   http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/
 ""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-filetype off " Needed so pathogen also loads ftdetect plugins.
+filetype off " Temporarily disable so pathogen also loads ftdetect plugins.
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
-
-" Re-enable per filetype plugins and indents after loading pathogen plugin
-filetype plugin indent on
+filetype plugin indent on " Re-enable after pathogen is loaded.
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Filetype Settings
@@ -125,49 +102,62 @@ filetype plugin indent on
 "" Description:
 ""  For each filetype we create a ftplugin/<filetype>.vim file with settings
 ""  particular to each filetype. For example we set tabs instead of spaces for
-""  python and makefile files and enable the different omnufunctions for each
+""  python and makefile files and enable the different omnifunctions for each
 ""  filetype that supports it.
 ""
 "" Installation:
-""  $ mkdir -p $HOME/.vim/ftdetect  # Folder used to add new filetypes.
-""  $ mkdir -p $HOME/.vim/ftplugin  # Folder used to add per filetype settings.
-""  $ mkdir -p $HOME/.vim/syntax    # Folder used to add per filetype highlight.
-""  # Add ragel filetype and syntax:
-""  $ echo "au BufRead,BufNewFile *.rl setlocal filetype=ragel" > $HOME/.vim/ftdetect/ragel.vim
-""  $ wget http://www.complang.org/ragel/ragel.vim -O $HOME/.vim/syntax/ragel.vim
-""  # Set omnifunctions for each filetype:
-""  $ echo "setlocal omnifunc=csscomplete#CompleteCSS" > $HOME/.vim/ftplugin/css.vim
-""  $ echo "setlocal omnifunc=ccomplete#Complete" > $HOME/.vim/ftplugin/c.vim
-""  $ echo "let c_no_comment_fold = 1" >> $HOME/.vim/ftplugin/c.vim
-""  $ echo "setlocal foldmethod=syntax" >> $HOME/.vim/ftplugin/c.vim
-""  $ echo "let g:rubycomplete_buffer_loading = 1" > $HOME/.vim/ftplugin/eruby.vim
-""  $ echo "let g:rubycomplete_rails = 1" >> $HOME/.vim/ftplugin/eruby.vim
-""  $ echo "let g:rubycomplete_classes_in_global = 1" >> $HOME/.vim/ftplugin/eruby.vim
-""  $ echo "let ruby_fold = 1" >> $HOME/.vim/ftplugin/eruby.vim
-""  $ echo "let ruby_no_comment_fold = 1" >> $HOME/.vim/ftplugin/eruby.vim
-""  $ echo "setlocal omnifunc=rubycomplete#Complete" >> $HOME/.vim/ftplugin/eruby.vim
-""  $ echo "setlocal foldmethod=syntax" >> $HOME/.vim/ftplugin/eruby.vim
-""  $ cp -f $HOME/.vim/ftplugin/eruby.vim $HOME/.vim/ftplugin/ruby.vim
-""  $ echo "setlocal omnifunc=htmlcomplete#CompleteTags" > $HOME/.vim/ftplugin/html.vim
-""  $ cp -f $HOME/.vim/ftplugin/html.vim $HOME/.vim/ftplugin/markdown.vim
-""  $ echo "setlocal omnifunc=javacomplete#Complete" > $HOME/.vim/ftplugin/java.vim
-""  $ echo "setlocal completefunc=javacomplete#CompleteParamsInfo" >> $HOME/.vim/ftplugin/java.vim
-""  $ echo "setlocal foldmethod=syntax" >> $HOME/.vim/ftplugin/java.vim
-""  $ echo "setlocal omnifunc=javascriptcomplete#CompleteJS" > $HOME/.vim/ftplugin/javascript.vim
-""  $ echo "setlocal noexpandtab" > $HOME/.vim/ftplugin/make.vim
-""  $ echo "setlocal omnifunc=phpcomplete#CompletePHP" > $HOME/.vim/ftplugin/php.vim
-""  $ echo "setlocal noexpandtab" > $HOME/.vim/ftplugin/python.vim
-""  $ echo "setlocal omnifunc=pythoncomplete#Complete" >> $HOME/.vim/ftplugin/python.vim
-""  # type /ref{fig: and press <C-n> to autocomplete references
-""  $ echo "setlocal iskeyword+=:" > $HOME/.vim/ftplugin/tex.vim
-""  $ echp "let g:tex_fold_enabled=1" >> $HOME/.vim/ftplugin/tex.vim
-""  $ echo "setlocal foldmethod=syntax" >> $HOME/.vim/ftplugin/tex.vim
-""  $ echo "setlocal omnifunc=xmlcomplete#CompleteTags" > $HOME/.vim/ftplugin/xml.vim
-""  $ echo "let g:xml_syntax_folding=1" >> $HOME/.vim/ftplugin/xml.vim
-""  $ echo "setlocal foldmethod=syntax" >> $HOME/.vim/ftplugin/xml.vim
 ""
-""  $ git submodule add https://github.com/kchmck/vim-coffee-script.git bundle/vim-coffee-script
+""  Exectuting the following commands in the terminal would create the different
+""  file type configuration files:
+""
+""  mkdir -p $HOME/.vim/ftdetect  # Folder used to add new filetypes.
+""  mkdir -p $HOME/.vim/ftplugin  # Folder used to add per filetype settings.
+""  mkdir -p $HOME/.vim/syntax    # Folder used to add per filetype highlight.
+""  # Add ragel filetype and syntax:
+""  echo "au BufRead,BufNewFile *.rl setlocal filetype=ragel" > $HOME/.vim/ftdetect/ragel.vim
+""  wget http://www.complang.org/ragel/ragel.vim -O $HOME/.vim/syntax/ragel.vim
+""  # Set omnifunctions for each filetype:
+""  echo "setlocal omnifunc=csscomplete#CompleteCSS" > $HOME/.vim/ftplugin/css.vim
+""  echo "setlocal omnifunc=ccomplete#Complete" > $HOME/.vim/ftplugin/c.vim
+""  echo "let c_no_comment_fold = 1" >> $HOME/.vim/ftplugin/c.vim
+""  echo "setlocal foldmethod=syntax" >> $HOME/.vim/ftplugin/c.vim
+""  echo "let g:rubycomplete_buffer_loading = 1" > $HOME/.vim/ftplugin/eruby.vim
+""  echo "let g:rubycomplete_rails = 1" >> $HOME/.vim/ftplugin/eruby.vim
+""  echo "let g:rubycomplete_classes_in_global = 1" >> $HOME/.vim/ftplugin/eruby.vim
+""  echo "let ruby_fold = 1" >> $HOME/.vim/ftplugin/eruby.vim
+""  echo "let ruby_no_comment_fold = 1" >> $HOME/.vim/ftplugin/eruby.vim
+""  echo "setlocal omnifunc=rubycomplete#Complete" >> $HOME/.vim/ftplugin/eruby.vim
+""  echo "setlocal foldmethod=syntax" >> $HOME/.vim/ftplugin/eruby.vim
+""  cp -f $HOME/.vim/ftplugin/eruby.vim $HOME/.vim/ftplugin/ruby.vim
+""  echo "setlocal omnifunc=htmlcomplete#CompleteTags" > $HOME/.vim/ftplugin/html.vim
+""  cp -f $HOME/.vim/ftplugin/html.vim $HOME/.vim/ftplugin/markdown.vim
+""  echo "setlocal omnifunc=javacomplete#Complete" > $HOME/.vim/ftplugin/java.vim
+""  echo "setlocal completefunc=javacomplete#CompleteParamsInfo" >> $HOME/.vim/ftplugin/java.vim
+""  echo "setlocal foldmethod=syntax" >> $HOME/.vim/ftplugin/java.vim
+""  echo "setlocal omnifunc=javascriptcomplete#CompleteJS" > $HOME/.vim/ftplugin/javascript.vim
+""  echo "setlocal noexpandtab" > $HOME/.vim/ftplugin/make.vim
+""  echo "setlocal omnifunc=phpcomplete#CompletePHP" > $HOME/.vim/ftplugin/php.vim
+""  echo "setlocal noexpandtab" > $HOME/.vim/ftplugin/python.vim
+""  echo "setlocal omnifunc=pythoncomplete#Complete" >> $HOME/.vim/ftplugin/python.vim
+""  # type /ref{fig: and press <C-n> to autocomplete references
+""  echo "setlocal iskeyword+=:" > $HOME/.vim/ftplugin/tex.vim
+""  echp "let g:tex_fold_enabled=1" >> $HOME/.vim/ftplugin/tex.vim
+""  echo "setlocal foldmethod=syntax" >> $HOME/.vim/ftplugin/tex.vim
+""  echo "setlocal omnifunc=xmlcomplete#CompleteTags" > $HOME/.vim/ftplugin/xml.vim
+""  echo "let g:xml_syntax_folding=1" >> $HOME/.vim/ftplugin/xml.vim
+""  echo "setlocal foldmethod=syntax" >> $HOME/.vim/ftplugin/xml.vim
+""
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Coffee Script Filetype and syntax
+""
+"" Description:
+""   Add coffee script configuration files:
+""
+"" Installation:
+""   mkdir -p $HOME/.vim/bundle
+""   cd $HOME/.vim
+""   git submodule add https://github.com/kchmck/vim-coffee-script.git bundle/vim-coffee-script
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" HAML and SCSS Filetype and syntax
@@ -176,37 +166,27 @@ filetype plugin indent on
 ""  Add syntax higliting to the powerfull HAML templating systema and SCSS CSS
 ""  generator.
 ""
-"" Prerequisites:
-""  - Make sure you have the base system packages installed including git-core.
-""  - Make sure you have the pathogen.vim plugin installed correctly.
-""  - Depending on the version control system you want make sure you have
-""    the corresponding tools (e.g. subversion, mercurial, git-core, etc.)
-""
 "" Installation:
-""  $ mkdir -p $HOME/.vim/bundle
-""  $ cd $HOME/.vim
-""  $ git submodule add https://github.com/tpope/vim-haml.git bundle/vim-haml
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""  mkdir -p $HOME/.vim/bundle
+""  cd $HOME/.vim
+""  git submodule add https://github.com/tpope/vim-haml.git bundle/vim-haml
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Look and Feel Settings
 ""
 "" Description:
-""  These instructions are specific for using vim in a terminal window. They
-""  support for 256 color terminals and sets the vividchalk color scheme as
-""  default.
+""  Add the vividchalk color scheme and enable syntax highligthing in 256 color
+""  terminals.
 ""
 "" Prerequisites:
-""  - Make sure you have the base system packages installed including git-core.
-""  - Make sure you have the pathogen.vim plugin installed correctly.
 ""  - Make sure your terminal supports 256 colors. Konsole does but you must set
 ""    the TERM variable to xterm-256color in the schema properties.
 ""
 "" Installation:
-""  $ mkdir -p $HOME/.vim/bundle
-""  $ git submodule add https://github.com/tpope/vim-vividchalk.git $HOME/.vim/bundle/vividchalk
-""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""  mkdir -p $HOME/.vim/bundle
+""  cd $HOME/.vim
+""  git submodule add https://github.com/tpope/vim-vividchalk.git bundle/vividchalk
+
 syntax on                             " Enable syntax highlighting.
 set t_Co=256                          " Enable 256 color mode in terminal.
 set background=dark                   " I like dark backgrounds.
@@ -240,15 +220,13 @@ autocmd Syntax c,cpp,vim,xml,html,xhtml,perl,java normal zR
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Improve Vim's Command Line Autocompletion
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set wildmode=full wildmenu              " Command-line tab completion
 set infercase                           " AutoComplete in Vim
 set completeopt=longest,menu,menuone
 set wildignore+=*.o,*.obj,*.pyc,*.DS_STORE,*.db,*.swc
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" TOhtml
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Improve TOhtml output
 let html_use_css = 1
 let html_ignore_folding = 1
 let html_number_lines = 0
@@ -259,7 +237,6 @@ let html_number_lines = 0
 " Auto formatting options. These determine where lines will be broken when
 " auto wrapping. The last to (m/M) are needed for multi byte characters (e.g.
 " Japanese)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set formatoptions=tcqmM
 
 " There are two word wrap methods, one with line breaks that adds an actual
@@ -288,7 +265,6 @@ highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
 "" By manipulating this variables it is possible to edit all files in one 
 "" encoding while using the terminal in a different encoding and writing/reading
 "" the file in another encoding. Here we set all three variables to UTF-8.
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Default file encoding for new files
 setglobal fenc=utf-8
@@ -307,12 +283,11 @@ set tenc=utf-8
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map make for easy access
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <F5> <ESC>:make<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Improve QuickFix Window
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Always open the quickfix window when running make, grep, grepadd and vimgrep
 autocmd QuickfixCmdPost make,grep,grepadd,vimgrep :botright cwindow
 map <F6> <ESC>:cN<CR>                " Jump to prev error or warn
@@ -325,14 +300,12 @@ map <F7> <ESC>:cn<CR>                " Jump to next error or warn
 ""  This plugin allows vim to use the faster and easier ack-grep tool for
 ""  searching inside files.
 ""
-"" Prerequisites:
-""  - Make sure you have the base system packages installed including git-core.
-""  - Make sure you have the pathogen.vim plugin installed correctly.
 ""
 "" Installation:
-""  $ sudo aptitude install ack-grep
-""  $ mkdir -p $HOME/.vim/bundle
-""  $ git submodule add https://github.com/mileszs/ack.vim.git $HOME/.vim/bundle/ack
+""  sudo aptitude install ack-grep
+""  mkdir -p $HOME/.vim/bundle
+""  cd $HOME/.vim
+""  git submodule add https://github.com/mileszs/ack.vim.git bundle/ack
 ""
 "" Usage:
 ""  - :Ack [options] {pattern} [{directory}]
@@ -340,7 +313,7 @@ map <F7> <ESC>:cn<CR>                " Jump to next error or warn
 "" Resources:
 ""   http://betterthangrep.com/
 ""   http://amaslov.wordpress.com/2009/04/23/vim-ack-instead-of-grep/
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 let g:ackprg="ack-grep -a -R -H --nocolor --nogroup --column"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -349,18 +322,14 @@ let g:ackprg="ack-grep -a -R -H --nocolor --nogroup --column"
 "" Description:
 ""  The all powerful file explorer plugin for vim.
 ""
-"" Prerequisites:
-""  - Make sure you have the base system packages installed including git-core.
-""  - Make sure you have the pathogen.vim plugin installed correctly.
-""
 "" Usage:
 ""  :NERDTreeToggle
 ""
 "" Installation:
-""  $ mkdir -p $HOME/.vim/bundle
-""  $ cd $HOME/.vim
-""  $ git submodule add https://github.com/scrooloose/nerdtree.git bundle/nerdtree
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""  mkdir -p $HOME/.vim/bundle
+""  cd $HOME/.vim
+""  git submodule add https://github.com/scrooloose/nerdtree.git bundle/nerdtree
+
 " Set the window width
 let g:NERDTreeWinSize = 35
 " Set the window position
@@ -384,10 +353,6 @@ let g:NERDTreeShowBookmarks = 1
 "" Description:
 ""  Easy commenting of source code.
 ""
-"" Prerequisites:
-""  - Make sure you have the base system packages installed including git-core.
-""  - Make sure you have the pathogen.vim plugin installed correctly.
-""
 "" Usage:
 ""  - cl - Comment line or visual block
 ""  - cn - Comment line or visual block forcing nesting
@@ -396,11 +361,10 @@ let g:NERDTreeShowBookmarks = 1
 ""  - ca - Change comment delimiter
 ""
 "" Installation:
-""  $ mkdir -p $HOME/.vim/bundle
-""  $ cd $HOME/.vim
-""  $ git submodule add https://github.com/scrooloose/nerdcommenter.git \
+""  mkdir -p $HOME/.vim/bundle
+""  cd $HOME/.vim
+""  git submodule add https://github.com/scrooloose/nerdcommenter.git \
 ""                                   bundle/nerdcommenter
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Vim Fugitive
@@ -408,18 +372,14 @@ let g:NERDTreeShowBookmarks = 1
 "" Description:
 ""  Best git wrapper for vim.
 ""
-"" Prerequisites:
-""  - Make sure you have the base system packages installed including git-core.
-""  - Make sure you have the pathogen.vim plugin installed correctly.
-""
 "" Installation:
-""  $ mkdir -p $HOME/.vim/bundle
-""  $ git submodule add git://github.com/tpope/vim-fugitive.git \
-""                                                 $HOME/.vim/bundle/fugitive
+""  mkdir -p $HOME/.vim/bundle
+""  cd $HOME/.vim
+""  git submodule add git://github.com/tpope/vim-fugitive.git bundle/fugitive
 ""
 "" Resources:
 ""  https://github.com/tpope/vim-fugitive
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set laststatus=2
 set statusline=%{fugitive#statusline()}[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
 
@@ -427,52 +387,44 @@ set statusline=%{fugitive#statusline()}[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%
 "" Vim Rails
 ""
 "" Description:
-""
-"" Prerequisites:
-""  - Make sure you have the base system packages installed including git-core.
-""  - Make sure you have the pathogen.vim plugin installed correctly.
+""  Enables a lot of goodies for Rails developers. Make sure to check the
+""  plugin page for details on how to use this.
 ""
 "" Installation:
-""  $ mkdir -p $HOME/.vim/bundle
-""  $ git submodule add git://github.com/tpope/vim-rails.git \
-""                                              $HOME/.vim/bundle/vim-rails
-""  $ git submodule add git://github.com/tpope/vim-endwise.git \\
-""                                              $HOME/.vim/bundle/endwise
+""  mkdir -p $HOME/.vim/bundle
+""  cd $HOME/.vim
+""  git submodule add git://github.com/tpope/vim-rails.git bundle/vim-rails
+""  git submodule add git://github.com/tpope/vim-endwise.git bundle/endwise
 ""
 "" Resources:
 ""  https://github.com/tpope/vim-rails
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" OmniCppComplete
 ""
 "" Description:
 ""  Vim comes with several omnifunctions to enable autocomplete of serveral
-""  laguages but it lacks a omnifunction for C++. This plugin add this omnifunction
-""  to enable autocompletion of C++ code.
-""
-"" Prerequisites:
-""  - Make sure you have the base system packages installed including git-core.
-""  - Make sure you have the pathogen.vim plugin installed correctly.
+""  laguages but it lacks a omnifunction for C++. This plugin add this 
+""  omnifunction to enable autocompletion of C++ code.
 ""
 "" Installation:
-""  $ wget http://www.vim.org/scripts/download_script.php?src_id=7722 -O \
-""  $      /tmp/omnicppcomplete-0.41.zip
-""  $ mkdir -p $HOME/.vim/bundle/omnicppcomplete
-""  $ unzip -d $HOME/.vim/bundle/omnicppcomplete  /tmp/omnicppcomplete-0.41.zip
+""  wget http://www.vim.org/scripts/download_script.php?src_id=7722 -O \
+""                                               /tmp/omnicppcomplete-0.41.zip
+""  mkdir -p $HOME/.vim/bundle/omnicppcomplete
+""  unzip -d $HOME/.vim/bundle/omnicppcomplete  /tmp/omnicppcomplete-0.41.zip
 ""
 "" Resources:
 ""  http://www.vim.org/scripts/script.php?script_id=1520
 ""  http://vim.wikia.com/wiki/C%2B%2B_code_completion
 ""  http://design.liberta.co.za/articles/code-completion-intellisense-for-cpp-in-vim-with-omnicppcomplete/
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 let OmniCpp_NamespaceSearch = 1
 let OmniCpp_GlobalScopeSearch = 1
 let OmniCpp_ShowAccess = 1
-let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
-let OmniCpp_MayCompleteDot = 1 " autocomplete after .
-let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
-let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
+let OmniCpp_ShowPrototypeInAbbr = 1       " show function parameters
+let OmniCpp_MayCompleteDot = 1            " autocomplete after .
+let OmniCpp_MayCompleteArrow = 1          " autocomplete after ->
+let OmniCpp_MayCompleteScope = 1          " autocomplete after ::
 let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -481,48 +433,49 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 "" Description:
 ""  A auto-complete plugin that actually works!
 ""
-"" Prerequisites:
-""  - Make sure you have the base system packages installed including git-core.
-""  - Make sure you have the pathogen.vim plugin installed correctly.
-""
 "" Notes:
 ""  - The plugin works very well but can be very slow. This is specially true
 ""    when opening a file for the first time as the plugin will parse and cache
 ""    the file keywords, tags, etc.
 ""
 "" Installation:
-""  $ mkdir -p $HOME/.vim/bundle
-""  $ git submodule add https://github.com/Shougo/neocomplcache.git \
-""                                            $HOME/.vim/bundle/neocomplcache
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""  mkdir -p $HOME/.vim/bundle
+""  cd $HOME/.vim
+""  git submodule add https://github.com/Shougo/neocomplcache.git \
+""                                                        bundle/neocomplcache
+
 let g:neocomplcache_enable_at_startup = 1             "Enable neocomplcache
 let g:neocomplcache_enable_smart_case = 1             "Use smart case
 let g:neocomplcache_enable_camel_case_completion = 1  "Use camelcase completion
 let g:neocomplcache_enable_underbar_completion = 1    "Use underbar completion
 let g:neocomplcache_min_syntax_length = 3
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Easy Notes Plugin
 ""
+"" Description:
+""
+""  Very nice plugin to take plain text notes in vim. Better than vim outliner.
+""
 "" Installation:
-""  $ mkdir -p $HOME/.vim/bundle
-""  $ mkdir -p $HOME/Notes $HOME/Notes/.shadow
-""  $ git submodule add https://github.com/xolox/vim-notes.git \
-""                                                   $HOME/.vim/bundle/notes
+""  mkdir -p $HOME/.vim/bundle
+""  cd $HOME/.vim
+""  mkdir -p $HOME/Notes
+""  git submodule add https://github.com/xolox/vim-notes.git bundle/notes
 ""
 "" Usage:
-""  In vim use :NewNote tp create a new note.
-"" 
+""  In vim use :NewNote to create a new note and :SearchNotes to search existing
+""  notes.
+""
 "" Notes:
 ""  You may create a Nerdtree Bookmark to the g:notes_directory folder to
 ""  have quick access to your notes.
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " This plugin assumes it is intalled directly in ~/.vim dir but we use pathogen
-" plugin so we must update the expected paths accordingly.
+" plugin so we must update the paths accordingly.
 let g:notes_suffix = '.txt'
-let g:notes_directory = '~/Notes'
-"let g:notes_shadowdir = '~/Notes/.shadow'
+let g:notes_directory = '~/Notes'             " Were to store notes
+"let g:notes_shadowdir = '~/Notes/.shadow'    " Changing this breaks all.
 let g:notes_indexfile = '~/Notes/.index.sqlite3'
 let g:notes_indexscript = '~/.vim/bundle/notes/misc/notes/scanner.py'
 
@@ -533,15 +486,10 @@ let g:notes_indexscript = '~/.vim/bundle/notes/misc/notes/scanner.py'
 ""  tGPG Plugin for transparent editing of encrypted files. This is the only
 ""  plugin for handling encrypted GPG files that worked out of the box.
 ""
-"" Prerequisites:
-""  - Make sure you have the base system packages installed including git-core.
-""  - Make sure you have the pathogen.vim plugin installed correctly.
-""
 "" Installation:
-""  $ mkdir -p $HOME/.vim/bundle
-""  $ git submodule add https://github.com/tomtom/tgpg_vim.git \
-""                                                    $HOME/.vim/bundle/tgpg
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""  mkdir -p $HOME/.vim/bundle
+""  cd .vim/bundle
+""  git submodule add https://github.com/tomtom/tgpg_vim.git bundle/tgpg
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" TagBar Plugin and Ruby omnicomplete plugin
@@ -549,15 +497,11 @@ let g:notes_indexscript = '~/.vim/bundle/notes/misc/notes/scanner.py'
 "" Description:
 ""  Tlist replacement with scoping.
 ""
-"" Prerequisites:
-""  - Make sure you have the base system packages installed including git-core.
-""  - Make sure you have the pathogen.vim plugin installed correctly.
-""
 "" Installation:
-""  $ cd $HOME/.vim
-""  $ mkdir -p bundle
-""  $ git submodule add git://github.com/majutsushi/tagbar bundle/tagbar
-""  $ git submodule add https://github.com/vim-scripts/rubycomplete.vim.git \
+""  cd $HOME/.vim
+""  mkdir -p bundle
+""  git submodule add git://github.com/majutsushi/tagbar bundle/tagbar
+""  git submodule add https://github.com/vim-scripts/rubycomplete.vim.git \
 ""                                                   bundle/rubycomplete
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set complete=.,w,b,u,t
@@ -569,17 +513,12 @@ set tags=./.tags;$HOME
 "" Description:
 ""  Allows you to configure % to match more than just single characters.
 ""
-"" Prerequisites:
-""  - Make sure you have the base system packages installed including wget.
-""  - Make sure you have the pathogen.vim plugin installed correctly.
-""
 "" Installation:
-""  $ mkdir -p $HOME/.vim/bundle/matchit
-""  $ wget http://www.vim.org/scripts/download_script.php?src_id=8196 \
-""                                          --output-document=/tmp/matchit.zip
-""  $ unzip -d $HOME/.vim/bundle/matchit /tmp/matchit.zip
-""  $ rm -f /tmp/matchit.zip
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""  mkdir -p $HOME/.vim/bundle/matchit
+""  wget http://www.vim.org/scripts/download_script.php?src_id=8196 \
+""                                        --output-document=/tmp/matchit.zip
+""  unzip -d $HOME/.vim/bundle/matchit /tmp/matchit.zip
+""  rm -f /tmp/matchit.zip
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Surround Plugin
@@ -587,14 +526,10 @@ set tags=./.tags;$HOME
 "" Description:
 ""  Plugin for deleting, changing, and adding surroundings.
 ""
-"" Prerequisites:
-""  - Make sure you have the base system packages installed including git-core.
-""  - Make sure you have the pathogen.vim plugin installed correctly.
-""
 "" Installation:
-""  $ mkdir -p $HOME/.vim/bundle
-""  $ git submodule add https://github.com/tpope/vim-surround.git \
-""                                                  $HOME/.vim/bundle/surround
+""  mkdir -p $HOME/.vim/bundle
+""  cd $HOME/.vim
+""  git submodule add https://github.com/tpope/vim-surround.git bundle/surround
 ""
 "" Usage:
 ""  Old text                  Command     New text ~
@@ -603,7 +538,6 @@ set tags=./.tags;$HOME
 ""  "Look ma, I'm *HTML!"     cs"<q>      <q>Look ma, I'm HTML!</q>
 ""  if *x>3 {                 ysW(        if ( x>3 ) {
 ""  my $str = *whee!;         vlllls'     my $str = 'whee!';
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Vim-preview Plugin
@@ -611,20 +545,15 @@ set tags=./.tags;$HOME
 "" Description:
 ""  Allows to generate and preview HTML documents in a browser.
 ""
-"" Prerequisites:
-""  - Make sure you have the base system packages installed including git-core.
-""  - Make sure you have the pathogen.vim plugin installed correctly.
-""
 "" Installation:
-""  $ sudo gem install RedCloth github-markup bluecloth
-""  $ mkdir -p $HOME/.vim/bundle
-""  $ git submodule add https://github.com/greyblake/vim-preview.git \
-""                                                  $HOME/.vim/bundle/preview
+""  sudo gem install RedCloth github-markup bluecloth
+""  mkdir -p $HOME/.vim/bundle
+""  cd $HOME/.vim
+""  git submodule add https://github.com/greyblake/vim-preview.git bundle/preview
 ""
 "" Usage:
 ""  <leader>P will process markdown, textile, rdoc and html files and load them
 ""  in a browser.
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Command-T Plugin
@@ -632,17 +561,13 @@ set tags=./.tags;$HOME
 "" Description:
 ""  Implements TextMate command-T file search functionality.
 ""
-"" Prerequisites:
-""  - Make sure you have the base system packages installed including git-core.
-""  - Make sure you have the pathogen.vim plugin installed correctly.
-""
 "" Installation:
-""  $ sudo aptitude install ruby ruby-dev rake
-""  $ mkdir -p $HOME/.vim/bundle
-""  $ cd $HOME/.vim
-""  $ git submodule add git://git.wincent.com/command-t.git bundle/command-t
-""  $ cd bundle/command-t
-""  $ /var/lib/gems/1.8/bin/rake make
+""  sudo aptitude install ruby ruby-dev rake
+""  mkdir -p $HOME/.vim/bundle
+""  cd $HOME/.vim
+""  git submodule add git://git.wincent.com/command-t.git bundle/command-t
+""  cd bundle/command-t
+""  /var/lib/gems/1.8/bin/rake make
 ""
 "" Usage:
 ""  <leader>P will process markdown, textile, rdoc and html files and load them
@@ -651,7 +576,7 @@ set tags=./.tags;$HOME
 "" Notes:
 ""  This plugin maps <C-s> to open files in split windows. Unfortunately in
 ""  Konsole this key combination is set to handle terminal flow control.
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 let g:CommandTAcceptSelectionSplitMap = '<C-b>'  " Remap the split open key.
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -659,10 +584,7 @@ let g:CommandTAcceptSelectionSplitMap = '<C-b>'  " Remap the split open key.
 ""
 "" Description:
 ""  After installing all the plugins and setting all filetype configurations we
-""  can make our first commit to the git repository.
-""
-"" Prerequisites:
-""  - Make sure you followed all the steps in this configuration file.
+""  can make sure to commit the configuration to git versioning.
 ""
 "" Installation:
 ""  $ cd $HOME/.vim
