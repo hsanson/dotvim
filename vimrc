@@ -311,11 +311,20 @@ map <F7> <ESC>:cn<CR>                " Jump to next error or warn
 "" Usage:
 ""  - :Ack [options] {pattern} [{directory}]
 ""
+"" Keyboard Shortcuts:
+""  o    to open (same as enter)
+""  go   to preview file (open but maintain focus on ack.vim results)
+""  t    to open in new tab
+""  T    to open in new tab silently
+""  v    to open in vertical split
+""  gv   to open in vertical split silently
+""  q    to close the quickfix window
+""
 "" Resources:
 ""   http://betterthangrep.com/
 ""   http://amaslov.wordpress.com/2009/04/23/vim-ack-instead-of-grep/
 
-let g:ackprg="ack-grep -a -R -H --nocolor --nogroup --column"
+let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" NERDTree Plugin
@@ -445,7 +454,7 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 ""  git submodule add https://github.com/Shougo/neocomplcache.git \
 ""                                                        bundle/neocomplcache
 
-let g:neocomplcache_enable_at_startup = 1             "Enable neocomplcache
+let g:neocomplcache_enable_at_startup = 0             "Enable neocomplcache
 let g:neocomplcache_enable_smart_case = 1             "Use smart case
 let g:neocomplcache_enable_camel_case_completion = 1  "Use camelcase completion
 let g:neocomplcache_enable_underbar_completion = 1    "Use underbar completion
@@ -568,7 +577,15 @@ set tags=./.tags;$HOME
 ""  cd $HOME/.vim
 ""  git submodule add git://git.wincent.com/command-t.git bundle/command-t
 ""  cd bundle/command-t
-""  /var/lib/gems/1.8/bin/rake make
+""  sudo gem install diff-lcs -v 1.1.2
+""  sudo gem install nokogiri -v 1.4.4
+""  sudo gem install mechanize -v 1.0.0
+""  sudo gem install rr -v 1.0.2
+""  sudo gem install rspec-core -v 2.5.1
+""  sudo gem install rspec-expectations -v 2.5.0
+""  sudo gem install rspec-mocks -v 2.5.0
+""  sudo gem install rspec -v 2.5.0
+""  rake make
 ""
 "" Usage:
 ""  <leader>P will process markdown, textile, rdoc and html files and load them
