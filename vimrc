@@ -72,6 +72,17 @@ set showmatch                         " Show briefly matching bracket when closi
 autocmd InsertEnter * se cul          " Highlight current line in Insert Mode. 
 autocmd InsertLeave * se nocul        " Don't highlight current line in other modes.
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Mouse Settings
+"" Enabling the mouse has some advantages:
+""   - You can resize windows using the mouse instead of using Ctrl-W
+""   - Selecting text with the mouse wont include the left numbering.
+
+""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set mouse=a                           " Enable the mouse.
+
 " Set search path for gf command
 set path=/usr/include,/usr/local/include,**;$HOME
 
@@ -191,7 +202,7 @@ filetype plugin indent on " Re-enable after pathogen is loaded.
 syntax on                             " Enable syntax highlighting.
 set t_Co=256                          " Enable 256 color mode in terminal.
 set background=dark                   " I like dark backgrounds.
-colors vividchalk                     " My current favorite color scheme.
+colors lucius                         " My current favorite color scheme.
 
 " Show tabs and tailing spaces.
 " Note: to insert the middle point press ctrl+k .M in insert mode
@@ -258,8 +269,8 @@ set textwidth=80    " Force wrap for lines longer than 80 characters
 "nnoremap j gj      " Enable navigation within long lines (down)
 
 " Mark the textwidth column with a white color to know when we passed the limit.
-set colorcolumn=+0,+1,+2,+3
-highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
+"" set colorcolumn=+0,+1,+2,+3
+"" highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Character encoding settings
