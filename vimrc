@@ -8,52 +8,54 @@
 ""    distributions but there is no guarantee.
 ""
 "" Installation:
-""  The instructions here install the required software packages and sets our
-""  vim configuration directory under git versioning control. By using git to
-""  manage our configuration we get several benefits:
 ""
-""    - History record of our configuration files.
-""    - Easy synchronization among several machines via git cloning.
-""    - Easy handling of experimental configurations via branches.
-""    - Easy setup of per machine configurations via tags.
-""    - Easy handling of plugins via panthogen and git submodules.
+""  - Vim in Ubuntu comes compiled with ruby 1.8 that is soon to be deprecated.
+""    For this reason I recomend installing vim from source:
 ""
-""  This assumes you are starting with a fresh vim configuration. If not I
-""  recommend you backup all your config files and then follow carefully the
-""  instructions in this file. At the end you will have a powerful vim
-""  configuration that you can then further modify to fit your tastes.
+""    - Install packages required to build and use vim:
 ""
-""  - Install vim and some additional support packages:
+""      sudo apt-get install mercurial build-essential ruby1.9.1 ruby1.9.1-dev \
+""         libncursesw5-dev exuberant-ctags libgtk2.0-dev libx11-dev xorg-dev  \
+""         git-core wget sed ack-grep exuberant-ctags rake
 ""
-""    sudo aptitude install vim-gtk vim-ruby vim-common
-""    sudo aptitude install git-core wget sed  ack-grep exuberant-ctags
+""    - Install some needed gems to buils some plugins (e.g. command-t)
 ""
-""    Even if you do not plan to use the GUI version of vim it is better to
-""    install it since it adds some additional support like +xterm_clipboard
-""    that allows copy/paste to the window manager clipboard (KDE, Gnome, Xfce)
+""      sudo gem1.9.1 install bundler
+""      sudo gem1.9.1 install diff-lcs -v 1.1.2
+""      sudo gem1.9.1 install rr -v 0.10.11
+""      sudo gem1.9.1 install rspec-core -v 2.0.0.rc
+""      sudo gem1.9.1 install rspec-expectations -v 2.0.0.rc
+""      sudo gem1.9.1 install rspec-mocks -v 2.0.0.rc
+""      sudo gem1.9.1 install rspec -v 2.0.0.rc
+""      sudo gem1.9.1 install rake -v 0.8.7
 ""
-""  - Remove all your vim configurations if you have:
+""    - Download vim source code from mercurial
 ""
-""    rm -rf $HOME/.vim*
+""      hg clone https://vim.googlecode.com/hg/ ~/source/vim
 ""
-""  - Create a clean $HOME/.vim folder
+""    - Compile vim
 ""
-""    mkdir -p $HOME/.vim
+""      ./configure --prefix=/opt --with-features=huge --enable-pythoninterp \
+""          --enable-rubyinterp --enable-gui=gtk2 --enable-cscope --enable-multibyte \
+""          --enable-cscope --with-x
+""      make
+""      sudo make install
 ""
-""  - Copy this configuration file inside the .vim folder:
+""  - Clone my vim configuration repository
 ""
-""    cp -f vimrc $HOME/.vim
+""    rm -rf ~/.vim ~/.vimrc  # This will delete all your current vim configuration!!
+""    git clone .........  ~/.vim
 ""
-""  - Create a symbolic link so vim can find this configuration file:
+""  - Create a symlink to the vimrc file
 ""
-""    ln -s $HOME/.vim/vimrc $HOME/.vimrc
+""    ln -s $(HOME)/.vim/vimrc $(HOME)/.vimrc
 ""
-""  - Initialize the git repo on the .vimrc folder:
+""  - Update the submodules
 ""
-""    cd $HOME/.vim
-""    git init
+""    cd $(HOME)/.vim
+""    git submodule update all
 ""
-""  Now make sure you read this file section by section since there are some
+""  - Now make sure you read this file section by section since there are some
 ""  additional steps needed to get a fully functional vimrc configuration.
 
 
@@ -61,7 +63,7 @@
 "" General Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible                      " Disable vi compatibility.
-set bs=2                              " Sane backspace behavior,
+set bs=2                              " Sane backspace behavior.
 set fileformats=unix,dos              " Use unix file format.
 set number                            " Show line number column.
 set nobackup                          " Stop vim from creating ~ files.
@@ -72,28 +74,41 @@ set showmatch                         " Show briefly matching bracket when closi
 autocmd InsertEnter * se cul          " Highlight current line in Insert Mode. 
 autocmd InsertLeave * se nocul        " Don't highlight current line in other modes.
 
+" Set search path for gf command
+set path=/usr/include,/usr/local/include,**;$HOME
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Map make for easy access
+map <F5> <ESC>:make<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Improve QuickFix Window
+
+" Always open the quickfix window when running make, grep, grepadd and vimgrep
+autocmd QuickfixCmdPost make,grep,grepadd,vimgrep :botright cwindow
+map <F6> <ESC>:cN<CR>                " Jump to prev error or warn
+map <F7> <ESC>:cn<CR>                " Jump to next error or warn
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Mouse Settings
 "" Enabling the mouse has some advantages:
-""   - You can resize windows using the mouse instead of using Ctrl-W
+""   - You can resize windows using the mouse instead of using Ctrl-W combinations.
 ""   - Selecting text with the mouse wont include the left numbering.
-
-""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set mouse=a                           " Enable the mouse.
-
-" Set search path for gf command
-set path=/usr/include,/usr/local/include,**;$HOME
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Pathogen Plugin
 ""
 "" Description:
 ""  This vim plugin allows easy management of other plugins in bundles that 
-""  is cleaner that mixing all plugin files inside the .vim folder.
+""  is cleaner that mixing all plugin files inside the .vim folder. This
+""  combined with git submodules and github makes for easy to manage plugins.
 ""
 "" Installation:
+""  This is already included in my git repository but in case I need to start
+""  from scratch here are the steps to install it:
+""
 ""  mkdir -p $HOME/.vim/autoload
 ""  wget --no-check-certificate \
 ""     https://github.com/tpope/vim-pathogen/raw/master/autoload/pathogen.vim \
@@ -119,45 +134,8 @@ filetype plugin indent on " Re-enable after pathogen is loaded.
 ""
 "" Installation:
 ""
-""  Exectuting the following commands in the terminal would create the different
-""  file type configuration files:
-""
-""  mkdir -p $HOME/.vim/ftdetect  # Folder used to add new filetypes.
-""  mkdir -p $HOME/.vim/ftplugin  # Folder used to add per filetype settings.
-""  mkdir -p $HOME/.vim/syntax    # Folder used to add per filetype highlight.
-""  # Add ragel filetype and syntax:
-""  echo "au BufRead,BufNewFile *.rl setlocal filetype=ragel" > $HOME/.vim/ftdetect/ragel.vim
-""  wget http://www.complang.org/ragel/ragel.vim -O $HOME/.vim/syntax/ragel.vim
-""  # Set omnifunctions for each filetype:
-""  echo "setlocal omnifunc=csscomplete#CompleteCSS" > $HOME/.vim/ftplugin/css.vim
-""  echo "setlocal omnifunc=ccomplete#Complete" > $HOME/.vim/ftplugin/c.vim
-""  echo "let c_no_comment_fold = 1" >> $HOME/.vim/ftplugin/c.vim
-""  echo "setlocal foldmethod=syntax" >> $HOME/.vim/ftplugin/c.vim
-""  echo "let g:rubycomplete_buffer_loading = 1" > $HOME/.vim/ftplugin/eruby.vim
-""  echo "let g:rubycomplete_rails = 1" >> $HOME/.vim/ftplugin/eruby.vim
-""  echo "let g:rubycomplete_classes_in_global = 1" >> $HOME/.vim/ftplugin/eruby.vim
-""  echo "let ruby_fold = 1" >> $HOME/.vim/ftplugin/eruby.vim
-""  echo "let ruby_no_comment_fold = 1" >> $HOME/.vim/ftplugin/eruby.vim
-""  echo "setlocal omnifunc=rubycomplete#Complete" >> $HOME/.vim/ftplugin/eruby.vim
-""  echo "setlocal foldmethod=syntax" >> $HOME/.vim/ftplugin/eruby.vim
-""  cp -f $HOME/.vim/ftplugin/eruby.vim $HOME/.vim/ftplugin/ruby.vim
-""  echo "setlocal omnifunc=htmlcomplete#CompleteTags" > $HOME/.vim/ftplugin/html.vim
-""  cp -f $HOME/.vim/ftplugin/html.vim $HOME/.vim/ftplugin/markdown.vim
-""  echo "setlocal omnifunc=javacomplete#Complete" > $HOME/.vim/ftplugin/java.vim
-""  echo "setlocal completefunc=javacomplete#CompleteParamsInfo" >> $HOME/.vim/ftplugin/java.vim
-""  echo "setlocal foldmethod=syntax" >> $HOME/.vim/ftplugin/java.vim
-""  echo "setlocal omnifunc=javascriptcomplete#CompleteJS" > $HOME/.vim/ftplugin/javascript.vim
-""  echo "setlocal noexpandtab" > $HOME/.vim/ftplugin/make.vim
-""  echo "setlocal omnifunc=phpcomplete#CompletePHP" > $HOME/.vim/ftplugin/php.vim
-""  echo "setlocal noexpandtab" > $HOME/.vim/ftplugin/python.vim
-""  echo "setlocal omnifunc=pythoncomplete#Complete" >> $HOME/.vim/ftplugin/python.vim
-""  # type /ref{fig: and press <C-n> to autocomplete references
-""  echo "setlocal iskeyword+=:" > $HOME/.vim/ftplugin/tex.vim
-""  echp "let g:tex_fold_enabled=1" >> $HOME/.vim/ftplugin/tex.vim
-""  echo "setlocal foldmethod=syntax" >> $HOME/.vim/ftplugin/tex.vim
-""  echo "setlocal omnifunc=xmlcomplete#CompleteTags" > $HOME/.vim/ftplugin/xml.vim
-""  echo "let g:xml_syntax_folding=1" >> $HOME/.vim/ftplugin/xml.vim
-""  echo "setlocal foldmethod=syntax" >> $HOME/.vim/ftplugin/xml.vim
+""  Refer to the ftplugin folder and edit the files there to your needs or add
+""  new file types if required.
 ""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -167,6 +145,7 @@ filetype plugin indent on " Re-enable after pathogen is loaded.
 ""   Add coffee script configuration files:
 ""
 "" Installation:
+""
 ""   mkdir -p $HOME/.vim/bundle
 ""   cd $HOME/.vim
 ""   git submodule add https://github.com/kchmck/vim-coffee-script.git bundle/vim-coffee-script
@@ -205,13 +184,18 @@ set background=dark                   " I like dark backgrounds.
 colors lucius                         " My current favorite color scheme.
 
 " Show tabs and tailing spaces.
-" Note: to insert the middle point press ctrl+k .M in insert mode
+" Note: to insert the middle point press "ctrl+k .M" in insert mode. Tha is
+" control + k followed by a <dot> and the capital M.
 :set list
 :set listchars=tab:»·,trail:·,nbsp:·
 
 " By default insert spaces instead of tabs. This may be overriden by the
-" configuration inside ftplugin directory.
-" Note: If you want a real tab use "ctrl-v, tab" in insert mode.
+" configuration inside ftplugin directory for specific file types. For example
+" makefiles require real tabs to work so override this configuration in the
+" ftplugin make.vim file.
+"
+" Note: If you want a real tab use "ctrl+v tab" in insert mode. That is control
+" + v follwed by a tab.
 set expandtab
 
 " Number of spaces to insert for a tab
@@ -219,9 +203,11 @@ set shiftwidth=2
 set tabstop=2
 set softtabstop=2
 
-" Don't screw up folds when inserting text that might affect them, until
-" leaving insert mode. Foldmethod is local to the window. Protect against
-" screwing up folding when switching between windows.
+" The next lines are needed so vim does not screw up folds when inserting text
+" that might affect them until leaving insert mode. Foldmethod is local to the
+" window. Also protect against screwing up folding when switching between
+" windows.
+" 
 " http://vim.wikia.com/wiki/Keep_folds_closed_while_inserting_text
 autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
 autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
@@ -247,7 +233,7 @@ let html_number_lines = 0
 " Word Wrap
 "
 " Auto formatting options. These determine where lines will be broken when
-" auto wrapping. The last to (m/M) are needed for multi byte characters (e.g.
+" auto wrapping. The last two options (mM) are needed for multi byte characters (e.g.
 " Japanese)
 set formatoptions=tcqmM
 
@@ -261,49 +247,56 @@ set formatoptions=tcqmM
 set textwidth=80    " Force wrap for lines longer than 80 characters
 
 " To enable word wrap without actual line breaks comment textwidth option above
-" and enable the four options below (Vim Tip #989):
+" and enable the options below (Vim Tip #989):
 
-"set wrap           " Force wrap for lines linger than the vim window
+"set textwidth=0    " Disable braking of long lines.
+"set wrap           " Enable wrap of lines pass the right window border.
 "set lbr            " Force wrap at word boundaries not chars
 "nnoremap k gk      " Enable navigation within long lines (up)
 "nnoremap j gj      " Enable navigation within long lines (down)
 
-" Mark the textwidth column with a white color to know when we passed the limit.
+"" Mark the textwidth column with a white color to know when we passed the limit.
 "" set colorcolumn=+0,+1,+2,+3
 "" highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Character encoding settings
-"" By manipulating this variables it is possible to edit all files in one 
-"" encoding while using the terminal in a different encoding and writing/reading
-"" the file in another encoding. Here we set all three variables to UTF-8.
+""
+"" This settings are important if you need to handle files with different text
+"" encodings. In my case I need to read source files with japanese comments that
+"" are usually encoded in shift-jis and latex documents usually encoded in euc-jp
+"" but keep my terminal and input methods (iBus/scim/anthy) displaying in UTF-8/
 
-" Default file encoding for new files
-setglobal fenc=utf-8
-
-" Auto detect file encoding when opening a file. To check what file encoding was
-" selected run ":set fenc" and if you know the auto detection failed and want to
-" force another one run ":edit ++enc=<your_enc>".
-set fencs=utf-8,euc-jp,sjis
-
-" Internal encoding used by vim buffers, help and commands
-set encoding=utf-8
-
-" Terminal encoding used for input and terminal display
-" Make sure your terminal is configured with the same encoding.
+"" The character encoding used to display and input text to the terminal. My
+"" terminal is always UTF-8 and as far as I know the input methods for japanese
+"" supported by Ubuntu are also UTF-8. For this I make sure vim displays and
+"" accepts only UTF-8 encoded text with the tenc parameter.
 set tenc=utf-8
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Map make for easy access
-map <F5> <ESC>:make<CR>
+"" Also I prefer to handle all my files in disk as UTF-8 to avoid unnecessary
+"" convertions between encoding formats. If the encoding format of a file on
+"" disk is different from the terminal one then vim will automatically convert
+"" between the two encodings when saving on disk and displaying on the terminal.
+"" Note that not all encoding conversions are reversible so there may be some
+"" loss of information. This is why is recommended to use always the same
+"" encoding.
+setglobal fenc=utf-8
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Improve QuickFix Window
+"" Unfortunately some others at my work use other encodings that I need to
+"" handle too. If I open a file with a lot of sjis coded text and save it back
+"" as UTF-8 (fenc=utf-8) when my co-workers open the file they will only see
+"" garbage. Always make sure fenc is set to the correct text encoding.
+"" The fencs option can try to autodetect the file encoding but it may fail some
+"" times. If you see only garbage when opening a file you can use ":set fenc" to
+"" check what encoding was detected. If you know it is wrong you can force vim
+"" to use a different file encoding with the command ":edit ++enc=<your_enc>".
+"" If you still see garbage make sure you have a font that can display that
+"" encoding.
+set fencs=utf-8,euc-jp,sjis
 
-" Always open the quickfix window when running make, grep, grepadd and vimgrep
-autocmd QuickfixCmdPost make,grep,grepadd,vimgrep :botright cwindow
-map <F6> <ESC>:cN<CR>                " Jump to prev error or warn
-map <F7> <ESC>:cn<CR>                " Jump to next error or warn
+" Internal encoding used by vim buffers, help and commands. This is better to
+" keep the same s tenc.
+set encoding=utf-8
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Ack Plugin
@@ -311,7 +304,6 @@ map <F7> <ESC>:cn<CR>                " Jump to next error or warn
 "" Description:
 ""  This plugin allows vim to use the faster and easier ack-grep tool for
 ""  searching inside files.
-""
 ""
 "" Installation:
 ""  sudo aptitude install ack-grep
@@ -465,7 +457,7 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 ""  git submodule add https://github.com/Shougo/neocomplcache.git \
 ""                                                        bundle/neocomplcache
 
-let g:neocomplcache_enable_at_startup = 0             "Enable neocomplcache
+let g:neocomplcache_enable_at_startup = 1             "Enable neocomplcache
 let g:neocomplcache_enable_smart_case = 1             "Use smart case
 let g:neocomplcache_enable_camel_case_completion = 1  "Use camelcase completion
 let g:neocomplcache_enable_underbar_completion = 1    "Use underbar completion
@@ -607,54 +599,3 @@ set tags=./.tags;$HOME
 ""  Konsole this key combination is set to handle terminal flow control.
 
 let g:CommandTAcceptSelectionSplitMap = '<C-b>'  " Remap the split open key.
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Initial Git Commit
-""
-"" Description:
-""  After installing all the plugins and setting all filetype configurations we
-""  can make sure to commit the configuration to git versioning.
-""
-"" Installation:
-""  $ cd $HOME/.vim
-""  $ git add .
-""  $ git commit -m "Initial vim configuration"
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Deprecated Plugins.
-"" The following plugins were replaced with better ones.
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" VCSCommand Plugin
-""
-"" Description:
-""  This plugin enables a generic interface to all common source version control
-""  systems (e.g. svn, git, hg, cvs). This also sets the statusline so it shows
-""  information about the versioning of the current buffer.
-""
-"" Prerequisites:
-""  - Make sure you have the base system packages installed including git-core.
-""  - Make sure you have the pathogen.vim plugin installed correctly.
-""  - Depending on the version control system you want make sure you have
-""    the corresponding tools (e.g. subversion, mercurial, git-core, etc.)
-""
-"" Notes:
-""  - If you only use Git for all you projects you may consider installing the
-""    vim-fugitive plugin that only supports Git. But is smaller and more
-""    powerful than the VCSCommand Git module.
-""
-"" Installation:
-""  $ mkdir -p $HOME/.vim/bundle
-""  $ git submodule add git://repo.or.cz/vcscommand.git $HOME/.vim/bundle/vcscommand
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"let g:VCSCommandEnableBufferSetup = 1
-"set laststatus=2
-"set statusline=%{VCSCommandGetStatusLine()}[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
-
-
