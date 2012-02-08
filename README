@@ -47,7 +47,7 @@
 ""  - Clone my vim configuration repository
 ""
 ""    rm -rf ~/.vim ~/.vimrc  # This will delete all your current vim configuration!!
-""    git clone .........  ~/.vim
+""    git clone git@github.com:hsanson/dotvim.git ~/.vim
 ""
 ""  - Create a symlink to the vimrc file
 ""
