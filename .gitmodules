@@ -55,3 +55,6 @@
 [submodule "bundle/drawit"]
 	path = bundle/drawit
 	url = https://github.com/vim-scripts/DrawIt.git
+[submodule "bundle/sudo"]
+	path = bundle/sudo
+	url = https://github.com/vim-scripts/sudo.vim.git
