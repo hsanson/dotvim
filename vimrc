@@ -181,7 +181,7 @@ filetype plugin indent on " Re-enable after pathogen is loaded.
 syntax on                             " Enable syntax highlighting.
 set t_Co=256                          " Enable 256 color mode in terminal.
 set background=dark                   " I like dark backgrounds.
-colors lucius                         " My current favorite color scheme.
+colors lucius-transparent             " My current favorite color scheme.
 
 " Show tabs and tailing spaces.
 " Note: to insert the middle point press "ctrl+k .M" in insert mode. Tha is
