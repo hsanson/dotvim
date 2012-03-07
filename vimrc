@@ -20,6 +20,7 @@
 ""
 ""    - Install some needed gems to buils some plugins (e.g. command-t)
 ""
+""      sudo apt-get install libxslt1-dev
 ""      sudo gem1.9.1 install bundler
 ""      sudo gem1.9.1 install diff-lcs -v 1.1.2
 ""      sudo gem1.9.1 install rr -v 0.10.11
@@ -580,6 +581,7 @@ set tags=./.tags;$HOME
 ""  cd $HOME/.vim
 ""  git submodule add git://git.wincent.com/command-t.git bundle/command-t
 ""  cd bundle/command-t
+""  sudo apt-get install libxslt1-dev
 ""  sudo gem install diff-lcs -v 1.1.2
 ""  sudo gem install nokogiri -v 1.4.4
 ""  sudo gem install mechanize -v 1.0.0
