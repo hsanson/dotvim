@@ -58,3 +58,6 @@
 [submodule "bundle/sudo"]
 	path = bundle/sudo
 	url = https://github.com/vim-scripts/sudo.vim.git
+[submodule "bundle/async-command"]
+	path = bundle/async-command
+	url = https://github.com/pydave/AsyncCommand.git

@@ -80,7 +80,8 @@ set path=/usr/include,/usr/local/include,**;$HOME
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map make for easy access
-map <F5> <ESC>:make<CR>
+map <F5> <ESC>:silent! make<CR><C-l>
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Improve QuickFix Window
