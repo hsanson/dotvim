@@ -6,5 +6,15 @@ setlocal foldmethod=syntax
 setlocal textwidth=0    " Disable braking of long lines.
 setlocal wrap           " Enable wrap of lines pass the right window border.
 setlocal lbr            " Force wrap at word boundaries not chars
-nnoremap k gk      " Enable navigation within long lines (up)
-nnoremap j gj      " Enable navigation within long lines (down)
+setlocal nolist         " List command breaks soft wrapping.
+setlocal showbreak=…
+vnoremap j gj
+vnoremap k gk
+vnoremap 4 g$
+vnoremap 6 g^
+vnoremap 0 g^
+nnoremap j gj
+nnoremap k gk
+nnoremap 4 g$
+nnoremap 6 g^
+nnoremap 0 g^
