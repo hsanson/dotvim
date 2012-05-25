@@ -602,3 +602,8 @@ set tags=./.tags;$HOME
 ""  Konsole this key combination is set to handle terminal flow control.
 
 let g:CommandTAcceptSelectionSplitMap = '<C-b>'  " Remap the split open key.
+
+"" wildignore files to stop command-t from loading a lot of unused paths
+set wildignore=*.dll,*.o,*.obj,*.bak,*.exe,*.pyc,*.jpg,*.gif,*.png
+set wildignore+=vendor/rails/**
+set wildignore+=public/**
