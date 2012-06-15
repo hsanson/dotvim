@@ -607,3 +607,18 @@ let g:CommandTAcceptSelectionSplitMap = '<C-b>'  " Remap the split open key.
 set wildignore=*.dll,*.o,*.obj,*.bak,*.exe,*.pyc,*.jpg,*.gif,*.png
 set wildignore+=vendor/rails/**
 set wildignore+=public/**
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Instant-Markdown plugin
+""
+"" Description:
+""   Allows almost realtime preview of markdown documents.
+""
+"" Installation:
+""  
+""   sudo gem install redcarpet pygments.rb
+""   sudo apt-get install npm
+""   sudo npm -g install instant-markdown-d
+""   cd ~/vim
+""   git submodule add https://github.com/suan/vim-instant-markdown.git \
+""          bundle/instant-markdown

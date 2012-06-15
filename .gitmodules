@@ -61,3 +61,6 @@
 [submodule "bundle/async-command"]
 	path = bundle/async-command
 	url = https://github.com/pydave/AsyncCommand.git
+[submodule "bundle/instant-markdown"]
+	path = bundle/instant-markdown
+	url = git://github.com/suan/vim-instant-markdown.git
