@@ -18,18 +18,6 @@
 ""         libncursesw5-dev exuberant-ctags libgtk2.0-dev libx11-dev xorg-dev  \
 ""         git-core wget sed ack-grep exuberant-ctags rake
 ""
-""    - Install some needed gems to buils some plugins (e.g. command-t)
-""
-""      sudo apt-get install libxslt1-dev
-""      sudo gem1.9.1 install bundler
-""      sudo gem1.9.1 install diff-lcs -v 1.1.2
-""      sudo gem1.9.1 install rr -v 0.10.11
-""      sudo gem1.9.1 install rspec-core -v 2.0.0.rc
-""      sudo gem1.9.1 install rspec-expectations -v 2.0.0.rc
-""      sudo gem1.9.1 install rspec-mocks -v 2.0.0.rc
-""      sudo gem1.9.1 install rspec -v 2.0.0.rc
-""      sudo gem1.9.1 install rake -v 0.8.7
-""
 ""    - Download vim source code from mercurial
 ""
 ""      hg clone https://vim.googlecode.com/hg/ ~/source/vim
@@ -583,43 +571,37 @@ set tags=./.tags;$HOME
 ""  <leader>P will process markdown, textile, rdoc and html files and load them
 ""  in a browser.
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Command-T Plugin
-""
-"" Description:
-""  Implements TextMate command-T file search functionality.
-""
-"" Installation:
-""  sudo aptitude install ruby ruby-dev rake
-""  mkdir -p $HOME/.vim/bundle
-""  cd $HOME/.vim
-""  git submodule add git://git.wincent.com/command-t.git bundle/command-t
-""  cd bundle/command-t
-""  sudo apt-get install libxslt1-dev
-""  sudo gem install diff-lcs -v 1.1.2
-""  sudo gem install nokogiri -v 1.4.4
-""  sudo gem install mechanize -v 1.0.0
-""  sudo gem install rr -v 1.0.2
-""  sudo gem install rspec-core -v 2.5.1
-""  sudo gem install rspec-expectations -v 2.5.0
-""  sudo gem install rspec-mocks -v 2.5.0
-""  sudo gem install rspec -v 2.5.0
-""  rake make
-""
-"" Usage:
-""  <leader>P will process markdown, textile, rdoc and html files and load them
-""  in a browser.
-""
-"" Notes:
-""  This plugin maps <C-s> to open files in split windows. Unfortunately in
-""  Konsole this key combination is set to handle terminal flow control.
+" ctrlp Plugin
+" 
+" Description:
+"   Amazing fuzzy finder. Better than command-t and without all the ruby
+"   dependencies.
+" 
+" Installation:
+"   cd .vim
+"   git submodule add  https://github.com/kien/ctrlp.vim.git bundle/ctrlp
+" 
+" Usage:
+"   <C-P> to start search mode.
+"   <C-T> to open selected file in new tab
+"   <C-v> to open selected file in vertical split
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'rc'
 
-let g:CommandTAcceptSelectionSplitMap = '<C-b>'  " Remap the split open key.
-
-"" wildignore files to stop command-t from loading a lot of unused paths
-set wildignore=*.dll,*.o,*.obj,*.bak,*.exe,*.pyc,*.jpg,*.gif,*.png
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 set wildignore+=vendor/rails/**
 set wildignore+=public/**
+
+"let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.git|\.hg|\.svn)$',
+  \ 'file': '\.exe$\|\.so$\|\.dll$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Instant-Markdown plugin
