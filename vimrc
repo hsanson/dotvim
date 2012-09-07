@@ -573,6 +573,19 @@ set tags=./.tags;$HOME
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" YankRing Plugin
+" 
+" Description:
+"  Facilitates the handling of yanked text in registers.
+"  
+" Installation:
+"   cd ~/vim
+"   git submodule add git://github.com/vim-scripts/YankRing.vim.git bundle/yankring
+"
+let g:yankring_replace_n_pkey = '<C-j>'
+let g:yankring_replace_n_nkey = '<C-k>'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ctrlp Plugin
 " 
 " Description:
