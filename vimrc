@@ -630,7 +630,7 @@ set wildignore+=public/**
 "" Installation:
 ""  
 ""   sudo gem install redcarpet pygments.rb
-""   sudo apt-get install npm
+""   sudo apt-get install npm build-essential g++ automake
 ""   sudo npm -g install instant-markdown-d
 ""   cd ~/vim
 ""   git submodule add https://github.com/suan/vim-instant-markdown.git \
