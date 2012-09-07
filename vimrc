@@ -78,6 +78,18 @@ autocmd InsertLeave * se nocul        " Don't highlight current line in other mo
 " Set search path for gf command
 set path=/usr/include,/usr/local/include,**;$HOME
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Disable arrow keys to become vim master
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+noremap  <Up> ""
+noremap! <Up> <Esc>
+noremap  <Down> ""
+noremap! <Down> <Esc>
+noremap  <Left> ""
+noremap! <Left> <Esc>
+noremap  <Right> ""
+noremap! <Right> <Esc>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map make for easy access
 map <F5> <ESC>:silent! make<CR><C-l>
