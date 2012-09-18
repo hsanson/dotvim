@@ -16,7 +16,7 @@
 ""
 ""      sudo apt-get install mercurial build-essential ruby1.9.1 ruby1.9.1-dev \
 ""         libncursesw5-dev exuberant-ctags libgtk2.0-dev libx11-dev xorg-dev  \
-""         git-core wget sed ack-grep exuberant-ctags rake
+""         git-core wget sed ack-grep exuberant-ctags rake python2.7-dev
 ""
 ""    - Download vim source code from mercurial
 ""
@@ -24,9 +24,10 @@
 ""
 ""    - Compile vim
 ""
-""      ./configure --prefix=/opt --with-features=huge --enable-pythoninterp \
+""      ./configure --prefix=/usr/local --with-features=huge --enable-pythoninterp \
 ""          --enable-rubyinterp --enable-gui=gtk2 --enable-cscope --enable-multibyte \
-""          --enable-cscope --with-x
+""          --enable-cscope --with-x --enable-pythoninterp \
+""          --with-python-config-dir=/usr/lib/python2.7/config
 ""      make
 ""      sudo make install
 ""
@@ -70,14 +71,14 @@ set path=/usr/include,/usr/local/include,**;$HOME
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Disable arrow keys to become vim master
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-noremap  <Up> ""
-noremap! <Up> <Esc>
-noremap  <Down> ""
-noremap! <Down> <Esc>
-noremap  <Left> ""
-noremap! <Left> <Esc>
-noremap  <Right> ""
-noremap! <Right> <Esc>
+"noremap  <Up> ""
+"noremap! <Up> <Esc>
+"noremap  <Down> ""
+"noremap! <Down> <Esc>
+"noremap  <Left> ""
+"noremap! <Left> <Esc>
+"noremap  <Right> ""
+"noremap! <Right> <Esc>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map make for easy access
@@ -467,34 +468,20 @@ let g:neocomplcache_enable_underbar_completion = 1    "Use underbar completion
 let g:neocomplcache_min_syntax_length = 3
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Easy Notes Plugin
-""
+"" VOoM Plugin
+"" 
 "" Description:
-""
-""  Very nice plugin to take plain text notes in vim. Better than vim outliner.
+""  Nice two-pane outliner. It differs from Notes and vimoutliner in that it
+""  does not tries to create a new file type. VOoM instead supports several already
+""  existing file types such as latex, markdown, org, etc.
 ""
 "" Installation:
-""  mkdir -p $HOME/.vim/bundle
-""  cd $HOME/.vim
-""  mkdir -p $HOME/Notes
-""  git submodule add https://github.com/xolox/vim-notes.git bundle/notes
+""  git submodule add git://github.com/vim-scripts/VOoM.git bundle/VOoM
 ""
 "" Usage:
-""  In vim use :NewNote to create a new note and :SearchNotes to search existing
-""  notes.
-""
-"" Notes:
-""  You may create a Nerdtree Bookmark to the g:notes_directory folder to
-""  have quick access to your notes.
-
-" This plugin assumes it is intalled directly in ~/.vim dir but we use pathogen
-" plugin so we must update the paths accordingly.
-let g:notes_suffix = '.txt'
-let g:notes_directory = '~/Notes'             " Were to store notes
-"let g:notes_shadowdir = '~/Notes/.shadow'    " Changing this breaks all.
-let g:notes_indexfile = '~/Notes/.index.sqlite3'
-let g:notes_indexscript = '~/.vim/bundle/notes/misc/notes/scanner.py'
-
+""  With a buffer opened run :Voom to open the outline navigation pane.
+let g:voom_tree_width=60
+let g:voom_ft_modes = { 'markdown': 'markdown', 'pandoc': 'markdown', 'tex': 'latex' }
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" tGPG Plugin
 ""
