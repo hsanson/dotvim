@@ -43,9 +43,6 @@
 [submodule "bundle/fugitive"]
 	path = bundle/fugitive
 	url = git://github.com/tpope/vim-fugitive.git
-[submodule "bundle/notes"]
-	path = bundle/notes
-	url = https://github.com/xolox/vim-notes.git
 [submodule "bundle/vim-coffee-script"]
 	path = bundle/vim-coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
@@ -70,3 +67,6 @@
 [submodule "bundle/yankring"]
 	path = bundle/yankring
 	url = git://github.com/vim-scripts/YankRing.vim.git
+[submodule "bundle/VOoM"]
+	path = bundle/VOoM
+	url = git://github.com/vim-scripts/VOoM.git
