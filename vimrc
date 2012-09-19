@@ -506,9 +506,35 @@ let g:voom_ft_modes = { 'markdown': 'markdown', 'pandoc': 'markdown', 'tex': 'la
 ""  git submodule add git://github.com/majutsushi/tagbar bundle/tagbar
 ""  git submodule add https://github.com/vim-scripts/rubycomplete.vim.git \
 ""                                                   bundle/rubycomplete
+"" Resources:
+""  https://github.com/majutsushi/tagbar/wiki
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set complete=.,w,b,u,t
 set tags=./.tags;$HOME
+
+"" Add go support to tagbar. Note this only works on Ubuntu or with
+"" exuberant-tags patched with go support.
+let g:tagbar_type_go = {
+    \ 'ctagstype': 'go',
+    \ 'kinds' : [
+        \'p:package',
+        \'f:function',
+        \'v:variables',
+        \'t:type',
+        \'c:const'
+    \]
+\}
+
+"" Markdown support. Note this requires some modifications to your ~/.ctags
+"" file. Check the TagBar wiki for more info.
+let g:tagbar_type_markdown = {
+	\ 'ctagstype' : 'markdown',
+	\ 'kinds' : [
+		\ 'h:Heading_L1',
+		\ 'i:Heading_L2',
+		\ 'k:Heading_L3'
+	\ ]
+\ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Matchit Plugin
