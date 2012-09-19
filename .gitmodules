@@ -1,72 +1,96 @@
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
+  url = https://github.com/scrooloose/nerdtree.git
+  ignore = untracked
 [submodule "bundle/vividchalk"]
 	path = bundle/vividchalk
 	url = https://github.com/tpope/vim-vividchalk.git
+  ignore = untracked
 [submodule "bundle/vcscommand"]
 	path = bundle/vcscommand
 	url = git://repo.or.cz/vcscommand.git
+  ignore = untracked
 [submodule "bundle/neocomplcache"]
 	path = bundle/neocomplcache
 	url = https://github.com/Shougo/neocomplcache.git
+  ignore = untracked
 [submodule "bundle/tgpg"]
 	path = bundle/tgpg
 	url = https://github.com/tomtom/tgpg_vim.git
+  ignore = untracked
 [submodule "bundle/ack"]
 	path = bundle/ack
 	url = https://github.com/mileszs/ack.vim.git
+  ignore = untracked
 [submodule "bundle/surround"]
 	path = bundle/surround
 	url = https://github.com/tpope/vim-surround.git
+  ignore = untracked
 [submodule "bundle/vim-haml"]
 	path = bundle/vim-haml
 	url = https://github.com/tpope/vim-haml.git
+  ignore = untracked
 [submodule "bundle/preview"]
 	path = bundle/preview
 	url = https://github.com/greyblake/vim-preview.git
+  ignore = untracked
 [submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
+  ignore = untracked
 [submodule "bundle/tagbar"]
 	path = bundle/tagbar
 	url = git://github.com/majutsushi/tagbar
+  ignore = untracked
 [submodule "bundle/rubycomplete"]
 	path = bundle/rubycomplete
 	url = https://github.com/vim-scripts/rubycomplete.vim.git
+  ignore = untracked
 [submodule "bundle/vim-rails"]
 	path = bundle/vim-rails
 	url = git://github.com/tpope/vim-rails.git
+  ignore = untracked
 [submodule "bundle/endwise"]
 	path = bundle/endwise
 	url = git://github.com/tpope/vim-endwise.git
+  ignore = untracked
 [submodule "bundle/fugitive"]
 	path = bundle/fugitive
 	url = git://github.com/tpope/vim-fugitive.git
+  ignore = untracked
 [submodule "bundle/vim-coffee-script"]
 	path = bundle/vim-coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
+  ignore = untracked
 [submodule "bundle/drawit"]
 	path = bundle/drawit
 	url = https://github.com/vim-scripts/DrawIt.git
+  ignore = untracked
 [submodule "bundle/sudo"]
 	path = bundle/sudo
 	url = https://github.com/vim-scripts/sudo.vim.git
+  ignore = untracked
 [submodule "bundle/async-command"]
 	path = bundle/async-command
 	url = https://github.com/pydave/AsyncCommand.git
+  ignore = untracked
 [submodule "bundle/instant-markdown"]
 	path = bundle/instant-markdown
 	url = git://github.com/suan/vim-instant-markdown.git
+  ignore = untracked
 [submodule "bundle/markdown"]
 	path = bundle/markdown
 	url = https://github.com/tpope/vim-markdown.git
+  ignore = untracked
 [submodule "bundle/ctrlp"]
 	path = bundle/ctrlp
 	url = https://github.com/kien/ctrlp.vim.git
+  ignore = untracked
 [submodule "bundle/yankring"]
 	path = bundle/yankring
 	url = git://github.com/vim-scripts/YankRing.vim.git
+  ignore = untracked
 [submodule "bundle/VOoM"]
 	path = bundle/VOoM
 	url = git://github.com/vim-scripts/VOoM.git
+  ignore = untracked
