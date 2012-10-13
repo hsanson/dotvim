@@ -348,7 +348,7 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 ""  git submodule add https://github.com/scrooloose/nerdtree.git bundle/nerdtree
 
 " Set the window width
-let g:NERDTreeWinSize = 35
+let g:NERDTreeWinSize = 40
 " Set the window position
 let g:NERDTreeWinPos = "left"
 " Colorful
@@ -363,7 +363,10 @@ set noautochdir
 let g:NERDTreeChDirMode = 2
 " Show bookmarks list
 let g:NERDTreeShowBookmarks = 1
-
+" Close NERDTree after opening a file
+let g:NERDTreeQuitOnOpen = 1
+" Quick toogle tree
+nmap <silent> <leader>p :NERDTreeToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" NERDTree Commenter
 ""
