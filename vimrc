@@ -61,7 +61,8 @@ set showcmd                           " Display commands as they are typed.
 set ttyfast                           " Smoother screen redraws.
 set hlsearch                          " Highlight search results.
 set showmatch                         " Show briefly matching bracket when closing it.
-autocmd InsertEnter * se cul          " Highlight current line in Insert Mode. 
+set scrolloff=9999                    " Always keep the cursor at the center of window.
+autocmd InsertEnter * se cul          " Highlight current line in Insert Mode.
 autocmd InsertLeave * se nocul        " Don't highlight current line in other modes.
 cmap w!! w !sudo tee % >/dev/null     " Save file as root
 
@@ -185,7 +186,7 @@ filetype plugin indent on " Re-enable after pathogen is loaded.
 syntax on                             " Enable syntax highlighting.
 set t_Co=256                          " Enable 256 color mode in terminal.
 set background=dark                   " I like dark backgrounds.
-colors lucius-transparent             " My current favorite color scheme.
+colors lucius-transparent            " My current favorite color scheme.
 
 " Show tabs and tailing spaces.
 " Note: to insert the middle point press "ctrl+k .M" in insert mode. Tha is
@@ -213,6 +214,7 @@ set softtabstop=2
 " windows.
 " 
 " http://vim.wikia.com/wiki/Keep_folds_closed_while_inserting_text
+set foldlevelstart=20
 autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
 autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
 
@@ -364,7 +366,7 @@ let g:NERDTreeChDirMode = 2
 " Show bookmarks list
 let g:NERDTreeShowBookmarks = 1
 " Close NERDTree after opening a file
-let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeQuitOnOpen = 0
 " Quick toogle tree
 nmap <silent> <leader>p :NERDTreeToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -619,17 +621,19 @@ let g:yankring_replace_n_nkey = '<C-k>'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'rc'
+let g:ctrlp_dotfiles=1
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 set wildignore+=vendor/rails/**
 set wildignore+=public/**
+set wildignore+=*.jar,*.class
 
 "let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn)$'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.git|\.hg|\.svn)$',
   \ 'file': '\.exe$\|\.so$\|\.dll$',
-  \ 'link': 'some_bad_symbolic_links',
+  \ 'link': 'current',
   \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
