@@ -210,9 +210,7 @@ hi CursorIM         ctermfg=253              ctermbg=116
 hi CursorColumn     guifg=NONE              guibg=#202438           gui=none
 hi CursorColumn     ctermfg=NONE            ctermbg=236             cterm=none
 " cursor line/row
-hi CursorLine       gui=NONE                guibg=#202438           gui=none
-hi CursorLine       cterm=NONE              ctermbg=236             cterm=none
-
+hi CursorLine       term=underline          cterm=underline         guibg=Grey40
 
 " Misc
 " ----
@@ -229,8 +227,7 @@ hi VertSplit        ctermfg=242             ctermbg=237             cterm=none
 hi SignColumn       guifg=#9fafaf           guibg=#181818           gui=none
 hi SignColumn       ctermfg=145             ctermbg=233             cterm=none
 " line numbers
-hi LineNr           guifg=#818698           guibg=#363946
-hi LineNr           ctermfg=102             ctermbg=237
+hi LineNr           term=underline         ctermfg=11               guifg=Yellow
 " match parenthesis, brackets
 hi MatchParen       guifg=#00ff00           guibg=NONE              gui=bold
 hi MatchParen       ctermfg=46              ctermbg=NONE            cterm=bold

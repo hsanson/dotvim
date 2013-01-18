@@ -90,7 +90,7 @@ map <F5> <ESC>:silent! make<CR><C-l>
 " Improve QuickFix Window
 
 " Always open the quickfix window when running make, grep, grepadd and vimgrep
-autocmd QuickfixCmdPost make,grep,grepadd,vimgrep :botright cwindow
+"autocmd QuickfixCmdPost make,grep,grepadd,vimgrep :botright cwindow
 map <F6> <ESC>:cN<CR>                " Jump to prev error or warn
 map <F7> <ESC>:cn<CR>                " Jump to next error or warn
 
@@ -241,7 +241,7 @@ let html_number_lines = 0
 " Auto formatting options. These determine where lines will be broken when
 " auto wrapping. The last two options (mM) are needed for multi byte characters (e.g.
 " Japanese)
-set formatoptions=tcqmM
+set formatoptions=tcqjmM
 
 " There are two word wrap methods, one with line breaks that adds an actual
 " '\n' character at the break place and without line breaks that only displays
@@ -450,6 +450,25 @@ let OmniCpp_MayCompleteScope = 1          " autocomplete after ::
 let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" EasyTags Plugin
+""
+"" Description:
+""  Auto generate ctags for edited files.
+""
+"" Installation:
+""  mkdir -p $HOME/.vim/bundle
+""  cd $HOME/.vim
+""  git submodule add https://github.com/xolox/vim-easytags.git \
+""                                                        bundle/easytags
+set complete=.,w,b,u,t
+set tags=.tags
+let g:easytags_by_filetype = '~/.vim/tags'
+let g:easytags_dynamic_files = 1
+let g:easytags_include_members = 1
+let g:easytags_resolve_links = 1
+let g:easytags_python_enabled = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Neocomplcache Plugin
 ""
 "" Description:
@@ -487,6 +506,7 @@ let g:neocomplcache_min_syntax_length = 3
 ""  With a buffer opened run :Voom to open the outline navigation pane.
 let g:voom_tree_width=60
 let g:voom_ft_modes = { 'markdown': 'markdown', 'pandoc': 'markdown', 'tex': 'latex' }
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" tGPG Plugin
 ""
@@ -514,8 +534,6 @@ let g:voom_ft_modes = { 'markdown': 'markdown', 'pandoc': 'markdown', 'tex': 'la
 "" Resources:
 ""  https://github.com/majutsushi/tagbar/wiki
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set complete=.,w,b,u,t
-set tags=./.tags;$HOME
 
 "" Add go support to tagbar. Note this only works on Ubuntu or with
 "" exuberant-tags patched with go support.
