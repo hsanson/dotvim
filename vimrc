@@ -89,8 +89,16 @@ map <F5> <ESC>:silent! make<CR><C-l>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Improve QuickFix Window
 
-" Always open the quickfix window when running make, grep, grepadd and vimgrep
-"autocmd QuickfixCmdPost make,grep,grepadd,vimgrep :botright cwindow
+" Tip: http://vim.wikia.com/wiki/Automatically_open_the_quickfix_window_on_:make
+" Automatically open the quickfix window on :make or close it when it has become
+" empty.
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+
+" Move the quickfix window to the bottom of the vim window.
+autocmd FileType qf wincmd J
+
+" Add fast navigation shorcuts.
 map <F6> <ESC>:cN<CR>                " Jump to prev error or warn
 map <F7> <ESC>:cn<CR>                " Jump to next error or warn
 
