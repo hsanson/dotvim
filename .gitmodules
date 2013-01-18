@@ -100,3 +100,6 @@
 [submodule "bundle/easytags"]
 	path = bundle/easytags
 	url = https://github.com/xolox/vim-easytags.git
+[submodule "bundle/android-javacomplete"]
+	path = bundle/android-javacomplete
+	url = git@github.com:hsanson/android-javacomplete.git

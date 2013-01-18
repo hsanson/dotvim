@@ -528,6 +528,11 @@ let g:voom_ft_modes = { 'markdown': 'markdown', 'pandoc': 'markdown', 'tex': 'la
 ""  git submodule add https://github.com/tomtom/tgpg_vim.git bundle/tgpg
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Android Java complete plugin
+""
+let g:android_sdk_path="/home/ryujin/Apps/android-sdk-r20"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" TagBar Plugin and Ruby omnicomplete plugin
 ""
 "" Description:
