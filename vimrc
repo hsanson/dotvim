@@ -64,6 +64,7 @@ set showmatch                         " Show briefly matching bracket when closi
 set scrolloff=9999                    " Always keep the cursor at the center of window.
 autocmd InsertEnter * se cul          " Highlight current line in Insert Mode.
 autocmd InsertLeave * se nocul        " Don't highlight current line in other modes.
+set switchbuf=useopen,split
 cmap w!! w !sudo tee % >/dev/null     " Save file as root
 
 " Set search path for gf command
