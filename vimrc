@@ -202,8 +202,8 @@ colors solarized                      " My current favorite color scheme.
 " Show tabs and tailing spaces.
 " Note: to insert the middle point press "ctrl+k .M" in insert mode. Tha is
 " control + k followed by a <dot> and the capital M.
-:set list
-:set listchars=tab:»·,trail:·,nbsp:·
+set list
+set listchars=tab:»·,trail:·,nbsp:·
 
 " By default insert spaces instead of tabs. This may be overriden by the
 " configuration inside ftplugin directory for specific file types. For example
