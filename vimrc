@@ -195,6 +195,8 @@ filetype plugin indent on " Re-enable after pathogen is loaded.
 syntax on                             " Enable syntax highlighting.
 set t_Co=256                          " Enable 256 color mode in terminal.
 set background=dark                   " I like dark backgrounds.
+let g:solarized_termcolors=256
+let g:solarized_termtrans = 1
 colors solarized                      " My current favorite color scheme.
 
 " Show tabs and tailing spaces.
