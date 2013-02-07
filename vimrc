@@ -111,30 +111,66 @@ map <F7> <ESC>:cn<CR>                " Jump to next error or warn
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set mouse=a                           " Enable the mouse.
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Pathogen Plugin
+"" Vundle Plugin
 ""
 "" Description:
-""  This vim plugin allows easy management of other plugins in bundles that 
-""  is cleaner that mixing all plugin files inside the .vim folder. This
-""  combined with git submodules and github makes for easy to manage plugins.
+""  Nice vim plugin manager.
 ""
-"" Installation:
-""  This is already included in my git repository but in case I need to start
-""  from scratch here are the steps to install it:
+"" Usage:
 ""
-""  mkdir -p $HOME/.vim/autoload
-""  wget --no-check-certificate \
-""     https://github.com/tpope/vim-pathogen/raw/master/autoload/pathogen.vim \
-""     -O $HOME/.vim/autolad/pathogen.vim
+""  Define your plugins using the Bundle command. After that we have some
+""  commands to handle the plugins.
 ""
-"" Resources:
-""   http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/
-""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-filetype off " Temporarily disable so pathogen also loads ftdetect plugins.
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+""  :BundleList          - List configured bundles
+""  :BundleInstall       - Install (update) bundles.
+""  :BundleSearch foo    - Search for bundle foo
+""  :BundleClean         - Remove unused bundles
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+"Bundle 'yuratomo/java-api-complete.git'
+"Bundle 'yuratomo/java-api-javax.git'
+"Bundle 'yuratomo/java-api-org.git'
+"Bundle 'yuratomo/java-api-sun.git'
+"Bundle 'yuratomo/java-api-servlet2.3.git'
+"Bundle 'yuratomo/java-api-android.git'
+Bundle 'tomtom/tcomment_vim'
+" easytags is disabled because it hangs vim when executing
+"Bundle 'xolox/easytags.git'
+"Bundle 'tomtom/tgpg_vim.git'
+Bundle 'scrooloose/nerdtree.git'
+Bundle 'tpope/vim-vividchalk.git'
+Bundle 'Shougo/neocomplcache.git'
+Bundle 'mileszs/ack.vim.git'
+Bundle 'tpope/vim-surround.git'
+Bundle 'tpope/vim-haml.git'
+"Bundle 'greyblake/vim-preview.git'
+"" vim-preview requires these gems installed: RedCloth github-markup bluecloth
+"Bundle 'scrooloose/nerdcommenter.git'
+Bundle 'majutsushi/tagbar'
+Bundle 'vim-scripts/rubycomplete.vim.git'
+Bundle 'tpope/vim-rails.git'
+Bundle 'tpope/vim-endwise.git'
+Bundle 'tpope/vim-fugitive.git'
+"Bundle 'git://repo.or.cz/vcscommand.git'
+Bundle 'kchmck/vim-coffee-script.git'
+Bundle 'vim-scripts/DrawIt.git'
+Bundle 'vim-scripts/sudo.vim.git'
+"Bundle 'pydave/AsyncCommand.git'
+"Bundle 'suan/vim-instant-markdown.git'
+Bundle 'tpope/vim-markdown.git'
+Bundle 'kien/ctrlp.vim.git'
+"Bundle 'vim-scripts/YankRing.vim.git'
+Bundle 'vim-scripts/VOoM.git'
+Bundle 'altercation/vim-colors-solarized.git'
+"Bundle 'omnicppcomplete'
+Bundle 'Rip-Rip/clang_complete.git'
+Bundle 'Shougo/neocomplcache-clang_complete'
+Bundle 'vim-scripts/matchit.zip'
+
 filetype plugin indent on " Re-enable after pathogen is loaded.
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -153,45 +189,12 @@ filetype plugin indent on " Re-enable after pathogen is loaded.
 ""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Coffee Script Filetype and syntax
-""
-"" Description:
-""   Add coffee script configuration files:
-""
-"" Installation:
-""
-""   mkdir -p $HOME/.vim/bundle
-""   cd $HOME/.vim
-""   git submodule add https://github.com/kchmck/vim-coffee-script.git bundle/vim-coffee-script
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" HAML and SCSS Filetype and syntax
-""
-"" Description:
-""  Add syntax higliting to the powerfull HAML templating systema and SCSS CSS
-""  generator.
-""
-"" Installation:
-""  mkdir -p $HOME/.vim/bundle
-""  cd $HOME/.vim
-""  git submodule add https://github.com/tpope/vim-haml.git bundle/vim-haml
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Look and Feel Settings
-""
-"" Description:
-""  Add the vividchalk color scheme and enable syntax highligthing in 256 color
-""  terminals.
 ""
 "" Prerequisites:
 ""  - Make sure your terminal supports 256 colors. Konsole does but you must set
 ""    the TERM variable to xterm-256color in the schema properties.
 ""
-"" Installation:
-""  mkdir -p $HOME/.vim/bundle
-""  cd $HOME/.vim
-""  git submodule add https://github.com/tpope/vim-vividchalk.git bundle/vividchalk
-
 syntax on                             " Enable syntax highlighting.
 set t_Co=256                          " Enable 256 color mode in terminal.
 set background=dark                   " I like dark backgrounds.
@@ -315,18 +318,65 @@ set fencs=utf-8,euc-jp,sjis
 " keep the same s tenc.
 set encoding=utf-8
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Javacomplete Plugin
+"
+" Description:
+"   Enables omnicompletion of java classes, packages and methods.
+"
+" Installation:
+"
+"   - Install via vundle or pathogen.
+"   - Compile the Reflection.java file
+"
+"     cd ~/vim/bundle/javacomplete/autoload
+"     javac Reflection.java
+"
+"   - Add the following to ftplugin/java.vim. Create the file if
+"     it does not exists.
+"
+"     setlocal omnifunc=javacomplete#Complete
+"     setlocal completefunc=javacomplete#CompleteParamsInfo
+"
+"     If you use the NeoComplCache plugin then comment out the completefunc
+"     option so it does not conflict with NeoComplCache.
+"
+" Usage:
+"   This uses normal omnicompletion with Ctrl-X Ctrl-O to invoke the
+"   autocompletion. I recommend instead to use NeoComplCache to have automatic
+"   autocompletion.
+
+Bundle 'vim-scripts/javacomplete'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-android Plugin
+"
+" Description:
+"   Configures vim to make it easier to develop android applications.
+"
+" Installation:
+"   - Require javacomplete plugin for vim configured and running properly.
+"   - Install plugin via pathogen or vundle
+"   - Set the g:android_sdk_path to your the place you have installed the
+"     android sdk. Use absolute path.
+"
+" Usage:
+"   - If you have the javacomplete plugin correctly installed then you should be
+"     able to omnicomplete android classes, methods and imports using the 
+"     Ctrl-X Ctrl-O and Ctrl-X Ctrl-U commands. See :h omnifunc for details.
+"   - If you use NeoComplCache then the auto-completion should work
+"     automatically.
+
+Bundle 'hsanson/android-javacomplete'
+let g:android_sdk_path="/home/ryujin/Apps/android-sdk"
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Ack Plugin
 ""
 "" Description:
 ""  This plugin allows vim to use the faster and easier ack-grep tool for
 ""  searching inside files.
-""
-"" Installation:
-""  sudo aptitude install ack-grep
-""  mkdir -p $HOME/.vim/bundle
-""  cd $HOME/.vim
-""  git submodule add https://github.com/mileszs/ack.vim.git bundle/ack
 ""
 "" Usage:
 ""  - :Ack [options] {pattern} [{directory}]
@@ -343,7 +393,6 @@ set encoding=utf-8
 "" Resources:
 ""   http://betterthangrep.com/
 ""   http://amaslov.wordpress.com/2009/04/23/vim-ack-instead-of-grep/
-
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -355,10 +404,6 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 "" Usage:
 ""  :NERDTreeToggle
 ""
-"" Installation:
-""  mkdir -p $HOME/.vim/bundle
-""  cd $HOME/.vim
-""  git submodule add https://github.com/scrooloose/nerdtree.git bundle/nerdtree
 
 " Set the window width
 let g:NERDTreeWinSize = 40
@@ -380,6 +425,7 @@ let g:NERDTreeShowBookmarks = 1
 let g:NERDTreeQuitOnOpen = 1
 " Quick toogle tree
 nmap <silent> <leader>p :NERDTreeToggle<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" NERDTree Commenter
 ""
@@ -393,11 +439,6 @@ nmap <silent> <leader>p :NERDTreeToggle<CR>
 ""  - cA - Add commend at the end of line and enter insert mode.
 ""  - ca - Change comment delimiter
 ""
-"" Installation:
-""  mkdir -p $HOME/.vim/bundle
-""  cd $HOME/.vim
-""  git submodule add https://github.com/scrooloose/nerdcommenter.git \
-""                                   bundle/nerdcommenter
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Vim Fugitive
@@ -405,32 +446,13 @@ nmap <silent> <leader>p :NERDTreeToggle<CR>
 "" Description:
 ""  Best git wrapper for vim.
 ""
-"" Installation:
-""  mkdir -p $HOME/.vim/bundle
-""  cd $HOME/.vim
-""  git submodule add git://github.com/tpope/vim-fugitive.git bundle/fugitive
-""
 "" Resources:
 ""  https://github.com/tpope/vim-fugitive
 
-set laststatus=2
-set statusline=%{fugitive#statusline()}[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Vim Rails
-""
-"" Description:
-""  Enables a lot of goodies for Rails developers. Make sure to check the
-""  plugin page for details on how to use this.
-""
-"" Installation:
-""  mkdir -p $HOME/.vim/bundle
-""  cd $HOME/.vim
-""  git submodule add git://github.com/tpope/vim-rails.git bundle/vim-rails
-""  git submodule add git://github.com/tpope/vim-endwise.git bundle/endwise
-""
-"" Resources:
-""  https://github.com/tpope/vim-rails
+if exists('g:loaded_fugitive') || &cp
+  set laststatus=2
+  set statusline=%{fugitive#statusline()}[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" OmniCppComplete
@@ -439,12 +461,6 @@ set statusline=%{fugitive#statusline()}[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%
 ""  Vim comes with several omnifunctions to enable autocomplete of serveral
 ""  laguages but it lacks a omnifunction for C++. This plugin add this 
 ""  omnifunction to enable autocompletion of C++ code.
-""
-"" Installation:
-""  wget http://www.vim.org/scripts/download_script.php?src_id=7722 -O \
-""                                               /tmp/omnicppcomplete-0.41.zip
-""  mkdir -p $HOME/.vim/bundle/omnicppcomplete
-""  unzip -d $HOME/.vim/bundle/omnicppcomplete  /tmp/omnicppcomplete-0.41.zip
 ""
 "" Resources:
 ""  http://www.vim.org/scripts/script.php?script_id=1520
@@ -466,11 +482,6 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 "" Description:
 ""  Auto generate ctags for edited files.
 ""
-"" Installation:
-""  mkdir -p $HOME/.vim/bundle
-""  cd $HOME/.vim
-""  git submodule add https://github.com/xolox/vim-easytags.git \
-""                                                        bundle/easytags
 set complete=.,w,b,u,t
 set tags=.tags
 let g:easytags_by_filetype = '~/.vim/tags'
@@ -490,13 +501,7 @@ let g:easytags_python_enabled = 1
 ""    when opening a file for the first time as the plugin will parse and cache
 ""    the file keywords, tags, etc.
 ""
-"" Installation:
-""  mkdir -p $HOME/.vim/bundle
-""  cd $HOME/.vim
-""  git submodule add https://github.com/Shougo/neocomplcache.git \
-""                                                        bundle/neocomplcache
-
-let g:neocomplcache_enable_at_startup = 1             "Enable neocomplcache
+let g:neocomplcache_enable_at_startup = 0             "Enable neocomplcache
 let g:neocomplcache_enable_smart_case = 1             "Use smart case
 let g:neocomplcache_enable_camel_case_completion = 0  " Disable camelcase completion
 let g:neocomplcache_enable_underbar_completion = 0    " Disable underbar completion
@@ -512,9 +517,6 @@ let g:neocomplcache_min_syntax_length = 3
 ""  does not tries to create a new file type. VOoM instead supports several already
 ""  existing file types such as latex, markdown, org, etc.
 ""
-"" Installation:
-""  git submodule add git://github.com/vim-scripts/VOoM.git bundle/VOoM
-""
 "" Usage:
 ""  With a buffer opened run :Voom to open the outline navigation pane.
 let g:voom_tree_width=60
@@ -527,10 +529,6 @@ let g:voom_ft_modes = { 'markdown': 'markdown', 'pandoc': 'markdown', 'tex': 'la
 ""  tGPG Plugin for transparent editing of encrypted files. This is the only
 ""  plugin for handling encrypted GPG files that worked out of the box.
 ""
-"" Installation:
-""  mkdir -p $HOME/.vim/bundle
-""  cd .vim/bundle
-""  git submodule add https://github.com/tomtom/tgpg_vim.git bundle/tgpg
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Android Java complete plugin
@@ -543,12 +541,6 @@ let g:android_sdk_path="/home/ryujin/Apps/android-sdk-r20"
 "" Description:
 ""  Tlist replacement with scoping.
 ""
-"" Installation:
-""  cd $HOME/.vim
-""  mkdir -p bundle
-""  git submodule add git://github.com/majutsushi/tagbar bundle/tagbar
-""  git submodule add https://github.com/vim-scripts/rubycomplete.vim.git \
-""                                                   bundle/rubycomplete
 "" Resources:
 ""  https://github.com/majutsushi/tagbar/wiki
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -583,23 +575,12 @@ let g:tagbar_type_markdown = {
 "" Description:
 ""  Allows you to configure % to match more than just single characters.
 ""
-"" Installation:
-""  mkdir -p $HOME/.vim/bundle/matchit
-""  wget http://www.vim.org/scripts/download_script.php?src_id=8196 \
-""                                        --output-document=/tmp/matchit.zip
-""  unzip -d $HOME/.vim/bundle/matchit /tmp/matchit.zip
-""  rm -f /tmp/matchit.zip
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Surround Plugin
 ""
 "" Description:
 ""  Plugin for deleting, changing, and adding surroundings.
-""
-"" Installation:
-""  mkdir -p $HOME/.vim/bundle
-""  cd $HOME/.vim
-""  git submodule add https://github.com/tpope/vim-surround.git bundle/surround
 ""
 "" Usage:
 ""  Old text                  Command     New text ~
@@ -615,12 +596,6 @@ let g:tagbar_type_markdown = {
 "" Description:
 ""  Allows to generate and preview HTML documents in a browser.
 ""
-"" Installation:
-""  sudo gem install RedCloth github-markup bluecloth
-""  mkdir -p $HOME/.vim/bundle
-""  cd $HOME/.vim
-""  git submodule add https://github.com/greyblake/vim-preview.git bundle/preview
-""
 "" Usage:
 ""  <leader>P will process markdown, textile, rdoc and html files and load them
 ""  in a browser.
@@ -631,11 +606,6 @@ let g:tagbar_type_markdown = {
 " 
 " Description:
 "  Facilitates the handling of yanked text in registers.
-"  
-" Installation:
-"   cd ~/vim
-"   git submodule add git://github.com/vim-scripts/YankRing.vim.git bundle/yankring
-"
 let g:yankring_replace_n_pkey = '<C-j>'
 let g:yankring_replace_n_nkey = '<C-k>'
 
@@ -645,11 +615,7 @@ let g:yankring_replace_n_nkey = '<C-k>'
 " Description:
 "   Amazing fuzzy finder. Better than command-t and without all the ruby
 "   dependencies.
-" 
-" Installation:
-"   cd .vim
-"   git submodule add  https://github.com/kien/ctrlp.vim.git bundle/ctrlp
-" 
+"
 " Usage:
 "   <C-P> to start search mode.
 "   <C-T> to open selected file in new tab
@@ -679,10 +645,7 @@ let g:ctrlp_custom_ignore = {
 ""   Allows almost realtime preview of markdown documents.
 ""
 "" Installation:
-""  
+""
 ""   sudo gem install redcarpet pygments.rb
 ""   sudo apt-get install npm build-essential g++ automake
 ""   sudo npm -g install instant-markdown-d
-""   cd ~/vim
-""   git submodule add https://github.com/suan/vim-instant-markdown.git \
-""          bundle/instant-markdown
