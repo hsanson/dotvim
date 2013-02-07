@@ -377,7 +377,7 @@ let g:NERDTreeChDirMode = 2
 " Show bookmarks list
 let g:NERDTreeShowBookmarks = 1
 " Close NERDTree after opening a file
-let g:NERDTreeQuitOnOpen = 0
+let g:NERDTreeQuitOnOpen = 1
 " Quick toogle tree
 nmap <silent> <leader>p :NERDTreeToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
