@@ -360,6 +360,59 @@ Bundle 'hsanson/android-javacomplete'
 let g:android_sdk_path="/home/ryujin/Apps/android-sdk-r20"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Vimproc
+""
+"" Description:
+""  Asynchronous execution library for Vim. Nice tool to write plugins that do
+""  not hang Vim interface when executing.
+""
+"" Installation:
+""  - Install plugin using pathogen or vundle.
+""  - Compile the runtime library for your platform. For Ubuntu  the command is:
+""
+""    cd ~/.vim/bundle/vimproc
+""    make -f make_unix.mak
+""
+""    Make sure you have gcc and make tools to compile:
+""
+""    sudo apt-get install build-essentials
+"
+Bundle 'Shougo/vimproc'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" VimShell
+""
+"" Description:
+""  Simple but powerfull shell that runs inside vim. Can be used to execute
+""  commands, browse files, etc. The nice thing is this shell works in windows
+""  platforms that do not have a nice shell to work with.
+""
+"" Installation:
+""  - Install plugin via pathogen or vundle
+""  - This plugin requires vimproc so make sure it is installed and running.
+""
+"" Usage:
+""  Call :VimShell to get an interactive shell where you can input commands.
+Bundle 'Shougo/vimshell'
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" LogCat plugin
+""
+"" Description:
+""  Opens a vim buffer with the adb logcat output with syntax highlighting. Good
+""  for developing and testing Android applications.
+""
+"" Installation:
+""  - Install the plugin via pathogen or vundle
+""  - Install android-sdk and ensure adb tool is in your PATH
+""  - Install vimproc and vimshell vim plugins that are required dependencies.
+""
+"" Usage:
+""  Execute :Logcat command to open a vim pane with the logcat output.
+Bundle 'thinca/vim-logcat'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Ack Plugin
 ""
 "" Description:
