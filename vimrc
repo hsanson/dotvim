@@ -131,45 +131,6 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-"Bundle 'yuratomo/java-api-complete.git'
-"Bundle 'yuratomo/java-api-javax.git'
-"Bundle 'yuratomo/java-api-org.git'
-"Bundle 'yuratomo/java-api-sun.git'
-"Bundle 'yuratomo/java-api-servlet2.3.git'
-"Bundle 'yuratomo/java-api-android.git'
-Bundle 'tomtom/tcomment_vim'
-" easytags is disabled because it hangs vim when executing
-"Bundle 'xolox/easytags.git'
-"Bundle 'tomtom/tgpg_vim.git'
-Bundle 'scrooloose/nerdtree.git'
-Bundle 'tpope/vim-vividchalk.git'
-Bundle 'Shougo/neocomplcache.git'
-Bundle 'mileszs/ack.vim.git'
-Bundle 'tpope/vim-surround.git'
-Bundle 'tpope/vim-haml.git'
-"Bundle 'greyblake/vim-preview.git'
-"" vim-preview requires these gems installed: RedCloth github-markup bluecloth
-"Bundle 'scrooloose/nerdcommenter.git'
-Bundle 'majutsushi/tagbar'
-Bundle 'vim-scripts/rubycomplete.vim.git'
-Bundle 'tpope/vim-rails.git'
-Bundle 'tpope/vim-endwise.git'
-Bundle 'tpope/vim-fugitive.git'
-"Bundle 'git://repo.or.cz/vcscommand.git'
-Bundle 'kchmck/vim-coffee-script.git'
-Bundle 'vim-scripts/DrawIt.git'
-Bundle 'vim-scripts/sudo.vim.git'
-"Bundle 'pydave/AsyncCommand.git'
-"Bundle 'suan/vim-instant-markdown.git'
-Bundle 'tpope/vim-markdown.git'
-Bundle 'kien/ctrlp.vim.git'
-"Bundle 'vim-scripts/YankRing.vim.git'
-Bundle 'vim-scripts/VOoM.git'
-Bundle 'altercation/vim-colors-solarized.git'
-"Bundle 'omnicppcomplete'
-Bundle 'Rip-Rip/clang_complete.git'
-Bundle 'Shougo/neocomplcache-clang_complete'
-Bundle 'vim-scripts/matchit.zip'
 
 filetype plugin indent on " Re-enable after pathogen is loaded.
 
@@ -198,9 +159,18 @@ filetype plugin indent on " Re-enable after pathogen is loaded.
 syntax on                             " Enable syntax highlighting.
 set t_Co=256                          " Enable 256 color mode in terminal.
 set background=dark                   " I like dark backgrounds.
+
+" Install and configure the solarized colorscheme
+Bundle 'altercation/vim-colors-solarized.git'
 let g:solarized_termcolors=256
 let g:solarized_termtrans = 1
-colors solarized                      " My current favorite color scheme.
+colors solarized
+
+" Cool status line
+if exists('g:loaded_fugitive') || &cp
+  set laststatus=2
+  set statusline=%{fugitive#statusline()}[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
+endif
 
 " Show tabs and tailing spaces.
 " Note: to insert the middle point press "ctrl+k .M" in insert mode. Tha is
@@ -350,26 +320,44 @@ set encoding=utf-8
 Bundle 'vim-scripts/javacomplete'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-android Plugin
+" Java Api Complete
 "
 " Description:
-"   Configures vim to make it easier to develop android applications.
+"   A java omnicomplete plugin that looks interesting and may serve as
+"   replacement for javacomplete.
 "
-" Installation:
-"   - Require javacomplete plugin for vim configured and running properly.
-"   - Install plugin via pathogen or vundle
-"   - Set the g:android_sdk_path to your the place you have installed the
-"     android sdk. Use absolute path.
-"
-" Usage:
-"   - If you have the javacomplete plugin correctly installed then you should be
-"     able to omnicomplete android classes, methods and imports using the 
-"     Ctrl-X Ctrl-O and Ctrl-X Ctrl-U commands. See :h omnifunc for details.
-"   - If you use NeoComplCache then the auto-completion should work
-"     automatically.
+" Note:
+"   Disabled because I cannot make it work. Once I have this working I will
+"   replace the old (unmaintained) javacomplete plugin with this one.
 
+"Bundle 'yuratomo/java-api-complete.git'
+"Bundle 'yuratomo/java-api-javax.git'
+"Bundle 'yuratomo/java-api-org.git'
+"Bundle 'yuratomo/java-api-sun.git'
+"Bundle 'yuratomo/java-api-servlet2.3.git'
+"Bundle 'yuratomo/java-api-android.git'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" vim-android Plugin
+""
+"" Description:
+""   Configures vim to make it easier to develop android applications.
+""
+"" Installation:
+""   - Require javacomplete plugin for vim configured and running properly.
+""   - Install plugin via pathogen or vundle
+""   - Set the g:android_sdk_path to your the place you have installed the
+""     android sdk. Use absolute path.
+""
+"" Usage:
+""   - If you have the javacomplete plugin correctly installed then you should be
+""     able to omnicomplete android classes, methods and imports using the 
+""     Ctrl-X Ctrl-O and Ctrl-X Ctrl-U commands. See :h omnifunc for details.
+""   - If you use NeoComplCache then the auto-completion should work
+""     automatically.
+"
 Bundle 'hsanson/android-javacomplete'
-let g:android_sdk_path="/home/ryujin/Apps/android-sdk"
+let g:android_sdk_path="/home/ryujin/Apps/android-sdk-r20"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Ack Plugin
@@ -393,6 +381,7 @@ let g:android_sdk_path="/home/ryujin/Apps/android-sdk"
 "" Resources:
 ""   http://betterthangrep.com/
 ""   http://amaslov.wordpress.com/2009/04/23/vim-ack-instead-of-grep/
+Bundle 'mileszs/ack.vim.git'
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -404,6 +393,8 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 "" Usage:
 ""  :NERDTreeToggle
 ""
+
+Bundle 'scrooloose/nerdtree.git'
 
 " Set the window width
 let g:NERDTreeWinSize = 40
@@ -441,18 +432,24 @@ nmap <silent> <leader>p :NERDTreeToggle<CR>
 ""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Vim Fugitive
-""
-"" Description:
-""  Best git wrapper for vim.
-""
-"" Resources:
-""  https://github.com/tpope/vim-fugitive
-
-if exists('g:loaded_fugitive') || &cp
-  set laststatus=2
-  set statusline=%{fugitive#statusline()}[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
-endif
+" TComment Plugin
+"
+" Description:
+"   Easy commenting/un-commenting of source code. Some people prefer this plugin
+"   over the NerdTreeCommenter.
+"
+" Usage:
+"   gc{motion}               Toggle comments
+"   gc<Count>c{motion}       Toggle comment text with count argument
+"   gcc                      Toggle comment for current line
+"   gC{motion}               Comment region
+"   gCc                      Comment current line
+"
+"   In Visual mode:
+"
+"   gc                       Toggle comment
+"   gC                       Comment selected text
+Bundle 'tomtom/tcomment_vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" OmniCppComplete
@@ -466,6 +463,11 @@ endif
 ""  http://www.vim.org/scripts/script.php?script_id=1520
 ""  http://vim.wikia.com/wiki/C%2B%2B_code_completion
 ""  http://design.liberta.co.za/articles/code-completion-intellisense-for-cpp-in-vim-with-omnicppcomplete/
+""
+"" Note:
+""  I am testing the new clang_complete plugin so this one is disabled.
+"
+" Bundle 'omnicppcomplete'
 
 let OmniCpp_NamespaceSearch = 1
 let OmniCpp_GlobalScopeSearch = 1
@@ -477,11 +479,40 @@ let OmniCpp_MayCompleteScope = 1          " autocomplete after ::
 let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Clang Complete
+""
+"" Description:
+""  Omnifunc for auto-completion of C and C++ code using the clang tools.
+""
+"" Installation:
+""  - Install plugin using pathogen or vundle
+""  - Install libclang1 library:
+""      sudo apt-get install libclang1
+""  - Set the g:clang_use_library and g:clang_library_path options in your vimrc
+""  - Make sure your vim is compiled with python support in it. Use :version to
+""    check if +python/dyn or +python3/dyn are included.
+"" Note:
+""  This clang_complete plugin seems to be not working. Need more testing.
+"
+Bundle 'Rip-Rip/clang_complete.git'
+Bundle 'Shougo/neocomplcache-clang_complete'
+
+let g:clang_use_library = 1
+"let g:clang_library_path = "/usr/lib"
+let g:clang_complete_auto = 0
+let g:clang_complete_copen= 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" EasyTags Plugin
 ""
 "" Description:
 ""  Auto generate ctags for edited files.
 ""
+"" Note:
+""  Disabled because it hangs the vim process from time to time. Need to find a
+""  way to run the ctag process asynchronously.
+""
+" Bundle 'xolox/easytags.git'
 set complete=.,w,b,u,t
 set tags=.tags
 let g:easytags_by_filetype = '~/.vim/tags'
@@ -501,8 +532,9 @@ let g:easytags_python_enabled = 1
 ""    when opening a file for the first time as the plugin will parse and cache
 ""    the file keywords, tags, etc.
 ""
-let g:neocomplcache_enable_at_startup = 0             "Enable neocomplcache
-let g:neocomplcache_enable_smart_case = 1             "Use smart case
+Bundle 'Shougo/neocomplcache.git'
+let g:neocomplcache_enable_at_startup = 0             " Enable neocomplcache
+let g:neocomplcache_enable_smart_case = 1             " Use smart case
 let g:neocomplcache_enable_camel_case_completion = 0  " Disable camelcase completion
 let g:neocomplcache_enable_underbar_completion = 0    " Disable underbar completion
 let g:neocomplcache_enable_fuzzy_completion = 1       " Enable fuzzy completion
@@ -519,6 +551,8 @@ let g:neocomplcache_min_syntax_length = 3
 ""
 "" Usage:
 ""  With a buffer opened run :Voom to open the outline navigation pane.
+"
+Bundle 'vim-scripts/VOoM.git'
 let g:voom_tree_width=60
 let g:voom_ft_modes = { 'markdown': 'markdown', 'pandoc': 'markdown', 'tex': 'latex' }
 
@@ -529,11 +563,7 @@ let g:voom_ft_modes = { 'markdown': 'markdown', 'pandoc': 'markdown', 'tex': 'la
 ""  tGPG Plugin for transparent editing of encrypted files. This is the only
 ""  plugin for handling encrypted GPG files that worked out of the box.
 ""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Android Java complete plugin
-""
-let g:android_sdk_path="/home/ryujin/Apps/android-sdk-r20"
+"Bundle 'tomtom/tgpg_vim.git'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" TagBar Plugin and Ruby omnicomplete plugin
@@ -543,7 +573,8 @@ let g:android_sdk_path="/home/ryujin/Apps/android-sdk-r20"
 ""
 "" Resources:
 ""  https://github.com/majutsushi/tagbar/wiki
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Bundle 'majutsushi/tagbar'
 
 "" Add go support to tagbar. Note this only works on Ubuntu or with
 "" exuberant-tags patched with go support.
@@ -570,11 +601,48 @@ let g:tagbar_type_markdown = {
 \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Matchit Plugin
+"" Ruby omnicomplete plugin
 ""
 "" Description:
-""  Allows you to configure % to match more than just single characters.
+""  Add omnifunction for auto-completion of ruby/rails code.
 ""
+"" Install:
+""  - Install plugin using pathogen or vundle
+""  - Modify or create a ftplugin file (e.g. ftplugin/ruby.vim) that contains:
+""
+""    let g:rubycomplete_buffer_loading = 1
+""    let g:rubycomplete_rails = 1
+""    let g:rubycomplete_classes_in_global = 1
+""    setlocal omnifunc=rubycomplete#Complete
+""
+""  - Mix with neocomplcache for better user experience.
+""
+Bundle 'vim-scripts/rubycomplete.vim.git'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Coffee Script Plugin
+""
+"" Description:
+""  Add features to edit coffee script files in Vim.
+"
+Bundle 'kchmck/vim-coffee-script.git'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tim Pope Amazing Plugins
+"
+" Description:
+"   Lots of goodies
+"
+" Usage:
+"   Too much information. Refer to each plugin git repo:
+"   https://github.com/tpope?tab=repositories
+"
+Bundle 'tpope/vim-rails.git'
+Bundle 'tpope/vim-markdown.git'
+Bundle 'tpope/vim-vividchalk.git'
+Bundle 'tpope/vim-haml.git'
+Bundle 'tpope/vim-endwise.git'
+Bundle 'tpope/vim-fugitive.git'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Surround Plugin
@@ -589,6 +657,16 @@ let g:tagbar_type_markdown = {
 ""  "Look ma, I'm *HTML!"     cs"<q>      <q>Look ma, I'm HTML!</q>
 ""  if *x>3 {                 ysW(        if ( x>3 ) {
 ""  my $str = *whee!;         vlllls'     my $str = 'whee!';
+""
+Bundle 'tpope/vim-surround.git'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Matchit Plugin
+""
+"" Description:
+""  Allows you to configure % to match more than just single characters.
+""
+Bundle 'vim-scripts/matchit.zip'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Vim-preview Plugin
@@ -596,10 +674,20 @@ let g:tagbar_type_markdown = {
 "" Description:
 ""  Allows to generate and preview HTML documents in a browser.
 ""
+"" Installation:
+""  - Install plugin via pathogen or vundle.
+""  - Install the following gems:
+""
+""    sudo gem install RedCloth github-markup bluecloth
+""
 "" Usage:
 ""  <leader>P will process markdown, textile, rdoc and html files and load them
 ""  in a browser.
+""
+"" Note:
+""  Disabled because I hardly use it.
 
+" Bundle 'greyblake/vim-preview.git'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " YankRing Plugin
@@ -620,6 +708,9 @@ let g:yankring_replace_n_nkey = '<C-k>'
 "   <C-P> to start search mode.
 "   <C-T> to open selected file in new tab
 "   <C-v> to open selected file in vertical split
+"
+Bundle 'kien/ctrlp.vim.git'
+
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'rc'
@@ -649,3 +740,47 @@ let g:ctrlp_custom_ignore = {
 ""   sudo gem install redcarpet pygments.rb
 ""   sudo apt-get install npm build-essential g++ automake
 ""   sudo npm -g install instant-markdown-d
+""
+"" Usage:
+""   Open a markdown file and a browser will automatically pop-up with a
+""   real-time preview of the markdown.
+""
+"" Note:
+""  Disabled because is unstable and somtimes works and sometimes doesn't. Seems
+""  the node.js process dies or cannot start on some situations.
+"
+"Bundle 'suan/vim-instant-markdown.git'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" DrawIt Plugin
+""
+"" Description:
+""  Nice plugin to create ascii diagrams on text files.
+""
+"" Usage:
+""  Very complex so read the help or go to the plugin page.
+""  https://github.com/vim-scripts/DrawIt
+Bundle 'vim-scripts/DrawIt.git'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" vim-sudo plugin
+""
+"" Description:
+""  Allow editing files as sudo without running the whole vim process as root.
+""
+"" Usage:
+""  vim sudo:/etc/passwd   (from terminal)
+""  :e sudo:/etc/passwd    (within vim)
+"
+Bundle 'vim-scripts/sudo.vim.git'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Deprecated or replaced plugins
+""
+"" Description:
+""  Plugins I used to like but have been replaced with better alternatives.
+"
+"Bundle 'scrooloose/nerdcommenter.git'
+"Bundle 'git://repo.or.cz/vcscommand.git'
+"Bundle 'pydave/AsyncCommand.git'
+"Bundle 'vim-scripts/YankRing.vim.git'
