@@ -1,6 +1,21 @@
-setlocal omnifunc=javacomplete#Complete
+setlocal omnifunc=javaapi#complete
 "setlocal completefunc=javacomplete#CompleteParamsInfo
 setlocal foldmethod=syntax
+
+au CompleteDone *.java call javaapi#showRef()
+
+if has("balloon_eval") && has("balloon_multiline")
+  au BufNewFile,BufRead *.java setl bexpr=javaapi#balloon()
+  au BufNewFile,BufRead *.java setl ballooneval
+endif
+
+let g:javaapi#delay_dirs = [
+  \ 'java-api-javax',
+  \ 'java-api-org',
+  \ 'java-api-sun',
+  \ 'java-api-servlet2.3',
+  \ 'java-api-android',
+  \ ]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Building using ant
