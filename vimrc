@@ -131,12 +131,12 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-Bundle 'git://github.com:yuratomo/java-api-complete.git'
-Bundle 'git://github.com:yuratomo/java-api-javax.git'
-Bundle 'git://github.com:yuratomo/java-api-org.git'
-Bundle 'git://github.com:yuratomo/java-api-sun.git'
-Bundle 'git://github.com:yuratomo/java-api-servlet2.3.git'
-Bundle 'git://github.com:yuratomo/java-api-android.git'
+"Bundle 'yuratomo/java-api-complete.git'
+"Bundle 'yuratomo/java-api-javax.git'
+"Bundle 'yuratomo/java-api-org.git'
+"Bundle 'yuratomo/java-api-sun.git'
+"Bundle 'yuratomo/java-api-servlet2.3.git'
+"Bundle 'yuratomo/java-api-android.git'
 Bundle 'tomtom/tcomment_vim'
 " easytags is disabled because it hangs vim when executing
 "Bundle 'xolox/easytags.git'
@@ -166,8 +166,10 @@ Bundle 'kien/ctrlp.vim.git'
 "Bundle 'vim-scripts/YankRing.vim.git'
 Bundle 'vim-scripts/VOoM.git'
 Bundle 'altercation/vim-colors-solarized.git'
-Bundle 'omnicppcomplete'
-Bundle 'matchit'
+"Bundle 'omnicppcomplete'
+Bundle 'Rip-Rip/clang_complete.git'
+Bundle 'Shougo/neocomplcache-clang_complete'
+Bundle 'vim-scripts/matchit.zip'
 
 filetype plugin indent on " Re-enable after pathogen is loaded.
 
@@ -316,6 +318,59 @@ set fencs=utf-8,euc-jp,sjis
 " keep the same s tenc.
 set encoding=utf-8
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Javacomplete Plugin
+"
+" Description:
+"   Enables omnicompletion of java classes, packages and methods.
+"
+" Installation:
+"
+"   - Install via vundle or pathogen.
+"   - Compile the Reflection.java file
+"
+"     cd ~/vim/bundle/javacomplete/autoload
+"     javac Reflection.java
+"
+"   - Add the following to ftplugin/java.vim. Create the file if
+"     it does not exists.
+"
+"     setlocal omnifunc=javacomplete#Complete
+"     setlocal completefunc=javacomplete#CompleteParamsInfo
+"
+"     If you use the NeoComplCache plugin then comment out the completefunc
+"     option so it does not conflict with NeoComplCache.
+"
+" Usage:
+"   This uses normal omnicompletion with Ctrl-X Ctrl-O to invoke the
+"   autocompletion. I recommend instead to use NeoComplCache to have automatic
+"   autocompletion.
+
+Bundle 'vim-scripts/javacomplete'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-android Plugin
+"
+" Description:
+"   Configures vim to make it easier to develop android applications.
+"
+" Installation:
+"   - Require javacomplete plugin for vim configured and running properly.
+"   - Install plugin via pathogen or vundle
+"   - Set the g:android_sdk_path to your the place you have installed the
+"     android sdk. Use absolute path.
+"
+" Usage:
+"   - If you have the javacomplete plugin correctly installed then you should be
+"     able to omnicomplete android classes, methods and imports using the 
+"     Ctrl-X Ctrl-O and Ctrl-X Ctrl-U commands. See :h omnifunc for details.
+"   - If you use NeoComplCache then the auto-completion should work
+"     automatically.
+
+Bundle 'hsanson/android-javacomplete'
+let g:android_sdk_path="/home/ryujin/Apps/android-sdk"
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Ack Plugin
 ""
@@ -394,8 +449,10 @@ nmap <silent> <leader>p :NERDTreeToggle<CR>
 "" Resources:
 ""  https://github.com/tpope/vim-fugitive
 
-set laststatus=2
-set statusline=%{fugitive#statusline()}[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
+if exists('g:loaded_fugitive') || &cp
+  set laststatus=2
+  set statusline=%{fugitive#statusline()}[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" OmniCppComplete
