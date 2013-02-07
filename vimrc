@@ -498,8 +498,10 @@ let g:easytags_python_enabled = 1
 
 let g:neocomplcache_enable_at_startup = 1             "Enable neocomplcache
 let g:neocomplcache_enable_smart_case = 1             "Use smart case
-let g:neocomplcache_enable_camel_case_completion = 1  "Use camelcase completion
-let g:neocomplcache_enable_underbar_completion = 1    "Use underbar completion
+let g:neocomplcache_enable_camel_case_completion = 0  " Disable camelcase completion
+let g:neocomplcache_enable_underbar_completion = 0    " Disable underbar completion
+let g:neocomplcache_enable_fuzzy_completion = 1       " Enable fuzzy completion
+let g:neocomplcache_auto_completion_start_length = 3
 let g:neocomplcache_min_syntax_length = 3
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
