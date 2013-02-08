@@ -351,12 +351,12 @@ Bundle 'vim-scripts/javacomplete'
 ""
 "" Usage:
 ""   - If you have the javacomplete plugin correctly installed then you should be
-""     able to omnicomplete android classes, methods and imports using the 
+""     able to omnicomplete android classes, methods and imports using the
 ""     Ctrl-X Ctrl-O and Ctrl-X Ctrl-U commands. See :h omnifunc for details.
 ""   - If you use NeoComplCache then the auto-completion should work
 ""     automatically.
 "
-Bundle 'hsanson/android-javacomplete'
+Bundle 'hsanson/vim-android'
 let g:android_sdk_path="/home/ryujin/Apps/android-sdk-r20"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -586,13 +586,27 @@ let g:easytags_python_enabled = 1
 ""    the file keywords, tags, etc.
 ""
 Bundle 'Shougo/neocomplcache.git'
-let g:neocomplcache_enable_at_startup = 0             " Enable neocomplcache
+let g:neocomplcache_enable_at_startup = 1             " Enable neocomplcache
+let g:neocomplcache_enable_auto_select = 1
 let g:neocomplcache_enable_smart_case = 1             " Use smart case
-let g:neocomplcache_enable_camel_case_completion = 0  " Disable camelcase completion
-let g:neocomplcache_enable_underbar_completion = 0    " Disable underbar completion
-let g:neocomplcache_enable_fuzzy_completion = 1       " Enable fuzzy completion
-let g:neocomplcache_auto_completion_start_length = 3
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_auto_completion_start_length = 5
 let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_use_vimproc = 1                   " Enable async cache creation
+let g:neocomplcache_enable_caching_message = 1
+let g:neocomplcache_enable_cursor_hold_i = 1
+
+" Key mappings to make neocompl auto-completion more pleasant. Once the
+" auto-complete window is open you can keep typing to narrow the options list
+" and finally press TAB or CR to select the completion.
+" http://vim.wikia.com/wiki/Make_Vim_completion_popup_menu_work_just_like_in_an_IDE
+set completeopt=longest,menuone
+inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" VOoM Plugin
@@ -837,3 +851,4 @@ Bundle 'vim-scripts/sudo.vim.git'
 "Bundle 'git://repo.or.cz/vcscommand.git'
 "Bundle 'pydave/AsyncCommand.git'
 "Bundle 'vim-scripts/YankRing.vim.git'
+
