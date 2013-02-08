@@ -84,7 +84,7 @@ set path=/usr/include,/usr/local/include,**;$HOME
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map make for easy access
-map <F5> <ESC>:silent! make<CR><C-l>
+" map <F5> <ESC>:silent! make<CR><C-l>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
