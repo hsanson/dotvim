@@ -599,14 +599,9 @@ let g:neocomplcache_enable_cursor_hold_i = 1
 
 " Key mappings to make neocompl auto-completion more pleasant. Once the
 " auto-complete window is open you can keep typing to narrow the options list
-" and finally press TAB or CR to select the completion.
+" and finally CR to select the completion.
 " http://vim.wikia.com/wiki/Make_Vim_completion_popup_menu_work_just_like_in_an_IDE
 set completeopt=longest,menuone
-inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
-  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
-  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" VOoM Plugin
