@@ -59,13 +59,20 @@ set number                            " Show line number column.
 set nobackup                          " Stop vim from creating ~ files.
 set showcmd                           " Display commands as they are typed.
 set ttyfast                           " Smoother screen redraws.
-set hlsearch                          " Highlight search results.
 set showmatch                         " Show briefly matching bracket when closing it.
 set scrolloff=9999                    " Always keep the cursor at the center of window.
+set hidden                            " Allow change buffer without saving.
+set nofoldenable                      " Disable folding that slows down auto-completion
+set foldlevelstart=99
 autocmd InsertEnter * se cul          " Highlight current line in Insert Mode.
 autocmd InsertLeave * se nocul        " Don't highlight current line in other modes.
 set switchbuf=useopen,split
 cmap w!! w !sudo tee % >/dev/null     " Save file as root
+
+set hlsearch                          " Highlight search results.
+set incsearch
+set ignorecase
+set smartcase
 
 " Set search path for gf command
 set path=/usr/include,/usr/local/include,**;$HOME
@@ -108,9 +115,10 @@ map <F7> <ESC>:cn<CR>                " Jump to next error or warn
 "" Enabling the mouse has some advantages:
 ""   - You can resize windows using the mouse instead of using Ctrl-W combinations.
 ""   - Selecting text with the mouse wont include the left numbering.
+"" Note: Mouse features do not work when running vim inside a tmux window.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set mouse=a                           " Enable the mouse.
-
+set mousehide
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Vundle Plugin
@@ -172,6 +180,11 @@ if exists('g:loaded_fugitive') || &cp
   set statusline=%{fugitive#statusline()}[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
 endif
 
+" Color wrap column
+if exists('+colorcolumn')
+  set colorcolumn=80 " Color the 80th column differently as a wrapping guide.
+endif
+
 " Show tabs and tailing spaces.
 " Note: to insert the middle point press "ctrl+k .M" in insert mode. Tha is
 " control + k followed by a <dot> and the capital M.
@@ -191,20 +204,6 @@ set expandtab
 set shiftwidth=2
 set tabstop=2
 set softtabstop=2
-
-" The next lines are needed so vim does not screw up folds when inserting text
-" that might affect them until leaving insert mode. Foldmethod is local to the
-" window. Also protect against screwing up folding when switching between
-" windows.
-" 
-" http://vim.wikia.com/wiki/Keep_folds_closed_while_inserting_text
-set foldlevelstart=20
-autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
-autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
-
-" Unfold new opened buffers
-" http://vim.wikia.com/wiki/All_folds_open_when_open_a_file
-autocmd Syntax c,cpp,vim,xml,html,xhtml,perl,java normal zR
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Improve Vim's Command Line Autocompletion
