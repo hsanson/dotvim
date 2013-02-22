@@ -349,11 +349,11 @@ Bundle 'vim-scripts/javacomplete'
 ""     android sdk. Use absolute path.
 ""
 "" Usage:
-""   - If you have the javacomplete plugin correctly installed then you should be
-""     able to omnicomplete android classes, methods and imports using the
+""   - If you have the javacomplete plugin correctly installed then you should
+""     be able to omnicomplete android classes, methods and imports using the
 ""     Ctrl-X Ctrl-O and Ctrl-X Ctrl-U commands. See :h omnifunc for details.
-""   - If you use NeoComplCache then the auto-completion should work
-""     automatically.
+""   - If you use NeoComplCache or YouCompleteMe then the auto-completion should
+""     work automatically.
 "
 Bundle 'hsanson/vim-android'
 let g:android_sdk_path="/home/ryujin/Apps/android-sdk-r20"
@@ -504,55 +504,17 @@ nmap <silent> <leader>p :NERDTreeToggle<CR>
 Bundle 'tomtom/tcomment_vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" OmniCppComplete
+"" YouCompleteMe Plugin
 ""
 "" Description:
-""  Vim comes with several omnifunctions to enable autocomplete of serveral
-""  laguages but it lacks a omnifunction for C++. This plugin add this 
-""  omnifunction to enable autocompletion of C++ code.
-""
-"" Resources:
-""  http://www.vim.org/scripts/script.php?script_id=1520
-""  http://vim.wikia.com/wiki/C%2B%2B_code_completion
-""  http://design.liberta.co.za/articles/code-completion-intellisense-for-cpp-in-vim-with-omnicppcomplete/
-""
-"" Note:
-""  I am testing the new clang_complete plugin so this one is disabled.
-"
-" Bundle 'omnicppcomplete'
-
-let OmniCpp_NamespaceSearch = 1
-let OmniCpp_GlobalScopeSearch = 1
-let OmniCpp_ShowAccess = 1
-let OmniCpp_ShowPrototypeInAbbr = 1       " show function parameters
-let OmniCpp_MayCompleteDot = 1            " autocomplete after .
-let OmniCpp_MayCompleteArrow = 1          " autocomplete after ->
-let OmniCpp_MayCompleteScope = 1          " autocomplete after ::
-let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Clang Complete
-""
-"" Description:
-""  Omnifunc for auto-completion of C and C++ code using the clang tools.
+""  New kid in the block on auto-completion goodness.
 ""
 "" Installation:
-""  - Install plugin using pathogen or vundle
-""  - Install libclang1 library:
-""      sudo apt-get install libclang1
-""  - Set the g:clang_use_library and g:clang_library_path options in your vimrc
-""  - Make sure your vim is compiled with python support in it. Use :version to
-""    check if +python/dyn or +python3/dyn are included.
-"" Note:
-""  This clang_complete plugin seems to be not working. Need more testing.
-"
-Bundle 'Rip-Rip/clang_complete.git'
-Bundle 'Shougo/neocomplcache-clang_complete'
-
-let g:clang_use_library = 1
-"let g:clang_library_path = "/usr/lib"
-let g:clang_complete_auto = 0
-let g:clang_complete_copen= 1
+""  - sudo apt-get install cmake python-dev
+""  - install YouCompleteMe plugin via Vundle.
+""  - cd ~/.vim/bundle/YouCompleteMe
+""  - ./install.sh --clang-completer
+Bundle 'Valloric/YouCompleteMe.git'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" EasyTags Plugin
@@ -572,35 +534,6 @@ let g:easytags_dynamic_files = 1
 let g:easytags_include_members = 1
 let g:easytags_resolve_links = 1
 let g:easytags_python_enabled = 1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Neocomplcache Plugin
-""
-"" Description:
-""  A auto-complete plugin that actually works!
-""
-"" Notes:
-""  - The plugin works very well but can be very slow. This is specially true
-""    when opening a file for the first time as the plugin will parse and cache
-""    the file keywords, tags, etc.
-""
-Bundle 'Shougo/neocomplcache.git'
-let g:neocomplcache_enable_at_startup = 1             " Enable neocomplcache
-let g:neocomplcache_enable_auto_select = 1
-let g:neocomplcache_enable_smart_case = 1             " Use smart case
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_auto_completion_start_length = 5
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_use_vimproc = 1                   " Enable async cache creation
-let g:neocomplcache_enable_caching_message = 1
-let g:neocomplcache_enable_cursor_hold_i = 1
-
-" Key mappings to make neocompl auto-completion more pleasant. Once the
-" auto-complete window is open you can keep typing to narrow the options list
-" and finally CR to select the completion.
-" http://vim.wikia.com/wiki/Make_Vim_completion_popup_menu_work_just_like_in_an_IDE
-set completeopt=longest,menuone
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" VOoM Plugin
@@ -675,8 +608,6 @@ let g:tagbar_type_markdown = {
 ""    let g:rubycomplete_rails = 1
 ""    let g:rubycomplete_classes_in_global = 1
 ""    setlocal omnifunc=rubycomplete#Complete
-""
-""  - Mix with neocomplcache for better user experience.
 ""
 Bundle 'vim-scripts/rubycomplete.vim.git'
 
