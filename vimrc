@@ -189,8 +189,19 @@ endif
 " Note: to insert the middle point press "ctrl+k .M" in insert mode. Tha is
 " control + k followed by a <dot> and the capital M.
 set list
-set listchars=tab:»·,trail:·,nbsp:·
+"set listchars=tab:»·,trail:·,nbsp:·
+set listchars=trail:·,nbsp:·
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Intent Guides plugin
+"
+" Description:
+"   Shows guides to easily track indent lines.
+Bundle "Yggdroot/indentLine"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tabs vs Spaces war
+"
 " By default insert spaces instead of tabs. This may be overriden by the
 " configuration inside ftplugin directory for specific file types. For example
 " makefiles require real tabs to work so override this configuration in the
