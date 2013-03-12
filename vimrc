@@ -190,7 +190,7 @@ endif
 " control + k followed by a <dot> and the capital M.
 set list
 "set listchars=tab:»·,trail:·,nbsp:·
-set listchars=trail:·,nbsp:·
+set listchars=tab:▸\ ,trail:·,nbsp:·
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Intent Guides plugin
