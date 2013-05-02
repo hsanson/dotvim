@@ -173,10 +173,14 @@ filetype plugin indent on " Re-enable after pathogen is loaded.
 ""  - Make sure your terminal supports 256 colors. Konsole does but you must set
 ""    the TERM variable to xterm-256color in the schema properties.
 ""
-syntax on                             " Enable syntax highlighting.
+"syntax on                             " Enable syntax highlighting with improved
+                                      " performance
+syntax on sync minlines=256
 set t_Co=256                          " Enable 256 color mode in terminal.
 set background=dark                   " I like dark backgrounds.
 
+" Install hybrid colorscheme
+Bundle 'w0ng/vim-hybrid.git'
 " Install and configure the solarized colorscheme
 Bundle 'altercation/vim-colors-solarized.git'
 let g:solarized_termcolors=256
