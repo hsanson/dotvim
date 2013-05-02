@@ -188,10 +188,12 @@ let g:solarized_termtrans = 1
 colors solarized
 
 " Cool status line
+set laststatus=2
 if exists('g:loaded_fugitive') || &cp
-  set laststatus=2
-  set statusline=%{fugitive#statusline()}[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
+  set statusline=%{fugitive#statusline()}
 endif
+
+set statusline+=[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
 
 " Color wrap column
 if exists('+colorcolumn')
