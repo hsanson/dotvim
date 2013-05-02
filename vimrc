@@ -311,6 +311,12 @@ set fencs=utf-8,euc-jp,sjis
 " keep the same s tenc.
 set encoding=utf-8
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Slim Plugin
+"
+" Description:
+"   Add file type detection rules and syntax highlighting for slim templates.
+Bundle 'slim-template/vim-slim.git'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Javacomplete Plugin
