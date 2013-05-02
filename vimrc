@@ -63,7 +63,7 @@ set showmatch                         " Show briefly matching bracket when closi
 set scrolloff=9999                    " Always keep the cursor at the center of window.
 "set hidden                            " Allow change buffer without saving.
 set nofoldenable                      " Disable folding that slows down auto-completion
-set foldlevelstart=99
+"set foldlevelstart=99
 autocmd InsertEnter * se cul          " Highlight current line in Insert Mode.
 autocmd InsertLeave * se nocul        " Don't highlight current line in other modes.
 set switchbuf=useopen,split
