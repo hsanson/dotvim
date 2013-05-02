@@ -689,10 +689,8 @@ Bundle 'vim-scripts/matchit.zip'
 ""  <leader>P will process markdown, textile, rdoc and html files and load them
 ""  in a browser.
 ""
-"" Note:
-""  Disabled because I hardly use it.
-
-" Bundle 'greyblake/vim-preview.git'
+Bundle 'greyblake/vim-preview.git'
+let g:PreviewBrowsers = 'chromium-browser,firefox,rekonq'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " YankRing Plugin
