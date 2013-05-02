@@ -478,7 +478,9 @@ let g:NERDTreeChDirMode = 2
 " Show bookmarks list
 let g:NERDTreeShowBookmarks = 1
 " Close NERDTree after opening a file
-let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeQuitOnOpen = 0
+" Ignore files
+let NERDTreeIgnore=['\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$' ]
 " Quick toogle tree
 nmap <silent> <leader>p :NERDTreeToggle<CR>
 
