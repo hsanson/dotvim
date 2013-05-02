@@ -346,25 +346,8 @@ Bundle 'slim-template/vim-slim.git'
 "   autocompletion. I recommend instead to use NeoComplCache to have automatic
 "   autocompletion.
 
-Bundle 'vim-scripts/javacomplete'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Java Api Complete
-"
-" Description:
-"   A java omnicomplete plugin that looks interesting and may serve as
-"   replacement for javacomplete.
-"
-" Note:
-"   Disabled because I cannot make it work. Once I have this working I will
-"   replace the old (unmaintained) javacomplete plugin with this one.
-
-"Bundle 'yuratomo/java-api-complete.git'
-"Bundle 'yuratomo/java-api-javax.git'
-"Bundle 'yuratomo/java-api-org.git'
-"Bundle 'yuratomo/java-api-sun.git'
-"Bundle 'yuratomo/java-api-servlet2.3.git'
-"Bundle 'yuratomo/java-api-android.git'
+"Bundle 'vim-scripts/javacomplete'
+Bundle 'nwertzberger/javacomplete'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" vim-android Plugin
