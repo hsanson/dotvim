@@ -144,68 +144,11 @@ set mousehide
 ""  :BundleInstall       - Install (update) bundles.
 ""  :BundleSearch foo    - Search for bundle foo
 ""  :BundleClean         - Remove unused bundles
+filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-
-filetype plugin indent on " Re-enable after pathogen is loaded.
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Filetype Settings
-""
-"" Description:
-""  For each filetype we create a ftplugin/<filetype>.vim file with settings
-""  particular to each filetype. For example we set tabs instead of spaces for
-""  python and makefile files and enable the different omnifunctions for each
-""  filetype that supports it.
-""
-"" Installation:
-""
-""  Refer to the ftplugin folder and edit the files there to your needs or add
-""  new file types if required.
-""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Look and Feel Settings
-""
-"" Prerequisites:
-""  - Make sure your terminal supports 256 colors. Konsole does but you must set
-""    the TERM variable to xterm-256color in the schema properties.
-""
-"syntax on                             " Enable syntax highlighting with improved
-                                      " performance
-syntax on sync minlines=256
-set t_Co=256                          " Enable 256 color mode in terminal.
-set background=dark                   " I like dark backgrounds.
-
-" Install hybrid colorscheme
-Bundle 'w0ng/vim-hybrid.git'
-" Install and configure the solarized colorscheme
-Bundle 'altercation/vim-colors-solarized.git'
-let g:solarized_termcolors=256
-let g:solarized_termtrans = 1
-colors solarized
-
-" Cool status line
-set laststatus=2
-if exists('g:loaded_fugitive') || &cp
-  set statusline=%{fugitive#statusline()}
-endif
-
-set statusline+=[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
-
-" Color wrap column
-if exists('+colorcolumn')
-  set colorcolumn=80 " Color the 80th column differently as a wrapping guide.
-endif
-
-" Show tabs and tailing spaces.
-" Note: to insert the middle point press "ctrl+k .M" in insert mode. Tha is
-" control + k followed by a <dot> and the capital M.
-set list
-"set listchars=tab:»·,trail:·,nbsp:·
-set listchars=tab:▸\ ,trail:·,nbsp:·
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Intent Guides plugin
@@ -782,13 +725,58 @@ Bundle 'vim-scripts/DrawIt.git'
 Bundle 'vim-scripts/sudo.vim.git'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Deprecated or replaced plugins
+"" Look and Feel Settings
+""
+"" Prerequisites:
+""  - Make sure your terminal supports 256 colors. Konsole does but you must set
+""    the TERM variable to xterm-256color in the schema properties.
+""
+"syntax on                             " Enable syntax highlighting with improved
+                                      " performance
+syntax on sync minlines=256
+set t_Co=256                          " Enable 256 color mode in terminal.
+set background=dark                   " I like dark backgrounds.
+
+" Install hybrid colorscheme
+Bundle 'w0ng/vim-hybrid.git'
+" Install and configure the solarized colorscheme
+Bundle 'altercation/vim-colors-solarized.git'
+let g:solarized_termcolors=256
+let g:solarized_termtrans = 1
+colors solarized
+
+" Cool status line
+set laststatus=2
+if exists('g:loaded_fugitive') || &cp
+  set statusline=%{fugitive#statusline()}
+endif
+
+set statusline+=[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
+
+" Color wrap column
+if exists('+colorcolumn')
+  set colorcolumn=80 " Color the 80th column differently as a wrapping guide.
+endif
+
+" Show tabs and tailing spaces.
+" Note: to insert the middle point press "ctrl+k .M" in insert mode. Tha is
+" control + k followed by a <dot> and the capital M.
+set list
+"set listchars=tab:»·,trail:·,nbsp:·
+set listchars=tab:▸\ ,trail:·,nbsp:·
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Filetype Settings
 ""
 "" Description:
-""  Plugins I used to like but have been replaced with better alternatives.
-"
-"Bundle 'scrooloose/nerdcommenter.git'
-"Bundle 'git://repo.or.cz/vcscommand.git'
-"Bundle 'pydave/AsyncCommand.git'
-"Bundle 'vim-scripts/YankRing.vim.git'
-
+""  For each filetype we create a ftplugin/<filetype>.vim file with settings
+""  particular to each filetype. For example we set tabs instead of spaces for
+""  python and makefile files and enable the different omnifunctions for each
+""  filetype that supports it.
+""
+"" Installation:
+""
+""  Refer to the ftplugin folder and edit the files there to your needs or add
+""  new file types if required.
+""
+filetype plugin indent on " Re-enable after pathogen is loaded.
