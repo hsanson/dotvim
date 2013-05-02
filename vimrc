@@ -78,6 +78,15 @@ set smartcase
 set path=/usr/include,/usr/local/include,**;$HOME
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Improve undo
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set undolevels=10000
+if has("persistent_undo")
+  set undodir=~/.vim/undo
+  set undofile
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Disable arrow keys to become vim master
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "noremap  <Up> ""
