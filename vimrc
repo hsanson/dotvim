@@ -744,15 +744,6 @@ Bundle 'altercation/vim-colors-solarized.git'
 let g:solarized_termcolors=256
 let g:solarized_termtrans = 1
 colors solarized
-
-" Cool status line
-set laststatus=2
-if exists('g:loaded_fugitive') || &cp
-  set statusline=%{fugitive#statusline()}
-endif
-
-set statusline+=[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
-
 " Color wrap column
 if exists('+colorcolumn')
   set colorcolumn=80 " Color the 80th column differently as a wrapping guide.
@@ -780,3 +771,17 @@ set listchars=tab:▸\ ,trail:·,nbsp:·
 ""  new file types if required.
 ""
 filetype plugin indent on " Re-enable after pathogen is loaded.
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Status Line
+"
+set laststatus=2
+
+if filereadable("/home/ryujin/.local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powerline.vim")
+  set rtp+=/home/ryujin/.local/lib/python2.7/site-packages/powerline/bindings/vim
+else
+  if exists('g:loaded_fugitive') || &cp
+    set statusline=%{fugitive#statusline()}
+  endif
+  set statusline+=[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
+endif
