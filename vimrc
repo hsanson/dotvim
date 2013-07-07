@@ -295,7 +295,8 @@ Bundle 'slim-template/vim-slim.git'
 "   autocompletion.
 
 "Bundle 'vim-scripts/javacomplete'
-Bundle 'nwertzberger/javacomplete'
+"Bundle 'nwertzberger/javacomplete'
+Bundle 'itszero/javacomplete'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" vim-android Plugin
@@ -478,6 +479,8 @@ Bundle 'tomtom/tcomment_vim'
 ""  - cd ~/.vim/bundle/YouCompleteMe
 ""  - ./install.sh --clang-completer
 Bundle 'Valloric/YouCompleteMe.git'
+
+let g:ycm_filetype_specific_completion_to_disable = {'java': 1 }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" EasyTags Plugin
