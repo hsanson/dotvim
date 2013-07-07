@@ -1,8 +1,8 @@
 let g:tex_flavor='latex'
 setlocal iskeyword+=:
 setlocal grepprg=grep\ -nH\ $*
-let g:tex_fold_enabled=1
-setlocal foldmethod=syntax
+let g:tex_fold_enabled=0
+setlocal foldmethod=manual
 setlocal textwidth=0    " Disable braking of long lines.
 setlocal wrap           " Enable wrap of lines pass the right window border.
 setlocal lbr            " Force wrap at word boundaries not chars
