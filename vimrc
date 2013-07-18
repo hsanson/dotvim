@@ -271,6 +271,11 @@ set encoding=utf-8
 "   Add file type detection rules and syntax highlighting for slim templates.
 Bundle 'slim-template/vim-slim.git'
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Groovy Syntax
+Bundle 'vim-scripts/groovy.vim'
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Javacomplete Plugin
 "
