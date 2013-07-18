@@ -328,7 +328,8 @@ Bundle 'itszero/javacomplete'
 ""     work automatically.
 "
 Bundle 'hsanson/vim-android'
-let g:android_sdk_path="/home/ryujin/Apps/android-sdk-r20"
+let g:android_sdk_path="/home/ryujin/Apps/android-studio/sdk"
+let g:gradle_path="/home/ryujin/Apps/gradle-1.6"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Vimproc
