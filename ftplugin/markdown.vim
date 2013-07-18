@@ -1,6 +1,6 @@
 setlocal omnifunc=htmlcomplete#CompleteTags
-setlocal textwidth=80
+setlocal textwidth=0
 setlocal wrap
 setlocal lbr
-setlocal makeprg=markdown\ %\ >/tmp/%<.html
-nmap <F5> <ESC>:silent! make<CR><C-l>
+nnoremap k gk      " Enable navigation within long lines (up)
+nnoremap j gj      " Enable navigation within long lines (down)
