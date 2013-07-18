@@ -1,7 +1,5 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" Very nice color scheme that works only in gvim
-" http://www.vim.org/scripts/script.php?script_id=415
-" Download to ~/.vim/colors
-"""""""""""""""""""""""""""""""""""""""""""""""""
-colors desert
-set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
+colors solarized
+set guifont=Inconsolata-dz\ Bold\ 10
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+"set guioptions-=r  "remove right-hand scroll bar
