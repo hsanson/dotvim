@@ -790,15 +790,14 @@ set listchars=tab:▸\ ,trail:·,nbsp:·
 filetype plugin indent on " Re-enable after pathogen is loaded.
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Status Line
+" vim_airline status line
 "
 set laststatus=2
+Bundle 'bling/vim-airline'
+let g:airline_powerline_fonts = 1
 
-if filereadable("/home/ryujin/.local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powerline.vim")
-  set rtp+=/home/ryujin/.local/lib/python2.7/site-packages/powerline/bindings/vim
-else
-  if exists('g:loaded_fugitive') || &cp
-    set statusline=%{fugitive#statusline()}
-  endif
-  set statusline+=[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
-endif
+" Uncomment the following statusline option if you do not use vim_airline
+" if exists('g:loaded_fugitive') || &cp
+"   set statusline=%{fugitive#statusline()}
+" endif
+" set statusline+=[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
