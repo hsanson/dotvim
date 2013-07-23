@@ -406,8 +406,14 @@ Bundle 'thinca/vim-logcat'
 "" Resources:
 ""   http://betterthangrep.com/
 ""   http://amaslov.wordpress.com/2009/04/23/vim-ack-instead-of-grep/
+
 Bundle 'mileszs/ack.vim.git'
-let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+if executable("ack-grep")
+  let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+  set grepprg=ack-grep\ -H\ --nocolor\ --nogroup\ --column\ $*
+else
+  setlocal grepprg=grep\ -nH\ $*
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" NERDTree Plugin
