@@ -135,7 +135,7 @@ map <F7> <ESC>:cn<CR>                " Jump to next error or warn
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set mouse=a                           " Enable the mouse.
 set mousehide
-set ttymouse=xterm2                   " Allow text selction work with tmux
+"set ttymouse=xterm2                   " Allow text selction work with tmux
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Vundle Plugin
