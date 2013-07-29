@@ -688,6 +688,7 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'rc'
 let g:ctrlp_dotfiles=1
+let g:ctrlp_reuse_window='netrw\|help\|quickfix'
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
