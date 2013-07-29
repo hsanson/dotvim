@@ -754,8 +754,12 @@ Bundle 'vim-scripts/sudo.vim.git'
 ""  - Make sure your terminal supports 256 colors. Konsole does but you must set
 ""    the TERM variable to xterm-256color in the schema properties.
 ""
-"syntax on                             " Enable syntax highlighting with improved
-                                      " performance
+
+" Stop the terminal bg color to bleed into our favorite color scheme.
+" http://snk.tuxfamily.org/log/vim-256color-bce.html
+set term=screen-256color
+
+" Enable syntax
 syntax on sync minlines=256
 set t_Co=256                          " Enable 256 color mode in terminal.
 set background=dark                   " I like dark backgrounds.
