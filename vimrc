@@ -653,7 +653,7 @@ Bundle 'vim-scripts/matchit.zip'
 ""  - Install plugin via pathogen or vundle.
 ""  - Install the following gems:
 ""
-""    sudo gem install RedCloth github-markup bluecloth
+""    sudo gem install RedCloth github-markup bluecloth redcarpet
 ""
 "" Usage:
 ""  <leader>P will process markdown, textile, rdoc and html files and load them
