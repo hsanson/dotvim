@@ -10,5 +10,5 @@ set efm=\ %#[javac]\ %#%f:%l:%c:%*\\d:%*\\d:\ %t%[%^:]%#:%m,\%A\ %#[javac]\ %f:%
 set makeprg=ant\ -find\ build.xml
 
 if android#isAndroidProject()
-  nmap <F5> <ESC>:AndroidDebugInstall<CR>
+  nmap <F5> <ESC>:AndroidInstall debug<CR>
 endif
