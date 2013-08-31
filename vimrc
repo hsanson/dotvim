@@ -625,7 +625,7 @@ Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-markdown.git'
 Bundle 'tpope/vim-vividchalk.git'
 Bundle 'tpope/vim-haml.git'
-Bundle 'tpope/vim-endwise.git'
+"Bundle 'tpope/vim-endwise.git'
 Bundle 'tpope/vim-fugitive.git'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
