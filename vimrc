@@ -408,7 +408,9 @@ Bundle 'thinca/vim-logcat'
 ""   http://amaslov.wordpress.com/2009/04/23/vim-ack-instead-of-grep/
 
 Bundle 'mileszs/ack.vim.git'
-if executable("ack-grep")
+if executable("ag")
+  let g:ackprg="ag --nogroup --nocolor --column"
+elseif executable("ack-grep")
   let g:ackprg="ack-grep -H --nocolor --nogroup --column"
   set grepprg=ack-grep\ -H\ --nocolor\ --nogroup\ --column\ $*
 else
