@@ -605,6 +605,13 @@ Bundle 'vim-scripts/rubycomplete.vim.git'
 Bundle 'kchmck/vim-coffee-script.git'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Puppet
+"
+" Description
+"   Syntax and tools for puppet file editing.
+Bundle "rodjek/vim-puppet"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tim Pope Amazing Plugins
 "
 " Description:
