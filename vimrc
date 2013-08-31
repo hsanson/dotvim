@@ -382,7 +382,7 @@ Bundle 'Shougo/vimshell'
 ""
 "" Usage:
 ""  Execute :Logcat command to open a vim pane with the logcat output.
-Bundle 'thinca/vim-logcat'
+"Bundle 'thinca/vim-logcat'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Ack Plugin
