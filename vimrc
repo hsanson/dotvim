@@ -728,9 +728,11 @@ Bundle 'kien/ctrlp.vim.git'
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'rc'
+let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_dotfiles=1
 let g:ctrlp_reuse_window='netrw\|help\|quickfix'
+let g:ctrl_use_caching=1
+let g:ctrl_clear_cache_on_exit=0
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
