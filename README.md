@@ -12,14 +12,27 @@ or RedHat.
 
 ## Installing vim from sources
 
-The vim version that comes with Ubuntu is pretty old and comes compiled with ruby-1.8 that is soon to be deprecated. To be able to use the latest features and plugins I recommend to compile vim from sources. My configuration or some plugins may fail to work using the default vim that comes with Ubuntu.
+The vim version that comes with Ubuntu is pretty old and comes compiled with 
+ruby-1.8 that is soon to be deprecated. To be able to use the latest features 
+and plugins I recommend to compile vim from sources and enable all possible
+interpreters (perl, ruby, python, and lua). My configuration or some plugins
+may fail to work using the default vim that comes with Ubuntu.
 
 Install packages required to build and use vim:
      
 ```sh
 sudo apt-get install mercurial build-essential ruby1.9.1 ruby1.9.1-dev \
    libncursesw5-dev exuberant-ctags libgtk2.0-dev libx11-dev xorg-dev  \
-   git-core wget sed ack-grep exuberant-ctags rake python-dev
+   git-core wget sed ack-grep exuberant-ctags rake python-dev tcl-dev  \
+   liblua5.1-0-dev liblua5.2-dev luajit gettext libxmu-dev libperl-dev
+```
+
+If you are in Ubuntu 13.04 vim may have issues finding the lua dev files so run
+these commands to fix it:
+
+```
+sudo ln -s /usr/include/lua5.1 /usr/include/lua
+sudo ln -s /usr/lib/x86_64-linux-gnu/liblua5.1.so /usr/lib/x86_64-linux-gnu/liblua.so
 ```
 
 Download vim source code from the mercurial repository:
@@ -35,8 +48,10 @@ Compile and install vim:
 sudo apt-get purge vim  # Uninstall Ubuntu vim if it is installed
 cd ~/Apps/vim
 ./configure --prefix=/usr/local --with-features=huge --enable-pythoninterp \
-  --enable-rubyinterp --enable-gui=gtk2 --enable-cscope --enable-multibyte \
-  --enable-cscope --with-x
+  --enable-rubyinterp --enable-gui=gtk2 --enable-perlinterp --enable-pythoninterp \
+  --with-python-config-dir=/usr/lib/python2.7/config  --enable-cscope \
+  --enable-multibyte  --enable-cscope --with-x --enable-tclinterp \
+  --enable-luainterp=dynamic --with-lua-prefix=/usr --enable-fail-if-missing
 make
 sudo make install
 hash -r  # Reset bash command cache
@@ -60,6 +75,7 @@ Then create a symbolic link to my vimrc file to your $HOME/.vimrc file:
 ```sh
 ln -s $HOME/.vim/vimrc $HOME/.vimrc
 ```
+
 ## Install all plugins I use
 
 I make use of vundle to manage my vim plugins. This way is very easy to install all the required
