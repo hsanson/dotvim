@@ -491,25 +491,30 @@ Bundle 'tomtom/tcomment_vim'
 ""
 "" Description:
 ""  New kid in the block on auto-completion goodness.
+""  I am still not sure which is better: NeoComplete or YouCompleteMe. Make
+""  you own judgement.
 ""
 "" Installation:
 ""  - sudo apt-get install cmake python-dev
 ""  - install YouCompleteMe plugin via Vundle.
 ""  - cd ~/.vim/bundle/YouCompleteMe
 ""  - ./install.sh --clang-completer
-"Bundle 'Valloric/YouCompleteMe.git'
+Bundle 'Valloric/YouCompleteMe.git'
 
-let g:ycm_filetype_specific_completion_to_disable = {'java': 1 }
+let g:ycm_filetype_specific_completion_to_disable = {'java': 0 }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" NeoComplete
 ""
 "" Description:
-""  New lua based neocomplete plugin.
+""  Auto-completion plugin based on NeoComplCache but written in lua. It is
+""  supposed to be faster than NeoComplCache.
 ""
 "" Notes:
 ""   Requires a current version of vim (> 7.3) with lua interpreter enabled.
-Bundle "Shougo/neocomplete.vim"
+""   I am still not sure which is better: NeoComplete or YouCompleteMe. Make
+""   sure you try both and make your own judgement.
+""Bundle "Shougo/neocomplete.vim"
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
