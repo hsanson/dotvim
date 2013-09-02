@@ -68,7 +68,7 @@ set nofoldenable                      " Disable folding that slows down auto-com
 "set foldlevelstart=99
 autocmd InsertEnter * se cul          " Highlight current line in Insert Mode.
 autocmd InsertLeave * se nocul        " Don't highlight current line in other modes.
-set switchbuf=useopen,split
+set switchbuf=useopen,usetab
 cmap w!! w !sudo tee % >/dev/null     " Save file as root
 
 set hlsearch                          " Highlight search results.
