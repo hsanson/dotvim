@@ -812,20 +812,27 @@ syntax on sync minlines=256
 set t_Co=256                          " Enable 256 color mode in terminal.
 set background=dark                   " I like dark backgrounds.
 
+" Install lots of colorschemes
+Bundle 'flazz/vim-colorschemes'
+
 " Install hybrid colorscheme
 Bundle 'w0ng/vim-hybrid.git'
-colors hybrid
 
 " Install and configure the solarized colorscheme
-" Bundle 'altercation/vim-colors-solarized.git'
-" let g:solarized_termcolors=256
-" let g:solarized_termtrans = 1
-" colors solarized
+Bundle 'altercation/vim-colors-solarized.git'
+"let g:solarized_termcolors=256
+"let g:solarized_termtrans = 1
+
+colors hybrid
+"colors solarized
 
 " Color wrap column
 if exists('+colorcolumn')
   set colorcolumn=80 " Color the 80th column differently as a wrapping guide.
 endif
+
+" Plugin to manipulate colorschemes
+Bundle 'biskark/vim-ultimate-colorscheme-utility'
 
 " Show tabs and tailing spaces.
 " Note: to insert the middle point press "ctrl+k .M" in insert mode. Tha is
