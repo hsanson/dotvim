@@ -736,6 +736,7 @@ let g:ctrlp_dotfiles=1
 let g:ctrlp_reuse_window='netrw\|help\|quickfix'
 let g:ctrl_use_caching=1
 let g:ctrl_clear_cache_on_exit=0
+let g:ctrl_mruf_case_sensitive=0
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
@@ -745,10 +746,12 @@ set wildignore+=*.jar,*.class
 
 "let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn)$'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|\.hg|\.svn)$',
+  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|build|\.idea|bin)$',
   \ 'file': '\.exe$\|\.so$\|\.dll$',
   \ 'link': 'current',
   \ }
+
+let g:ctrlp_extensions = ['tag']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Instant-Markdown plugin
