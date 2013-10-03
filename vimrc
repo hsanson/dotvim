@@ -453,40 +453,6 @@ let NERDTreeIgnore=['\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$', '\.o$', '\.so$
 nmap <silent> <leader>p :NERDTreeToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" NERDTree Commenter
-""
-"" Description:
-""  Easy commenting of source code.
-""
-"" Usage:
-""  - cl - Comment line or visual block
-""  - cn - Comment line or visual block forcing nesting
-""  - cs - Comment line or visual block sexily
-""  - cA - Add commend at the end of line and enter insert mode.
-""  - ca - Change comment delimiter
-""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" TComment Plugin
-"
-" Description:
-"   Easy commenting/un-commenting of source code. Some people prefer this plugin
-"   over the NerdTreeCommenter.
-"
-" Usage:
-"   gc{motion}               Toggle comments
-"   gc<Count>c{motion}       Toggle comment text with count argument
-"   gcc                      Toggle comment for current line
-"   gC{motion}               Comment region
-"   gCc                      Comment current line
-"
-"   In Visual mode:
-"
-"   gc                       Toggle comment
-"   gC                       Comment selected text
-Bundle 'tomtom/tcomment_vim'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" YouCompleteMe Plugin
 ""
 "" Description:
@@ -663,6 +629,8 @@ Bundle 'tpope/vim-vividchalk.git'
 Bundle 'tpope/vim-haml.git'
 "Bundle 'tpope/vim-endwise.git'
 Bundle 'tpope/vim-fugitive.git'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-commentary'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Surround Plugin
