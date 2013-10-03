@@ -835,6 +835,9 @@ if exists('+colorcolumn')
 endif
 
 " Plugin to manipulate colorschemes
+"  - <leader><leader>f and <leader><leader>F  cicle favorite color schemes
+"  - <leader><leader>n and <leader><leader>N  cicle all color schemes
+"  - <leader><leader>a and <leader><leader>A  add/remove color from favorites
 Bundle 'biskark/vim-ultimate-colorscheme-utility'
 
 " Show tabs and tailing spaces.
