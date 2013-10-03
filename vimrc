@@ -63,7 +63,7 @@ set showmatch                         " Show briefly matching bracket when closi
 set scrolloff=9999                    " Always keep the cursor at the center of window.
 set lazyredraw                        " Improve performance
 set synmaxcol=200                     " Improve scroll performance with long lines
-"set hidden                            " Allow change buffer without saving.
+"set hidden                           " Allow change buffer without saving.
 set nofoldenable                      " Disable folding that slows down auto-completion
 set nrformats=                        " Stop vim from treating zero padded numbers as octal
 "set foldlevelstart=99
@@ -109,7 +109,6 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map make for easy access
 " map <F5> <ESC>:silent! make<CR><C-l>
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Improve QuickFix Window
@@ -158,6 +157,16 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Custom text objects
+"
+" Vim text-objs are important for fast editing of text. Defining new text
+" objects allow operators to work on blocks of texts other than chars, words and
+" paragraphs.
+Bundle 'kana/vim-textobj-user'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'kana/vim-textobj-function'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Intent Guides plugin
