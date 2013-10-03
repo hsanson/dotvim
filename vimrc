@@ -65,6 +65,7 @@ set lazyredraw                        " Improve performance
 set synmaxcol=200                     " Improve scroll performance with long lines
 "set hidden                            " Allow change buffer without saving.
 set nofoldenable                      " Disable folding that slows down auto-completion
+set nrformats=                        " Stop vim from treating zero padded numbers as octal
 "set foldlevelstart=99
 autocmd InsertEnter * se cul          " Highlight current line in Insert Mode.
 autocmd InsertLeave * se nocul        " Don't highlight current line in other modes.
