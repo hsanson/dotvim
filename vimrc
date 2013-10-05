@@ -642,6 +642,8 @@ Bundle 'tpope/vim-haml.git'
 Bundle 'tpope/vim-fugitive.git'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-characterize'
+Bundle 'tpope/vim-speeddating'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Surround Plugin
