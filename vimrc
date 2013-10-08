@@ -134,7 +134,7 @@ map <F7> <ESC>:cn<CR>                " Jump to next error or warn
 ""   - Selecting text with the mouse wont include the left numbering.
 "" Note: Mouse features do not work when running vim inside a tmux window.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set mouse=a                           " Enable the mouse.
+set mouse=nv                           " Enable the mouse.
 set mousehide
 "set ttymouse=xterm2                   " Allow text selction work with tmux
 
@@ -168,6 +168,9 @@ Bundle 'gmarik/vundle'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'kana/vim-textobj-function'
+Bundle 'rbonvall/vim-textobj-latex'
+
+Bundle 'joeytwiddle/sexy_scroller.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Intent Guides plugin
@@ -317,7 +320,9 @@ Bundle 'vim-scripts/groovy.vim'
 
 "Bundle 'vim-scripts/javacomplete'
 "Bundle 'nwertzberger/javacomplete'
-Bundle 'itszero/javacomplete'
+"Bundle 'itszero/javacomplete'
+"Bundle 'adragomir/javacomplete'
+"Bundle 'vim-scripts/javaimports.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" vim-android Plugin
@@ -477,8 +482,8 @@ nmap <silent> <leader>p :NERDTreeToggle<CR>
 ""  - cd ~/.vim/bundle/YouCompleteMe
 ""  - ./install.sh --clang-completer
 Bundle 'Valloric/YouCompleteMe.git'
-
-let g:ycm_filetype_specific_completion_to_disable = {'java': 0 }
+let g:EclimCompletionMethod = 'omnifunc'
+"let g:ycm_filetype_specific_completion_to_disable = {'java': 0 }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" NeoComplete
@@ -800,12 +805,15 @@ set background=dark                   " I like dark backgrounds.
 Bundle 'w0ng/vim-hybrid.git'
 Bundle 'lsdr/monokai'
 Bundle 'altercation/vim-colors-solarized.git'
+Bundle '29decibel/codeschool-vim-theme'
+Bundle 'oguzbilgic/sexy-railscasts-theme'
+Bundle 'davidkariuki/sexy-railscasts-256-theme'
 
 " Solarized color scheme configuration
 let g:solarized_termcolors=256
 let g:solarized_termtrans = 1
 
-colors hybrid
+colors sexy-railscasts
 "colors solarized
 
 " Color wrap column
