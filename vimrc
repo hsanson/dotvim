@@ -3,50 +3,48 @@
 ""  This vimrc is my default vim configuration file.
 ""
 "" Prerequisites:
-""  - This configuration has been tested only on Ubuntu/Kubuntu version 10.10 
-""    and 11.10. It may work in lower Ubuntu versions and other Debian 
-""    distributions but there is no guarantee.
+""  - This configuration has been tested only on Ubuntu/Kubuntu 10.10 or later.
+""    It may work in lower Ubuntu versions and other Debian distributions but
+""    there is no guarantee.
 ""
 "" Installation:
 ""
-""  - Vim in Ubuntu comes compiled with ruby 1.8 that is soon to be deprecated.
-""    For this reason I recomend installing vim from source:
+""  - The vim packaged with Ubuntu is a little bit outdated and uses old libs
+""    like ruby1.8. To get the best experience it is recommended to install vim
+""    from sources.
 ""
-""    - Install packages required to build and use vim:
+""  - Install packages required to build and use vim:
 ""
-""      sudo apt-get install mercurial build-essential ruby1.9.1 ruby1.9.1-dev \
-""         libncursesw5-dev exuberant-ctags libgtk2.0-dev libx11-dev xorg-dev  \
-""         git-core wget sed ack-grep exuberant-ctags rake python2.7-dev
+""    sudo apt-get install mercurial gettext libncurses5-dev libxmu-dev \
+""      libgtk2.0-dev libperl-dev python-dev python2.7-dev ruby-dev tcl-dev \
+""      liblua5.1-0-dev liblua5.2-dev luajit build-essential ruby1.9.1 \
+""      ruby1.9.1-dev exuberant-ctags libx11-dev xorg-dev git-core wget sed \
+""      ack-grep
 ""
-""    - Download vim source code from mercurial
+""  - Fix lua links
 ""
-""      hg clone https://vim.googlecode.com/hg/ ~/source/vim
+""      sudo ln -s /usr/include/lua5.1 /usr/include/lua
+""      sudo ln -s /usr/lib/x86_64-linux-gnu/liblua5.1.so /usr/lib/x86_64-linux-gnu/liblua.so
 ""
-""    - Compile vim
+""  - Download vim source code from mercurial
 ""
-""      ./configure --prefix=/usr/local --with-features=huge --enable-pythoninterp \
-""          --enable-rubyinterp --enable-gui=gtk2 --enable-cscope --enable-multibyte \
-""          --enable-cscope --with-x --enable-pythoninterp \
-""          --with-python-config-dir=/usr/lib/python2.7/config
+""      hg clone https://code.google.com/p/vim  ~/vim
+""
+""  - Compile vim
+""
+""      ./configure --prefix=/usr/local --with-features=huge \
+""          --enable-pythoninterp --enable-rubyinterp --enable-gui=gtk2 \
+""          --enable-perlinterp --enable-pythoninterp \
+""          --with-python-config-dir=/usr/lib/python2.7/config  \
+""          --enable-cscope --enable-multibyte  --enable-cscope --with-x \
+""          --enable-tclinterp --enable-luainterp=dynamic \
+""          --with-lua-prefix=/usr --enable-fail-if-missing
 ""      make
 ""      sudo make install
 ""
-""  - Clone my vim configuration repository
-""
-""    rm -rf ~/.vim ~/.vimrc  # This will delete all your current vim configuration!!
-""    git clone .........  ~/.vim
-""
-""  - Create a symlink to the vimrc file
-""
-""    ln -s $(HOME)/.vim/vimrc $(HOME)/.vimrc
-""
-""  - Update the submodules
-""
-""    cd $(HOME)/.vim
-""    git submodule update all
-""
-""  - Now make sure you read this file section by section since there are some
-""  additional steps needed to get a fully functional vimrc configuration.
+""  Usage:
+""    Don't copy this vim repo and expect it work for you. Use this vimrc as
+""    example to build your own vimrc.
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
