@@ -808,6 +808,7 @@ Bundle 'altercation/vim-colors-solarized.git'
 Bundle '29decibel/codeschool-vim-theme'
 Bundle 'oguzbilgic/sexy-railscasts-theme'
 Bundle 'davidkariuki/sexy-railscasts-256-theme'
+Bundle 'zeis/vim-kolor'
 
 " Solarized color scheme configuration
 let g:solarized_termcolors=256
