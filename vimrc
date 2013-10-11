@@ -814,7 +814,7 @@ Bundle 'zeis/vim-kolor'
 let g:solarized_termcolors=256
 let g:solarized_termtrans = 1
 
-colors sexy-railscasts
+colors sexy-railscasts-256
 "colors solarized
 
 " Color wrap column
