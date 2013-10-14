@@ -826,7 +826,8 @@ colors sexy-railscasts-256
 " control + k followed by a <dot> and the capital M.
 set list
 "set listchars=tab:»·,trail:·,nbsp:·
-set listchars=tab:▸\ ,trail:·,nbsp:·
+"set listchars=tab:▸\ ,trail:·,nbsp:·
+exec "set lcs=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Filetype Settings
