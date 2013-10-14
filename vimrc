@@ -233,9 +233,13 @@ set textwidth=80    " Force wrap for lines longer than 80 characters
 "nnoremap k gk      " Enable navigation within long lines (up)
 "nnoremap j gj      " Enable navigation within long lines (down)
 
-"" Mark the textwidth column with a white color to know when we passed the limit.
-"" set colorcolumn=+0,+1,+2,+3
-"" highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
+"" Mark with a different background the column 81 for lines that pass over that
+"" limit.
+if exists('+colorcolumn')
+  highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
+  call matchadd('ColorColumn', '\%81v', 100)
+endif
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Character encoding settings
@@ -816,11 +820,6 @@ let g:solarized_termtrans = 1
 
 colors sexy-railscasts-256
 "colors solarized
-
-" Color wrap column
-if exists('+colorcolumn')
-  set colorcolumn=80 " Color the 80th column differently as a wrapping guide.
-endif
 
 " Show tabs and tailing spaces.
 " Note: to insert the middle point press "ctrl+k .M" in insert mode. Tha is
