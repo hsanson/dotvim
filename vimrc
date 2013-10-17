@@ -406,8 +406,20 @@ Bundle 'Shougo/vimshell'
 "" Ack Plugin
 ""
 "" Description:
-""  This plugin allows vim to use the faster and easier ack-grep tool for
-""  searching inside files.
+""  This plugin allows search of your code files using grep, ack or ag depending
+""  on which one is installed. It gives priority to ag, then ack and finally
+""  grep.
+""
+"" Installation:
+""  If you want to use ack for searching make sure you install the ack-grep
+""  package in your box. If you prefer ag (a.k.a Silver Searcher) then install
+""  the silversearcher-ag package. If you have Ubuntu 13.04 or less then the
+""  silversearcher-ag package is not available so to intall follow these steps:
+""
+""    apt-get install software-properties-common
+""    apt-add-repository ppa:mizuno-as/silversearcher-ag
+""    apt-get update
+""    apt-get install silversearcher-ag
 ""
 "" Usage:
 ""  - :Ack [options] {pattern} [{directory}]
@@ -424,6 +436,7 @@ Bundle 'Shougo/vimshell'
 "" Resources:
 ""   http://betterthangrep.com/
 ""   http://amaslov.wordpress.com/2009/04/23/vim-ack-instead-of-grep/
+""   https://github.com/ggreer/the_silver_searcher
 
 Bundle 'mileszs/ack.vim.git'
 if executable("ag")
