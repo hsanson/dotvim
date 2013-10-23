@@ -496,8 +496,7 @@ nmap <silent> <leader>p :NERDTreeToggle<CR>
 ""  - install YouCompleteMe plugin via Vundle.
 ""  - cd ~/.vim/bundle/YouCompleteMe
 ""  - ./install.sh --clang-completer
-Bundle 'Valloric/YouCompleteMe.git'
-let g:EclimCompletionMethod = 'omnifunc'
+"Bundle 'Valloric/YouCompleteMe.git'
 "let g:ycm_filetype_specific_completion_to_disable = {'java': 0 }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -511,27 +510,17 @@ let g:EclimCompletionMethod = 'omnifunc'
 ""   Requires a current version of vim (> 7.3) with lua interpreter enabled.
 ""   I am still not sure which is better: NeoComplete or YouCompleteMe. Make
 ""   sure you try both and make your own judgement.
-""Bundle "Shougo/neocomplete.vim"
+Bundle "Shougo/neocomplete.vim"
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
-if exists('g:loaded_neocomplete')
-  inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-  function! s:my_cr_function()
-    return neocomplete#smart_close_popup() . "\<CR>"
-    " For no inserting <CR> key.
-    "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-  endfunction
-  " <TAB>: completion.
-  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-  " <C-h>, <BS>: close popup and delete backword char.
-  inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-  inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-  inoremap <expr><C-y>  neocomplete#close_popup()
-  inoremap <expr><C-e>  neocomplete#cancel_popup()
-endif
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplete#smart_close_popup() . "\<CR>"
+endfunction
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -833,6 +822,9 @@ let g:solarized_termtrans = 1
 
 colors sexy-railscasts-256
 "colors solarized
+
+" Apply some color to the popup menu used for auto-completion.
+highlight Pmenu ctermbg=203 gui=bold
 
 " Show tabs and tailing spaces.
 " Note: to insert the middle point press "ctrl+k .M" in insert mode. Tha is
