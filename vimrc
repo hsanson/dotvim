@@ -754,6 +754,8 @@ let g:yankring_replace_n_nkey = '<C-k>'
 "     - <leader>sdp - Show stored procedures
 "
 Bundle 'krisajenkins/dbext.vim'
+let  g:dbext_default_history_file = '$HOME/.dbext_sql_history.txt'
+let  g:dbext_default_history_size = 1000
 
 " If you share your vim configuration files make sure you keep your database
 " profiles in a separate file. We don't want to share all our databases IP
