@@ -708,6 +708,59 @@ let g:yankring_replace_n_pkey = '<C-j>'
 let g:yankring_replace_n_nkey = '<C-k>'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Database Access Plugin
+"
+" Description:
+"   This is an amazing plugin that allows you to work with SQL databases within
+"   vim. You can write queries in a buffer and execute them on your databases
+"   getting the results in a split window.
+"
+" Installation:
+"   Depending on the database you wish to use you may need to install different
+"   SQL client tools:
+"
+"   - MySQL install unixodbc package
+"   - PostgresSQL install postgresql-client-common
+"   - Sqlite install sqlite3
+"
+"   You may also like to create some connection profiles for your different
+"   databases. For this simply add a line like this to your vimrc:
+"
+"   let g:dbext_default_profile_<name>='type=MYSQL:user=<user>:passwd=<pass>:dbname=<dbname>:extra=--batch --raw --silent -t'
+"
+"   replace the <name>, <user>, <pass> and <dbname> with your connection
+"   parameters and then in a vim buffer run :DBPromptForBufferParameters to
+"   select the profile you want to use.
+"
+" Usage:
+"   - Create a dbext default profile with the details of the databases you want to
+"     connect to.
+"   - Use the DBPromptForBufferParameters command to setup the database
+"     connection.
+"   - Write some SQL statements in the current buffer and position your cursor
+"     on top of it.
+"   - Use any of the following commands in normal mode to execute the query. If
+"     your query is large you can format it to expand multiple line. Only make
+"     sure you end the query with ";"
+"
+"     - <leader>sel - SQL Execute current line
+"     - <leader>se  - SQL Execute (use this if the query expands multiple lines)
+"
+"   - If your cursor is on a table name you may use:
+"
+"     - <leader>st  - Select everything from table
+"     - <leader>sT  - Same as st but it will prompt you to input a limit value.
+"     - <leader>std - Describe table
+"     - <leader>sdp - Show stored procedures
+"
+Bundle 'krisajenkins/dbext.vim'
+
+" If you share your vim configuration files make sure you keep your database
+" profiles in a separate file. We don't want to share all our databases IP
+" addreses, user and passwords.
+source ~/.dbext_profiles
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ctrlp Plugin
 " 
 " Description:
