@@ -634,6 +634,10 @@ Bundle 'kchmck/vim-coffee-script.git'
 Bundle "rodjek/vim-puppet"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Go Plugin
+Bundle "jnwhiteh/vim-golang"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tim Pope Amazing Plugins
 "
 " Description:
