@@ -516,11 +516,11 @@ let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplete#smart_close_popup() . "\<CR>"
-endfunction
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+"function! s:my_cr_function()
+"  return neocomplete#smart_close_popup() . "\<CR>"
+"endfunction
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -712,7 +712,7 @@ let g:yankring_replace_n_pkey = '<C-j>'
 let g:yankring_replace_n_nkey = '<C-k>'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Database Access Plugin
+" Amazing nice plugin to work with Databases
 "
 " Description:
 "   This is an amazing plugin that allows you to work with SQL databases within
@@ -727,35 +727,37 @@ let g:yankring_replace_n_nkey = '<C-k>'
 "   - PostgresSQL install postgresql-client-common
 "   - Sqlite install sqlite3
 "
-"   You may also like to create some connection profiles for your different
-"   databases. For this simply add a line like this to your vimrc:
-"
-"   let g:dbext_default_profile_<name>='type=MYSQL:user=<user>:passwd=<pass>:dbname=<dbname>:extra=--batch --raw --silent -t'
-"
-"   replace the <name>, <user>, <pass> and <dbname> with your connection
-"   parameters and then in a vim buffer run :DBPromptForBufferParameters to
-"   select the profile you want to use.
-"
 " Usage:
-"   - Create a dbext default profile with the details of the databases you want to
-"     connect to.
-"   - Use the DBPromptForBufferParameters command to setup the database
-"     connection.
-"   - Write some SQL statements in the current buffer and position your cursor
-"     on top of it.
-"   - Use any of the following commands in normal mode to execute the query. If
-"     your query is large you can format it to expand multiple line. Only make
-"     sure you end the query with ";"
 "
-"     - <leader>sel - SQL Execute current line
-"     - <leader>se  - SQL Execute (use this if the query expands multiple lines)
+"  - Create a connection profile for each DB you want to connect. For this add a
+"    line like below to your vimrc:
 "
-"   - If your cursor is on a table name you may use:
+"    let g:dbext_default_profile_<name>='type=MYSQL:user=<user>:passwd=<pass>:dbname=<dbname>:extra=--batch --raw --silent -t'
 "
-"     - <leader>st  - Select everything from table
-"     - <leader>sT  - Same as st but it will prompt you to input a limit value.
-"     - <leader>std - Describe table
-"     - <leader>sdp - Show stored procedures
+"    replace the <name>, <user>, <pass> and <dbname> with your connection
+"    parameters and then in a vim buffer run :DBPromptForBufferParameters to
+"    select the profile you want to use.
+"
+"  - With the profiles in place you can open any vim buffer and connect to the
+"    database using:
+"
+"    :DBPromptForBufferParameters or <leader>sbp
+"
+"  - You can also add a profile comment at the top of a file so the connection
+"    is establish when you open it:
+"
+"    // dbext:profile=<name>
+"
+"  - Use the following commands to execute queries on the dabatase:
+"
+"    - <leader>se  - SQL Execute (use this if the query expands multiple lines)
+"    - <leader>sel - SQL Execute current line.
+"    - <leader>st  - Select everything from table under cursor
+"    - <leader>sT  - Same as st but it will prompt you to input a limit value.
+"    - <leader>std - Describe table under cursor
+"    - <leader>slt - List tables in the database
+"    - <leader>slc - Add list of columns of table under cursor to the copy register.
+"    - <leader>sdp - Show stored procedures
 "
 Bundle 'krisajenkins/dbext.vim'
 let  g:dbext_default_history_file = '$HOME/.dbext_sql_history.txt'
