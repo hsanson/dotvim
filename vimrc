@@ -42,6 +42,15 @@
 ""      make
 ""      sudo make install
 ""
+""  - Install vundle
+""
+""    mkdir -p ~/.vim/bundle
+""    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+""
+""  - Update the plugins via vundle
+""
+""    vim +BundleInstall +qall
+""
 ""  Usage:
 ""    Don't copy this vim repo and expect it work for you. Use this vimrc as
 ""    example to build your own vimrc.
