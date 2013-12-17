@@ -505,7 +505,7 @@ nmap <silent> <leader>p :NERDTreeToggle<CR>
 ""  - install YouCompleteMe plugin via Vundle.
 ""  - cd ~/.vim/bundle/YouCompleteMe
 ""  - ./install.sh --clang-completer
-"Bundle 'Valloric/YouCompleteMe.git'
+Bundle 'Valloric/YouCompleteMe.git'
 "let g:ycm_filetype_specific_completion_to_disable = {'java': 0 }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -519,7 +519,7 @@ nmap <silent> <leader>p :NERDTreeToggle<CR>
 ""   Requires a current version of vim (> 7.3) with lua interpreter enabled.
 ""   I am still not sure which is better: NeoComplete or YouCompleteMe. Make
 ""   sure you try both and make your own judgement.
-Bundle "Shougo/neocomplete.vim"
+"Bundle "Shougo/neocomplete.vim"
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
