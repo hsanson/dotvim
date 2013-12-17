@@ -885,6 +885,7 @@ Bundle '29decibel/codeschool-vim-theme'
 Bundle 'oguzbilgic/sexy-railscasts-theme'
 Bundle 'davidkariuki/sexy-railscasts-256-theme'
 Bundle 'zeis/vim-kolor'
+Bundle 'chrisbra/color_highlight'
 
 " Solarized color scheme configuration
 let g:solarized_termcolors=256
