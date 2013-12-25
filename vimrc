@@ -644,7 +644,16 @@ Bundle "rodjek/vim-puppet"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Go Plugin
-Bundle "jnwhiteh/vim-golang"
+"
+" Description:
+"   Nice plugin with all we need to comfortably develop Go apps in vim
+"
+" Intallation:
+"   To get auto-completion make sure you have gocode installed
+"
+"     go get -u github.com/nsf/gocode
+"
+Bundle "fsouza/go.vim"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tim Pope Amazing Plugins
