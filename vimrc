@@ -336,6 +336,13 @@ Bundle 'vim-scripts/groovy.vim'
 "Bundle 'vim-scripts/javaimports.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-im Plugin
+"
+" Description:
+"   Disables input methods when leaving insert mode
+Bundle 'hsanson/vim-im'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" vim-android Plugin
 ""
 "" Description:
