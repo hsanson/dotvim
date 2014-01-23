@@ -343,6 +343,18 @@ Bundle 'vim-scripts/groovy.vim'
 Bundle 'hsanson/vim-im'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-resize Plugin
+"
+" Description:
+"  Enables more fluid resizing of split windows
+Bundle 'hsanson/vim-resize'
+
+nnoremap <C-k> :ResizeUp<CR>
+noremap <C-j> :ResizeDown<CR>
+noremap <C-h> :ResizeLeft<CR>
+noremap <C-l> :ResizeRight<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" vim-android Plugin
 ""
 "" Description:
