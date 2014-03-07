@@ -296,6 +296,36 @@ set encoding=utf-8
 "   Add file type detection rules and syntax highlighting for slim templates.
 Bundle 'slim-template/vim-slim.git'
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Latex Plugin
+"
+" Description:
+"   Simple but full featured plugin for writing LaTeX document in vim.
+"
+" Usage:
+"
+"   -  \ll  ->  Compile document
+"   -  \lc  ->  Clean auxiliar files
+"   -  \lv  ->  View compiled document
+"   -  \le  ->  Load log in quickfix window
+
+Bundle 'LaTeX-Box-Team/LaTeX-Box'
+let g:LatexBox_completion_close_braces = 1
+let g:LatexBox_latexmk_async = 0
+"let g:LatexBox_latexmk_preview_continuously = 1
+let g:LatexBox_quickfix = 2
+let g:LatexBox_autojump = 1
+
+" Add custom search paths
+"   TEXINPUTS Path to search for .tex files
+"   BSTINPUTS Path to search for .bst files
+"   BIBINPUTS Path to search for .bib files
+let g:LatexBox_latexmk_env="TEXINPUTS=:${PWD}//: BSTINPUTS=:${PWD}//: BIBINPUTS=:${PWD}//: "
+
+let g:LatexBox_build_dir = "build"
+let g:LatexBox_latexmk_options = "-latex='xelatex %O %S' -jobname=build/main"
+let g:LatexBox_viewer = "okular --unique"
+let g:ycm_semantic_triggers = { 'tex': ['cite{'] }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Groovy Syntax
