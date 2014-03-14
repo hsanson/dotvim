@@ -102,18 +102,6 @@ if has("persistent_undo")
   set undofile
 endif
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Disable arrow keys to become vim master
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"noremap  <Up> ""
-"noremap! <Up> <Esc>
-"noremap  <Down> ""
-"noremap! <Down> <Esc>
-"noremap  <Left> ""
-"noremap! <Left> <Esc>
-"noremap  <Right> ""
-"noremap! <Right> <Esc>
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map make for easy access
 " map <F5> <ESC>:silent! make<CR><C-l>
@@ -178,6 +166,30 @@ Bundle 'kana/vim-textobj-function'
 Bundle 'rbonvall/vim-textobj-latex'
 
 Bundle 'joeytwiddle/sexy_scroller.vim'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Buffer and Tab navigation
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Easily switch between open tabs
+nnoremap <TAB> :tabnext<CR>
+nnoremap <S-TAB> :tabprev<CR>
+
+" Enables more fluid resizing of split windows
+Bundle 'hsanson/vim-resize'
+nnoremap <C-k> :ResizeUp<CR>
+nnoremap <C-j> :ResizeDown<CR>
+nnoremap <C-h> :ResizeLeft<CR>
+nnoremap <C-l> :ResizeRight<CR>
+
+" Add map to redraw screen as we use the default <C-l> for resizing splits.
+nnoremap <Leader>r :redraw!<CR>
+
+" Train to be a vim ninja
+noremap  <Up> :ResizeUp<CR>
+noremap  <Down> :ResizeDown<CR>
+noremap  <Left> :ResizeLeft<CR>
+noremap  <Right> :ResizeRight<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Intent Guides plugin
@@ -408,18 +420,6 @@ Bundle 'vim-scripts/groovy.vim'
 " Description:
 "   Disables input methods when leaving insert mode
 Bundle 'hsanson/vim-im'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-resize Plugin
-"
-" Description:
-"  Enables more fluid resizing of split windows
-Bundle 'hsanson/vim-resize'
-
-nnoremap <C-k> :ResizeUp<CR>
-noremap <C-j> :ResizeDown<CR>
-noremap <C-h> :ResizeLeft<CR>
-noremap <C-l> :ResizeRight<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" vim-android Plugin
