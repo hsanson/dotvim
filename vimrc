@@ -302,11 +302,20 @@ Bundle 'slim-template/vim-slim.git'
 " Description:
 "   Simple but full featured plugin for writing LaTeX document in vim.
 "
+" Prerequisites:
+"  If you want to compile using Xelatex instead of simple latex make sure to
+"  create a .latexmkrc file inside the project folder that contains:
+"
+"    $pdflatex=q/xelatex -synctex=1 %O %S/
+"
+"  also ensure the build directory exists or the build process would fail.
+"
 " Usage:
 "
 "   -  \ll  ->  Compile document
 "   -  \lc  ->  Clean auxiliar files
 "   -  \lv  ->  View compiled document
+"   -  \lo  ->  Use synctex to jump to the same section in PDF file
 "   -  \le  ->  Load log in quickfix window
 
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
@@ -315,6 +324,7 @@ let g:LatexBox_latexmk_async = 0
 "let g:LatexBox_latexmk_preview_continuously = 1
 let g:LatexBox_quickfix = 2
 let g:LatexBox_autojump = 1
+let g:LatexBox_show_warnings = 1
 
 " Add custom search paths
 "   TEXINPUTS Path to search for .tex files
@@ -323,9 +333,36 @@ let g:LatexBox_autojump = 1
 let g:LatexBox_latexmk_env="TEXINPUTS=:${PWD}//: BSTINPUTS=:${PWD}//: BIBINPUTS=:${PWD}//: "
 
 let g:LatexBox_build_dir = "build"
-let g:LatexBox_latexmk_options = "-latex='xelatex %O %S' -jobname=build/main"
+"let g:LatexBox_latexmk_options = "-pdflatex='xelatex %O %S' -latex='xelatex %O %S' -jobname=build/main"
+let g:LatexBox_latexmk_options = "-jobname=build/main"
 let g:LatexBox_viewer = "okular --unique"
 let g:ycm_semantic_triggers = { 'tex': ['cite{'] }
+
+""
+" Function that opens the output file and uses synctex to jump to the section
+" that corresponds to the current line in the tex document.
+function! LatexBox_View2()
+  let outfile = LatexBox_GetOutputFile()
+  if !filereadable(outfile)
+    echomsg fnamemodify(outfile, ':.') . ' is not readable'
+    return
+  endif
+  let outfile2 = outfile . '\#src:' . line(".") . expand("%:p")
+  let cmd = g:LatexBox_viewer . ' ' . shellescape(outfile2)
+  if has('win32')
+    let cmd = '!start /b' . cmd . ' >nul'
+  else
+    let cmd = '!' . cmd . ' &>/dev/null &'
+  endif
+  silent execute cmd
+  if !has("gui_running")
+    redraw!
+  endif
+endfunction
+
+command! LatexView2 call LatexBox_View2()
+
+map <buffer> <LocalLeader>lo :LatexView2<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Groovy Syntax
