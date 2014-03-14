@@ -462,7 +462,7 @@ let g:gradle_path="/home/ryujin/Apps/gradle-1.6"
 ""
 ""    sudo apt-get install build-essentials
 "
-Bundle 'Shougo/vimproc'
+"Bundle 'Shougo/vimproc'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" VimShell
@@ -478,7 +478,7 @@ Bundle 'Shougo/vimproc'
 ""
 "" Usage:
 ""  Call :VimShell to get an interactive shell where you can input commands.
-Bundle 'Shougo/vimshell'
+"Bundle 'Shougo/vimshell'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
