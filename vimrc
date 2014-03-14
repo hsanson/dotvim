@@ -975,6 +975,7 @@ set background=dark                   " I like dark backgrounds.
 " Install nice colorschemes
 Bundle 'w0ng/vim-hybrid.git'
 Bundle 'lsdr/monokai'
+Bundle 'tomasr/molokai'
 Bundle 'altercation/vim-colors-solarized.git'
 Bundle '29decibel/codeschool-vim-theme'
 Bundle 'oguzbilgic/sexy-railscasts-theme'
@@ -986,7 +987,11 @@ Bundle 'chrisbra/color_highlight'
 let g:solarized_termcolors=256
 let g:solarized_termtrans = 1
 
-colors sexy-railscasts-256
+" Molokai color scheme configuration
+let g:rehash256 = 1
+
+colors molokai
+"colors sexy-railscasts-256
 "colors solarized
 
 " Apply some color to the popup menu used for auto-completion.
