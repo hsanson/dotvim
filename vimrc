@@ -535,12 +535,12 @@ let g:gradle_path="/home/ryujin/Apps/gradle-1.6"
 
 Bundle 'mileszs/ack.vim.git'
 if executable("ag")
-  let g:ackprg="ag --nogroup --nocolor --column"
+  let g:ackprg="ag --nocolor --nogroup --column "
+  let g:ack_wildignore = 0
+elseif executable("ack")
+  let g:ackprg="ack -H --nocolor --nogroup --column "
 elseif executable("ack-grep")
-  let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-  set grepprg=ack-grep\ -H\ --nocolor\ --nogroup\ --column\ $*
-else
-  setlocal grepprg=grep\ -nH\ $*
+  let g:ackprg="ack-grep -H --nocolor --nogroup --column "
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
