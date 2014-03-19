@@ -619,6 +619,16 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-tags plugin
+Bundle 'szw/vim-tags'
+let g:vim_tags_auto_generate = 1
+let g:vim_tags_use_vim_dispatch = 1
+let g:vim_tags_use_ycm = 1
+let g:vim_tags_ignore_files = ['.gitignore', '.svnignore', '.cvsignore']
+let g:vim_tags_directories = ['.git', '.svn', 'CVS']
+let g:vim_tags_main_file = '.tags'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" EasyTags Plugin
 ""
 "" Description:
@@ -761,6 +771,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-characterize'
 Bundle 'tpope/vim-speeddating'
+Bundle 'tpope/vim-dispatch'
 
 Bundle 'Raimondi/delimitMate'
 
