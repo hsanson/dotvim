@@ -19,7 +19,7 @@
 ""      libgtk2.0-dev libperl-dev python-dev python2.7-dev ruby-dev tcl-dev \
 ""      liblua5.1-0-dev liblua5.2-dev luajit build-essential ruby1.9.1 \
 ""      ruby1.9.1-dev exuberant-ctags libx11-dev xorg-dev git-core wget sed \
-""      ack-grep
+""      ack-grep python-ibus
 ""
 ""  - Fix lua links
 ""
