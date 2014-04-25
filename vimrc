@@ -912,7 +912,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 set wildignore+=vendor/rails/**
 set wildignore+=public/**
-set wildignore+=*.jar,*.class
+set wildignore+=*.jar,*.class,*.log,*.gz
 
 "let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn)$'
 let g:ctrlp_custom_ignore = {
