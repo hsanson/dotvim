@@ -765,7 +765,6 @@ Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-markdown.git'
 Bundle 'tpope/vim-vividchalk.git'
 Bundle 'tpope/vim-haml.git'
-Bundle 'tpope/vim-endwise.git'
 Bundle 'tpope/vim-fugitive.git'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-commentary'
@@ -773,7 +772,9 @@ Bundle 'tpope/vim-characterize'
 Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-dispatch'
 
-Bundle 'Raimondi/delimitMate'
+Bundle 'kana/vim-smartinput'
+Bundle 'cohama/vim-smartinput-endwise'
+call smartinput_endwise#define_default_rules()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Surround Plugin
