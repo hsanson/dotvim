@@ -737,6 +737,7 @@ Bundle 'kchmck/vim-coffee-script.git'
 " Description
 "   Syntax and tools for puppet file editing.
 Bundle "rodjek/vim-puppet"
+Bundle "godlygeek/tabular"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Go Plugin
