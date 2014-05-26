@@ -75,6 +75,7 @@ set synmaxcol=200                     " Improve scroll performance with long lin
 set nofoldenable                      " Disable folding that slows down auto-completion
 set nrformats=                        " Stop vim from treating zero padded numbers as octal
 "set foldlevelstart=99
+"let loaded_matchparen = 1             " Disable matchparent that is annoying.
 autocmd InsertEnter * se cul          " Highlight current line in Insert Mode.
 autocmd InsertLeave * se nocul        " Don't highlight current line in other modes.
 set switchbuf=useopen,usetab
