@@ -539,9 +539,9 @@ if executable("ag")
   let g:ackprg="ag --nocolor --nogroup --column "
   let g:ack_wildignore = 0
 elseif executable("ack")
-  let g:ackprg="ack -H --nocolor --nogroup --column "
+  let g:ackprg="ack -H --nocolor --nogroup --column --sort-files --ignore-file=is:.tags "
 elseif executable("ack-grep")
-  let g:ackprg="ack-grep -H --nocolor --nogroup --column "
+  let g:ackprg="ack-grep -H --nocolor --nogroup --column --ignore-file=is:.tags "
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
