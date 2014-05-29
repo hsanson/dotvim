@@ -77,7 +77,6 @@ set nrformats=                        " Stop vim from treating zero padded numbe
 "let loaded_matchparen = 1            " Disable matchparent that is annoying.
 set cursorline                        " Highlight current line in Insert Mode.
 set switchbuf=useopen,usetab
-cmap w!! w !sudo tee % >/dev/null     " Save file as root
 
 set hlsearch                          " Highlight search results.
 set incsearch
@@ -1007,16 +1006,16 @@ let g:ctrlp_extensions = ['tag']
 Bundle 'vim-scripts/DrawIt.git'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" vim-sudo plugin
+"" SudoEdit plugin
 ""
 "" Description:
-""  Allow editing files as sudo without running the whole vim process as root.
+""  Improved version of sudo.vim plugin that allows write and read of files
+""  using sudo or su.
 ""
 "" Usage:
-""  vim sudo:/etc/passwd   (from terminal)
-""  :e sudo:/etc/passwd    (within vim)
-"
-Bundle 'vim-scripts/sudo.vim.git'
+""  :SudoRead[!] [file]
+""  :[range]SudoWrite[!] [file]
+Bundle 'chrisbra/SudoEdit.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Filetype Settings
