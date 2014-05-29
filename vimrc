@@ -959,9 +959,13 @@ let g:ctrl_mruf_case_sensitive=0
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
-set wildignore+=vendor/rails/**
+set wildignore+=vendor/rails/**,vendor/gems/**
 set wildignore+=public/**
 set wildignore+=*.jar,*.class,*.log,*.gz
+set wildignore+=*.o,*.obj,.git,*.rbc,*.svn
+set wildignore+=*.jpeg,*.jpg,*.jpeg*,*.png,*.gif
+set wildignore+=*/log/*,*/.bundle/*,*/bin/*,*/tmp/*
+set wildignore+=*/.sass-cache/*
 
 "let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn)$'
 let g:ctrlp_custom_ignore = {
