@@ -70,7 +70,6 @@ set ttyfast                           " Smoother screen redraws.
 set showmatch                         " Show briefly matching bracket when closing it.
 set scrolloff=9999                    " Always keep the cursor at the center of window.
 set lazyredraw                        " Improve performance
-set synmaxcol=200                     " Improve scroll performance with long lines
 "set hidden                           " Allow change buffer without saving.
 set nofoldenable                      " Disable folding that slows down auto-completion
 set nrformats=                        " Stop vim from treating zero padded numbers as octal
@@ -154,6 +153,57 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Look and Feel Settings
+""
+"" Prerequisites:
+""  - Make sure your terminal supports 256 colors. Konsole does but you must set
+""    the TERM variable to xterm-256color in the schema properties.
+""
+
+" Stop the terminal bg color to bleed into our favorite color scheme.
+" http://snk.tuxfamily.org/log/vim-256color-bce.html
+set term=screen-256color
+
+" Enable syntax
+syntax on sync minlines=256
+set synmaxcol=200                     " Improve scroll performance with long lines
+set t_Co=256                          " Enable 256 color mode in terminal.
+set background=dark                   " I like dark backgrounds.
+
+" Install nice colorschemes
+Bundle 'w0ng/vim-hybrid.git'
+Bundle 'lsdr/monokai'
+Bundle 'tomasr/molokai'
+Bundle 'altercation/vim-colors-solarized.git'
+Bundle '29decibel/codeschool-vim-theme'
+Bundle 'oguzbilgic/sexy-railscasts-theme'
+Bundle 'davidkariuki/sexy-railscasts-256-theme'
+Bundle 'zeis/vim-kolor'
+Bundle 'chrisbra/color_highlight'
+
+" Solarized color scheme configuration
+let g:solarized_termcolors=256
+let g:solarized_termtrans = 1
+
+" Molokai color scheme configuration
+let g:rehash256 = 1
+
+colors molokai
+"colors sexy-railscasts-256
+"colors solarized
+
+" Apply some color to the popup menu used for auto-completion.
+highlight Pmenu ctermbg=203 gui=bold
+
+" Show tabs and tailing spaces.
+" Note: to insert the middle point press "ctrl+k .M" in insert mode. Tha is
+" control + k followed by a <dot> and the capital M.
+set list
+"set listchars=tab:»·,trail:·,nbsp:·
+"set listchars=tab:▸\ ,trail:·,nbsp:·
+exec "set lcs=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Custom text objects
@@ -968,56 +1018,6 @@ Bundle 'vim-scripts/DrawIt.git'
 ""  :e sudo:/etc/passwd    (within vim)
 "
 Bundle 'vim-scripts/sudo.vim.git'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Look and Feel Settings
-""
-"" Prerequisites:
-""  - Make sure your terminal supports 256 colors. Konsole does but you must set
-""    the TERM variable to xterm-256color in the schema properties.
-""
-
-" Stop the terminal bg color to bleed into our favorite color scheme.
-" http://snk.tuxfamily.org/log/vim-256color-bce.html
-set term=screen-256color
-
-" Enable syntax
-syntax on sync minlines=256
-set t_Co=256                          " Enable 256 color mode in terminal.
-set background=dark                   " I like dark backgrounds.
-
-" Install nice colorschemes
-Bundle 'w0ng/vim-hybrid.git'
-Bundle 'lsdr/monokai'
-Bundle 'tomasr/molokai'
-Bundle 'altercation/vim-colors-solarized.git'
-Bundle '29decibel/codeschool-vim-theme'
-Bundle 'oguzbilgic/sexy-railscasts-theme'
-Bundle 'davidkariuki/sexy-railscasts-256-theme'
-Bundle 'zeis/vim-kolor'
-Bundle 'chrisbra/color_highlight'
-
-" Solarized color scheme configuration
-let g:solarized_termcolors=256
-let g:solarized_termtrans = 1
-
-" Molokai color scheme configuration
-let g:rehash256 = 1
-
-colors molokai
-"colors sexy-railscasts-256
-"colors solarized
-
-" Apply some color to the popup menu used for auto-completion.
-highlight Pmenu ctermbg=203 gui=bold
-
-" Show tabs and tailing spaces.
-" Note: to insert the middle point press "ctrl+k .M" in insert mode. Tha is
-" control + k followed by a <dot> and the capital M.
-set list
-"set listchars=tab:»·,trail:·,nbsp:·
-"set listchars=tab:▸\ ,trail:·,nbsp:·
-exec "set lcs=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Filetype Settings
