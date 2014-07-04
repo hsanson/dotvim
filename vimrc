@@ -132,7 +132,7 @@ set mousehide
 "set ttymouse=xterm2                   " Allow text selction work with tmux
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Vundle Plugin
+"" NeoBundle Plugin
 ""
 "" Description:
 ""  Nice vim plugin manager.
@@ -146,11 +146,30 @@ set mousehide
 ""  :BundleInstall       - Install (update) bundles.
 ""  :BundleSearch foo    - Search for bundle foo
 ""  :BundleClean         - Remove unused bundles
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+if has('vim_starting')
+  set nocompatible               " Be iMproved
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
 
-Bundle 'gmarik/vundle'
+call neobundle#begin(expand('~/.vim/bundle/'))
+NeoBundleFetch 'Shougo/neobundle.vim'
+call neobundle#end()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Filetype Settings
+""
+"" Description:
+""  For each filetype we create a ftplugin/<filetype>.vim file with settings
+""  particular to each filetype. For example we set tabs instead of spaces for
+""  python and makefile files and enable the different omnifunctions for each
+""  filetype that supports it.
+""
+"" Installation:
+""
+""  Refer to the ftplugin folder and edit the files there to your needs or add
+""  new file types if required.
+""
+filetype plugin indent on " Re-enable after pathogen is loaded.
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Look and Feel Settings
@@ -171,15 +190,15 @@ set t_Co=256                          " Enable 256 color mode in terminal.
 set background=dark                   " I like dark backgrounds.
 
 " Install nice colorschemes
-Bundle 'w0ng/vim-hybrid.git'
-Bundle 'lsdr/monokai'
-Bundle 'tomasr/molokai'
-Bundle 'altercation/vim-colors-solarized.git'
-Bundle '29decibel/codeschool-vim-theme'
-Bundle 'oguzbilgic/sexy-railscasts-theme'
-Bundle 'davidkariuki/sexy-railscasts-256-theme'
-Bundle 'zeis/vim-kolor'
-Bundle 'chrisbra/color_highlight'
+NeoBundle 'w0ng/vim-hybrid.git'
+NeoBundle 'lsdr/monokai'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'altercation/vim-colors-solarized.git'
+NeoBundle '29decibel/codeschool-vim-theme'
+NeoBundle 'oguzbilgic/sexy-railscasts-theme'
+NeoBundle 'davidkariuki/sexy-railscasts-256-theme'
+NeoBundle 'zeis/vim-kolor'
+NeoBundle 'chrisbra/color_highlight'
 
 " Solarized color scheme configuration
 let g:solarized_termcolors=256
@@ -209,12 +228,12 @@ exec "set lcs=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 " Vim text-objs are important for fast editing of text. Defining new text
 " objects allow operators to work on blocks of texts other than chars, words and
 " paragraphs.
-Bundle 'kana/vim-textobj-user'
-Bundle 'nelstrom/vim-textobj-rubyblock'
-Bundle 'kana/vim-textobj-function'
-Bundle 'rbonvall/vim-textobj-latex'
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'nelstrom/vim-textobj-rubyblock'
+NeoBundle 'kana/vim-textobj-function'
+NeoBundle 'rbonvall/vim-textobj-latex'
 
-Bundle 'joeytwiddle/sexy_scroller.vim'
+NeoBundle 'joeytwiddle/sexy_scroller.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Buffer and Tab navigation
@@ -225,7 +244,7 @@ nnoremap <TAB> :tabnext<CR>
 nnoremap <S-TAB> :tabprev<CR>
 
 " Enables more fluid resizing of split windows
-Bundle 'hsanson/vim-resize'
+NeoBundle 'hsanson/vim-resize'
 nnoremap <C-k> :ResizeUp<CR>
 nnoremap <C-j> :ResizeDown<CR>
 nnoremap <C-h> :ResizeLeft<CR>
@@ -245,7 +264,7 @@ noremap  <Right> :ResizeRight<CR>
 "
 " Description:
 "   Shows guides to easily track indent lines.
-Bundle "Yggdroot/indentLine"
+NeoBundle "Yggdroot/indentLine"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tabs vs Spaces war
@@ -355,7 +374,7 @@ set encoding=utf-8
 "
 " Description:
 "   Add file type detection rules and syntax highlighting for slim templates.
-Bundle 'slim-template/vim-slim.git'
+NeoBundle 'slim-template/vim-slim.git'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Latex Plugin
@@ -379,7 +398,7 @@ Bundle 'slim-template/vim-slim.git'
 "   -  \lo  ->  Use synctex to jump to the same section in PDF file
 "   -  \le  ->  Load log in quickfix window
 
-Bundle 'LaTeX-Box-Team/LaTeX-Box'
+NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 let g:LatexBox_completion_close_braces = 1
 let g:LatexBox_latexmk_async = 0
 "let g:LatexBox_latexmk_preview_continuously = 1
@@ -427,7 +446,7 @@ map <buffer> <LocalLeader>lo :LatexView2<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Groovy Syntax
-Bundle 'vim-scripts/groovy.vim'
+NeoBundle 'vim-scripts/groovy.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Javacomplete Plugin
@@ -457,18 +476,19 @@ Bundle 'vim-scripts/groovy.vim'
 "   autocompletion. I recommend instead to use NeoComplCache to have automatic
 "   autocompletion.
 
-"Bundle 'vim-scripts/javacomplete'
-"Bundle 'nwertzberger/javacomplete'
-"Bundle 'itszero/javacomplete'
-"Bundle 'adragomir/javacomplete'
-"Bundle 'vim-scripts/javaimports.vim'
+"NeoBundle 'vim-scripts/javacomplete'
+"NeoBundle 'nwertzberger/javacomplete'
+"NeoBundle 'itszero/javacomplete'
+"NeoBundle 'adragomir/javacomplete'
+"NeoBundle 'vim-scripts/javaimports.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-im Plugin
 "
 " Description:
 "   Disables input methods when leaving insert mode
-Bundle 'hsanson/vim-im'
+"NeoBundle 'hsanson/vim-im'
+" NeoBundle 'lilydjwg/fcitx.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" vim-android Plugin
@@ -489,9 +509,9 @@ Bundle 'hsanson/vim-im'
 ""   - If you use NeoComplCache or YouCompleteMe then the auto-completion should
 ""     work automatically.
 "
-Bundle 'hsanson/vim-android'
-let g:android_sdk_path="/home/ryujin/Apps/android-studio/sdk"
-let g:gradle_path="/home/ryujin/Apps/gradle-1.6"
+NeoBundle 'hsanson/vim-android'
+let g:android_sdk_path="/home/ryujin/Apps/android-sdk"
+let g:gradle_path="/home/ryujin/Apps/gradle"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Vimproc
@@ -511,7 +531,7 @@ let g:gradle_path="/home/ryujin/Apps/gradle-1.6"
 ""
 ""    sudo apt-get install build-essentials
 "
-"Bundle 'Shougo/vimproc'
+"NeoBundle 'Shougo/vimproc'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" VimShell
@@ -527,7 +547,7 @@ let g:gradle_path="/home/ryujin/Apps/gradle-1.6"
 ""
 "" Usage:
 ""  Call :VimShell to get an interactive shell where you can input commands.
-"Bundle 'Shougo/vimshell'
+"NeoBundle 'Shougo/vimshell'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -544,7 +564,7 @@ let g:gradle_path="/home/ryujin/Apps/gradle-1.6"
 ""
 "" Usage:
 ""  Execute :Logcat command to open a vim pane with the logcat output.
-"Bundle 'thinca/vim-logcat'
+"NeoBundle 'thinca/vim-logcat'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Ack Plugin
@@ -582,7 +602,7 @@ let g:gradle_path="/home/ryujin/Apps/gradle-1.6"
 ""   http://amaslov.wordpress.com/2009/04/23/vim-ack-instead-of-grep/
 ""   https://github.com/ggreer/the_silver_searcher
 
-Bundle 'mileszs/ack.vim.git'
+NeoBundle 'mileszs/ack.vim.git'
 if executable("ag")
   let g:ackprg="ag --nocolor --nogroup --column "
   let g:ack_wildignore = 0
@@ -602,7 +622,7 @@ endif
 ""  :NERDTreeToggle
 ""
 
-Bundle 'scrooloose/nerdtree.git'
+NeoBundle 'scrooloose/nerdtree.git'
 
 " Set the window width
 let g:NERDTreeWinSize = 40
@@ -640,7 +660,7 @@ nmap <silent> <leader>p :NERDTreeToggle<CR>
 ""  - install YouCompleteMe plugin via Vundle.
 ""  - cd ~/.vim/bundle/YouCompleteMe
 ""  - ./install.sh --clang-completer
-Bundle 'Valloric/YouCompleteMe.git'
+NeoBundle 'Valloric/YouCompleteMe.git'
 "let g:ycm_filetype_specific_completion_to_disable = {'java': 0 }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -654,7 +674,7 @@ Bundle 'Valloric/YouCompleteMe.git'
 ""   Requires a current version of vim (> 7.3) with lua interpreter enabled.
 ""   I am still not sure which is better: NeoComplete or YouCompleteMe. Make
 ""   sure you try both and make your own judgement.
-"Bundle "Shougo/neocomplete.vim"
+"NeoBundle "Shougo/neocomplete.vim"
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
@@ -669,7 +689,7 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-tags plugin
-Bundle 'szw/vim-tags'
+NeoBundle 'szw/vim-tags'
 let g:vim_tags_auto_generate = 1
 let g:vim_tags_use_vim_dispatch = 1
 let g:vim_tags_use_ycm = 1
@@ -687,7 +707,7 @@ let g:vim_tags_main_file = '.tags'
 ""  Disabled because it hangs the vim process from time to time. Need to find a
 ""  way to run the ctag process asynchronously.
 ""
-" Bundle 'xolox/easytags.git'
+" NeoBundle 'xolox/easytags.git'
 set complete=.,w,b,u,t
 set tags=.tags
 let g:easytags_by_filetype = '~/.vim/tags'
@@ -707,7 +727,7 @@ let g:easytags_python_enabled = 1
 "" Usage:
 ""  With a buffer opened run :Voom to open the outline navigation pane.
 "
-Bundle 'vim-scripts/VOoM.git'
+NeoBundle 'vim-scripts/VOoM.git'
 let g:voom_tree_width=60
 let g:voom_ft_modes = { 'markdown': 'markdown', 'pandoc': 'markdown', 'tex': 'latex' }
 
@@ -718,7 +738,7 @@ let g:voom_ft_modes = { 'markdown': 'markdown', 'pandoc': 'markdown', 'tex': 'la
 ""  tGPG Plugin for transparent editing of encrypted files. This is the only
 ""  plugin for handling encrypted GPG files that worked out of the box.
 ""
-"Bundle 'tomtom/tgpg_vim.git'
+"NeoBundle 'tomtom/tgpg_vim.git'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" TagBar Plugin and Ruby omnicomplete plugin
@@ -729,7 +749,7 @@ let g:voom_ft_modes = { 'markdown': 'markdown', 'pandoc': 'markdown', 'tex': 'la
 "" Resources:
 ""  https://github.com/majutsushi/tagbar/wiki
 
-Bundle 'majutsushi/tagbar'
+NeoBundle 'majutsushi/tagbar'
 
 "" Add go support to tagbar. Note this only works on Ubuntu or with
 "" exuberant-tags patched with go support.
@@ -770,7 +790,7 @@ let g:tagbar_type_markdown = {
 ""    let g:rubycomplete_classes_in_global = 1
 ""    setlocal omnifunc=rubycomplete#Complete
 ""
-Bundle 'vim-scripts/rubycomplete.vim.git'
+NeoBundle 'vim-scripts/rubycomplete.vim.git'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Coffee Script Plugin
@@ -778,15 +798,15 @@ Bundle 'vim-scripts/rubycomplete.vim.git'
 "" Description:
 ""  Add features to edit coffee script files in Vim.
 "
-Bundle 'kchmck/vim-coffee-script.git'
+NeoBundle 'kchmck/vim-coffee-script.git'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Puppet
 "
 " Description
 "   Syntax and tools for puppet file editing.
-Bundle "rodjek/vim-puppet"
-Bundle "godlygeek/tabular"
+NeoBundle "rodjek/vim-puppet"
+NeoBundle "godlygeek/tabular"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Go Plugin
@@ -799,7 +819,7 @@ Bundle "godlygeek/tabular"
 "
 "     go get -u github.com/nsf/gocode
 "
-Bundle "fsouza/go.vim"
+NeoBundle "fsouza/go.vim"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tim Pope Amazing Plugins
@@ -811,19 +831,19 @@ Bundle "fsouza/go.vim"
 "   Too much information. Refer to each plugin git repo:
 "   https://github.com/tpope?tab=repositories
 "
-Bundle 'tpope/vim-rails.git'
-Bundle 'tpope/vim-markdown.git'
-Bundle 'tpope/vim-vividchalk.git'
-Bundle 'tpope/vim-haml.git'
-Bundle 'tpope/vim-fugitive.git'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-characterize'
-Bundle 'tpope/vim-speeddating'
-Bundle 'tpope/vim-dispatch'
+NeoBundle 'tpope/vim-rails.git'
+NeoBundle 'tpope/vim-markdown.git'
+NeoBundle 'tpope/vim-vividchalk.git'
+NeoBundle 'tpope/vim-haml.git'
+NeoBundle 'tpope/vim-fugitive.git'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-commentary'
+NeoBundle 'tpope/vim-characterize'
+NeoBundle 'tpope/vim-speeddating'
+NeoBundle 'tpope/vim-dispatch'
 
-Bundle 'kana/vim-smartinput'
-Bundle 'cohama/vim-smartinput-endwise'
+NeoBundle 'kana/vim-smartinput'
+NeoBundle 'cohama/vim-smartinput-endwise'
 call smartinput_endwise#define_default_rules()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -840,7 +860,7 @@ call smartinput_endwise#define_default_rules()
 ""  if *x>3 {                 ysW(        if ( x>3 ) {
 ""  my $str = *whee!;         vlllls'     my $str = 'whee!';
 ""
-Bundle 'tpope/vim-surround.git'
+NeoBundle 'tpope/vim-surround.git'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Matchit Plugin
@@ -848,7 +868,7 @@ Bundle 'tpope/vim-surround.git'
 "" Description:
 ""  Allows you to configure % to match more than just single characters.
 ""
-Bundle 'vim-scripts/matchit.zip'
+NeoBundle 'vim-scripts/matchit.zip'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Vim-preview Plugin
@@ -866,7 +886,7 @@ Bundle 'vim-scripts/matchit.zip'
 ""  <leader>P will process markdown, textile, rdoc and html files and load them
 ""  in a browser.
 ""
-Bundle 'greyblake/vim-preview.git'
+NeoBundle 'greyblake/vim-preview.git'
 let g:PreviewBrowsers = 'chromium-browser,firefox,rekonq'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -925,7 +945,7 @@ let g:yankring_replace_n_nkey = '<C-k>'
 "    - <leader>slc - Add list of columns of table under cursor to the copy register.
 "    - <leader>sdp - Show stored procedures
 "
-Bundle 'krisajenkins/dbext.vim'
+NeoBundle 'krisajenkins/dbext.vim'
 let  g:dbext_default_history_file = '$HOME/.dbext_sql_history.txt'
 let  g:dbext_default_history_size = 1000
 
@@ -946,7 +966,7 @@ source ~/.dbext_profiles
 "   <C-T> to open selected file in new tab
 "   <C-v> to open selected file in vertical split
 "
-Bundle 'kien/ctrlp.vim.git'
+NeoBundle 'kien/ctrlp.vim.git'
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -996,7 +1016,7 @@ let g:ctrlp_extensions = ['tag']
 ""  Disabled because is unstable and somtimes works and sometimes doesn't. Seems
 ""  the node.js process dies or cannot start on some situations.
 "
-"Bundle 'suan/vim-instant-markdown.git'
+"NeoBundle 'suan/vim-instant-markdown.git'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" DrawIt Plugin
@@ -1007,7 +1027,7 @@ let g:ctrlp_extensions = ['tag']
 "" Usage:
 ""  Very complex so read the help or go to the plugin page.
 ""  https://github.com/vim-scripts/DrawIt
-Bundle 'vim-scripts/DrawIt.git'
+NeoBundle 'vim-scripts/DrawIt.git'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" SudoEdit plugin
@@ -1019,29 +1039,13 @@ Bundle 'vim-scripts/DrawIt.git'
 "" Usage:
 ""  :SudoRead[!] [file]
 ""  :[range]SudoWrite[!] [file]
-Bundle 'chrisbra/SudoEdit.vim'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Filetype Settings
-""
-"" Description:
-""  For each filetype we create a ftplugin/<filetype>.vim file with settings
-""  particular to each filetype. For example we set tabs instead of spaces for
-""  python and makefile files and enable the different omnifunctions for each
-""  filetype that supports it.
-""
-"" Installation:
-""
-""  Refer to the ftplugin folder and edit the files there to your needs or add
-""  new file types if required.
-""
-filetype plugin indent on " Re-enable after pathogen is loaded.
+NeoBundle 'chrisbra/SudoEdit.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim_airline status line
 "
 set laststatus=2
-Bundle 'bling/vim-airline'
+NeoBundle 'bling/vim-airline'
 let g:airline_powerline_fonts = 1
 
 " Uncomment the following statusline option if you do not use vim_airline
