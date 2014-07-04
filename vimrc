@@ -57,9 +57,28 @@
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" NeoBundle Plugin
+""
+"" Description:
+""  Nice vim plugin manager.
+""
+"" Usage:
+""
+""  Define your plugins using the Bundle command. After that we have some
+""  commands to handle the plugins.
+""
+if has('vim_starting')
+  set nocompatible               " Be iMproved
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#begin(expand('~/.vim/bundle/'))
+NeoBundleFetch 'Shougo/neobundle.vim'
+call neobundle#end()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" General Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible                      " Disable vi compatibility.
 set bs=2                              " Sane backspace behavior.
 set fileformats=unix,dos              " Use unix file format.
 set number                            " Show line number column.
@@ -130,97 +149,6 @@ map <F7> <ESC>:cn<CR>                " Jump to next error or warn
 set mouse=nv                           " Enable the mouse.
 set mousehide
 "set ttymouse=xterm2                   " Allow text selction work with tmux
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" NeoBundle Plugin
-""
-"" Description:
-""  Nice vim plugin manager.
-""
-"" Usage:
-""
-""  Define your plugins using the Bundle command. After that we have some
-""  commands to handle the plugins.
-""
-""  :BundleList          - List configured bundles
-""  :BundleInstall       - Install (update) bundles.
-""  :BundleSearch foo    - Search for bundle foo
-""  :BundleClean         - Remove unused bundles
-if has('vim_starting')
-  set nocompatible               " Be iMproved
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-
-call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
-call neobundle#end()
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Filetype Settings
-""
-"" Description:
-""  For each filetype we create a ftplugin/<filetype>.vim file with settings
-""  particular to each filetype. For example we set tabs instead of spaces for
-""  python and makefile files and enable the different omnifunctions for each
-""  filetype that supports it.
-""
-"" Installation:
-""
-""  Refer to the ftplugin folder and edit the files there to your needs or add
-""  new file types if required.
-""
-filetype plugin indent on " Re-enable after pathogen is loaded.
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Look and Feel Settings
-""
-"" Prerequisites:
-""  - Make sure your terminal supports 256 colors. Konsole does but you must set
-""    the TERM variable to xterm-256color in the schema properties.
-""
-
-" Stop the terminal bg color to bleed into our favorite color scheme.
-" http://snk.tuxfamily.org/log/vim-256color-bce.html
-set term=screen-256color
-
-" Enable syntax
-syntax on sync minlines=256
-set synmaxcol=200                     " Improve scroll performance with long lines
-set t_Co=256                          " Enable 256 color mode in terminal.
-set background=dark                   " I like dark backgrounds.
-
-" Install nice colorschemes
-NeoBundle 'w0ng/vim-hybrid.git'
-NeoBundle 'lsdr/monokai'
-NeoBundle 'tomasr/molokai'
-NeoBundle 'altercation/vim-colors-solarized.git'
-NeoBundle '29decibel/codeschool-vim-theme'
-NeoBundle 'oguzbilgic/sexy-railscasts-theme'
-NeoBundle 'davidkariuki/sexy-railscasts-256-theme'
-NeoBundle 'zeis/vim-kolor'
-NeoBundle 'chrisbra/color_highlight'
-
-" Solarized color scheme configuration
-let g:solarized_termcolors=256
-let g:solarized_termtrans = 1
-
-" Molokai color scheme configuration
-let g:rehash256 = 1
-
-colors molokai
-"colors sexy-railscasts-256
-"colors solarized
-
-" Apply some color to the popup menu used for auto-completion.
-highlight Pmenu ctermbg=203 gui=bold
-
-" Show tabs and tailing spaces.
-" Note: to insert the middle point press "ctrl+k .M" in insert mode. Tha is
-" control + k followed by a <dot> and the capital M.
-set list
-"set listchars=tab:»·,trail:·,nbsp:·
-"set listchars=tab:▸\ ,trail:·,nbsp:·
-exec "set lcs=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Custom text objects
@@ -1040,6 +968,73 @@ NeoBundle 'vim-scripts/DrawIt.git'
 ""  :SudoRead[!] [file]
 ""  :[range]SudoWrite[!] [file]
 NeoBundle 'chrisbra/SudoEdit.vim'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Filetype Settings
+""
+"" Description:
+""  For each filetype we create a ftplugin/<filetype>.vim file with settings
+""  particular to each filetype. For example we set tabs instead of spaces for
+""  python and makefile files and enable the different omnifunctions for each
+""  filetype that supports it.
+""
+"" Installation:
+""
+""  Refer to the ftplugin folder and edit the files there to your needs or add
+""  new file types if required.
+""
+filetype plugin indent on " Re-enable after pathogen is loaded.
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Look and Feel Settings
+""
+"" Prerequisites:
+""  - Make sure your terminal supports 256 colors. Konsole does but you must set
+""    the TERM variable to xterm-256color in the schema properties.
+""
+
+" Stop the terminal bg color to bleed into our favorite color scheme.
+" http://snk.tuxfamily.org/log/vim-256color-bce.html
+set term=screen-256color
+
+" Enable syntax
+syntax on sync minlines=256
+set synmaxcol=200                     " Improve scroll performance with long lines
+set t_Co=256                          " Enable 256 color mode in terminal.
+set background=dark                   " I like dark backgrounds.
+
+" Install nice colorschemes
+NeoBundle 'w0ng/vim-hybrid.git'
+NeoBundle 'lsdr/monokai'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'altercation/vim-colors-solarized.git'
+NeoBundle '29decibel/codeschool-vim-theme'
+NeoBundle 'oguzbilgic/sexy-railscasts-theme'
+NeoBundle 'davidkariuki/sexy-railscasts-256-theme'
+NeoBundle 'zeis/vim-kolor'
+NeoBundle 'chrisbra/color_highlight'
+
+" Solarized color scheme configuration
+let g:solarized_termcolors=256
+let g:solarized_termtrans = 1
+
+" Molokai color scheme configuration
+let g:rehash256 = 1
+
+colors molokai
+"colors sexy-railscasts-256
+"colors solarized
+
+" Apply some color to the popup menu used for auto-completion.
+highlight Pmenu ctermbg=203 gui=bold
+
+" Show tabs and tailing spaces.
+" Note: to insert the middle point press "ctrl+k .M" in insert mode. Tha is
+" control + k followed by a <dot> and the capital M.
+set list
+"set listchars=tab:»·,trail:·,nbsp:·
+"set listchars=tab:▸\ ,trail:·,nbsp:·
+exec "set lcs=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim_airline status line
