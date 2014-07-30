@@ -754,7 +754,9 @@ NeoBundle "godlygeek/tabular"
 "
 "     go get -u github.com/nsf/gocode
 "
-NeoBundle "fsouza/go.vim"
+" NeoBundle "fsouza/go.vim"
+NeoBundle "fatih/vim-go"
+let g:go_fmt_autosave = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tim Pope Amazing Plugins
