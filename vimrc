@@ -726,12 +726,14 @@ let g:tagbar_type_markdown = {
 NeoBundle 'vim-scripts/rubycomplete.vim.git'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Coffee Script Plugin
+"" JavaScript/CSS Plugins
 ""
 "" Description:
 ""  Add features to edit coffee script files in Vim.
 "
 NeoBundle 'kchmck/vim-coffee-script.git'
+NeoBundle '1995eaton/vim-better-css-completion'
+NeoBundle '1995eaton/vim-better-javascript-completion'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Puppet
