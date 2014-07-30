@@ -115,7 +115,7 @@ set directory=/var/tmp,/tmp
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set undolevels=10000
 if has("persistent_undo")
-  set undodir=~/.vim/undo//
+  set undodir=/var/tmp//,/tmp//
   set undofile
 endif
 
