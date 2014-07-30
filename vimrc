@@ -113,7 +113,7 @@ set path=/usr/include,/usr/local/include,**;$HOME
 " Move swap files out of the current directory. This is useful to avoid swp
 " files from accidentally entering your git repos or to avoid them being sync
 " when editing a file in a dropbox/ubuntuone folder.
-set directory=/var/tmp,/tmp
+set directory=/var/tmp//,/tmp//
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Improve undo
