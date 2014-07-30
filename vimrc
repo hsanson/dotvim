@@ -97,10 +97,15 @@ set nrformats=                        " Stop vim from treating zero padded numbe
 set cursorline                        " Highlight current line in Insert Mode.
 set switchbuf=useopen,usetab
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Search
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set hlsearch                          " Highlight search results.
 set incsearch
 set ignorecase
 set smartcase
+nnoremap n nzzzv                      " Keep current search match in the center
+nnoremap N Nzzzv                      " Keep current search match in the center
 
 " Set search path for gf command
 set path=/usr/include,/usr/local/include,**;$HOME
