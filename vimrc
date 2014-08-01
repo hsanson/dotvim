@@ -134,11 +134,11 @@ endif
 " Tip: http://vim.wikia.com/wiki/Automatically_open_the_quickfix_window_on_:make
 " Automatically open the quickfix window on :make or close it when it has become
 " empty.
-autocmd QuickFixCmdPost [^l]* nested cwindow
-autocmd QuickFixCmdPost    l* nested lwindow
+"autocmd QuickFixCmdPost [^l]* nested cwindow
+"autocmd QuickFixCmdPost    l* nested lwindow
 
 " Move the quickfix window to the bottom of the vim window.
-autocmd FileType qf wincmd J
+"autocmd FileType qf wincmd J
 
 " Add fast navigation shorcuts.
 map <F6> <ESC>:cN<CR>                " Jump to prev error or warn
@@ -413,6 +413,7 @@ NeoBundle 'vim-scripts/groovy.vim'
 "NeoBundle 'nwertzberger/javacomplete'
 "NeoBundle 'itszero/javacomplete'
 "NeoBundle 'adragomir/javacomplete'
+NeoBundle 'Shougo/javacomplete'
 "NeoBundle 'vim-scripts/javaimports.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
