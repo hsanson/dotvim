@@ -904,7 +904,7 @@ source ~/.dbext_profiles
 "   <C-T> to open selected file in new tab
 "   <C-v> to open selected file in vertical split
 "
-NeoBundle 'kien/ctrlp.vim.git'
+NeoBundle 'ctrlpvim/ctrlp.vim'
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
