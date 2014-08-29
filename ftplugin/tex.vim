@@ -20,6 +20,10 @@ nnoremap 4 g$
 nnoremap 6 g^
 nnoremap 0 g^
 
+"" Enable concealed text that shows symbols like \beta as β
+"" http://b4winckler.wordpress.com/2010/08/07/using-the-conceal-vim-feature-with-latex
+setlocal cole=2
+
 "" The following code to set the latex errorformat was taken from tex.vim
 "" included in the latex-vim plugin. All credit goes there.
 
