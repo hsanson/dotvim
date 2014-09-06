@@ -621,7 +621,7 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-tags plugin
-NeoBundle 'szw/vim-tags'
+"NeoBundle 'szw/vim-tags'
 let g:vim_tags_auto_generate = 1
 let g:vim_tags_use_vim_dispatch = 1
 let g:vim_tags_use_ycm = 1
@@ -647,6 +647,11 @@ let g:easytags_dynamic_files = 1
 let g:easytags_include_members = 1
 let g:easytags_resolve_links = 1
 let g:easytags_python_enabled = 1
+
+NeoBundle 'ludovicchabant/vim-gutentags'
+let g:gutentags_tagfile = '.tags'
+let g:gutentags_background_update = 1
+let g:gutentags_cache_dir = '/home/ryujin/.vim/tags'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" VOoM Plugin
