@@ -916,7 +916,7 @@ let g:ctrlp_dotfiles=1
 let g:ctrlp_reuse_window='netrw\|help\|quickfix'
 let g:ctrl_use_caching=1
 let g:ctrl_clear_cache_on_exit=0
-let g:ctrl_mruf_case_sensitive=0
+let g:ctrl_mruf_case_sensitive=1
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
@@ -934,6 +934,12 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\.exe$\|\.so$\|\.dll$',
   \ 'link': 'current',
   \ }
+
+" Speed up ctrlp on git repositories.
+let g:ctrlp_user_command = [
+  \ '.git',
+  \ 'cd %s && git ls-files . -co --exclude-standard',
+  \ 'find %s -type f']
 
 let g:ctrlp_extensions = ['tag']
 
