@@ -250,8 +250,8 @@ set textwidth=80    " Force wrap for lines longer than 80 characters
 "set textwidth=0    " Disable braking of long lines.
 "set wrap           " Enable wrap of lines pass the right window border.
 "set lbr            " Force wrap at word boundaries not chars
-"nnoremap k gk      " Enable navigation within long lines (up)
-"nnoremap j gj      " Enable navigation within long lines (down)
+"nnoremap <expr> k v:count == 0 ? 'gk' : 'k'  " Enable navigation within long lines (up)
+"nnoremap <expr> j v:count == 0 ? 'gj' : 'j'  " Enable navigation within long lines (down)
 
 "" Mark with a different background the column 81 for lines that pass over that
 "" limit.
