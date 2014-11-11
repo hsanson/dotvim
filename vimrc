@@ -783,9 +783,7 @@ NeoBundle 'tpope/vim-characterize'
 NeoBundle 'tpope/vim-speeddating'
 NeoBundle 'tpope/vim-dispatch'
 
-NeoBundle 'kana/vim-smartinput'
-NeoBundle 'cohama/vim-smartinput-endwise'
-call smartinput_endwise#define_default_rules()
+NeoBundle 'cohama/lexima.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Surround Plugin
