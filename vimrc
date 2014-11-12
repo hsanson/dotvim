@@ -599,7 +599,7 @@ nmap <silent> <leader>p :NERDTreeToggle<CR>
 ""  - cd ~/.vim/bundle/YouCompleteMe
 ""  - ./install.sh --clang-completer
 NeoBundle 'Valloric/YouCompleteMe.git'
-"let g:ycm_filetype_specific_completion_to_disable = {'java': 0 }
+let g:ycm_filetype_specific_completion_to_disable = {'ruby': 0 }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" NeoComplete
