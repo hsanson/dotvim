@@ -469,7 +469,7 @@ let g:gradle_path="/home/ryujin/Apps/gradle"
 ""
 ""    sudo apt-get install build-essentials
 "
-"NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimproc'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" VimShell
