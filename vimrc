@@ -779,7 +779,6 @@ let g:go_fmt_autosave = 0
 "   https://github.com/tpope?tab=repositories
 "
 NeoBundle 'tpope/vim-rails.git'
-NeoBundle 'tpope/vim-markdown.git'
 NeoBundle 'tpope/vim-vividchalk.git'
 NeoBundle 'tpope/vim-haml.git'
 NeoBundle 'tpope/vim-fugitive.git'
@@ -831,8 +830,14 @@ NeoBundle 'vim-scripts/matchit.zip'
 ""  <leader>P will process markdown, textile, rdoc and html files and load them
 ""  in a browser.
 ""
-NeoBundle 'greyblake/vim-preview.git'
-let g:PreviewBrowsers = 'chromium-browser,firefox,rekonq'
+"NeoBundle 'greyblake/vim-preview.git'
+"let g:PreviewBrowsers = 'chromium-browser,firefox,rekonq'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Pandoc text processing
+NeoBundle 'vim-pandoc/vim-pandoc'
+NeoBundle 'vim-pandoc/vim-pandoc-syntax'
+NeoBundle 'vim-pandoc/vim-pandoc-after'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " YankRing Plugin
