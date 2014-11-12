@@ -615,36 +615,13 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 "  return neocomplete#smart_close_popup() . "\<CR>"
 "endfunction
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-tags plugin
-"NeoBundle 'szw/vim-tags'
-let g:vim_tags_auto_generate = 1
-let g:vim_tags_use_vim_dispatch = 1
-let g:vim_tags_use_ycm = 1
-let g:vim_tags_ignore_files = ['.gitignore', '.svnignore', '.cvsignore']
-let g:vim_tags_directories = ['.git', '.svn', 'CVS']
-let g:vim_tags_main_file = '.tags'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" EasyTags Plugin
-""
-"" Description:
-""  Auto generate ctags for edited files.
-""
-"" Note:
-""  Disabled because it hangs the vim process from time to time. Need to find a
-""  way to run the ctag process asynchronously.
-""
-" NeoBundle 'xolox/easytags.git'
-set complete=.,w,b,u,t
-set tags=.tags
-let g:easytags_by_filetype = '~/.vim/tags'
-let g:easytags_dynamic_files = 1
-let g:easytags_include_members = 1
-let g:easytags_resolve_links = 1
-let g:easytags_python_enabled = 1
-
+" Gutentags
+"
+" Description:
+"   So far the best tag auto generation plugin I have user. Does not seem to
+"   block vim like szw/vim-tags or xolox/easytags.git did.
+"
 NeoBundle 'ludovicchabant/vim-gutentags'
 let g:gutentags_tagfile = '.tags'
 let g:gutentags_background_update = 1
@@ -755,7 +732,6 @@ NeoBundle "godlygeek/tabular"
 "
 "     go get -u github.com/nsf/gocode
 "
-" NeoBundle "fsouza/go.vim"
 NeoBundle "fatih/vim-go"
 let g:go_fmt_autosave = 0
 
@@ -806,37 +782,10 @@ NeoBundle 'tpope/vim-surround.git'
 NeoBundle 'vim-scripts/matchit.zip'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Vim-preview Plugin
-""
-"" Description:
-""  Allows to generate and preview HTML documents in a browser.
-""
-"" Installation:
-""  - Install plugin via pathogen or vundle.
-""  - Install the following gems:
-""
-""    sudo gem install RedCloth github-markup bluecloth redcarpet
-""
-"" Usage:
-""  <leader>P will process markdown, textile, rdoc and html files and load them
-""  in a browser.
-""
-"NeoBundle 'greyblake/vim-preview.git'
-"let g:PreviewBrowsers = 'chromium-browser,firefox,rekonq'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pandoc text processing
 NeoBundle 'vim-pandoc/vim-pandoc'
 NeoBundle 'vim-pandoc/vim-pandoc-syntax'
 NeoBundle 'vim-pandoc/vim-pandoc-after'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" YankRing Plugin
-" 
-" Description:
-"  Facilitates the handling of yanked text in registers.
-let g:yankring_replace_n_pkey = '<C-j>'
-let g:yankring_replace_n_nkey = '<C-k>'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Amazing nice plugin to work with Databases
@@ -942,28 +891,6 @@ let g:ctrlp_user_command = [
   \ 'find %s -type f']
 
 let g:ctrlp_extensions = ['tag']
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Instant-Markdown plugin
-""
-"" Description:
-""   Allows almost realtime preview of markdown documents.
-""
-"" Installation:
-""
-""   sudo gem install redcarpet pygments.rb
-""   sudo apt-get install npm build-essential g++ automake
-""   sudo npm -g install instant-markdown-d
-""
-"" Usage:
-""   Open a markdown file and a browser will automatically pop-up with a
-""   real-time preview of the markdown.
-""
-"" Note:
-""  Disabled because is unstable and somtimes works and sometimes doesn't. Seems
-""  the node.js process dies or cannot start on some situations.
-"
-"NeoBundle 'suan/vim-instant-markdown.git'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" DrawIt Plugin
