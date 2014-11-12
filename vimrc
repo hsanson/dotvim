@@ -187,15 +187,6 @@ nnoremap <C-l> :ResizeRight<CR>
 " Add map to redraw screen as we use the default <C-l> for resizing splits.
 nnoremap <Leader>r :redraw!<CR>
 
-" Train to be a vim ninja
-noremap  <Up> :ResizeUp<CR>
-noremap  <Down> :ResizeDown<CR>
-noremap  <Left> :ResizeLeft<CR>
-noremap  <Right> :ResizeRight<CR>
-
-" Add map to redraw screen as we use the default <C-l> for resizing splits.
-nnoremap <Leader>r :redraw!<CR>
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Intent Guides plugin
 "
