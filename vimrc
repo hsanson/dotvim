@@ -164,7 +164,10 @@ NeoBundle 'nelstrom/vim-textobj-rubyblock'
 NeoBundle 'kana/vim-textobj-function'
 NeoBundle 'rbonvall/vim-textobj-latex'
 
-NeoBundle 'joeytwiddle/sexy_scroller.vim'
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Some visual plugins
+"NeoBundle 'joeytwiddle/sexy_scroller.vim'
+NeoBundle 'koron/nyancat-vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Buffer and Tab navigation
