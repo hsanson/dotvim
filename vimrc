@@ -19,7 +19,7 @@
 ""      libgtk2.0-dev libperl-dev python-dev python2.7-dev ruby-dev tcl-dev \
 ""      liblua5.1-0-dev liblua5.2-dev luajit build-essential ruby1.9.1 \
 ""      ruby1.9.1-dev exuberant-ctags libx11-dev xorg-dev git-core wget sed \
-""      ack-grep python-ibus
+""      ack-grep python-ibus cmake python-dev build-essentials
 ""
 ""  - Fix lua links
 ""
@@ -42,15 +42,27 @@
 ""      make
 ""      sudo make install
 ""
-""  - Install vundle
+""  - Install NeoBundle
 ""
 ""    mkdir -p ~/.vim/bundle
-""    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+""    git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 ""
-""  - Update the plugins via vundle
+""  - Start vim and install all bundles.
 ""
-""    vim +BundleInstall +qall
+""  - Configure binary plugins
 ""
+""        cd ~/.vim/bundle/vimproc
+""        make -f make_unix.mak
+""
+""        cd ~/.vim/bundle/YouCompleteMe
+""        ./install.sh --clang-completer
+""
+""        cd ~/vim/bundle/javacomplete/autoload
+""        javac Reflection.java
+""
+""    Make sure you have gcc and make tools to compile:
+""
+""    sudo apt-get install build-essentials
 ""  Usage:
 ""    Don't copy this vim repo and expect it work for you. Use this vimrc as
 ""    example to build your own vimrc.
@@ -72,8 +84,99 @@ if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
+filetype off
+filetype plugin indent off
+
 call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
+
+" Personal plugins
+NeoBundle 'hsanson/vim-projtags'
+NeoBundle 'hsanson/vim-resize'
+NeoBundle 'hsanson/vim-android'
+"NeoBundle 'hsanson/vim-im'
+"NeoBundle 'lilydjwg/fcitx.vim'
+
+" Helper and tools
+NeoBundle 'mileszs/ack.vim.git'
+NeoBundle 'scrooloose/nerdtree.git'
+NeoBundle "yuratomo/dbg.vim"
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimshell'
+NeoBundle "godlygeek/tabular"
+NeoBundle "fatih/vim-go"
+NeoBundle 'tpope/vim-rails.git'
+NeoBundle 'tpope/vim-fugitive.git'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-commentary'
+NeoBundle 'tpope/vim-characterize'
+NeoBundle 'tpope/vim-speeddating'
+NeoBundle 'tpope/vim-dispatch'
+"NeoBundle 'thinca/vim-logcat'
+NeoBundle 'cohama/lexima.vim'
+NeoBundle 'tpope/vim-surround.git'
+NeoBundle 'vim-scripts/matchit.zip'
+NeoBundle 'krisajenkins/dbext.vim'
+NeoBundle 'ctrlpvim/ctrlp.vim'
+NeoBundle 'vim-scripts/DrawIt.git'
+NeoBundle 'chrisbra/SudoEdit.vim'
+
+" Text object add ons
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'nelstrom/vim-textobj-rubyblock'
+NeoBundle 'kana/vim-textobj-function'
+NeoBundle 'rbonvall/vim-textobj-latex'
+
+" Visual aid and eyecandy
+NeoBundle 'bling/vim-airline'
+NeoBundle 'koron/nyancat-vim'
+NeoBundle "Yggdroot/indentLine"
+NeoBundle 'tpope/vim-vividchalk.git'
+NeoBundle 'w0ng/vim-hybrid.git'
+NeoBundle 'lsdr/monokai'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'altercation/vim-colors-solarized.git'
+NeoBundle '29decibel/codeschool-vim-theme'
+NeoBundle 'oguzbilgic/sexy-railscasts-theme'
+NeoBundle 'davidkariuki/sexy-railscasts-256-theme'
+NeoBundle 'zeis/vim-kolor'
+NeoBundle 'chrisbra/color_highlight'
+
+" Syntax and language support
+NeoBundle 'slim-template/vim-slim.git'
+NeoBundle 'vim-scripts/groovy.vim'
+NeoBundle 'kchmck/vim-coffee-script.git'
+NeoBundle "rodjek/vim-puppet"
+NeoBundle 'tpope/vim-haml.git'
+
+" Document editing
+NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
+NeoBundle 'vim-scripts/VOoM.git'
+NeoBundle 'vim-pandoc/vim-pandoc'
+NeoBundle 'vim-pandoc/vim-pandoc-syntax'
+NeoBundle 'vim-pandoc/vim-pandoc-after'
+
+" Auto completion
+
+NeoBundle 'Valloric/YouCompleteMe.git'
+"NeoBundle "Shougo/neocomplete.vim"
+
+"NeoBundle 'vim-scripts/javacomplete'
+"NeoBundle 'nwertzberger/javacomplete'
+"NeoBundle 'itszero/javacomplete'
+"NeoBundle 'adragomir/javacomplete'
+NeoBundle 'Shougo/javacomplete'
+"NeoBundle 'vim-scripts/javaimports.vim'
+
+NeoBundle 'vim-scripts/rubycomplete.vim.git'
+NeoBundle '1995eaton/vim-better-css-completion'
+NeoBundle '1995eaton/vim-better-javascript-completion'
+
+" CTags tools
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'ludovicchabant/vim-gutentags'
+
+NeoBundleCheck
 call neobundle#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -96,6 +199,79 @@ set nrformats=                        " Stop vim from treating zero padded numbe
 "let loaded_matchparen = 1            " Disable matchparent that is annoying.
 set cursorline                        " Highlight current line in Insert Mode.
 set switchbuf=useopen,usetab
+
+" Quicker than reaching ESC for exiting insert mode.
+inoremap jk <ESC>
+inoremap kj <ESC>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Filetype Settings
+""
+"" Description:
+""  For each filetype we create a ftplugin/<filetype>.vim file with settings
+""  particular to each filetype. For example we set tabs instead of spaces for
+""  python and makefile files and enable the different omnifunctions for each
+""  filetype that supports it.
+""
+"" Installation:
+""
+""  Refer to the ftplugin folder and edit the files there to your needs or add
+""  new file types if required.
+""
+filetype plugin indent on " Re-enable after pathogen is loaded.
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Look and Feel Settings
+""
+"" Prerequisites:
+""  - Make sure your terminal supports 256 colors. Konsole does but you must set
+""    the TERM variable to xterm-256color in the schema properties.
+""
+
+" Stop the terminal bg color to bleed into our favorite color scheme.
+" http://snk.tuxfamily.org/log/vim-256color-bce.html
+set term=screen-256color
+
+" Enable syntax
+syntax on sync minlines=256
+set synmaxcol=200                     " Improve scroll performance with long lines
+set t_Co=256                          " Enable 256 color mode in terminal.
+set background=dark                   " I like dark backgrounds.
+
+" Install nice colorschemes
+" Solarized color scheme configuration
+let g:solarized_termcolors=256
+let g:solarized_termtrans = 1
+
+" Molokai color scheme configuration
+let g:rehash256 = 1
+
+colors Tomorrow-Night
+"colors sexy-railscasts-256
+"colors solarized
+
+" Apply some color to the popup menu used for auto-completion.
+highlight Pmenu ctermbg=203 gui=bold
+
+" Show tabs and tailing spaces.
+" Note: to insert the middle point press "ctrl+k .M" in insert mode. Tha is
+" control + k followed by a <dot> and the capital M.
+set list
+"set listchars=tab:»·,trail:·,nbsp:·
+"set listchars=tab:▸\ ,trail:·,nbsp:·
+exec "set lcs=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim_airline status line
+"
+set laststatus=2
+let g:airline_powerline_fonts = 1
+
+" Uncomment the following statusline option if you do not use vim_airline
+" if exists('g:loaded_fugitive') || &cp
+"   set statusline=%{fugitive#statusline()}
+" endif
+" set statusline+=[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Search
@@ -154,31 +330,28 @@ set mousehide
 "set ttymouse=xterm2                   " Allow text selction work with tmux
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Custom text objects
-"
-" Vim text-objs are important for fast editing of text. Defining new text
-" objects allow operators to work on blocks of texts other than chars, words and
-" paragraphs.
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'nelstrom/vim-textobj-rubyblock'
-NeoBundle 'kana/vim-textobj-function'
-NeoBundle 'rbonvall/vim-textobj-latex'
+" ProjTags Plugin
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Some visual plugins
-"NeoBundle 'joeytwiddle/sexy_scroller.vim'
-NeoBundle 'koron/nyancat-vim'
+let g:projtags_list = {
+      \ 'java7': ['/home/ryujin/Apps/jdk/src'],
+      \ 'android': [
+      \     '~/vault/java/otto',
+      \     '~/vault/java/google-gson-read-only',
+      \     '~/vault/java/realm-java',
+      \     '~/vault/java/retrofit',
+      \     '~/Apps/android-sdk/sources/android-21'
+      \ ],
+      \ 'kernel': ['/usr/src/linux-kbuild-3.1']
+      \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Buffer and Tab navigation
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " Easily switch between open tabs
 nnoremap <TAB> :tabnext<CR>
 nnoremap <S-TAB> :tabprev<CR>
 
 " Enables more fluid resizing of split windows
-NeoBundle 'hsanson/vim-resize'
 nnoremap <C-k> :ResizeUp<CR>
 nnoremap <C-j> :ResizeDown<CR>
 nnoremap <C-h> :ResizeLeft<CR>
@@ -186,13 +359,6 @@ nnoremap <C-l> :ResizeRight<CR>
 
 " Add map to redraw screen as we use the default <C-l> for resizing splits.
 nnoremap <Leader>r :redraw!<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Intent Guides plugin
-"
-" Description:
-"   Shows guides to easily track indent lines.
-NeoBundle "Yggdroot/indentLine"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tabs vs Spaces war
@@ -298,13 +464,6 @@ set fencs=utf-8,euc-jp,sjis
 set encoding=utf-8
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Slim Plugin
-"
-" Description:
-"   Add file type detection rules and syntax highlighting for slim templates.
-NeoBundle 'slim-template/vim-slim.git'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Latex Plugin
 "
 " Description:
@@ -326,7 +485,6 @@ NeoBundle 'slim-template/vim-slim.git'
 "   -  \lo  ->  Use synctex to jump to the same section in PDF file
 "   -  \le  ->  Load log in quickfix window
 
-NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 let g:LatexBox_completion_close_braces = 1
 let g:LatexBox_latexmk_async = 0
 "let g:LatexBox_latexmk_preview_continuously = 1
@@ -373,53 +531,6 @@ command! LatexView2 call LatexBox_View2()
 map <buffer> <LocalLeader>lo :LatexView2<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Groovy Syntax
-NeoBundle 'vim-scripts/groovy.vim'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Javacomplete Plugin
-"
-" Description:
-"   Enables omnicompletion of java classes, packages and methods.
-"
-" Installation:
-"
-"   - Install via vundle or pathogen.
-"   - Compile the Reflection.java file
-"
-"     cd ~/vim/bundle/javacomplete/autoload
-"     javac Reflection.java
-"
-"   - Add the following to ftplugin/java.vim. Create the file if
-"     it does not exists.
-"
-"     setlocal omnifunc=javacomplete#Complete
-"     setlocal completefunc=javacomplete#CompleteParamsInfo
-"
-"     If you use the NeoComplCache plugin then comment out the completefunc
-"     option so it does not conflict with NeoComplCache.
-"
-" Usage:
-"   This uses normal omnicompletion with Ctrl-X Ctrl-O to invoke the
-"   autocompletion. I recommend instead to use NeoComplCache to have automatic
-"   autocompletion.
-
-"NeoBundle 'vim-scripts/javacomplete'
-"NeoBundle 'nwertzberger/javacomplete'
-"NeoBundle 'itszero/javacomplete'
-"NeoBundle 'adragomir/javacomplete'
-NeoBundle 'Shougo/javacomplete'
-"NeoBundle 'vim-scripts/javaimports.vim'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-im Plugin
-"
-" Description:
-"   Disables input methods when leaving insert mode
-"NeoBundle 'hsanson/vim-im'
-" NeoBundle 'lilydjwg/fcitx.vim'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" vim-android Plugin
 ""
 "" Description:
@@ -438,62 +549,8 @@ NeoBundle 'Shougo/javacomplete'
 ""   - If you use NeoComplCache or YouCompleteMe then the auto-completion should
 ""     work automatically.
 "
-NeoBundle 'hsanson/vim-android'
 let g:android_sdk_path="/home/ryujin/Apps/android-sdk"
 let g:gradle_path="/home/ryujin/Apps/gradle"
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Vimproc
-""
-"" Description:
-""  Asynchronous execution library for Vim. Nice tool to write plugins that do
-""  not hang Vim interface when executing.
-""
-"" Installation:
-""  - Install plugin using pathogen or vundle.
-""  - Compile the runtime library for your platform. For Ubuntu  the command is:
-""
-""    cd ~/.vim/bundle/vimproc
-""    make -f make_unix.mak
-""
-""    Make sure you have gcc and make tools to compile:
-""
-""    sudo apt-get install build-essentials
-"
-NeoBundle 'Shougo/vimproc'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" VimShell
-""
-"" Description:
-""  Simple but powerfull shell that runs inside vim. Can be used to execute
-""  commands, browse files, etc. The nice thing is this shell works in windows
-""  platforms that do not have a nice shell to work with.
-""
-"" Installation:
-""  - Install plugin via pathogen or vundle
-""  - This plugin requires vimproc so make sure it is installed and running.
-""
-"" Usage:
-""  Call :VimShell to get an interactive shell where you can input commands.
-"NeoBundle 'Shougo/vimshell'
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" LogCat plugin
-""
-"" Description:
-""  Opens a vim buffer with the adb logcat output with syntax highlighting. Good
-""  for developing and testing Android applications.
-""
-"" Installation:
-""  - Install the plugin via pathogen or vundle
-""  - Install android-sdk and ensure adb tool is in your PATH
-""  - Install vimproc and vimshell vim plugins that are required dependencies.
-""
-"" Usage:
-""  Execute :Logcat command to open a vim pane with the logcat output.
-"NeoBundle 'thinca/vim-logcat'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Ack Plugin
@@ -531,7 +588,6 @@ NeoBundle 'Shougo/vimproc'
 ""   http://amaslov.wordpress.com/2009/04/23/vim-ack-instead-of-grep/
 ""   https://github.com/ggreer/the_silver_searcher
 
-NeoBundle 'mileszs/ack.vim.git'
 if executable("ag")
   let g:ackprg="ag --nocolor --nogroup --column "
   let g:ack_wildignore = 0
@@ -550,9 +606,6 @@ endif
 "" Usage:
 ""  :NERDTreeToggle
 ""
-
-NeoBundle 'scrooloose/nerdtree.git'
-
 " Set the window width
 let g:NERDTreeWinSize = 40
 " Set the window position
@@ -584,12 +637,6 @@ nmap <silent> <leader>p :NERDTreeToggle<CR>
 ""  I am still not sure which is better: NeoComplete or YouCompleteMe. Make
 ""  you own judgement.
 ""
-"" Installation:
-""  - sudo apt-get install cmake python-dev
-""  - install YouCompleteMe plugin via Vundle.
-""  - cd ~/.vim/bundle/YouCompleteMe
-""  - ./install.sh --clang-completer
-NeoBundle 'Valloric/YouCompleteMe.git'
 let g:ycm_filetype_specific_completion_to_disable = {'ruby': 0 }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -603,7 +650,6 @@ let g:ycm_filetype_specific_completion_to_disable = {'ruby': 0 }
 ""   Requires a current version of vim (> 7.3) with lua interpreter enabled.
 ""   I am still not sure which is better: NeoComplete or YouCompleteMe. Make
 ""   sure you try both and make your own judgement.
-"NeoBundle "Shougo/neocomplete.vim"
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
@@ -622,7 +668,6 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 "   So far the best tag auto generation plugin I have user. Does not seem to
 "   block vim like szw/vim-tags or xolox/easytags.git did.
 "
-NeoBundle 'ludovicchabant/vim-gutentags'
 let g:gutentags_tagfile = '.tags'
 let g:gutentags_background_update = 1
 let g:gutentags_cache_dir = '/home/ryujin/.vim/tags'
@@ -638,18 +683,8 @@ let g:gutentags_cache_dir = '/home/ryujin/.vim/tags'
 "" Usage:
 ""  With a buffer opened run :Voom to open the outline navigation pane.
 "
-NeoBundle 'vim-scripts/VOoM.git'
 let g:voom_tree_width=60
 let g:voom_ft_modes = { 'markdown': 'markdown', 'pandoc': 'markdown', 'tex': 'latex' }
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" tGPG Plugin
-""
-"" Description:
-""  tGPG Plugin for transparent editing of encrypted files. This is the only
-""  plugin for handling encrypted GPG files that worked out of the box.
-""
-"NeoBundle 'tomtom/tgpg_vim.git'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" TagBar Plugin and Ruby omnicomplete plugin
@@ -659,8 +694,6 @@ let g:voom_ft_modes = { 'markdown': 'markdown', 'pandoc': 'markdown', 'tex': 'la
 ""
 "" Resources:
 ""  https://github.com/majutsushi/tagbar/wiki
-
-NeoBundle 'majutsushi/tagbar'
 
 "" Add go support to tagbar. Note this only works on Ubuntu or with
 "" exuberant-tags patched with go support.
@@ -687,41 +720,6 @@ let g:tagbar_type_markdown = {
 \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Ruby omnicomplete plugin
-""
-"" Description:
-""  Add omnifunction for auto-completion of ruby/rails code.
-""
-"" Install:
-""  - Install plugin using pathogen or vundle
-""  - Modify or create a ftplugin file (e.g. ftplugin/ruby.vim) that contains:
-""
-""    let g:rubycomplete_buffer_loading = 1
-""    let g:rubycomplete_rails = 1
-""    let g:rubycomplete_classes_in_global = 1
-""    setlocal omnifunc=rubycomplete#Complete
-""
-NeoBundle 'vim-scripts/rubycomplete.vim.git'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" JavaScript/CSS Plugins
-""
-"" Description:
-""  Add features to edit coffee script files in Vim.
-"
-NeoBundle 'kchmck/vim-coffee-script.git'
-NeoBundle '1995eaton/vim-better-css-completion'
-NeoBundle '1995eaton/vim-better-javascript-completion'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Puppet
-"
-" Description
-"   Syntax and tools for puppet file editing.
-NeoBundle "rodjek/vim-puppet"
-NeoBundle "godlygeek/tabular"
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Go Plugin
 "
 " Description:
@@ -732,30 +730,7 @@ NeoBundle "godlygeek/tabular"
 "
 "     go get -u github.com/nsf/gocode
 "
-NeoBundle "fatih/vim-go"
 let g:go_fmt_autosave = 0
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Tim Pope Amazing Plugins
-"
-" Description:
-"   Lots of goodies
-"
-" Usage:
-"   Too much information. Refer to each plugin git repo:
-"   https://github.com/tpope?tab=repositories
-"
-NeoBundle 'tpope/vim-rails.git'
-NeoBundle 'tpope/vim-vividchalk.git'
-NeoBundle 'tpope/vim-haml.git'
-NeoBundle 'tpope/vim-fugitive.git'
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'tpope/vim-characterize'
-NeoBundle 'tpope/vim-speeddating'
-NeoBundle 'tpope/vim-dispatch'
-
-NeoBundle 'cohama/lexima.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Surround Plugin
@@ -771,21 +746,6 @@ NeoBundle 'cohama/lexima.vim'
 ""  if *x>3 {                 ysW(        if ( x>3 ) {
 ""  my $str = *whee!;         vlllls'     my $str = 'whee!';
 ""
-NeoBundle 'tpope/vim-surround.git'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Matchit Plugin
-""
-"" Description:
-""  Allows you to configure % to match more than just single characters.
-""
-NeoBundle 'vim-scripts/matchit.zip'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pandoc text processing
-NeoBundle 'vim-pandoc/vim-pandoc'
-NeoBundle 'vim-pandoc/vim-pandoc-syntax'
-NeoBundle 'vim-pandoc/vim-pandoc-after'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Amazing nice plugin to work with Databases
@@ -835,7 +795,6 @@ NeoBundle 'vim-pandoc/vim-pandoc-after'
 "    - <leader>slc - Add list of columns of table under cursor to the copy register.
 "    - <leader>sdp - Show stored procedures
 "
-NeoBundle 'krisajenkins/dbext.vim'
 let  g:dbext_default_history_file = '$HOME/.dbext_sql_history.txt'
 let  g:dbext_default_history_size = 1000
 
@@ -856,8 +815,6 @@ source ~/.dbext_profiles
 "   <C-T> to open selected file in new tab
 "   <C-v> to open selected file in vertical split
 "
-NeoBundle 'ctrlpvim/ctrlp.vim'
-
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
@@ -893,17 +850,6 @@ let g:ctrlp_user_command = [
 let g:ctrlp_extensions = ['tag']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" DrawIt Plugin
-""
-"" Description:
-""  Nice plugin to create ascii diagrams on text files.
-""
-"" Usage:
-""  Very complex so read the help or go to the plugin page.
-""  https://github.com/vim-scripts/DrawIt
-NeoBundle 'vim-scripts/DrawIt.git'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" SudoEdit plugin
 ""
 "" Description:
@@ -913,84 +859,3 @@ NeoBundle 'vim-scripts/DrawIt.git'
 "" Usage:
 ""  :SudoRead[!] [file]
 ""  :[range]SudoWrite[!] [file]
-NeoBundle 'chrisbra/SudoEdit.vim'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Filetype Settings
-""
-"" Description:
-""  For each filetype we create a ftplugin/<filetype>.vim file with settings
-""  particular to each filetype. For example we set tabs instead of spaces for
-""  python and makefile files and enable the different omnifunctions for each
-""  filetype that supports it.
-""
-"" Installation:
-""
-""  Refer to the ftplugin folder and edit the files there to your needs or add
-""  new file types if required.
-""
-filetype plugin indent on " Re-enable after pathogen is loaded.
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Look and Feel Settings
-""
-"" Prerequisites:
-""  - Make sure your terminal supports 256 colors. Konsole does but you must set
-""    the TERM variable to xterm-256color in the schema properties.
-""
-
-" Stop the terminal bg color to bleed into our favorite color scheme.
-" http://snk.tuxfamily.org/log/vim-256color-bce.html
-set term=screen-256color
-
-" Enable syntax
-syntax on sync minlines=256
-set synmaxcol=200                     " Improve scroll performance with long lines
-set t_Co=256                          " Enable 256 color mode in terminal.
-set background=dark                   " I like dark backgrounds.
-
-" Install nice colorschemes
-NeoBundle 'w0ng/vim-hybrid.git'
-NeoBundle 'lsdr/monokai'
-NeoBundle 'tomasr/molokai'
-NeoBundle 'altercation/vim-colors-solarized.git'
-NeoBundle '29decibel/codeschool-vim-theme'
-NeoBundle 'oguzbilgic/sexy-railscasts-theme'
-NeoBundle 'davidkariuki/sexy-railscasts-256-theme'
-NeoBundle 'zeis/vim-kolor'
-NeoBundle 'chrisbra/color_highlight'
-
-" Solarized color scheme configuration
-let g:solarized_termcolors=256
-let g:solarized_termtrans = 1
-
-" Molokai color scheme configuration
-let g:rehash256 = 1
-
-colors Tomorrow-Night
-"colors sexy-railscasts-256
-"colors solarized
-
-" Apply some color to the popup menu used for auto-completion.
-highlight Pmenu ctermbg=203 gui=bold
-
-" Show tabs and tailing spaces.
-" Note: to insert the middle point press "ctrl+k .M" in insert mode. Tha is
-" control + k followed by a <dot> and the capital M.
-set list
-"set listchars=tab:»·,trail:·,nbsp:·
-"set listchars=tab:▸\ ,trail:·,nbsp:·
-exec "set lcs=tab:\uBB\uBB,trail:\uB7,nbsp:~"
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim_airline status line
-"
-set laststatus=2
-NeoBundle 'bling/vim-airline'
-let g:airline_powerline_fonts = 1
-
-" Uncomment the following statusline option if you do not use vim_airline
-" if exists('g:loaded_fugitive') || &cp
-"   set statusline=%{fugitive#statusline()}
-" endif
-" set statusline+=[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
