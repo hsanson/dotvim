@@ -93,11 +93,13 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Personal plugins
 NeoBundle 'hsanson/vim-projtags'
 NeoBundle 'hsanson/vim-resize'
+
 NeoBundle 'hsanson/vim-android'
 "NeoBundle 'hsanson/vim-im'
 "NeoBundle 'lilydjwg/fcitx.vim'
 
 " Helper and tools
+NeoBundle 'christoomey/vim-tmux-navigator'
 NeoBundle 'mileszs/ack.vim.git'
 NeoBundle 'scrooloose/nerdtree.git'
 NeoBundle "yuratomo/dbg.vim"
@@ -352,10 +354,10 @@ nnoremap <TAB> :tabnext<CR>
 nnoremap <S-TAB> :tabprev<CR>
 
 " Enables more fluid resizing of split windows
-nnoremap <C-k> :ResizeUp<CR>
-nnoremap <C-j> :ResizeDown<CR>
-nnoremap <C-h> :ResizeLeft<CR>
-nnoremap <C-l> :ResizeRight<CR>
+nnoremap <C-UP> :ResizeUp<CR>
+nnoremap <C-DOWN> :ResizeDown<CR>
+nnoremap <C-LEFT> :ResizeLeft<CR>
+nnoremap <C-RIGTH> :ResizeRight<CR>
 
 " Add map to redraw screen as we use the default <C-l> for resizing splits.
 nnoremap <Leader>r :redraw!<CR>
