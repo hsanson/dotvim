@@ -341,6 +341,7 @@ let g:projtags_list = {
       \     '~/vault/java/google-gson-read-only',
       \     '~/vault/java/realm-java',
       \     '~/vault/java/retrofit',
+      \     '~/vault/java/couchbase-lite-android',
       \     '~/Apps/android-sdk/sources/android-21'
       \ ],
       \ 'kernel': ['/usr/src/linux-kbuild-3.1']
