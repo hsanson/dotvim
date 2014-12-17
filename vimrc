@@ -836,7 +836,7 @@ set wildignore+=public/**
 set wildignore+=*.jar,*.class,*.log,*.gz
 set wildignore+=*.o,*.obj,.git,*.rbc,*.svn
 set wildignore+=*.jpeg,*.jpg,*.jpeg*,*.png,*.gif
-set wildignore+=*/log/*,*/.bundle/*,*/bin/*,*/tmp/*
+set wildignore+=*/log/*,*/.bundle/*,*/bin/*,*/tmp/*,*/build/*
 set wildignore+=*/.sass-cache/*
 
 "let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn)$'
