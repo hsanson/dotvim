@@ -143,6 +143,8 @@ NeoBundle 'oguzbilgic/sexy-railscasts-theme'
 NeoBundle 'davidkariuki/sexy-railscasts-256-theme'
 NeoBundle 'zeis/vim-kolor'
 NeoBundle 'chrisbra/color_highlight'
+NeoBundle 'ajh17/Spacegray.vim'
+NeoBundle 'junegunn/seoul256.vim'
 
 " Syntax and language support
 NeoBundle 'slim-template/vim-slim.git'
