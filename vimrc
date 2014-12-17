@@ -145,6 +145,7 @@ NeoBundle 'zeis/vim-kolor'
 NeoBundle 'chrisbra/color_highlight'
 NeoBundle 'ajh17/Spacegray.vim'
 NeoBundle 'junegunn/seoul256.vim'
+NeoBundle 'ryanoasis/vim-webdevicons'
 
 " Syntax and language support
 NeoBundle 'slim-template/vim-slim.git'
