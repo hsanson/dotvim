@@ -642,7 +642,7 @@ nmap <silent> <leader>p :NERDTreeToggle<CR>
 ""  I am still not sure which is better: NeoComplete or YouCompleteMe. Make
 ""  you own judgement.
 ""
-let g:ycm_filetype_specific_completion_to_disable = {'ruby': 0 }
+let g:ycm_filetype_specific_completion_to_disable = {'ruby': 0, 'java': 0 }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" NeoComplete
