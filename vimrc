@@ -251,7 +251,11 @@ let g:solarized_termtrans = 1
 " Molokai color scheme configuration
 let g:rehash256 = 1
 
-colors Tomorrow-Night
+" Force all colorschemes to have transparent background.
+au ColorScheme * hi Normal ctermbg=NONE
+
+colors seoul256
+" colors Tomorrow-Night
 "colors sexy-railscasts-256
 "colors solarized
 
