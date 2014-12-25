@@ -388,7 +388,16 @@ set softtabstop=2
 set wildmode=full wildmenu              " Command-line tab completion
 set infercase                           " AutoComplete in Vim
 set completeopt=longest,menu,menuone
-set wildignore+=*.o,*.obj,*.pyc,*.DS_STORE,*.db,*.swc
+
+set wildignore+=*.o,*.obj,*.pyc,*.DS_STORE,*.db,*.swc,*.rbc
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=vendor/rails/**,vendor/gems/**
+set wildignore+=public/**
+set wildignore+=*.jar,*.class,*.log,*.gz
+set wildignore+=.git,*.rbc,*.svn
+set wildignore+=*.jpeg,*.jpg,*.jpeg*,*.png,*.gif
+set wildignore+=*/log/*,*/.bundle/*,*/bin/*,*/tmp/*,*/build/*
+set wildignore+=*/.sass-cache/*
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Improve TOhtml output
@@ -824,21 +833,11 @@ source ~/.dbext_profiles
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_dotfiles=1
-let g:ctrlp_reuse_window='netrw\|help\|quickfix'
+let g:ctrlp_dotfiles=0
+"let g:ctrlp_reuse_window='netrw\|help\|quickfix'
 let g:ctrl_use_caching=1
 let g:ctrl_clear_cache_on_exit=0
-let g:ctrl_mruf_case_sensitive=1
-
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
-set wildignore+=vendor/rails/**,vendor/gems/**
-set wildignore+=public/**
-set wildignore+=*.jar,*.class,*.log,*.gz
-set wildignore+=*.o,*.obj,.git,*.rbc,*.svn
-set wildignore+=*.jpeg,*.jpg,*.jpeg*,*.png,*.gif
-set wildignore+=*/log/*,*/.bundle/*,*/bin/*,*/tmp/*,*/build/*
-set wildignore+=*/.sass-cache/*
+let g:ctrl_mruf_case_sensitive=0
 
 "let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn)$'
 let g:ctrlp_custom_ignore = {
