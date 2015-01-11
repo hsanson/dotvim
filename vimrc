@@ -170,7 +170,7 @@ NeoBundle 'Valloric/YouCompleteMe.git'
 "NeoBundle 'nwertzberger/javacomplete'
 "NeoBundle 'itszero/javacomplete'
 "NeoBundle 'adragomir/javacomplete'
-NeoBundle 'Shougo/javacomplete'
+"NeoBundle 'Shougo/javacomplete'
 "NeoBundle 'vim-scripts/javaimports.vim'
 
 NeoBundle 'vim-scripts/rubycomplete.vim.git'
