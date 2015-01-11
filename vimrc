@@ -254,6 +254,10 @@ let g:rehash256 = 1
 " Force all colorschemes to have transparent background.
 au ColorScheme * hi Normal ctermbg=NONE
 
+" Make cursorline transparent too so only the line number is highlighted on the
+" current line.
+au ColorScheme * hi CursorLine ctermbg=NONE
+
 colors seoul256
 " colors Tomorrow-Night
 "colors sexy-railscasts-256
