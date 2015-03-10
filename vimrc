@@ -594,6 +594,11 @@ let g:gradle_path="/home/ryujin/Apps/gradle"
 ""    apt-get update
 ""    apt-get install silversearcher-ag
 ""
+""  If you have debian 8 or Ubuntu 14.04 and latter then ag is already packaged
+""  in the official repo:
+""
+""    apt-get install silversearcher-ag
+""
 "" Usage:
 ""  - :Ack [options] {pattern} [{directory}]
 ""
@@ -855,10 +860,22 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 " Speed up ctrlp on git repositories.
-let g:ctrlp_user_command = [
-  \ '.git',
-  \ 'cd %s && git ls-files . -co --exclude-standard',
-  \ 'find %s -type f']
+if executable("ag")
+let g:ctrlp_user_command = {
+  \ 'types': {
+  \    1: ['.git', 'cd %s && git ls-files . -co --exclude-standard']
+  \ },
+  \ 'fallback': 'ag %s -i --nocolor --nogroup --hidden --ignore .git
+  \             --ignore .svn --ignore .hg --ignore .DS_Store
+  \             --ignore "**/*.pyc" -g ""'
+  \ }
+else
+let g:ctrlp_user_command = {
+  \   'types': {
+  \      1: ['.git', 'cd %s && git ls-files . -co --exclude-standard']
+  \   }
+  \ }
+endif
 
 let g:ctrlp_extensions = ['tag']
 
