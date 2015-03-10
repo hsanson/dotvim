@@ -120,6 +120,7 @@ NeoBundle 'tpope/vim-surround.git'
 NeoBundle 'vim-scripts/matchit.zip'
 NeoBundle 'krisajenkins/dbext.vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
+NeoBundle 'FelikZ/ctrlp-py-matcher'
 NeoBundle 'vim-scripts/DrawIt.git'
 NeoBundle 'chrisbra/SudoEdit.vim'
 
@@ -851,6 +852,12 @@ let g:ctrlp_dotfiles=0
 let g:ctrl_use_caching=1
 let g:ctrl_clear_cache_on_exit=0
 let g:ctrl_mruf_case_sensitive=0
+let g:ctrlp_lazy_update = 350
+let g:ctrlp_max_files = 0
+
+if has('python')
+  let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+endif
 
 "let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn)$'
 let g:ctrlp_custom_ignore = {
