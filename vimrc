@@ -144,6 +144,7 @@ NeoBundle 'oguzbilgic/sexy-railscasts-theme'
 NeoBundle 'davidkariuki/sexy-railscasts-256-theme'
 NeoBundle 'zeis/vim-kolor'
 NeoBundle 'chrisbra/color_highlight'
+NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'ajh17/Spacegray.vim'
 NeoBundle 'junegunn/seoul256.vim'
 NeoBundle 'ryanoasis/vim-webdevicons'
@@ -174,7 +175,7 @@ NeoBundle 'Valloric/YouCompleteMe.git'
 "NeoBundle 'Shougo/javacomplete'
 "NeoBundle 'vim-scripts/javaimports.vim'
 
-NeoBundle 'vim-scripts/rubycomplete.vim.git'
+"NeoBundle 'vim-scripts/rubycomplete.vim.git'
 NeoBundle '1995eaton/vim-better-css-completion'
 NeoBundle '1995eaton/vim-better-javascript-completion'
 
@@ -229,37 +230,32 @@ filetype plugin indent on " Re-enable after pathogen is loaded.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Look and Feel Settings
 ""
-"" Prerequisites:
-""  - Make sure your terminal supports 256 colors. Konsole does but you must set
-""    the TERM variable to xterm-256color in the schema properties.
-""
-
-" Stop the terminal bg color to bleed into our favorite color scheme.
-" http://snk.tuxfamily.org/log/vim-256color-bce.html
-set term=screen-256color
 
 " Enable syntax
 syntax on sync minlines=256
 set synmaxcol=200                     " Improve scroll performance with long lines
-set t_Co=256                          " Enable 256 color mode in terminal.
 set background=dark                   " I like dark backgrounds.
 
-" Install nice colorschemes
+"" [ 256 Color START ]
+"" If you are using neovim with true color support you can skip the followin
+"" options.
+" set term=screen-256color              " Set term in 256 color mode
+" set t_Co=256                          " Enable 256 color mode in terminal.
+" let g:solarized_termcolors=256        " Enable solarized 256 color support
+" let g:rehash256 = 1                   " Enable molokai 256 color support
+"" [ 256 Color END ]
+
 " Solarized color scheme configuration
-let g:solarized_termcolors=256
 let g:solarized_termtrans = 1
 
-" Molokai color scheme configuration
-let g:rehash256 = 1
-
-" Force all colorschemes to have transparent background.
+" Force all colorschemes to have transparent background. Affects only 256 mode.
 au ColorScheme * hi Normal ctermbg=NONE
 
 " Make cursorline transparent too so only the line number is highlighted on the
 " current line.
 au ColorScheme * hi CursorLine ctermbg=NONE
 
-colors seoul256
+colors base16-default
 " colors Tomorrow-Night
 "colors sexy-railscasts-256
 "colors solarized
