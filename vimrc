@@ -155,6 +155,7 @@ NeoBundle 'vim-scripts/groovy.vim'
 NeoBundle 'kchmck/vim-coffee-script.git'
 NeoBundle "rodjek/vim-puppet"
 NeoBundle 'tpope/vim-haml.git'
+NeoBundle 'othree/yajs.vim'
 
 " Document editing
 NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
@@ -233,7 +234,7 @@ filetype plugin indent on " Re-enable after pathogen is loaded.
 
 " Enable syntax
 syntax on sync minlines=256
-set synmaxcol=200                     " Improve scroll performance with long lines
+"set synmaxcol=200                     " Improve scroll performance with long lines
 set background=dark                   " I like dark backgrounds.
 
 "" [ 256 Color START ]
