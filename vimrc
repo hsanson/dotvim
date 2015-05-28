@@ -169,6 +169,7 @@ NeoBundle 'vim-pandoc/vim-pandoc-after'
 NeoBundle 'Valloric/YouCompleteMe.git'
 "NeoBundle "Shougo/neocomplete.vim"
 
+NeoBundle 'artur-shaik/vim-javacomplete2'
 "NeoBundle 'vim-scripts/javacomplete'
 "NeoBundle 'nwertzberger/javacomplete'
 "NeoBundle 'itszero/javacomplete'
@@ -663,7 +664,13 @@ nmap <silent> <leader>p :NERDTreeToggle<CR>
 ""  I am still not sure which is better: NeoComplete or YouCompleteMe. Make
 ""  you own judgement.
 ""
-let g:ycm_filetype_specific_completion_to_disable = {'ruby': 0, 'java': 0 }
+let g:ycm_filetype_specific_completion_to_disable = {'ruby': 0}
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" vim-javacomplete2 Plugin
+""
+let g:JavaComplete_Home = $HOME . '/.vim/bundle/vim-javacomplete2'
+let $CLASSPATH .= '.:' . $HOME . '/.vim/bundle/vim-javacomplete2/libs/javavi/target/classes'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" NeoComplete
