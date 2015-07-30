@@ -103,7 +103,7 @@ NeoBundle 'christoomey/vim-tmux-navigator'
 NeoBundle 'mileszs/ack.vim.git'
 NeoBundle 'scrooloose/nerdtree.git'
 NeoBundle "yuratomo/dbg.vim"
-NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimproc', { 'build': { 'linux' : 'make' } }
 NeoBundle 'Shougo/vimshell'
 NeoBundle "godlygeek/tabular"
 NeoBundle "fatih/vim-go"
