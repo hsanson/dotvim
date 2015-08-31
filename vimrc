@@ -396,13 +396,13 @@ set wildmode=full wildmenu              " Command-line tab completion
 set infercase                           " AutoComplete in Vim
 set completeopt=longest,menu,menuone
 
-set wildignore+=*.o,*.obj,*.pyc,*.DS_STORE,*.db,*.swc,*.rbc
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-set wildignore+=vendor/rails/**,vendor/gems/**
-set wildignore+=public/**
-set wildignore+=*.jar,*.class,*.log,*.gz
+set wildignore+=*.o,*.obj,*.pyc,*.DS_STORE,*.db,*.swc,*.rbc " Binary objects
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip                    " Temp files
+set wildignore+=vendor/rails/**,vendor/gems/**              " Rails stuff
+set wildignore+=public/**                                   " Web dev stuff
+set wildignore+=*.jar,*.class,*.log,*.gz                    " Java bin files
 set wildignore+=.git,*.rbc,*.svn
-set wildignore+=*.jpeg,*.jpg,*.jpeg*,*.png,*.gif
+set wildignore+=*.jpeg,*.jpg,*.jpeg*,*.png,*.gif            " Media files
 set wildignore+=*/log/*,*/.bundle/*,*/bin/*,*/tmp/*,*/build/*
 set wildignore+=*/.sass-cache/*
 
@@ -616,7 +616,7 @@ let g:gradle_path="/home/ryujin/Apps/gradle"
 ""   https://github.com/ggreer/the_silver_searcher
 
 if executable("ag")
-  let g:ackprg="ag --nocolor --nogroup --column "
+  let g:ackprg="ag --vimgrep $*"
   let g:ack_wildignore = 0
 elseif executable("ack")
   let g:ackprg="ack -H --nocolor --nogroup --column --sort-files --ignore-file=is:.tags "
