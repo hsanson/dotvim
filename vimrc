@@ -1,46 +1,18 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Description:
-""  This vimrc is my default vim configuration file.
+""  My always evolving vim configuration. Note that I have switched to neovim so
+""  some configuration/plugins may work only with neovim.
 ""
-"" Prerequisites:
-""  - This configuration has been tested only on Ubuntu/Kubuntu 10.10 or later.
-""    It may work in lower Ubuntu versions and other Debian distributions but
-""    there is no guarantee.
+"" Dependencies:
 ""
-"" Installation:
+""  Some plugins and configurations require some tools to be installed before
+""  they can be used. In a Ubuntu/Debian computer you can easily install them
+""  with the following command:
 ""
-""  - The vim packaged with Ubuntu is a little bit outdated and uses old libs
-""    like ruby1.8. To get the best experience it is recommended to install vim
-""    from sources.
+""    sudo apt-get install xsel build-essentials openjdk-7-jdk cmake g++
+""      \ pkg-config unzip automake autoconf libtool-bin
 ""
-""  - Install packages required to build and use vim:
-""
-""    sudo apt-get install mercurial gettext libncurses5-dev libxmu-dev \
-""      libgtk2.0-dev libperl-dev python-dev python2.7-dev ruby-dev tcl-dev \
-""      liblua5.1-0-dev liblua5.2-dev luajit build-essential ruby2.1 \
-""      ruby2.1-dev exuberant-ctags libx11-dev xorg-dev git-core wget sed \
-""      ack-grep python-ibus cmake python-dev build-essentials
-""
-""  - Fix lua links
-""
-""      sudo ln -s /usr/include/lua5.1 /usr/include/lua
-""      sudo ln -s /usr/lib/x86_64-linux-gnu/liblua5.1.so /usr/lib/x86_64-linux-gnu/liblua.so
-""
-""  - Download vim source code from mercurial
-""
-""      hg clone https://code.google.com/p/vim  ~/vim
-""
-""  - Compile vim
-""
-""      ./configure --prefix=/usr/local --with-features=huge \
-""          --enable-pythoninterp --enable-rubyinterp --enable-gui=gtk2 \
-""          --enable-perlinterp --enable-pythoninterp \
-""          --with-python-config-dir=/usr/lib/python2.7/config  \
-""          --enable-cscope --enable-multibyte  --enable-cscope --with-x \
-""          --enable-tclinterp --enable-luainterp=dynamic \
-""          --with-lua-prefix=/usr --enable-fail-if-missing
-""      make
-""      sudo make install
+"" Usage:
 ""
 ""  - Install NeoBundle
 ""
@@ -49,23 +21,9 @@
 ""
 ""  - Start vim and install all bundles.
 ""
-""  - Configure binary plugins
-""
-""        cd ~/.vim/bundle/vimproc
-""        make -f make_unix.mak
-""
-""        cd ~/.vim/bundle/YouCompleteMe
-""        ./install.sh --clang-completer
-""
-""        cd ~/vim/bundle/javacomplete/autoload
-""        javac Reflection.java
-""
-""    Make sure you have gcc and make tools to compile:
-""
-""    sudo apt-get install build-essentials
-""  Usage:
-""    Don't copy this vim repo and expect it work for you. Use this vimrc as
-""    example to build your own vimrc.
+""  - Carefully read the vimrc file and add the parts you like to your own vimrc
+""    configuration. Do not copy all this configuration on you home and expect
+""    everything to work on one try.
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -103,7 +61,7 @@ NeoBundle 'christoomey/vim-tmux-navigator'
 NeoBundle 'mileszs/ack.vim.git'
 NeoBundle 'scrooloose/nerdtree.git'
 NeoBundle "yuratomo/dbg.vim"
-NeoBundle 'Shougo/vimproc', { 'build': { 'linux' : 'make' } }
+NeoBundle 'Shougo/vimproc', { 'build': { 'unix' : 'make -f make_unix.mak' } }
 NeoBundle 'Shougo/vimshell'
 NeoBundle "godlygeek/tabular"
 NeoBundle "fatih/vim-go"
@@ -166,7 +124,10 @@ NeoBundle 'vim-pandoc/vim-pandoc-after'
 
 " Auto completion
 
-NeoBundle 'Valloric/YouCompleteMe.git'
+NeoBundle 'Valloric/YouCompleteMe.git', {
+    \ 'build': {
+    \   'unix' : './install.sh --clang-completer --system-libclang --omnisharp-completer'
+    \ }}
 "NeoBundle "Shougo/neocomplete.vim"
 
 NeoBundle 'artur-shaik/vim-javacomplete2'
@@ -208,6 +169,7 @@ set nrformats=                        " Stop vim from treating zero padded numbe
 "let loaded_matchparen = 1            " Disable matchparent that is annoying.
 set cursorline                        " Highlight current line in Insert Mode.
 set switchbuf=useopen,usetab
+set clipboard+=unnamedplus            " Use + and * registers by default.
 
 " Quicker than reaching ESC for exiting insert mode.
 inoremap jk <ESC>
