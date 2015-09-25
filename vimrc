@@ -92,19 +92,9 @@ NeoBundle 'rbonvall/vim-textobj-latex'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'koron/nyancat-vim'
 NeoBundle "Yggdroot/indentLine"
-NeoBundle 'tpope/vim-vividchalk.git'
-NeoBundle 'w0ng/vim-hybrid.git'
-NeoBundle 'lsdr/monokai'
-NeoBundle 'tomasr/molokai'
-NeoBundle 'altercation/vim-colors-solarized.git'
-NeoBundle '29decibel/codeschool-vim-theme'
-NeoBundle 'oguzbilgic/sexy-railscasts-theme'
-NeoBundle 'davidkariuki/sexy-railscasts-256-theme'
 NeoBundle 'zeis/vim-kolor'
-NeoBundle 'chrisbra/color_highlight'
 NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'ajh17/Spacegray.vim'
-NeoBundle 'junegunn/seoul256.vim'
 NeoBundle 'ryanoasis/vim-webdevicons'
 
 " Syntax and language support
@@ -114,6 +104,9 @@ NeoBundle 'kchmck/vim-coffee-script.git'
 NeoBundle "rodjek/vim-puppet"
 NeoBundle 'tpope/vim-haml.git'
 NeoBundle 'othree/yajs.vim'
+
+" Highlights color codes with the actual color.
+NeoBundle 'chrisbra/color_highlight'
 
 " Document editing
 NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
@@ -200,18 +193,6 @@ syntax on sync minlines=256
 "set synmaxcol=200                     " Improve scroll performance with long lines
 set background=dark                   " I like dark backgrounds.
 
-"" [ 256 Color START ]
-"" If you are using neovim with true color support you can skip the followin
-"" options.
-" set term=screen-256color              " Set term in 256 color mode
-" set t_Co=256                          " Enable 256 color mode in terminal.
-" let g:solarized_termcolors=256        " Enable solarized 256 color support
-" let g:rehash256 = 1                   " Enable molokai 256 color support
-"" [ 256 Color END ]
-
-" Solarized color scheme configuration
-let g:solarized_termtrans = 1
-
 " Force all colorschemes to have transparent background. Affects only 256 mode.
 au ColorScheme * hi Normal ctermbg=NONE
 
@@ -220,9 +201,6 @@ au ColorScheme * hi Normal ctermbg=NONE
 au ColorScheme * hi CursorLine ctermbg=NONE
 
 colors base16-default
-" colors Tomorrow-Night
-"colors sexy-railscasts-256
-"colors solarized
 
 " Apply some color to the popup menu used for auto-completion.
 highlight Pmenu ctermbg=203 gui=bold
@@ -231,9 +209,10 @@ highlight Pmenu ctermbg=203 gui=bold
 " Note: to insert the middle point press "ctrl+k .M" in insert mode. Tha is
 " control + k followed by a <dot> and the capital M.
 set list
-"set listchars=tab:»·,trail:·,nbsp:·
-"set listchars=tab:▸\ ,trail:·,nbsp:·
 exec "set lcs=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+
+" Highlight color codes with the actual color. Requires color_highlight plugin.
+let g:colorizer_auto_filetype='css,html'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim_airline status line
