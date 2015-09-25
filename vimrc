@@ -309,7 +309,7 @@ nnoremap <S-TAB> :tabprev<CR>
 nnoremap <C-UP> :ResizeUp<CR>
 nnoremap <C-DOWN> :ResizeDown<CR>
 nnoremap <C-LEFT> :ResizeLeft<CR>
-nnoremap <C-RIGTH> :ResizeRight<CR>
+nnoremap <C-RIGHT> :ResizeRight<CR>
 
 " Add map to redraw screen as we use the default <C-l> for resizing splits.
 nnoremap <Leader>r :redraw!<CR>
