@@ -337,6 +337,10 @@ set wildmode=full wildmenu              " Command-line tab completion
 set infercase                           " AutoComplete in Vim
 set completeopt=longest,menu,menuone
 
+" Allow navigation in the select popup using C-j and C-k
+inoremap <expr><C-j>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><C-k>  pumvisible() ? "\<C-p>" : "\<TAB>"
+
 set wildignore+=*.o,*.obj,*.pyc,*.DS_STORE,*.db,*.swc,*.rbc " Binary objects
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip                    " Temp files
 set wildignore+=vendor/rails/**,vendor/gems/**              " Rails stuff
@@ -631,7 +635,6 @@ let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
-"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 "inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 "function! s:my_cr_function()
 "  return neocomplete#smart_close_popup() . "\<CR>"
