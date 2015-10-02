@@ -612,6 +612,8 @@ let g:ycm_filetype_specific_completion_to_disable = {'ruby': 0}
 ""
 let g:JavaComplete_Home = $HOME . '/.vim/bundle/vim-javacomplete2'
 let $CLASSPATH .= '.:' . $HOME . '/.vim/bundle/vim-javacomplete2/libs/javavi/target/classes'
+let g:JavaComplete_JvmLauncher = $HOME . '/Apps/jdk1.8.0_45/bin/java'
+let g:JavaComplete_JavaCompiler = $HOME . '/Apps/jdk1.8.0_45/bin/javac'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" NeoComplete
