@@ -60,7 +60,7 @@ NeoBundle 'hsanson/vim-android'
 NeoBundle 'mileszs/ack.vim.git'
 NeoBundle 'scrooloose/nerdtree.git'
 NeoBundle "yuratomo/dbg.vim"
-NeoBundle 'Shougo/vimproc', { 'build': { 'unix' : 'make -f make_unix.mak' } }
+NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/vimshell'
 NeoBundle "godlygeek/tabular"
 NeoBundle "fatih/vim-go"
