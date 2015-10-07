@@ -57,7 +57,6 @@ NeoBundle 'hsanson/vim-android'
 "NeoBundle 'lilydjwg/fcitx.vim'
 
 " Helper and tools
-NeoBundle 'christoomey/vim-tmux-navigator'
 NeoBundle 'mileszs/ack.vim.git'
 NeoBundle 'scrooloose/nerdtree.git'
 NeoBundle "yuratomo/dbg.vim"
