@@ -339,8 +339,8 @@ set infercase                           " AutoComplete in Vim
 set completeopt=longest,menu,menuone
 
 " Allow navigation in the select popup using C-j and C-k
-inoremap <expr><C-j>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><C-k>  pumvisible() ? "\<C-p>" : "\<TAB>"
+inoremap <expr><C-j>  pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr><C-k>  pumvisible() ? "\<C-p>" : "\<C-k>"
 
 set wildignore+=*.o,*.obj,*.pyc,*.DS_STORE,*.db,*.swc,*.rbc " Binary objects
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip                    " Temp files
