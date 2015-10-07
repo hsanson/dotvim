@@ -104,6 +104,7 @@ NeoBundle 'kchmck/vim-coffee-script.git'
 NeoBundle "rodjek/vim-puppet"
 NeoBundle 'tpope/vim-haml.git'
 NeoBundle 'othree/yajs.vim'
+NeoBundle 'pearofducks/ansible-vim'
 
 " Highlights color codes with the actual color.
 NeoBundle 'chrisbra/color_highlight'
