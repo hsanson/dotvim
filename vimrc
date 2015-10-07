@@ -200,7 +200,7 @@ au ColorScheme * hi Normal ctermbg=NONE
 " current line.
 au ColorScheme * hi CursorLine ctermbg=NONE
 
-colors base16-default
+colors base16-flat
 
 " Apply some color to the popup menu used for auto-completion.
 highlight Pmenu ctermbg=203 gui=bold
