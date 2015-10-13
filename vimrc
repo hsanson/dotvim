@@ -79,7 +79,6 @@ NeoBundle 'krisajenkins/dbext.vim'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'FelikZ/ctrlp-py-matcher'
 NeoBundle 'vim-scripts/DrawIt.git'
-NeoBundle 'chrisbra/SudoEdit.vim'
 
 " Text object add ons
 NeoBundle 'kana/vim-textobj-user'
@@ -250,6 +249,10 @@ if has("persistent_undo")
   set undodir=/var/tmp//,/tmp//
   set undofile
 endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Force write with sudo.
+cmap w!! w !sudo tee > /dev/null %
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map make for easy access
@@ -835,14 +838,3 @@ let g:ctrlp_user_command = {
 endif
 
 let g:ctrlp_extensions = ['tag']
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" SudoEdit plugin
-""
-"" Description:
-""  Improved version of sudo.vim plugin that allows write and read of files
-""  using sudo or su.
-""
-"" Usage:
-""  :SudoRead[!] [file]
-""  :[range]SudoWrite[!] [file]
