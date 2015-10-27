@@ -650,6 +650,18 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 let g:gutentags_tagfile = '.tags'
 let g:gutentags_background_update = 1
 let g:gutentags_cache_dir = '/home/ryujin/.vim/tags'
+let g:gutentags_exclude = [
+      \ '*.min.js',
+      \ '*html*',
+      \ 'jquery*.js',
+      \ '*/vendor/*',
+      \ '*/node_modules/*',
+      \ '*/migrate/*.rb'
+      \ ]
+let g:gutentags_generate_on_missing = 0
+let g:gutentags_generate_on_write = 0
+let g:gutentags_generate_on_new = 0
+nnoremap <leader>gt :GutentagsUpdate!<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" VOoM Plugin
