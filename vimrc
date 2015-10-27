@@ -62,13 +62,12 @@ NeoBundle 'scrooloose/nerdtree.git'
 NeoBundle "yuratomo/dbg.vim"
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/vimshell'
-NeoBundle "godlygeek/tabular"
+NeoBundle 'junegunn/vim-easy-align'
 NeoBundle "fatih/vim-go"
 NeoBundle 'tpope/vim-rails.git'
 NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-commentary'
-NeoBundle 'tpope/vim-characterize'
 NeoBundle 'tpope/vim-speeddating'
 NeoBundle 'tpope/vim-dispatch'
 "NeoBundle 'thinca/vim-logcat'
@@ -496,6 +495,11 @@ endfunction
 command! LatexView2 call LatexBox_View2()
 
 map <buffer> <LocalLeader>lo :LatexView2<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" vim-easy-align Plugin
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" vim-android Plugin
