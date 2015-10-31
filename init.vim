@@ -54,8 +54,7 @@ NeoBundle 'hsanson/vim-projtags'
 NeoBundle 'hsanson/vim-resize'
 
 NeoBundle 'hsanson/vim-android'
-"NeoBundle 'hsanson/vim-im'
-"NeoBundle 'lilydjwg/fcitx.vim'
+NeoBundle 'hsanson/vim-im'
 
 " Helper and tools
 NeoBundle 'mileszs/ack.vim.git'
