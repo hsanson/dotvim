@@ -40,6 +40,7 @@
 if has('vim_starting')
   set nocompatible               " Be iMproved
   set runtimepath+=~/.config/nvim/bundle/neobundle.vim/
+  set runtimepath+=~/.fzf
 endif
 
 filetype off
@@ -76,8 +77,6 @@ NeoBundle 'cohama/lexima.vim'
 NeoBundle 'tpope/vim-surround.git'
 NeoBundle 'vim-scripts/matchit.zip'
 NeoBundle 'krisajenkins/dbext.vim'
-NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'FelikZ/ctrlp-py-matcher'
 NeoBundle 'vim-scripts/DrawIt.git'
 
 " Text object add ons
@@ -800,55 +799,28 @@ let  g:dbext_default_history_size = 1000
 source ~/.dbext_profiles
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ctrlp Plugin
-" 
+" FZF Plugin
+"
 " Description:
-"   Amazing fuzzy finder. Better than command-t and without all the ruby
-"   dependencies.
+"   Faster fuzzy finder alternative to ctrl-p. The best part is that this is a
+"   terminal tool so fuzzy searching is not limited to vim only. It works for
+"   files etc in the terminal too. Also configuration is far easier.
+"
+" Installation:
+"   You need to install fzf tool first on your machine for this to work:
+"
+"     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+"     ~/.fzf/install
+"
+"   then add this line to your vimrc, nvimrc or init.vim:
+"
+"     set rtp+=~/.fzf
 "
 " Usage:
-"   <C-P> to start search mode.
-"   <C-T> to open selected file in new tab
-"   <C-v> to open selected file in vertical split
 "
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_dotfiles=0
-"let g:ctrlp_reuse_window='netrw\|help\|quickfix'
-let g:ctrl_use_caching=1
-let g:ctrl_clear_cache_on_exit=0
-let g:ctrl_mruf_case_sensitive=0
-let g:ctrlp_lazy_update = 350
-let g:ctrlp_max_files = 0
+"   :FZF Search on current directory
+"   :FZF Search on home directory
+"   :FZF --no-sort -m /tmp  Search with paramters
+"   :FZF! Search in full screen or neovim split.
+nnoremap <C-p> :FZF<ENTER>
 
-if has('python')
-  let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-endif
-
-"let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn)$'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|build|\.idea|bin)$',
-  \ 'file': '\.exe$\|\.so$\|\.dll$',
-  \ 'link': 'current',
-  \ }
-
-" Speed up ctrlp on git repositories.
-if executable("ag")
-let g:ctrlp_user_command = {
-  \ 'types': {
-  \    1: ['.git', 'cd %s && git ls-files . -co --exclude-standard']
-  \ },
-  \ 'fallback': 'ag %s -i --nocolor --nogroup --hidden --ignore .git
-  \             --ignore .svn --ignore .hg --ignore .DS_Store
-  \             --ignore "**/*.pyc" -g ""'
-  \ }
-else
-let g:ctrlp_user_command = {
-  \   'types': {
-  \      1: ['.git', 'cd %s && git ls-files . -co --exclude-standard']
-  \   }
-  \ }
-endif
-
-let g:ctrlp_extensions = ['tag']
