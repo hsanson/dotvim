@@ -38,7 +38,6 @@
 ""  commands to handle the plugins.
 ""
 if has('vim_starting')
-  set nocompatible               " Be iMproved
   set runtimepath+=~/.config/nvim/bundle/neobundle.vim/
   set runtimepath+=~/.fzf
 endif
@@ -148,7 +147,6 @@ set number                            " Show line number column.
 set nobackup                          " Stop vim from creating ~ files.
 set nojoinspaces                      " Avoid double spaces when joining lines
 set showcmd                           " Display commands as they are typed.
-set ttyfast                           " Smoother screen redraws.
 set showmatch                         " Show briefly matching bracket when closing it.
 set scrolloff=9999                    " Always keep the cursor at the center of window.
 set lazyredraw                        " Improve performance
