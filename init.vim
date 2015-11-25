@@ -132,9 +132,13 @@ NeoBundle 'artur-shaik/vim-javacomplete2'
 NeoBundle '1995eaton/vim-better-css-completion'
 NeoBundle '1995eaton/vim-better-javascript-completion'
 
-" CTags tools
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'ludovicchabant/vim-gutentags'
+" Code navigation
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'hewes/unite-gtags'
+"NeoBundle 'majutsushi/tagbar'
+"NeoBundle 'ludovicchabant/vim-gutentags'
+NeoBundle 'vim-scripts/gtags.vim'
 
 NeoBundleCheck
 call neobundle#end()
@@ -157,6 +161,7 @@ set nrformats=                        " Stop vim from treating zero padded numbe
 "set foldlevelstart=99
 "let loaded_matchparen = 1            " Disable matchparent that is annoying.
 set cursorline                        " Highlight current line in Insert Mode.
+set cursorcolumn                      " Highlight current column in Insert Mode.
 set switchbuf=useopen,usetab
 set clipboard+=unnamedplus            " Use + and * registers by default.
 
@@ -615,7 +620,7 @@ nmap <silent> <leader>p :NERDTreeToggle<CR>
 ""  I am still not sure which is better: NeoComplete or YouCompleteMe. Make
 ""  you own judgement.
 ""
-let g:ycm_filetype_specific_completion_to_disable = {'ruby': 0}
+let g:ycm_filetype_specific_completion_to_disable = {'ruby': 0, 'java': 0}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" vim-javacomplete2 Plugin
@@ -801,6 +806,48 @@ let  g:dbext_default_history_size = 1000
 source ~/.dbext_profiles
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Unite Plugin
+"
+" To use the gtags plugin you need to install GNU global tool:
+"
+"   wget http://tamacom.com/global/global-6.5.1.tar.gz
+"   tar xvfz global-6.5.1.tar.gz
+"   cd global-6.5.1
+"   ./configure --prefix=/usr
+"   make && sudo make install
+"
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
+
+let g:unite_prompt='» '
+let g:unite_source_history_yank_enable = 1
+let g:unite_source_rec_max_cache_file=5000
+
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts='--nocolor --line-numbers --nogroup -S -C4'
+  let g:unite_source_grep_recursive_opt=''
+elseif executable('ack-grep')
+  let g:unite_source_grep_command='ack'
+  let g:unite_source_grep_default_opts='--no-heading --no-color -C4'
+  let g:unite_source_grep_recursive_opt=''
+endif
+
+autocmd FileType unite call s:unite_settings()
+
+function! s:unite_settings()
+  imap <buffer> <C-j> <Plug>(unite_select_next_line)
+  imap <buffer> <C-k> <Plug>(unite_select_previous_line)
+  nmap <buffer> Q <plug>(unite_exit)
+  nmap <buffer> <esc> <plug>(unite_exit)
+  imap <buffer> <esc> <plug>(unite_exit)
+endfunction
+
+nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files -start-insert file file_mru file_rec/async:!<cr>
+nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files gtags/def gtags/ref<cr>
+nnoremap <C-p> :<C-u>Unite -no-split -buffer-name=files -start-insert file file_mru file_rec/async<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FZF Plugin
 "
 " Description:
@@ -824,5 +871,5 @@ source ~/.dbext_profiles
 "   :FZF Search on home directory
 "   :FZF --no-sort -m /tmp  Search with paramters
 "   :FZF! Search in full screen or neovim split.
-nnoremap <C-p> :FZF<ENTER>
+" nnoremap <C-p> :FZF<ENTER>
 
