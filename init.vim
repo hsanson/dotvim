@@ -545,6 +545,10 @@ let g:gradle_path="/home/ryujin/Apps/gradle"
 ""
 ""    apt-get install silversearcher-ag
 ""
+""  When using ag make sure you create a .agignore file inside you project with
+""  ignore patterns. Using the default .gitignore has issues, at least in my
+""  case where the search is not recursive.
+""
 "" Usage:
 ""  - :Ack [options] {pattern} [{directory}]
 ""
@@ -563,8 +567,8 @@ let g:gradle_path="/home/ryujin/Apps/gradle"
 ""   https://github.com/ggreer/the_silver_searcher
 
 if executable("ag")
-  let g:ackprg="ag -i --ignore build --vimgrep $*"
-  let g:ack_wildignore = 0
+  " Without -U option search does not work on my setting.
+  let g:ackprg="ag -U -i --vimgrep $*"
 elseif executable("ack")
   let g:ackprg="ack -H --nocolor --nogroup --column --sort-files --ignore-file=is:.tags "
 elseif executable("ack-grep")
