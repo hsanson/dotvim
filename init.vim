@@ -56,8 +56,6 @@ NeoBundle 'hsanson/vim-android'
 NeoBundle 'hsanson/vim-im'
 
 " Helper and tools
-NeoBundle 'mileszs/ack.vim.git'
-NeoBundle 'scrooloose/nerdtree.git'
 NeoBundle "yuratomo/dbg.vim"
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/vimshell'
@@ -91,7 +89,7 @@ NeoBundle "Yggdroot/indentLine"
 NeoBundle 'zeis/vim-kolor'
 NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'ajh17/Spacegray.vim'
-NeoBundle 'ryanoasis/vim-webdevicons'
+NeoBundle 'ryanoasis/vim-devicons'
 
 " Syntax and language support
 NeoBundle 'slim-template/vim-slim.git'
@@ -133,6 +131,10 @@ NeoBundle '1995eaton/vim-better-css-completion'
 NeoBundle '1995eaton/vim-better-javascript-completion'
 
 " Code navigation
+NeoBundle 'mileszs/ack.vim.git'
+"NeoBundle 'scrooloose/nerdtree.git'
+"NeoBundle 'tpope/vim-vinegar.git'
+NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'hewes/unite-gtags'
@@ -581,6 +583,31 @@ elseif executable("ack-grep")
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" VimFiler
+nmap <silent> <leader>p :VimFiler<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Vinegar
+""
+""  To copy files:
+""     mt -> mark destination folder
+""     mf or MF -> mark files to move
+""     mc -> copies marked files to marked destination
+""
+""  To move files:
+""     Same as copy but use mm instead of mc
+""
+""  Other commands on marked files:
+""
+""    mp -> prints files
+""    me -> populate arglist and edits them.
+""    ms -> source the marked files
+""
+""  Commands
+""  d -> create dir
+""  R -> Rename
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" NERDTree Plugin
 ""
 "" Description:
@@ -610,7 +637,7 @@ let g:NERDTreeQuitOnOpen = 0
 " Ignore files
 let NERDTreeIgnore=['\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$' ]
 " Quick toogle tree
-nmap <silent> <leader>p :NERDTreeToggle<CR>
+"nmap <silent> <leader>p :NERDTreeToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" YouCompleteMe Plugin
