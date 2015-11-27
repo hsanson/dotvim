@@ -84,12 +84,12 @@ NeoBundle 'rbonvall/vim-textobj-latex'
 
 " Visual aid and eyecandy
 NeoBundle 'bling/vim-airline'
+NeoBundle 'ryanoasis/vim-devicons'
 NeoBundle 'koron/nyancat-vim'
 NeoBundle "Yggdroot/indentLine"
 NeoBundle 'zeis/vim-kolor'
 NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'ajh17/Spacegray.vim'
-NeoBundle 'ryanoasis/vim-devicons'
 
 " Syntax and language support
 NeoBundle 'slim-template/vim-slim.git'
