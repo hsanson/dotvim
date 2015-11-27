@@ -87,6 +87,9 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'ryanoasis/vim-devicons'
 NeoBundle 'koron/nyancat-vim'
 NeoBundle "Yggdroot/indentLine"
+
+" Colorschemes
+NeoBundle "NLKNguyen/papercolor-theme"
 NeoBundle 'zeis/vim-kolor'
 NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'ajh17/Spacegray.vim'
@@ -194,7 +197,7 @@ filetype plugin indent on " Re-enable after pathogen is loaded.
 " Enable syntax
 syntax on sync minlines=256
 "set synmaxcol=200                     " Improve scroll performance with long lines
-set background=dark                   " I like dark backgrounds.
+set background=dark                    " I like dark backgrounds.
 
 " Force all colorschemes to have transparent background. Affects only 256 mode.
 au ColorScheme * hi Normal ctermbg=NONE
@@ -203,7 +206,7 @@ au ColorScheme * hi Normal ctermbg=NONE
 " current line.
 au ColorScheme * hi CursorLine ctermbg=NONE
 
-colors base16-flat
+colors PaperColor
 
 " Apply some color to the popup menu used for auto-completion.
 highlight Pmenu ctermbg=203 gui=bold
@@ -222,6 +225,7 @@ let g:colorizer_auto_filetype='css,html'
 "
 set laststatus=2
 let g:airline_powerline_fonts = 1
+let g:airline_theme='PaperColor'
 
 " Uncomment the following statusline option if you do not use vim_airline
 " if exists('g:loaded_fugitive') || &cp
