@@ -850,7 +850,6 @@ endfunction
 
 nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files -start-insert file file_mru file_rec/async:!<cr>
 nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files gtags/def gtags/ref<cr>
-nnoremap <C-p> :<C-u>Unite -no-split -buffer-name=files -start-insert file file_mru file_rec/async<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FZF Plugin
@@ -876,5 +875,5 @@ nnoremap <C-p> :<C-u>Unite -no-split -buffer-name=files -start-insert file file_
 "   :FZF Search on home directory
 "   :FZF --no-sort -m /tmp  Search with paramters
 "   :FZF! Search in full screen or neovim split.
-" nnoremap <C-p> :FZF<ENTER>
+nnoremap <C-p> :FZF<ENTER>
 
