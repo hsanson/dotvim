@@ -225,11 +225,13 @@ set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline_theme='PaperColor'
 
-let g:gradle_airline_error_glyph=''
-let g:gradle_airline_warning_glyph=''
+let g:gradle_airline_error_glyph=''
+let g:gradle_airline_warning_glyph=''
 let g:gradle_airline_android_glyph=''
 let g:airline_left_sep=''
 let g:airline_right_sep=''
+let g:airline_left_alt_sep=''
+let g:airline_right_alt_sep=' '
 let g:airline_symbols_branch = ''
 let g:airline_detect_iminsert=1
 let g:airline#extensions#whitespace#trailing_format = '̺̺[%s]'
