@@ -640,9 +640,6 @@ let g:NERDTreeHighlightCursorline = 1
 let g:NERDTreeAutoCenter = 0
 " Not Highlight the cursor line
 let g:NERDTreeHighlightCursorline = 0
-" Don't change working directory when opening files
-set noautochdir
-let g:NERDTreeChDirMode = 2
 " Show bookmarks list
 let g:NERDTreeShowBookmarks = 1
 " Close NERDTree after opening a file
@@ -652,6 +649,74 @@ let NERDTreeIgnore=['\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$', '\.o$', '\.so$
 
 " Quick toogle tree
 nmap <silent> <leader>p :NERDTreeToggle<CR>
+
+" Locate current buffer inside NERDTree
+nmap <silent> <leader>f :NERDTreeFind<CR>
+
+" Set our custom tabline that uses NERDTree root node as tab name.
+set tabline=%!NERDTreeTabLine()
+
+" If the tab passed contains a NERDTree object then return the folder name of
+" the root node in the NERDTree tree. If the tab does not contain a NERDTree
+" object then return the current path as returned by getcwd().
+function! NERDTreeTabName(n)
+  let name = gettabvar(a:n, 'NERDTreeBufName')
+  let nerd = getbufvar(bufnr(name), 'NERDTree')
+  if !empty(nerd)
+    return fnamemodify(nerd.root.path.str(), ':t') . ''
+  else
+    return fnamemodify(getcwd(), ':t') . ''
+  endif
+endfunction
+
+" Sets the tabline using our custom font icons, highlight and NERDTree based tab
+" names. See :h setting-tabline for details on how this function works.
+function! NERDTreeTabLine()
+
+  let s = ''
+
+  for i in range(tabpagenr('$'))
+    " select the highlighting
+    if i + 1 == tabpagenr()
+      let s .= '%#TabLineSel#'
+    else
+      let s .= '%#TabLine#'
+    endif
+
+    " set the tab page number (for mouse clicks)
+    let s .= '%' . (i + 1) . 'T'
+
+    " set the tab name
+    let s .= NERDTreeTabName(i + 1)
+
+  endfor
+
+  " after the last tab fill with TabLineFill and reset tab page nr
+  let s .= '%#TabLineFill#%T'
+
+  " right-align the label to close the current tab page
+  if tabpagenr('$') > 1
+    let s .= '%=%#TabLine#%999X'
+  endif
+
+  return s
+endfunction
+
+" Always set current directory to the root node of NERDTree. This goes with my
+" development flow in which each vim tab contains a different project with
+" NERDTree root set to the project root.
+let g:NERDTreeChDirMode = 2
+
+" The g:NERDTreeChDirMode = 2 option above only takes effect when changing the
+" NERDTree root node. Using this function and the autocommand below I ensure my
+" current work dir matches the NERDTree root node of each vim tab.
+function! NERDTreeCwdRoot()
+  if exists('b:NERDTree')
+    exec ':chdir ' . b:NERDTree.root.path.str()
+  endif
+endfunction
+
+autocmd TabEnter * call NERDTreeCwdRoot()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" YouCompleteMe Plugin
