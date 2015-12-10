@@ -51,7 +51,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Personal plugins
 NeoBundle 'hsanson/vim-projtags'
 NeoBundle 'hsanson/vim-resize'
-
 NeoBundle 'hsanson/vim-android'
 NeoBundle 'hsanson/vim-im'
 
@@ -139,6 +138,7 @@ NeoBundle 'scrooloose/nerdtree.git'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'hewes/unite-gtags'
+NeoBundle 'yssl/QFEnter'
 "NeoBundle 'majutsushi/tagbar'
 "NeoBundle 'ludovicchabant/vim-gutentags'
 NeoBundle 'vim-scripts/gtags.vim'
@@ -567,6 +567,14 @@ let g:android_sdk_path="/home/ryujin/Apps/android-sdk"
 let g:gradle_path="/home/ryujin/Apps/gradle"
 let g:gradle_daemon=1
 let g:netrw_browsex_viewer="firefox -new-tab"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" QFEnter Plugin
+""
+let g:qfenter_open_map = [ '<CR>', '<2-LeftMouse>' ]
+let g:qfenter_vopen_map = [ '<C-v>' ]
+let g:qfenter_hopen_map = [ '<C-x>' ]
+let g:qfenter_topen_map = [ '<C-t>' ]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Grepper Plugin
