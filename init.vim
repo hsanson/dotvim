@@ -134,7 +134,7 @@ NeoBundle '1995eaton/vim-better-css-completion'
 NeoBundle '1995eaton/vim-better-javascript-completion'
 
 " Code navigation
-NeoBundle 'mileszs/ack.vim.git'
+NeoBundle 'mhinz/vim-grepper'
 NeoBundle 'scrooloose/nerdtree.git'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
@@ -569,12 +569,11 @@ let g:gradle_daemon=1
 let g:netrw_browsex_viewer="firefox -new-tab"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Ack Plugin
+"" Grepper Plugin
 ""
 "" Description:
-""  This plugin allows search of your code files using grep, ack or ag depending
-""  on which one is installed. It gives priority to ag, then ack and finally
-""  grep.
+""  This plugin allows search of your code files using multiple grep tools like
+""  grep, ack, git grep, or ag.
 ""
 "" Installation:
 ""  If you want to use ack for searching make sure you install the ack-grep
@@ -597,30 +596,35 @@ let g:netrw_browsex_viewer="firefox -new-tab"
 ""  case where the search is not recursive.
 ""
 "" Usage:
-""  - :Ack [options] {pattern} [{directory}]
+""   - Search using grepper directly
 ""
-"" Keyboard Shortcuts:
-""  o    to open (same as enter)
-""  go   to preview file (open but maintain focus on ack.vim results)
-""  t    to open in new tab
-""  T    to open in new tab silently
-""  v    to open in vertical split
-""  gv   to open in vertical split silently
-""  q    to close the quickfix window
+""     :Greeper -tool git -query {pattern}
+""
+""   - Search using ag tool
+""
+""     <leader>ag
+""
+""   - Search using motion operator
+""
+""     gs{motion}
 ""
 "" Resources:
 ""   http://betterthangrep.com/
 ""   http://amaslov.wordpress.com/2009/04/23/vim-ack-instead-of-grep/
 ""   https://github.com/ggreer/the_silver_searcher
+let g:grepper = {
+      \ 'dispatch': 0,
+      \ 'quickfix': 1,
+      \ 'open':     0,
+      \ 'switch':   0,
+      \ 'jump':     1,
+      \ 'tools': ['ag', 'ack', 'grep'],
+      \ 'next_tool': '<tab>'
+      \ }
 
-if executable("ag")
-  " Without -U option search does not work on my setting.
-  let g:ackprg="ag -U -i --vimgrep $*"
-elseif executable("ack")
-  let g:ackprg="ack -H --nocolor --nogroup --column --sort-files --ignore-file=is:.tags "
-elseif executable("ack-grep")
-  let g:ackprg="ack-grep -H --nocolor --nogroup --column --ignore-file=is:.tags "
-endif
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
+nnoremap <leader>ag :Grepper -tool ag -query<space>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" NERDTree Plugin
