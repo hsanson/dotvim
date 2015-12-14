@@ -2,6 +2,8 @@ setlocal omnifunc=xmlcomplete#CompleteTags
 let g:xml_syntax_folding=1
 setlocal foldmethod=syntax
 
-if android#isAndroidProject()
-  nmap <F5> <ESC>:AndroidInstall debug<CR>
-endif
+set lcs=tab:\ \ ,trail:·,nbsp:~
+set noexpandtab
+set tabstop=2
+set shiftwidth=2
+set softtabstop=0

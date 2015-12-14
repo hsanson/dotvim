@@ -25,3 +25,10 @@ syn region foldJavadoc start=,/\*\*, end=,\*/, transparent fold keepend
 "" Allow folding of import directives.
 syn keyword javaExternal native package
 syn region foldImports start=/\(^\s*\n^import\)\@<= .\+;/ end=+^\s*$+ transparent fold keepend
+
+set lcs=tab:\ \ ,trail:·,nbsp:~
+set noexpandtab
+set tabstop=2
+set shiftwidth=2
+set softtabstop=0
+
