@@ -120,7 +120,7 @@ NeoBundle 'Valloric/YouCompleteMe.git', {
     \ }}
 "NeoBundle "Shougo/neocomplete.vim"
 
-NeoBundle 'artur-shaik/vim-javacomplete2'
+" NeoBundle 'artur-shaik/vim-javacomplete2'
 "NeoBundle 'vim-scripts/javacomplete'
 "NeoBundle 'nwertzberger/javacomplete'
 "NeoBundle 'itszero/javacomplete'
@@ -133,7 +133,7 @@ NeoBundle '1995eaton/vim-better-css-completion'
 NeoBundle '1995eaton/vim-better-javascript-completion'
 
 " Code navigation
-NeoBundle 'mhinz/vim-grepper'
+NeoBundle 'rking/ag.vim'
 NeoBundle 'scrooloose/nerdtree.git'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
@@ -541,7 +541,8 @@ map <buffer> <LocalLeader>lo :LatexView2<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" vim-easy-align Plugin
-xmap ga <Plug>(EasyAlign)
+"" Better Tabularize alternative
+vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -577,16 +578,14 @@ let g:qfenter_hopen_map = [ '<C-x>' ]
 let g:qfenter_topen_map = [ '<C-t>' ]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Grepper Plugin
+"" Ag Plugin
 ""
 "" Description:
-""  This plugin allows search of your code files using multiple grep tools like
-""  grep, ack, git grep, or ag.
+""  This plugin allows search of your code files using Silver Searcher (Ag)
+""  tool.
 ""
 "" Installation:
-""  If you want to use ack for searching make sure you install the ack-grep
-""  package in your box. If you prefer ag (a.k.a Silver Searcher) then install
-""  the silversearcher-ag package. If you have Ubuntu 13.04 or less then the
+""  Install the silversearcher-ag package. If you have Ubuntu 13.04 or less then the
 ""  silversearcher-ag package is not available so to intall follow these steps:
 ""
 ""    apt-get install software-properties-common
@@ -603,36 +602,11 @@ let g:qfenter_topen_map = [ '<C-t>' ]
 ""  ignore patterns. Using the default .gitignore has issues, at least in my
 ""  case where the search is not recursive.
 ""
-"" Usage:
-""   - Search using grepper directly
-""
-""     :Greeper -tool git -query {pattern}
-""
-""   - Search using ag tool
-""
-""     <leader>ag
-""
-""   - Search using motion operator
-""
-""     gs{motion}
-""
 "" Resources:
 ""   http://betterthangrep.com/
 ""   http://amaslov.wordpress.com/2009/04/23/vim-ack-instead-of-grep/
 ""   https://github.com/ggreer/the_silver_searcher
-let g:grepper = {
-      \ 'dispatch': 0,
-      \ 'quickfix': 1,
-      \ 'open':     0,
-      \ 'switch':   0,
-      \ 'jump':     1,
-      \ 'tools': ['ag', 'ack', 'grep'],
-      \ 'next_tool': '<tab>'
-      \ }
 
-nmap gs <plug>(GrepperOperator)
-xmap gs <plug>(GrepperOperator)
-nnoremap <leader>ag :Grepper -tool ag -query<space>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" NERDTree Plugin
