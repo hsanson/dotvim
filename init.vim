@@ -137,7 +137,6 @@ NeoBundle 'rking/ag.vim'
 NeoBundle 'scrooloose/nerdtree.git'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'hewes/unite-gtags'
 NeoBundle 'yssl/QFEnter'
 "NeoBundle 'majutsushi/tagbar'
 "NeoBundle 'ludovicchabant/vim-gutentags'
@@ -607,6 +606,10 @@ let g:qfenter_topen_map = [ '<C-t>' ]
 ""   http://amaslov.wordpress.com/2009/04/23/vim-ack-instead-of-grep/
 ""   https://github.com/ggreer/the_silver_searcher
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Global Tags Plugin
+map <C-]> :Gtags<CR><CR>
+map <C-\> :Gtags -r<CR><CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" NERDTree Plugin
@@ -898,47 +901,6 @@ let  g:dbext_default_history_size = 1000
 " profiles in a separate file. We don't want to share all our databases IP
 " addreses, user and passwords.
 source ~/.dbext_profiles
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Unite Plugin
-"
-" To use the gtags plugin you need to install GNU global tool:
-"
-"   wget http://tamacom.com/global/global-6.5.1.tar.gz
-"   tar xvfz global-6.5.1.tar.gz
-"   cd global-6.5.1
-"   ./configure --prefix=/usr
-"   make && sudo make install
-"
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
-
-let g:unite_prompt='» '
-let g:unite_source_history_yank_enable = 1
-let g:unite_source_rec_max_cache_file=5000
-
-if executable('ag')
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts='--nocolor --line-numbers --nogroup -S -C4'
-  let g:unite_source_grep_recursive_opt=''
-elseif executable('ack-grep')
-  let g:unite_source_grep_command='ack'
-  let g:unite_source_grep_default_opts='--no-heading --no-color -C4'
-  let g:unite_source_grep_recursive_opt=''
-endif
-
-autocmd FileType unite call s:unite_settings()
-
-function! s:unite_settings()
-  imap <buffer> <C-j> <Plug>(unite_select_next_line)
-  imap <buffer> <C-k> <Plug>(unite_select_previous_line)
-  nmap <buffer> Q <plug>(unite_exit)
-  nmap <buffer> <esc> <plug>(unite_exit)
-  imap <buffer> <esc> <plug>(unite_exit)
-endfunction
-
-nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files -start-insert file file_mru file_rec/async:!<cr>
-nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files gtags/def gtags/ref<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FZF Plugin
