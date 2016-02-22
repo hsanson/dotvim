@@ -166,6 +166,8 @@ set cursorline                        " Highlight current line in Insert Mode.
 set cursorcolumn                      " Highlight current column in Insert Mode.
 set switchbuf=useopen,usetab
 set clipboard+=unnamedplus            " Use + and * registers by default.
+set splitbelow
+set splitright
 
 " Quicker than reaching ESC for exiting insert mode.
 inoremap jk <ESC>
