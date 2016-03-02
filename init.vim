@@ -14,10 +14,10 @@
 ""
 "" Usage:
 ""
-""  - Install NeoBundle
+""  - Install Plug
 ""
-""    mkdir -p ~/.vim/bundle
-""    git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+""    curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
+""       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ""
 ""  - Start vim and install all bundles.
 ""
@@ -27,123 +27,102 @@
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" NeoBundle Plugin
+"" Plugins
 ""
-"" Description:
-""  Nice vim plugin manager.
-""
-"" Usage:
-""
-""  Define your plugins using the Bundle command. After that we have some
-""  commands to handle the plugins.
-""
-if has('vim_starting')
-  set runtimepath+=~/.config/nvim/bundle/neobundle.vim/
-  set runtimepath+=~/.fzf
-endif
-
-filetype off
-filetype plugin indent off
-
-call neobundle#begin(expand('~/.config/nvim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
+call plug#begin('~/.config/nvim/bundle')
 
 " Personal plugins
-NeoBundle 'hsanson/vim-projtags'
-NeoBundle 'hsanson/vim-resize'
-NeoBundle 'hsanson/vim-android'
-NeoBundle 'hsanson/vim-im'
+Plug '~/Projects/vim/vim-android'
+Plug '~/Projects/vim/vim-projtags'
+Plug '~/Projects/vim/vim-resize'
+Plug '~/Projects/vim/vim-im'
 
 " Helper and tools
-NeoBundle "yuratomo/dbg.vim"
-NeoBundle 'Shougo/vimproc'
-NeoBundle 'Shougo/vimshell'
-NeoBundle 'junegunn/vim-easy-align'
-NeoBundle "fatih/vim-go"
-NeoBundle 'tpope/vim-rails.git'
-NeoBundle 'tpope/vim-fugitive.git'
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'tpope/vim-speeddating'
-NeoBundle 'tpope/vim-dispatch'
-NeoBundle 'gregsexton/gitv'
-NeoBundle 'jreybert/vimagit'
-"NeoBundle 'thinca/vim-logcat'
-NeoBundle 'cohama/lexima.vim'
-NeoBundle 'tpope/vim-surround.git'
-NeoBundle 'vim-scripts/matchit.zip'
-NeoBundle 'krisajenkins/dbext.vim'
-NeoBundle 'vim-scripts/DrawIt.git'
+Plug 'yuratomo/dbg.vim'
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'Shougo/vimshell'
+Plug 'junegunn/vim-easy-align'
+Plug 'fatih/vim-go'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-dispatch'
+Plug 'gregsexton/gitv'
+Plug 'jreybert/vimagit'
+"Plug 'thinca/vim-logcat'
+Plug 'cohama/lexima.vim'
+Plug 'tpope/vim-surround'
+Plug 'vim-scripts/matchit.zip'
+Plug 'krisajenkins/dbext.vim'
+Plug 'vim-scripts/DrawIt'
 
 " Text object add ons
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'nelstrom/vim-textobj-rubyblock'
-NeoBundle 'kana/vim-textobj-function'
-NeoBundle 'rbonvall/vim-textobj-latex'
+Plug 'kana/vim-textobj-user'
+Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'kana/vim-textobj-function'
+Plug 'rbonvall/vim-textobj-latex'
 
 " Visual aid and eyecandy
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'ryanoasis/vim-devicons'
-NeoBundle 'koron/nyancat-vim'
-NeoBundle "Yggdroot/indentLine"
+Plug 'itchyny/lightline.vim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'koron/nyancat-vim'
+Plug 'Yggdroot/indentLine'
 
 " Colorschemes
-NeoBundle "NLKNguyen/papercolor-theme"
-NeoBundle 'zeis/vim-kolor'
-NeoBundle 'chriskempson/base16-vim'
-NeoBundle 'ajh17/Spacegray.vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'zeis/vim-kolor'
+Plug 'chriskempson/base16-vim'
+Plug 'ajh17/Spacegray.vim'
 
 " Syntax and language support
-NeoBundle 'slim-template/vim-slim.git'
-NeoBundle 'vim-scripts/groovy.vim'
-NeoBundle 'kchmck/vim-coffee-script.git'
-NeoBundle "rodjek/vim-puppet"
-NeoBundle 'tpope/vim-haml.git'
-NeoBundle 'othree/yajs.vim'
-NeoBundle 'pearofducks/ansible-vim'
+Plug 'slim-template/vim-slim'
+Plug 'vim-scripts/groovy.vim'
+Plug 'kchmck/vim-coffee-script'
+Plug 'rodjek/vim-puppet'
+Plug 'tpope/vim-haml'
+Plug 'othree/yajs.vim'
+Plug 'pearofducks/ansible-vim'
 
 " Highlights color codes with the actual color.
-NeoBundle 'chrisbra/color_highlight'
+Plug 'chrisbra/color_highlight'
 
 " Document editing
-NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
-NeoBundle 'vim-scripts/VOoM.git'
-NeoBundle 'vim-pandoc/vim-pandoc'
-NeoBundle 'vim-pandoc/vim-pandoc-syntax'
-NeoBundle 'vim-pandoc/vim-pandoc-after'
+Plug 'LaTeX-Box-Team/LaTeX-Box'
+Plug 'vim-scripts/VOoM'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-pandoc-after'
 
 " Auto completion
 
-NeoBundle 'Valloric/YouCompleteMe.git', {
-    \ 'build': {
-    \   'unix' : './install.sh --clang-completer --system-libclang --omnisharp-completer'
-    \ }}
-"NeoBundle "Shougo/neocomplete.vim"
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
-" NeoBundle 'artur-shaik/vim-javacomplete2'
-"NeoBundle 'vim-scripts/javacomplete'
-"NeoBundle 'nwertzberger/javacomplete'
-"NeoBundle 'itszero/javacomplete'
-"NeoBundle 'adragomir/javacomplete'
-"NeoBundle 'Shougo/javacomplete'
-"NeoBundle 'vim-scripts/javaimports.vim'
+" Plug 'artur-shaik/vim-javacomplete2'
+"Plug 'vim-scripts/javacomplete'
+"Plug 'nwertzberger/javacomplete'
+"Plug 'itszero/javacomplete'
+"Plug 'adragomir/javacomplete'
+"Plug 'Shougo/javacomplete'
+"Plug 'vim-scripts/javaimports.vim'
 
-"NeoBundle 'vim-scripts/rubycomplete.vim.git'
-NeoBundle '1995eaton/vim-better-css-completion'
-NeoBundle '1995eaton/vim-better-javascript-completion'
+"Plug 'vim-scripts/rubycomplete.vim.git'
+Plug '1995eaton/vim-better-css-completion'
+Plug '1995eaton/vim-better-javascript-completion'
 
 " Code navigation
-NeoBundle 'rking/ag.vim'
-NeoBundle 'scrooloose/nerdtree.git'
-"NeoBundle 'Shougo/unite.vim'
-"NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'yssl/QFEnter'
-"NeoBundle 'majutsushi/tagbar'
-"NeoBundle 'ludovicchabant/vim-gutentags'
-NeoBundle 'vim-scripts/gtags.vim'
+Plug 'rking/ag.vim'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+"Plug 'Shougo/unite.vim'
+"Plug 'Shougo/neomru.vim'
+Plug 'yssl/QFEnter'
+"Plug 'majutsushi/tagbar'
+"Plug 'ludovicchabant/vim-gutentags'
+Plug 'vim-scripts/gtags.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
-NeoBundleCheck
-call neobundle#end()
+call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" General Settings
