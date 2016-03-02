@@ -343,9 +343,25 @@ let g:projtags_list = {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Buffer and Tab navigation
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Easily switch between open tabs
-nnoremap <TAB> :tabnext<CR>
-nnoremap <S-TAB> :tabprev<CR>
+" Navigate tabs
+nnoremap tt  :tabnext<CR>
+nnoremap th  :tabfirst<CR>
+nnoremap tj  :tabnext<CR>
+nnoremap tk  :tabprev<CR>
+nnoremap tl  :tablast<CR>
+nnoremap tn  :tabnew<CR>
+
+" Jump directly to tab number
+nnoremap <A-1> 1gt
+nnoremap <A-2> 2gt
+nnoremap <A-3> 3gt
+nnoremap <A-4> 4gt
+nnoremap <A-5> 5gt
+nnoremap <A-6> 6gt
+nnoremap <A-7> 7gt
+nnoremap <A-8> 8gt
+nnoremap <A-9> 9gt
+nnoremap <A-0> 0gt
 
 " Enables more fluid resizing of split windows
 nnoremap <C-UP> :ResizeUp<CR>
