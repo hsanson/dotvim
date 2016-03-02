@@ -298,10 +298,6 @@ endif
 cmap w!! w !sudo tee > /dev/null %
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Map make for easy access
-" map <F5> <ESC>:silent! make<CR><C-l>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Improve QuickFix Window
 
 " Tip: http://vim.wikia.com/wiki/Automatically_open_the_quickfix_window_on_:make
@@ -418,7 +414,8 @@ set formatoptions=tcqjmM
 set textwidth=80    " Force wrap for lines longer than 80 characters
 
 " To enable word wrap without actual line breaks comment textwidth option above
-" and enable the options below (Vim Tip #989):
+" and enable the options below (Vim Tip #989). See ftplugin/markdown.vim for
+" usage example.
 
 "set textwidth=0    " Disable braking of long lines.
 "set wrap           " Enable wrap of lines pass the right window border.
