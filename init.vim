@@ -112,7 +112,6 @@ Plug '1995eaton/vim-better-css-completion'
 Plug '1995eaton/vim-better-javascript-completion'
 
 " Code navigation
-Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 "Plug 'Shougo/unite.vim'
 "Plug 'Shougo/neomru.vim'
@@ -121,6 +120,7 @@ Plug 'yssl/QFEnter'
 "Plug 'ludovicchabant/vim-gutentags'
 Plug 'vim-scripts/gtags.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -881,21 +881,5 @@ source ~/.dbext_profiles
 "   terminal tool so fuzzy searching is not limited to vim only. It works for
 "   files etc in the terminal too. Also configuration is far easier.
 "
-" Installation:
-"   You need to install fzf tool first on your machine for this to work:
-"
-"     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-"     ~/.fzf/install
-"
-"   then add this line to your vimrc, nvimrc or init.vim:
-"
-"     set rtp+=~/.fzf
-"
-" Usage:
-"
-"   :FZF Search on current directory
-"   :FZF Search on home directory
-"   :FZF --no-sort -m /tmp  Search with paramters
-"   :FZF! Search in full screen or neovim split.
-nnoremap <C-p> :FZF<ENTER>
+nnoremap <C-p> :Files<ENTER>
 
