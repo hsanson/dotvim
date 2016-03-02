@@ -82,7 +82,7 @@ NeoBundle 'kana/vim-textobj-function'
 NeoBundle 'rbonvall/vim-textobj-latex'
 
 " Visual aid and eyecandy
-NeoBundle 'bling/vim-airline'
+NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'ryanoasis/vim-devicons'
 NeoBundle 'koron/nyancat-vim'
 NeoBundle "Yggdroot/indentLine"
@@ -162,6 +162,7 @@ set nofoldenable                      " Disable folding that slows down auto-com
 set nrformats=                        " Stop vim from treating zero padded numbers as octal
 "set foldlevelstart=99
 "let loaded_matchparen = 1            " Disable matchparent that is annoying.
+set laststatus=2
 set cursorline                        " Highlight current line in Insert Mode.
 set cursorcolumn                      " Highlight current column in Insert Mode.
 set switchbuf=useopen,usetab
@@ -220,53 +221,29 @@ exec "set lcs=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 let g:colorizer_auto_filetype='css,html'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim_airline status line
+" lightline status line
 "
-set laststatus=2
-let g:airline_powerline_fonts = 1
-let g:airline_theme='PaperColor'
+let g:lightline = {
+  \ 'colorcheme': 'PaperColor',
+  \ 'active': {
+  \    'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
+  \    'right': [ ['lineinfo'], ['percent'], ['gradle'] ]
+  \ },
+  \ 'component': {
+  \    'readonly': '%{&readonly?"":""}',
+  \    'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}',
+  \    'gradle': '%{exists("*gradle#statusLine")?gradle#statusLine():""}'
+  \    },
+  \ 'component_visible_condition': {
+  \    'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())',
+  \    'gradle': '(exists("*gradle#statusLine") && ""!=gradle#statusLine())'
+  \    }
+  \ }
 
-let g:gradle_airline_error_glyph=''
-let g:gradle_airline_warning_glyph=''
-let g:gradle_airline_android_glyph=''
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-let g:airline_left_alt_sep=''
-let g:airline_right_alt_sep=' '
-let g:airline_symbols_branch = ''
-let g:airline_detect_iminsert=1
-let g:airline#extensions#whitespace#trailing_format = '̺̺[%s]'
-let g:airline#extensions#whitespace#mixed_indent_format = '‰[%s]'
-let g:airline#extensions#whitespace#long_format = '⁋[%s]'
-
-let g:airline_symbols = {
-    \ 'crypt'      : '',
-    \ 'linenr'     : '',
-    \ 'paste'      : '',
-    \ 'whitespace' : '',
-    \ 'branch'     : '',
-    \ }
-
-let g:airline_mode_map = {
-    \ '__' : '-',
-    \ 'n'  : '⌨',
-    \ 'i'  : '',
-    \ 'R'  : '',
-    \ 'c'  : '‼',
-    \ 'v'  : '',
-    \ 'V'  : '',
-    \ '' : '',
-    \ 's'  : 'S',
-    \ 'S'  : 'S',
-    \ '' : 'S',
-    \ 't'  : '',
-    \ }
-
-" Uncomment the following statusline option if you do not use vim_airline
-" if exists('g:loaded_fugitive') || &cp
-"   set statusline=%{fugitive#statusline()}
-" endif
-" set statusline+=[%f]%=0x%B\ \ \ [%(%l/%L,%c%V%)]\ \ (%p%%)
+let g:gradle_glyph_error=''
+let g:gradle_glyph_warning=''
+let g:gradle_glyph_gradle=''
+let g:gradle_glyph_android=''
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Search
