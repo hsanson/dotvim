@@ -208,6 +208,10 @@ let g:lightline = {
   \    'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
   \    'right': [ ['lineinfo'], ['percent'], ['gradle'] ]
   \ },
+  \ 'inactive': {
+  \    'left': [ [ 'filename' ] ],
+  \    'right': [ ['lineinfo'], ['percent'], ['gradle'] ]
+  \ },
   \ 'component': {
   \    'readonly': '%{&readonly?"":""}',
   \    'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}',
