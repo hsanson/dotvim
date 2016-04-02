@@ -145,8 +145,8 @@ set nrformats=                        " Stop vim from treating zero padded numbe
 "set foldlevelstart=99
 "let loaded_matchparen = 1            " Disable matchparent that is annoying.
 set laststatus=2
-set cursorline                        " Highlight current line in Insert Mode.
-set cursorcolumn                      " Highlight current column in Insert Mode.
+set nocursorline                      " Highlight current line in Insert Mode.
+set nocursorcolumn                    " Highlight current column in Insert Mode.
 set switchbuf=useopen,usetab
 set clipboard+=unnamedplus            " Use + and * registers by default.
 set splitbelow
@@ -181,12 +181,12 @@ syntax on sync minlines=256
 "set synmaxcol=200                     " Improve scroll performance with long lines
 set background=dark                    " I like dark backgrounds.
 
-" Force all colorschemes to have transparent background. Affects only 256 mode.
-au ColorScheme * hi Normal ctermbg=NONE
+" Force all colorschemes to have transparent background.
+au ColorScheme * hi Normal guibg=NONE ctermbg=NONE
 
 " Make cursorline transparent too so only the line number is highlighted on the
 " current line.
-au ColorScheme * hi CursorLine ctermbg=NONE
+au ColorScheme * hi CursorLine guibg=NONE ctermbg=NONE
 
 colors PaperColor
 
@@ -238,7 +238,7 @@ let g:gradle_glyph_building=''
 set hlsearch                          " Highlight search results.
 set incsearch
 set ignorecase
-set smartcase
+set nosmartcase
 
 " Set search path for gf command
 set path=/usr/include,/usr/local/include,**;$HOME
