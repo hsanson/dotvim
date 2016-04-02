@@ -57,6 +57,7 @@ Plug 'tpope/vim-surround'
 Plug 'vim-scripts/matchit.zip'
 Plug 'krisajenkins/dbext.vim'
 Plug 'vim-scripts/DrawIt'
+Plug 'dbakker/vim-projectroot'
 
 " Text object add ons
 Plug 'kana/vim-textobj-user'
@@ -613,6 +614,8 @@ let g:NERDTreeShowBookmarks = 1
 let g:NERDTreeQuitOnOpen = 0
 " Ignore files
 let NERDTreeIgnore=['\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$' ]
+" NERDTree to change the current working directory when selecting a root node
+let g:NERDTreeChDirMode = 2
 
 " Quick toogle tree
 nmap <silent> <leader>p :NERDTreeToggle<CR>
@@ -620,25 +623,18 @@ nmap <silent> <leader>p :NERDTreeToggle<CR>
 " Locate current buffer inside NERDTree
 nmap <silent> <leader>f :NERDTreeFind<CR>
 
-" Set our custom tabline that uses NERDTree root node as tab name.
-set tabline=%!NERDTreeTabLine()
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set custom tab line
 
-" If the tab passed contains a NERDTree object then return the folder name of
-" the root node in the NERDTree tree. If the tab does not contain a NERDTree
-" object then return the current path as returned by getcwd().
-function! NERDTreeTabName(n)
-  let name = gettabvar(a:n, 'NERDTreeBufName')
-  let nerd = getbufvar(bufnr(name), 'NERDTree')
-  if !empty(nerd)
-    return fnamemodify(nerd.root.path.str(), ':t') . ''
-  else
-    return fnamemodify(getcwd(), ':t') . ''
-  endif
+set tabline=%!ProjectTabLine()
+
+function! ProjectTabName(n)
+  return fnamemodify(projectroot#guess(), ':t') . ''
 endfunction
 
 " Sets the tabline using our custom font icons, highlight and NERDTree based tab
 " names. See :h setting-tabline for details on how this function works.
-function! NERDTreeTabLine()
+function! ProjectTabLine()
 
   let s = ''
 
@@ -654,7 +650,7 @@ function! NERDTreeTabLine()
     let s .= '%' . (i + 1) . 'T'
 
     " set the tab name
-    let s .= NERDTreeTabName(i + 1)
+    let s .= ProjectTabName(i + 1)
 
   endfor
 
@@ -669,21 +665,11 @@ function! NERDTreeTabLine()
   return s
 endfunction
 
-" Always set current directory to the root node of NERDTree. This goes with my
-" development flow in which each vim tab contains a different project with
-" NERDTree root set to the project root.
-let g:NERDTreeChDirMode = 2
-
-" The g:NERDTreeChDirMode = 2 option above only takes effect when changing the
-" NERDTree root node. Using this function and the autocommand below I ensure my
-" current work dir matches the NERDTree root node of each vim tab.
-function! NERDTreeCwdRoot()
-  if exists('b:NERDTree')
-    exec ':chdir ' . b:NERDTree.root.path.str()
-  endif
+function! ProjectCwdRoot()
+  exec ':chdir ' . projectroot#guess()
 endfunction
 
-autocmd TabEnter * call NERDTreeCwdRoot()
+autocmd BufEnter * call ProjectCwdRoot()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" YouCompleteMe Plugin
