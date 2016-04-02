@@ -55,7 +55,6 @@ Plug 'jreybert/vimagit'
 Plug 'cohama/lexima.vim'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/matchit.zip'
-Plug 'krisajenkins/dbext.vim'
 Plug 'vim-scripts/DrawIt'
 Plug 'dbakker/vim-projectroot'
 
@@ -95,6 +94,9 @@ Plug 'vim-scripts/VOoM'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-pandoc-after'
+
+" Database Connector
+Plug 'krisajenkins/dbext.vim'
 
 " Auto completion
 
