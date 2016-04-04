@@ -628,10 +628,11 @@ nmap <silent> <leader>f :NERDTreeFind<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set custom tab line
 
-set tabline=%!ProjectTabLine()
-
 function! ProjectTabName(n)
-  return fnamemodify(projectroot#guess(), ':t') . ''
+  let buflist = tabpagebuflist(a:n)
+  let winnr   = tabpagewinnr(a:n)
+  let bufnr   = buflist[winnr -1]
+  return fnamemodify(projectroot#guess(bufname(bufnr)), ':t') . ''
 endfunction
 
 " Sets the tabline using our custom font icons, highlight and NERDTree based tab
@@ -668,10 +669,12 @@ function! ProjectTabLine()
 endfunction
 
 function! ProjectCwdRoot()
-  exec ':chdir ' . projectroot#guess()
+  exec ':chdir ' . projectroot#guess("%")
 endfunction
 
 autocmd BufEnter * call ProjectCwdRoot()
+
+set tabline=%!ProjectTabLine()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" YouCompleteMe Plugin
