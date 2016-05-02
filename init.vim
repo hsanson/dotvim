@@ -669,7 +669,11 @@ function! ProjectTabLine()
 endfunction
 
 function! ProjectCwdRoot()
-  exec ':chdir ' . projectroot#guess("%")
+  if has('nvim')
+    exec ':tch ' . projectroot#guess("%")
+  else
+    exec ':chdir ' . projectroot#guess("%")
+  endif
 endfunction
 
 autocmd BufEnter * call ProjectCwdRoot()
