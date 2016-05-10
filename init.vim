@@ -63,6 +63,7 @@ Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'kana/vim-textobj-function'
 Plug 'rbonvall/vim-textobj-latex'
+Plug 'terryma/vim-expand-region'
 
 " Visual aid and eyecandy
 Plug 'itchyny/lightline.vim'
@@ -152,9 +153,28 @@ set clipboard+=unnamedplus            " Use + and * registers by default.
 set splitbelow
 set splitright
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Productivity Boost
+""  - https://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Set the biggest key as leader
+let mapleader = "\<Space>"
+
+" Map frequent actions to leader shortcuts
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>x :wqa<CR>
+
 " Quicker than reaching ESC for exiting insert mode.
 inoremap jk <ESC>
 inoremap kj <ESC>
+
+" Disable unproductive keys
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+noremap <Esc> <NOP>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Filetype Settings
@@ -287,6 +307,16 @@ map <F7> <ESC>:cn<CR>                " Jump to next error or warn
 set mouse=nv                           " Enable the mouse.
 set mousehide
 "set ttymouse=xterm2                   " Allow text selction work with tmux
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim Expand Region
+"
+" Use v to select char
+" Use vv to select word
+" Use vvv to expand select to paragraph
+" ....
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ProjTags Plugin
