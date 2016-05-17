@@ -57,6 +57,7 @@ Plug 'tpope/vim-surround'
 Plug 'vim-scripts/matchit.zip'
 Plug 'vim-scripts/DrawIt'
 Plug 'dbakker/vim-projectroot'
+Plug 'kassio/neoterm'
 
 " Text object add ons
 Plug 'kana/vim-textobj-user'
@@ -175,6 +176,23 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 noremap <Esc> <NOP>
+
+" Terminal Mappings
+if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
+  tnoremap <Leader>h <C-\><C-n><C-w>h
+  tnoremap <Leader>j <C-\><C-n><C-w>j
+  tnoremap <Leader>k <C-\><C-n><C-w>k
+  tnoremap <Leader>l <C-\><C-n><C-w>l
+endif
+
+nnoremap <Leader>h <C-w>h
+nnoremap <Leader>j <C-w>j
+nnoremap <Leader>k <C-w>k
+nnoremap <Leader>l <C-w>l
+
+nnoremap <Leader>e :TREPLSendFile<CR>
+vnoremap <Leader>e :TREPLSend<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Filetype Settings
