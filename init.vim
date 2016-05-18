@@ -191,8 +191,23 @@ nnoremap <Leader>j <C-w>j
 nnoremap <Leader>k <C-w>k
 nnoremap <Leader>l <C-w>l
 
-nnoremap <Leader>e :TREPLSendFile<CR>
-vnoremap <Leader>e :TREPLSend<CR>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NeoTerm Plugin
+let g:neoterm_size = 20
+let g:neoterm_automap_keys = 'tm'
+let g:neoterm_test_status = {
+      \ 'running': 'RUNNING',
+      \ 'success': 'SUCCESS',
+      \ 'failed': 'FAILED' }
+
+nnoremap <Leader>e :TREPLSetTerm work<CR>:TREPLSendFile<CR>
+vnoremap <Leader>e :TREPLSetTerm work<CR>:TREPLSend<CR>
+nnoremap <Leader>m :T make<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Improve Splits
+set noequalalways     " Stops vim from messing split sizes when closing a buffer
+set cmdheight=2       " Try to stop press any key prompts on large command output
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Filetype Settings
@@ -312,8 +327,8 @@ cmap w!! w !sudo tee > /dev/null %
 "autocmd FileType qf wincmd J
 
 " Add fast navigation shorcuts.
-map <F6> <ESC>:cN<CR>                " Jump to prev error or warn
-map <F7> <ESC>:cn<CR>                " Jump to next error or warn
+nnoremap nk <ESC>:cN<CR>                " Jump to prev error or warn
+nnoremap nj <ESC>:cn<CR>                " Jump to next error or warn
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Mouse Settings
@@ -408,10 +423,9 @@ set completeopt=longest,menu,menuone
 inoremap <expr><C-j>  pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr><C-k>  pumvisible() ? "\<C-p>" : "\<C-k>"
 
-set wildignore+=*.o,*.obj,*.pyc,*.DS_STORE,*.db,*.swc,*.rbc " Binary objects
+set wildignore+=*.o,*.obj,*.pyc,*.pyo,*.DS_STORE,*.db,*.swc,*.rbc " Binary objects
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip                    " Temp files
 set wildignore+=vendor/rails/**,vendor/gems/**              " Rails stuff
-set wildignore+=public/**                                   " Web dev stuff
 set wildignore+=*.jar,*.class,*.log,*.gz                    " Java bin files
 set wildignore+=.git,*.rbc,*.svn
 set wildignore+=*.jpeg,*.jpg,*.jpeg*,*.png,*.gif            " Media files
@@ -649,21 +663,15 @@ map <C-\> :Gtags -r<CR><CR>
 ""
 " Set the window width
 let g:NERDTreeWinSize = 40
-" Set the window position
 let g:NERDTreeWinPos = "left"
-" Colorful
 let g:NERDChristmasTree = 1
 let g:NERDTreeHighlightCursorline = 1
-" Auto centre
 let g:NERDTreeAutoCenter = 0
-" Not Highlight the cursor line
 let g:NERDTreeHighlightCursorline = 0
-" Show bookmarks list
 let g:NERDTreeShowBookmarks = 1
-" Close NERDTree after opening a file
 let g:NERDTreeQuitOnOpen = 0
-" Ignore files
-let NERDTreeIgnore=['\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$' ]
+let g:NERDTreeRespectWildIgnore = 1
+let g:NERDTreeAutoDeleteBuffer = 1
 " NERDTree to change the current working directory when selecting a root node
 let g:NERDTreeChDirMode = 2
 
@@ -672,6 +680,21 @@ nmap <silent> <leader>p :NERDTreeToggle<CR>
 
 " Locate current buffer inside NERDTree
 nmap <silent> <leader>f :NERDTreeFind<CR>
+
+" Function moves to the nerdtree buffer if present, updates it using R mapping
+" and returns to the previous window. This method was copied from janus vim
+" distribution.
+function s:UpdateNERDTree(...)
+  if exists("t:NERDTreeBufName")
+    let nr = bufwinnr(t:NERDTreeBufName)
+    if nr != -1
+      exe nr . "wincmd w"
+      exe substitute(mapcheck("R"), "<CR>", "", "")
+      "exe "vertical resize " . g:NERDTreeWinSize
+      wincmd p
+    endif
+  endif
+endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set custom tab line
