@@ -64,7 +64,6 @@ Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'kana/vim-textobj-function'
 Plug 'rbonvall/vim-textobj-latex'
-Plug 'terryma/vim-expand-region'
 
 " Visual aid and eyecandy
 Plug 'itchyny/lightline.vim'
@@ -155,8 +154,7 @@ set splitbelow
 set splitright
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Productivity Boost
-""  - https://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
+"" Custom Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Set the biggest key as leader
@@ -170,6 +168,47 @@ nnoremap <Leader>x :wqa<CR>
 inoremap jk <ESC>
 inoremap kj <ESC>
 
+" Navigate tabs
+nnoremap tt  :tabnext<CR>
+nnoremap th  :tabfirst<CR>
+nnoremap tj  :tabnext<CR>
+nnoremap tk  :tabprev<CR>
+nnoremap tl  :tablast<CR>
+nnoremap tn  :tabnew<CR>
+
+" Jump directly to tab number
+nnoremap <A-1> 1gt
+nnoremap <A-2> 2gt
+nnoremap <A-3> 3gt
+nnoremap <A-4> 4gt
+nnoremap <A-5> 5gt
+nnoremap <A-6> 6gt
+nnoremap <A-7> 7gt
+nnoremap <A-8> 8gt
+nnoremap <A-9> 9gt
+nnoremap <A-0> 0gt
+
+" Quickfix
+nnoremap qk <ESC>:cN<CR>
+nnoremap qj <ESC>:cn<CR>
+
+" Neoterm
+nnoremap no :Tnew
+nnoremap nc :Tclose
+nnoremap ne :TREPLSendFile<CR>
+vnoremap ne :TREPLSend<CR>
+nnoremap nm :T make<CR>
+
+" Enables more fluid resizing of split windows
+nnoremap <C-UP> :ResizeUp<CR>
+nnoremap <C-DOWN> :ResizeDown<CR>
+nnoremap <C-LEFT> :ResizeLeft<CR>
+nnoremap <C-RIGHT> :ResizeRight<CR>
+
+" vim-easy-align Plugin
+vmap <Enter> <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
 " Disable unproductive keys
 noremap <Up> <NOP>
 noremap <Down> <NOP>
@@ -177,7 +216,14 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 noremap <Esc> <NOP>
 
-" Terminal Mappings
+" Allow moving between splits using leader and hjkl navigation keys
+nnoremap <Leader>h <C-w>h
+nnoremap <Leader>j <C-w>j
+nnoremap <Leader>k <C-w>k
+nnoremap <Leader>l <C-w>l
+
+" Allow moving between terminal buffer and normal buffers using leader and hjkl
+" navigation keys.
 if has('nvim')
   tnoremap <Esc> <C-\><C-n>
   tnoremap <Leader>h <C-\><C-n><C-w>h
@@ -186,10 +232,13 @@ if has('nvim')
   tnoremap <Leader>l <C-\><C-n><C-w>l
 endif
 
-nnoremap <Leader>h <C-w>h
-nnoremap <Leader>j <C-w>j
-nnoremap <Leader>k <C-w>k
-nnoremap <Leader>l <C-w>l
+" Gutentags
+nnoremap <leader>gt :GutentagsUpdate!<CR>
+
+" NERDTree
+nmap <silent> <leader>p :NERDTreeToggle<CR>
+nmap <silent> <leader>f :NERDTreeFind<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NeoTerm Plugin
@@ -199,10 +248,6 @@ let g:neoterm_test_status = {
       \ 'running': 'RUNNING',
       \ 'success': 'SUCCESS',
       \ 'failed': 'FAILED' }
-
-nnoremap <Leader>e :TREPLSetTerm work<CR>:TREPLSendFile<CR>
-vnoremap <Leader>e :TREPLSetTerm work<CR>:TREPLSend<CR>
-nnoremap <Leader>m :T make<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Improve Splits
@@ -326,10 +371,6 @@ cmap w!! w !sudo tee > /dev/null %
 " Move the quickfix window to the bottom of the vim window.
 "autocmd FileType qf wincmd J
 
-" Add fast navigation shorcuts.
-nnoremap nk <ESC>:cN<CR>                " Jump to prev error or warn
-nnoremap nj <ESC>:cn<CR>                " Jump to next error or warn
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Mouse Settings
 "" Enabling the mouse has some advantages:
@@ -340,16 +381,6 @@ nnoremap nj <ESC>:cn<CR>                " Jump to next error or warn
 set mouse=nv                           " Enable the mouse.
 set mousehide
 "set ttymouse=xterm2                   " Allow text selction work with tmux
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vim Expand Region
-"
-" Use v to select char
-" Use vv to select word
-" Use vvv to expand select to paragraph
-" ....
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ProjTags Plugin
@@ -366,35 +397,6 @@ let g:projtags_list = {
       \ ],
       \ 'kernel': ['/usr/src/linux-kbuild-3.1']
       \ }
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Buffer and Tab navigation
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Navigate tabs
-nnoremap tt  :tabnext<CR>
-nnoremap th  :tabfirst<CR>
-nnoremap tj  :tabnext<CR>
-nnoremap tk  :tabprev<CR>
-nnoremap tl  :tablast<CR>
-nnoremap tn  :tabnew<CR>
-
-" Jump directly to tab number
-nnoremap <A-1> 1gt
-nnoremap <A-2> 2gt
-nnoremap <A-3> 3gt
-nnoremap <A-4> 4gt
-nnoremap <A-5> 5gt
-nnoremap <A-6> 6gt
-nnoremap <A-7> 7gt
-nnoremap <A-8> 8gt
-nnoremap <A-9> 9gt
-nnoremap <A-0> 0gt
-
-" Enables more fluid resizing of split windows
-nnoremap <C-UP> :ResizeUp<CR>
-nnoremap <C-DOWN> :ResizeDown<CR>
-nnoremap <C-LEFT> :ResizeLeft<CR>
-nnoremap <C-RIGHT> :ResizeRight<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tabs vs Spaces war
@@ -580,12 +582,6 @@ command! LatexView2 call LatexBox_View2()
 map <buffer> <LocalLeader>lo :LatexView2<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" vim-easy-align Plugin
-"" Better Tabularize alternative
-vmap <Enter> <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" vim-android Plugin
 ""
 "" Description:
@@ -674,12 +670,6 @@ let g:NERDTreeRespectWildIgnore = 1
 let g:NERDTreeAutoDeleteBuffer = 1
 " NERDTree to change the current working directory when selecting a root node
 let g:NERDTreeChDirMode = 2
-
-" Quick toogle tree
-nmap <silent> <leader>p :NERDTreeToggle<CR>
-
-" Locate current buffer inside NERDTree
-nmap <silent> <leader>f :NERDTreeFind<CR>
 
 " Function moves to the nerdtree buffer if present, updates it using R mapping
 " and returns to the previous window. This method was copied from janus vim
@@ -811,7 +801,6 @@ let g:gutentags_exclude = [
 let g:gutentags_generate_on_missing = 0
 let g:gutentags_generate_on_write = 0
 let g:gutentags_generate_on_new = 0
-nnoremap <leader>gt :GutentagsUpdate!<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" VOoM Plugin
