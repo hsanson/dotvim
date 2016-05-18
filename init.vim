@@ -822,10 +822,32 @@ nnoremap <leader>gt :GutentagsUpdate!<CR>
 ""  existing file types such as latex, markdown, org, etc.
 ""
 "" Usage:
-""  With a buffer opened run :Voom to open the outline navigation pane.
-"
-let g:voom_tree_width=60
-let g:voom_ft_modes = { 'markdown': 'markdown', 'pandoc': 'markdown', 'tex': 'latex' }
+""
+""  :Voom or :VoomToggle to open the outline tree
+""
+""  Inside the outline tree:
+""
+""    i  Jump to the title in the edit buffer
+""    I  Jump to the end of the section in the edit buffer
+""    aa Add new section at the same level of current node.
+""    AA Add child section to the current node.
+""    R  Move to buffer and visually select all test of the node.
+""    ^^ Move node up.
+""    __ Move node down.
+""    << Move nodes to parent level
+""    >> Move nodes to child level
+""    yy Copy whole node text to "+ register
+""    dd Cut node contents and copy to "+ register
+""    pp Paste nodes from "+ register after current node or fold
+
+let g:voom_tree_placement="right"
+let g:voom_tree_width=30
+let g:voom_ft_modes = {
+      \ 'markdown': 'markdown',
+      \ 'pandoc':   'markdown',
+      \ 'tex':      'latex',
+      \ 'asciidoc': 'asciidoc'
+      \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" TagBar Plugin and Ruby omnicomplete plugin
