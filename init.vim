@@ -135,6 +135,9 @@ set bs=2                              " Sane backspace behavior.
 set fileformats=unix,dos              " Use unix file format.
 set number                            " Show line number column.
 set nobackup                          " Stop vim from creating ~ files.
+set nowritebackup                     " No backups
+set noswapfile                        " More hassel than solution.
+set shortmess=atI                     " Avoid unnecessary hit-enter prompts.
 set nojoinspaces                      " Avoid double spaces when joining lines
 set showcmd                           " Display commands as they are typed.
 set showmatch                         " Show briefly matching bracket when closing it.
@@ -146,7 +149,8 @@ set nrformats=                        " Stop vim from treating zero padded numbe
 "set foldlevelstart=99
 "let loaded_matchparen = 1            " Disable matchparent that is annoying.
 set laststatus=2
-set nocursorline                      " Highlight current line in Insert Mode.
+set noequalalways                     " No automatic resizing of windows.
+set cursorline                        " highlight current line in insert Mode.
 set nocursorcolumn                    " Highlight current column in Insert Mode.
 set switchbuf=useopen,usetab
 set clipboard+=unnamedplus            " Use + and * registers by default.
@@ -193,8 +197,8 @@ nnoremap qk <ESC>:cN<CR>
 nnoremap qj <ESC>:cn<CR>
 
 " Neoterm
-nnoremap no :Tnew
-nnoremap nc :Tclose
+nnoremap no :Tnew<CR>
+nnoremap nc :Tclose<CR>
 nnoremap ne :TREPLSendFile<CR>
 vnoremap ne :TREPLSend<CR>
 nnoremap nm :T make<CR>
@@ -248,11 +252,6 @@ let g:neoterm_test_status = {
       \ 'running': 'RUNNING',
       \ 'success': 'SUCCESS',
       \ 'failed': 'FAILED' }
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Improve Splits
-set noequalalways     " Stops vim from messing split sizes when closing a buffer
-set cmdheight=2       " Try to stop press any key prompts on large command output
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Filetype Settings
@@ -687,7 +686,9 @@ function s:UpdateNERDTree(...)
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set custom tab line
+" When working on several projects I keep each one in a separate tab. This code
+" here sets the tab name automatically to the project root folder name so I know
+" what project I am working on each tab.
 
 function! ProjectTabName(n)
   let buflist = tabpagebuflist(a:n)
@@ -729,6 +730,8 @@ function! ProjectTabLine()
   return s
 endfunction
 
+set tabline=%!ProjectTabLine()
+
 function! ProjectCwdRoot()
   if has('nvim')
     exec ':tch ' . projectroot#guess("%")
@@ -739,7 +742,6 @@ endfunction
 
 autocmd BufEnter * call ProjectCwdRoot()
 
-set tabline=%!ProjectTabLine()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" YouCompleteMe Plugin
