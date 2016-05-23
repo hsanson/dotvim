@@ -604,6 +604,8 @@ let g:gradle_path="/home/ryujin/Apps/gradle"
 let g:gradle_daemon=1
 let g:netrw_browsex_viewer="firefox -new-tab"
 
+au BufWrite build.gradle call gradle#sync()
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" QFEnter Plugin
 ""
