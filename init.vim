@@ -278,12 +278,14 @@ syntax on sync minlines=256
 "set synmaxcol=200                     " Improve scroll performance with long lines
 set background=dark                    " I like dark backgrounds.
 
-" Force all colorschemes to have transparent background.
-au ColorScheme * hi Normal guibg=NONE ctermbg=NONE
-
-" Make cursorline transparent too so only the line number is highlighted on the
-" current line.
-au ColorScheme * hi CursorLine guibg=NONE ctermbg=NONE
+augroup SyntaxGroup
+  aucmd!
+  " Force all colorschemes to have transparent background.
+  au ColorScheme * hi Normal guibg=NONE ctermbg=NONE
+  " Make cursorline transparent too so only the line number is highlighted on the
+  " current line.
+  au ColorScheme * hi CursorLine guibg=NONE ctermbg=NONE
+augroup END
 
 colors PaperColor
 
@@ -604,7 +606,10 @@ let g:gradle_path="/home/ryujin/Apps/gradle"
 let g:gradle_daemon=1
 let g:netrw_browsex_viewer="firefox -new-tab"
 
-au BufWrite build.gradle call gradle#sync()
+augroup GradleGroup
+  aucmd!
+  au BufWrite build.gradle call gradle#sync()
+augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" QFEnter Plugin
