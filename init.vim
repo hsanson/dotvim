@@ -241,11 +241,11 @@ nnoremap <leader>gt :GutentagsUpdate!<CR>
 
 " NERDTree
 nmap <silent> <leader>p :NERDTreeToggle<CR>
-nmap <silent> <leader>f :NERDTreeFind<CR>
+nmap <silent> <leader>f :NERDTreeFind<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NeoTerm Plugin
+" neoterm plugin
 let g:neoterm_size = 20
 let g:neoterm_automap_keys = 'tm'
 let g:neoterm_test_status = {
@@ -279,7 +279,7 @@ syntax on sync minlines=256
 set background=dark                    " I like dark backgrounds.
 
 augroup SyntaxGroup
-  aucmd!
+  autocmd!
   " Force all colorschemes to have transparent background.
   au ColorScheme * hi Normal guibg=NONE ctermbg=NONE
   " Make cursorline transparent too so only the line number is highlighted on the
@@ -607,7 +607,7 @@ let g:gradle_daemon=1
 let g:netrw_browsex_viewer="firefox -new-tab"
 
 augroup GradleGroup
-  aucmd!
+  autocmd!
   au BufWrite build.gradle call gradle#sync()
 augroup END
 
