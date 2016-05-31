@@ -6,7 +6,7 @@ and changing over the years.
 # Pre-requisities
 
 I use Ubuntu Linux mainly so these configuration files are tested on Ubuntu
-10.04 ~ 15.04 and Debian Jessie.
+10.04 ~ 16.04 and Debian Jessie.
 
 ## Usage
 

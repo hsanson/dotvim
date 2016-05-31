@@ -10,7 +10,7 @@
 ""  with the following command:
 ""
 ""    sudo apt-get install xsel build-essentials openjdk-7-jdk cmake g++
-""      \ pkg-config unzip automake autoconf libtool-bin
+""      \ pkg-config unzip automake autoconf libtool-bin ranger
 ""
 "" Usage:
 ""
