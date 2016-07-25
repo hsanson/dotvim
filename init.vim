@@ -117,7 +117,8 @@ Plug '1995eaton/vim-better-javascript-completion'
 
 " Code navigation
 "Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'Mizuchi/vim-ranger'
+Plug 'francoiscabrol/ranger.vim'
+Plug 'rbgrouleff/bclose.vim'
 "Plug 'Shougo/unite.vim'
 "Plug 'Shougo/neomru.vim'
 Plug 'yssl/QFEnter'
@@ -245,7 +246,7 @@ nnoremap <leader>gt :GutentagsUpdate!<CR>
 "nmap <silent> <leader>f :NERDTreeFind<cr>
 
 " Ranger
-nmap <silent> <leader>p :e .<CR>
+nmap <silent> <leader>p :Ranger<CR>
 nmap <silent> <leader>f :e %:p:h<CR>
 
 
