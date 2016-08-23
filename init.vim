@@ -295,6 +295,11 @@ augroup END
 
 colors PaperColor
 
+" Enable true color support in NEOVIM
+if has('nvim')
+  set termguicolors
+endif
+
 " Apply some color to the popup menu used for auto-completion.
 highlight Pmenu ctermbg=203 gui=bold
 
