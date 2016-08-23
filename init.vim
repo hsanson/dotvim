@@ -70,6 +70,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'koron/nyancat-vim'
 Plug 'Yggdroot/indentLine'
+Plug 'vim-scripts/yaml.vim'
 
 " Colorschemes
 Plug 'NLKNguyen/papercolor-theme'
