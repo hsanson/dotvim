@@ -77,6 +77,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'zeis/vim-kolor'
 Plug 'chriskempson/base16-vim'
 Plug 'ajh17/Spacegray.vim'
+Plug 'rakr/vim-one'
 
 " Syntax and language support
 Plug 'slim-template/vim-slim'
@@ -282,6 +283,12 @@ filetype plugin indent on " Re-enable after pathogen is loaded.
 
 " Enable syntax
 syntax on sync minlines=256
+
+" Enable true color support in NEOVIM
+if has('termguicolors')
+  set termguicolors
+endif
+
 "set synmaxcol=200                     " Improve scroll performance with long lines
 set background=dark                    " I like dark backgrounds.
 
@@ -294,12 +301,8 @@ augroup SyntaxGroup
   au ColorScheme * hi CursorLine guibg=NONE ctermbg=NONE
 augroup END
 
-colors PaperColor
-
-" Enable true color support in NEOVIM
-if has('nvim')
-  set termguicolors
-endif
+let g:one_allow_italics = 1
+colors one
 
 " Apply some color to the popup menu used for auto-completion.
 highlight Pmenu ctermbg=203 gui=bold
