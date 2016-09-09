@@ -253,6 +253,8 @@ let g:neoterm_test_status = {
       \ 'running': 'RUNNING',
       \ 'success': 'SUCCESS',
       \ 'failed': 'FAILED' }
+let g:neoterm_repl_python='ipython3'
+let g:neoterm_repl_ruby='pry'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Filetype Settings
