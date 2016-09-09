@@ -118,9 +118,7 @@ Plug '1995eaton/vim-better-css-completion'
 Plug '1995eaton/vim-better-javascript-completion'
 
 " Code navigation
-"Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'francoiscabrol/ranger.vim'
-Plug 'rbgrouleff/bclose.vim'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 "Plug 'Shougo/unite.vim'
 "Plug 'Shougo/neomru.vim'
 Plug 'yssl/QFEnter'
@@ -244,13 +242,8 @@ endif
 nnoremap <leader>gt :GutentagsUpdate!<CR>
 
 " NERDTree
-"nmap <silent> <leader>p :NERDTreeToggle<CR>
-"nmap <silent> <leader>f :NERDTreeFind<cr>
-
-" Ranger
-nmap <silent> <leader>p :Ranger<CR>
-nmap <silent> <leader>f :e %:p:h<CR>
-
+nmap <silent> <leader>p :NERDTreeToggle<CR>
+nmap <silent> <leader>f :NERDTreeFind<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " neoterm plugin
