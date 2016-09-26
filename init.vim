@@ -103,9 +103,11 @@ Plug 'krisajenkins/dbext.vim'
 
 " Auto completion
 
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'artur-shaik/vim-javacomplete2'
+Plug 'osyo-manga/vim-monster'
 
-" Plug 'artur-shaik/vim-javacomplete2'
 "Plug 'vim-scripts/javacomplete'
 "Plug 'nwertzberger/javacomplete'
 "Plug 'itszero/javacomplete'
@@ -771,33 +773,28 @@ autocmd BufEnter * call ProjectCwdRoot()
 let g:ycm_filetype_specific_completion_to_disable = {'ruby': 0, 'java': 0}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" vim-javacomplete2 Plugin
+"" Deoplete Plugin
 ""
+let g:deoplete#enable_at_startup = 1
+
+let g:deoplete#omni#functions = {}
+let g:deoplete#omni#functions.java = [ 'javacomplete#Complete' ]
+let g:deoplete#omni#functions.ruby = [ 'monster#omnifunc' ]
+let g:deoplete#omni#functions.c = [ 'ccomplete#Complete' ]
+let g:deoplete#omni#functions.css = [ 'csscomplete#CompleteCSS' ]
+
+let g:deoplete#sources#omni#input_patterns = {}
+let g:deoplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+
+"" vim-monster Plugin (Ruby autocomplete)
+let g:monster#completion#rcodetools#backend = "async_rct_complete"
+
+"" vim-javacomplete2 Plugin (Java autocomplete)
 let g:JavaComplete_Home = $HOME . '/.vim/bundle/vim-javacomplete2'
 let $CLASSPATH .= '.:' . $HOME . '/.vim/bundle/vim-javacomplete2/libs/javavi/target/classes'
 let g:JavaComplete_JvmLauncher = $HOME . '/Apps/jdk1.8.0_45/bin/java'
 let g:JavaComplete_JavaCompiler = $HOME . '/Apps/jdk1.8.0_45/bin/javac'
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" NeoComplete
-""
-"" Description:
-""  Auto-completion plugin based on NeoComplCache but written in lua. It is
-""  supposed to be faster than NeoComplCache.
-""
-"" Notes:
-""   Requires a current version of vim (> 7.3) with lua interpreter enabled.
-""   I am still not sure which is better: NeoComplete or YouCompleteMe. Make
-""   sure you try both and make your own judgement.
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-"function! s:my_cr_function()
-"  return neocomplete#smart_close_popup() . "\<CR>"
-"endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gutentags
