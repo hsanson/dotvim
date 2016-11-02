@@ -439,6 +439,7 @@ inoremap <expr><C-j>  pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr><C-k>  pumvisible() ? "\<C-p>" : "\<C-k>"
 
 set wildignore+=*.o,*.obj,*.pyc,*.pyo,*.DS_STORE,*.db,*.swc,*.rbc " Binary objects
+set wildignore+=__pycache__
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip                    " Temp files
 set wildignore+=vendor/rails/**,vendor/gems/**              " Rails stuff
 set wildignore+=*.jar,*.class,*.log,*.gz                    " Java bin files
