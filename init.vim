@@ -173,8 +173,10 @@ nnoremap <Leader>w :w<CR>
 nnoremap <Leader>x :wqa<CR>
 
 " Quicker than reaching ESC for exiting insert mode.
-inoremap jk <ESC>
-inoremap kj <ESC>
+inoremap jj <ESC>
+inoremap kk <ESC>
+inoremap っｊ <ESC>
+inoremap っｋ <ESC>
 
 " Navigate tabs
 nnoremap tt  :tabnext<CR>
