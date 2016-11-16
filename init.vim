@@ -617,7 +617,6 @@ map <buffer> <LocalLeader>lo :LatexView2<CR>
 ""     work automatically.
 "
 let g:android_sdk_path="/home/ryujin/Apps/android-sdk"
-let g:gradle_path="/home/ryujin/Apps/gradle"
 let g:gradle_daemon=1
 let g:netrw_browsex_viewer="firefox -new-tab"
 
