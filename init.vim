@@ -75,7 +75,6 @@ Plug 'vim-scripts/yaml.vim'
 " Colorschemes
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'zeis/vim-kolor'
-Plug 'chriskempson/base16-vim'
 Plug 'ajh17/Spacegray.vim'
 Plug 'rakr/vim-one'
 
