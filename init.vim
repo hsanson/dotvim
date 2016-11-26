@@ -790,13 +790,6 @@ let g:deoplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 "" vim-monster Plugin (Ruby autocomplete)
 let g:monster#completion#rcodetools#backend = "async_rct_complete"
 
-"" vim-javacomplete2 Plugin (Java autocomplete)
-let g:JavaComplete_Home = $HOME . '/.vim/bundle/vim-javacomplete2'
-let $CLASSPATH .= '.:' . $HOME . '/.vim/bundle/vim-javacomplete2/libs/javavi/target/classes'
-let g:JavaComplete_JvmLauncher = $HOME . '/Apps/jdk1.8.0_45/bin/java'
-let g:JavaComplete_JavaCompiler = $HOME . '/Apps/jdk1.8.0_45/bin/javac'
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gutentags
 "
