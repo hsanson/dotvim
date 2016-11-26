@@ -677,16 +677,21 @@ map <C-\> :Gtags -r<CR><CR>
 ""  :NERDTreeToggle
 ""
 " Set the window width
-let g:NERDTreeWinSize = 40
-let g:NERDTreeWinPos = "left"
-let g:NERDChristmasTree = 1
-let g:NERDTreeHighlightCursorline = 1
-let g:NERDTreeAutoCenter = 0
-let g:NERDTreeHighlightCursorline = 0
-let g:NERDTreeShowBookmarks = 1
-let g:NERDTreeQuitOnOpen = 0
-let g:NERDTreeRespectWildIgnore = 1
-let g:NERDTreeAutoDeleteBuffer = 1
+let g:NERDTreeWinSize               = 40
+let g:NERDTreeWinPos                = "left"
+let g:NERDChristmasTree             = 1
+let g:NERDTreeHighlightCursorline   = 1
+let g:NERDTreeAutoCenter            = 0
+let g:NERDTreeHighlightCursorline   = 0
+let g:NERDTreeShowBookmarks         = 1
+let g:NERDTreeQuitOnOpen            = 0
+let g:NERDTreeRespectWildIgnore     = 1
+let g:NERDTreeAutoDeleteBuffer      = 0
+let g:NERDTreeCaseSensitiveSort     = 1
+let g:NERDTreeRespectWildIgnore     = 1
+let g:NERDTreeCascadeSingleChildDir = 1
+let g:NERDTreeCascadeOpenSingleChildDir = 1
+
 " NERDTree to change the current working directory when selecting a root node
 let g:NERDTreeChDirMode = 2
 
