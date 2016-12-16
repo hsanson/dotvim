@@ -987,3 +987,27 @@ source ~/.dbext_profiles
 "
 nnoremap <C-p> :Files<ENTER>
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" DevIcons Plugin
+"
+let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
+let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
+
+" change the default character when no match found
+let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = ''
+" change the default folder/directory glyph/icon
+let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
+" change the default open folder/directory glyph/icon (default is '')
+let g:DevIconsDefaultFolderOpenSymbol = ''
+
+" change the default dictionary mappings for exact file node matches
+let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols = {}
+let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['build.gradle'] = ''
+
+" add or override individual additional filetypes
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['xml'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['java'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['rb'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['sh'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['sql'] = ''
