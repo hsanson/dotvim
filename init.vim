@@ -65,13 +65,6 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'kana/vim-textobj-function'
 Plug 'rbonvall/vim-textobj-latex'
 
-" Visual aid and eyecandy
-Plug 'itchyny/lightline.vim'
-Plug 'ryanoasis/vim-devicons'
-Plug 'koron/nyancat-vim'
-Plug 'Yggdroot/indentLine'
-Plug 'vim-scripts/yaml.vim'
-
 " Colorschemes
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'zeis/vim-kolor'
@@ -128,6 +121,13 @@ Plug 'yssl/QFEnter'
 Plug 'vim-scripts/gtags.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
+" Visual aid and eyecandy
+Plug 'itchyny/lightline.vim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'koron/nyancat-vim'
+Plug 'Yggdroot/indentLine'
+Plug 'vim-scripts/yaml.vim'
 
 call plug#end()
 
