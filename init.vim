@@ -338,12 +338,6 @@ let g:lightline = {
   \    }
   \ }
 
-let g:gradle_glyph_error=''
-let g:gradle_glyph_warning=''
-let g:gradle_glyph_gradle=''
-let g:gradle_glyph_android=''
-let g:gradle_glyph_building=''
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Search
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -622,6 +616,12 @@ map <buffer> <LocalLeader>lo :LatexView2<CR>
 let g:android_sdk_path="/home/ryujin/Apps/android-sdk"
 let g:gradle_daemon=1
 let g:netrw_browsex_viewer="google-chrome"
+
+let g:gradle_glyph_error=''
+let g:gradle_glyph_warning=''
+let g:gradle_glyph_gradle=''
+let g:gradle_glyph_android=''
+let g:gradle_glyph_building=''
 
 augroup GradleGroup
   autocmd!
