@@ -352,6 +352,10 @@ set incsearch
 set ignorecase
 set nosmartcase
 
+if has('nvim')
+  set inccommand="nosplit"
+endif
+
 " Set search path for gf command
 set path=/usr/include,/usr/local/include,**;$HOME
 
