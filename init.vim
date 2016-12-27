@@ -97,8 +97,7 @@ Plug 'krisajenkins/dbext.vim'
 
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'artur-shaik/vim-javacomplete2'
-Plug 'osyo-manga/vim-monster'
+" Plug 'artur-shaik/vim-javacomplete2'
 
 "Plug 'vim-scripts/javacomplete'
 "Plug 'nwertzberger/javacomplete'
@@ -108,6 +107,7 @@ Plug 'osyo-manga/vim-monster'
 "Plug 'vim-scripts/javaimports.vim'
 
 "Plug 'vim-scripts/rubycomplete.vim.git'
+Plug 'osyo-manga/vim-monster'
 Plug '1995eaton/vim-better-css-completion'
 Plug '1995eaton/vim-better-javascript-completion'
 
@@ -116,9 +116,8 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 "Plug 'Shougo/unite.vim'
 "Plug 'Shougo/neomru.vim'
 Plug 'yssl/QFEnter'
-"Plug 'majutsushi/tagbar'
-"Plug 'ludovicchabant/vim-gutentags'
-Plug 'vim-scripts/gtags.vim'
+Plug 'majutsushi/tagbar'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
@@ -321,20 +320,22 @@ let g:lightline = {
   \ 'colorcheme': 'PaperColor',
   \ 'active': {
   \    'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
-  \    'right': [ ['lineinfo'], ['percent'], ['gradle'] ]
+  \    'right': [ ['lineinfo'], ['percent'], ['gradle'], ['gutentags'] ]
   \ },
   \ 'inactive': {
   \    'left': [ [ 'filename' ] ],
-  \    'right': [ ['lineinfo'], ['percent'], ['gradle'] ]
+  \    'right': [ ['lineinfo'], ['percent'], ['gradle'], ['gutentags'] ]
   \ },
   \ 'component': {
   \    'readonly': '%{&readonly?"":""}',
   \    'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}',
-  \    'gradle': '%{exists("*gradle#statusLine")?gradle#statusLine():""}'
+  \    'gradle': '%{exists("*gradle#statusLine")?gradle#statusLine():""}',
+  \    'gutentags': '%{exists("*gutentags#statusline")?gutentags#statusline(" "):""}'
   \    },
   \ 'component_visible_condition': {
   \    'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())',
-  \    'gradle': '(exists("*gradle#statusLine") && ""!=gradle#statusLine())'
+  \    'gradle': '(exists("*gradle#statusLine") && ""!=gradle#statusLine())',
+  \    'gutentags': '(exists("*gutentags#statusline") && ""!=gutentags#statusline())'
   \    }
   \ }
 
@@ -667,9 +668,6 @@ let g:qfenter_topen_map = [ '<C-t>' ]
 ""   https://github.com/ggreer/the_silver_searcher
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Global Tags Plugin
-map <C-]> :Gtags<CR><CR>
-map <C-\> :Gtags -r<CR><CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" NERDTree Plugin
@@ -809,8 +807,6 @@ let g:deoplete#sources#omni#input_patterns = {
 "   So far the best tag auto generation plugin I have user. Does not seem to
 "   block vim like szw/vim-tags or xolox/easytags.git did.
 "
-let g:gutentags_tagfile = '.tags'
-let g:gutentags_background_update = 1
 let g:gutentags_cache_dir = '/home/ryujin/.vim/tags'
 let g:gutentags_exclude = [
       \ '*.min.js',
@@ -820,9 +816,12 @@ let g:gutentags_exclude = [
       \ '*/node_modules/*',
       \ '*/migrate/*.rb'
       \ ]
-let g:gutentags_generate_on_missing = 0
-let g:gutentags_generate_on_write = 0
-let g:gutentags_generate_on_new = 0
+let g:gutentags_file_list_command = {
+      \ 'markers': {
+      \ '.git': 'git ls-files',
+      \ '.hg': 'hg files',
+      \ },
+      \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" VOoM Plugin
