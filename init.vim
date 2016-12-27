@@ -119,6 +119,7 @@ Plug 'majutsushi/tagbar'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'mhinz/vim-grepper'
 
 " Visual aid and eyecandy
 Plug 'itchyny/lightline.vim'
@@ -637,36 +638,10 @@ let g:qfenter_hopen_map = [ '<C-x>' ]
 let g:qfenter_topen_map = [ '<C-t>' ]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Ag Plugin
+"" Vim-Grepper Plugin
 ""
-"" Description:
-""  This plugin allows search of your code files using Silver Searcher (Ag)
-""  tool.
-""
-"" Installation:
-""  Install the silversearcher-ag package. If you have Ubuntu 13.04 or less then the
-""  silversearcher-ag package is not available so to intall follow these steps:
-""
-""    apt-get install software-properties-common
-""    apt-add-repository ppa:mizuno-as/silversearcher-ag
-""    apt-get update
-""    apt-get install silversearcher-ag
-""
-""  If you have debian 8 or Ubuntu 14.04 and latter then ag is already packaged
-""  in the official repo:
-""
-""    apt-get install silversearcher-ag
-""
-""  When using ag make sure you create a .agignore file inside you project with
-""  ignore patterns. Using the default .gitignore has issues, at least in my
-""  case where the search is not recursive.
-""
-"" Resources:
-""   http://betterthangrep.com/
-""   http://amaslov.wordpress.com/2009/04/23/vim-ack-instead-of-grep/
-""   https://github.com/ggreer/the_silver_searcher
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>g :Grepper -tool git -jump<cr>
+nnoremap <leader>* :Grepper -tool git -cword -noprompt<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" NERDTree Plugin
