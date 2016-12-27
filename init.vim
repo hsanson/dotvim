@@ -95,7 +95,6 @@ Plug 'krisajenkins/dbext.vim'
 
 " Auto completion
 
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'artur-shaik/vim-javacomplete2'
 
@@ -768,17 +767,6 @@ function! ProjectCwdRoot()
 endfunction
 
 autocmd BufEnter * call ProjectCwdRoot()
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" YouCompleteMe Plugin
-""
-"" Description:
-""  New kid in the block on auto-completion goodness.
-""  I am still not sure which is better: NeoComplete or YouCompleteMe. Make
-""  you own judgement.
-""
-let g:ycm_filetype_specific_completion_to_disable = {'ruby': 0, 'java': 0}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Deoplete Plugin
