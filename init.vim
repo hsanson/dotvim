@@ -311,6 +311,10 @@ highlight Pmenu ctermbg=203 gui=bold
 set list
 exec "set lcs=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 
+" Highlight japanese space
+highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
+match ZenkakuSpace /　/
+
 " Highlight color codes with the actual color. Requires color_highlight plugin.
 let g:colorizer_auto_filetype='css,html'
 
