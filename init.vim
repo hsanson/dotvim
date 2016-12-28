@@ -58,6 +58,7 @@ Plug 'vim-scripts/matchit.zip'
 Plug 'vim-scripts/DrawIt'
 Plug 'dbakker/vim-projectroot'
 Plug 'kassio/neoterm'
+Plug 'simeji/winresizer'
 
 " Text object add ons
 Plug 'kana/vim-textobj-user'
