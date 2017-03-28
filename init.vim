@@ -778,7 +778,7 @@ let g:deoplete#sources#omni#input_patterns = {
 "   block vim like szw/vim-tags or xolox/easytags.git did.
 "
 let g:gutentags_cache_dir = '/home/ryujin/.vim/tags'
-let g:gutentags_exclude = [
+let g:gutentags_ctags_exclude = [
       \ '*.min.js',
       \ '*html*',
       \ 'jquery*.js',
