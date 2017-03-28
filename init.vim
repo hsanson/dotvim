@@ -80,6 +80,7 @@ Plug 'rodjek/vim-puppet'
 Plug 'tpope/vim-haml'
 Plug 'othree/yajs.vim'
 Plug 'pearofducks/ansible-vim'
+Plug 'udalov/kotlin-vim'
 
 " Highlights color codes with the actual color.
 Plug 'chrisbra/color_highlight'
@@ -166,6 +167,7 @@ set splitright
 
 " Set the biggest key as leader
 let mapleader = "\<Space>"
+au TermOpen * map <LocalLeader>\
 
 " Map frequent actions to leader shortcuts
 nnoremap <Leader>w :w<CR>
@@ -256,7 +258,7 @@ let g:neoterm_test_status = {
       \ 'running': 'RUNNING',
       \ 'success': 'SUCCESS',
       \ 'failed': 'FAILED' }
-let g:neoterm_repl_python='ipython3'
+let g:neoterm_repl_python='python3'
 let g:neoterm_repl_ruby='pry'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
