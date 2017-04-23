@@ -207,7 +207,7 @@ nnoremap qj <ESC>:cn<CR>
 nnoremap no :Tnew<CR>
 nnoremap nc :Tclose<CR>
 nnoremap ne :TREPLSendFile<CR>
-vnoremap ne :TREPLSend<CR>
+vnoremap ne :TREPLSendSelection<CR>
 nnoremap nm :T make<CR>
 
 " Enables more fluid resizing of split windows
