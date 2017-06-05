@@ -380,6 +380,11 @@ endif
 cmap w!! w !sudo tee > /dev/null %
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Cool json formatting command.
+" Requires jq installed and works with non Ascii characters like Japanese.
+command! -range=% JSONFormat <line1>,<line2>!jq .
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Improve QuickFix Window
 
 " Tip: http://vim.wikia.com/wiki/Automatically_open_the_quickfix_window_on_:make
