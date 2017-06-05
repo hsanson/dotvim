@@ -81,6 +81,7 @@ Plug 'tpope/vim-haml'
 Plug 'othree/yajs.vim'
 Plug 'pearofducks/ansible-vim'
 Plug 'udalov/kotlin-vim'
+Plug 'blablatros/vim-asciidoc-superfold'
 
 " Highlights color codes with the actual color.
 Plug 'chrisbra/color_highlight'
