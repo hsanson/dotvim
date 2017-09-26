@@ -659,7 +659,8 @@ function! ProjectTabName(n)
   let buflist = tabpagebuflist(a:n)
   let winnr   = tabpagewinnr(a:n)
   let bufnr   = buflist[winnr -1]
-  return fnamemodify(projectroot#guess(bufname(bufnr)), ':t') . ''
+  "return fnamemodify(projectroot#guess(bufname(bufnr)), ':t') . ''
+  return "Here"
 endfunction
 
 " Sets the tabline using our custom font icons, highlight and NERDTree based tab
@@ -699,9 +700,9 @@ set tabline=%!ProjectTabLine()
 
 function! ProjectCwdRoot()
   if has('nvim')
-    exec ':tch ' . projectroot#guess("%")
+    "exec ':tch ' . projectroot#guess("%")
   else
-    exec ':chdir ' . projectroot#guess("%")
+    "exec ':chdir ' . projectroot#guess("%")
   endif
 endfunction
 
