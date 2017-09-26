@@ -39,32 +39,31 @@ Plug '~/Projects/vim/vim-im'
 
 " Helper and tools
 Plug 'yuratomo/dbg.vim'
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'Shougo/vimshell'
+"Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+"Plug 'Shougo/vimshell'
 Plug 'junegunn/vim-easy-align'
-Plug 'fatih/vim-go'
-Plug 'tpope/vim-rails'
+"Plug 'fatih/vim-go'
+"Plug 'tpope/vim-rails'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-speeddating'
-Plug 'tpope/vim-dispatch'
+"Plug 'tpope/vim-dispatch'
 Plug 'gregsexton/gitv'
 Plug 'jreybert/vimagit'
 "Plug 'thinca/vim-logcat'
 Plug 'cohama/lexima.vim'
 Plug 'tpope/vim-surround'
-Plug 'vim-scripts/matchit.zip'
-Plug 'vim-scripts/DrawIt'
-Plug 'dbakker/vim-projectroot'
-Plug 'kassio/neoterm'
-Plug 'simeji/winresizer'
+"Plug 'vim-scripts/matchit.zip'
+"Plug 'vim-scripts/DrawIt'
+"Plug 'dbakker/vim-projectroot'
+"Plug 'kassio/neoterm'
+"Plug 'simeji/winresizer'
 
 " Text object add ons
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'kana/vim-textobj-function'
-Plug 'rbonvall/vim-textobj-latex'
 
 " Colorschemes
 Plug 'NLKNguyen/papercolor-theme'
@@ -73,21 +72,13 @@ Plug 'ajh17/Spacegray.vim'
 Plug 'rakr/vim-one'
 
 " Syntax and language support
-Plug 'slim-template/vim-slim'
-Plug 'vim-scripts/groovy.vim'
-Plug 'kchmck/vim-coffee-script'
-Plug 'rodjek/vim-puppet'
-Plug 'tpope/vim-haml'
-Plug 'othree/yajs.vim'
-Plug 'pearofducks/ansible-vim'
-Plug 'udalov/kotlin-vim'
-Plug 'blablatros/vim-asciidoc-superfold'
+"Plug 'sheerun/vim-polyglot'
 
 " Highlights color codes with the actual color.
 Plug 'chrisbra/color_highlight'
 
 " Document editing
-Plug 'LaTeX-Box-Team/LaTeX-Box'
+Plug 'lervag/vimtex'
 Plug 'vim-scripts/VOoM'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
@@ -128,8 +119,10 @@ Plug 'mhinz/vim-grepper'
 Plug 'itchyny/lightline.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'koron/nyancat-vim'
-Plug 'Yggdroot/indentLine'
 Plug 'vim-scripts/yaml.vim'
+
+" Vim Plugin Debugging
+Plug 'junegunn/vader.vim'
 
 call plug#end()
 
@@ -542,71 +535,28 @@ set fencs=utf-8,euc-jp,sjis
 set encoding=utf-8
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Latex Plugin
+" Vimtex Plugin
 "
-" Description:
-"   Simple but full featured plugin for writing LaTeX document in vim.
-"
-" Prerequisites:
-"  If you want to compile using Xelatex instead of simple latex make sure to
-"  create a .latexmkrc file inside the project folder that contains:
-"
-"    $pdflatex=q/xelatex -synctex=1 %O %S/
-"
-"  also ensure the build directory exists or the build process would fail.
-"
-" Usage:
-"
-"   -  \ll  ->  Compile document
-"   -  \lc  ->  Clean auxiliar files
-"   -  \lv  ->  View compiled document
-"   -  \lo  ->  Use synctex to jump to the same section in PDF file
-"   -  \le  ->  Load log in quickfix window
+let g:vimtex_view_method = 'zathura'
+let g:vimtex_view_general_viewer = 'okular'
+let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+let g:vimtex_view_general_options_latexmk = '--unique'
 
-let g:LatexBox_completion_close_braces = 1
-let g:LatexBox_latexmk_async = 0
-"let g:LatexBox_latexmk_preview_continuously = 1
-let g:LatexBox_quickfix = 2
-let g:LatexBox_autojump = 1
-let g:LatexBox_show_warnings = 1
-
-" Add custom search paths
-"   TEXINPUTS Path to search for .tex files
-"   BSTINPUTS Path to search for .bst files
-"   BIBINPUTS Path to search for .bib files
-let g:LatexBox_latexmk_env="TEXINPUTS=:${PWD}//: BSTINPUTS=:${PWD}//: BIBINPUTS=:${PWD}//: "
-
-let g:LatexBox_build_dir = "build"
-"let g:LatexBox_latexmk_options = "-pdflatex='xelatex %O %S' -latex='xelatex %O %S' -jobname=build/main"
-let g:LatexBox_latexmk_options = "-jobname=build/main"
-let g:LatexBox_viewer = "okular --unique"
-let g:ycm_semantic_triggers = { 'tex': ['cite{'] }
-
-""
-" Function that opens the output file and uses synctex to jump to the section
-" that corresponds to the current line in the tex document.
-function! LatexBox_View2()
-  let outfile = LatexBox_GetOutputFile()
-  if !filereadable(outfile)
-    echomsg fnamemodify(outfile, ':.') . ' is not readable'
-    return
-  endif
-  let outfile2 = outfile . '\#src:' . line(".") . expand("%:p")
-  let cmd = g:LatexBox_viewer . ' ' . shellescape(outfile2)
-  if has('win32')
-    let cmd = '!start /b' . cmd . ' >nul'
-  else
-    let cmd = '!' . cmd . ' &>/dev/null &'
-  endif
-  silent execute cmd
-  if !has("gui_running")
-    redraw!
-  endif
-endfunction
-
-command! LatexView2 call LatexBox_View2()
-
-map <buffer> <LocalLeader>lo :LatexView2<CR>
+let g:vimtex_compiler_latexmk = {
+    \ 'backend' : 'nvim',
+    \ 'background' : 1,
+    \ 'build_dir' : 'build',
+    \ 'callback' : 1,
+    \ 'continuous' : 1,
+    \ 'executable' : 'latexmk',
+    \ 'options' : [
+    \   '-pdf',
+    \   '-verbose',
+    \   '-file-line-error',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \ ],
+    \}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" vim-android Plugin
