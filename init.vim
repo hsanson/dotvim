@@ -595,10 +595,11 @@ augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" QFEnter Plugin
 ""
-let g:qfenter_open_map = [ '<CR>', '<2-LeftMouse>' ]
-let g:qfenter_vopen_map = [ '<C-v>' ]
-let g:qfenter_hopen_map = [ '<C-x>' ]
-let g:qfenter_topen_map = [ '<C-t>' ]
+let g:qfenter_keymap = {}
+let g:qfenter_keymap.open = [ '<CR>', '<2-LeftMouse>' ]
+let g:qfenter_keymap.vopen = [ '<C-v>' ]
+let g:qfenter_keymap.hopen = [ '<C-x>' ]
+let g:qfenter_keymap.topen = [ '<C-t>' ]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Vim-Grepper Plugin
