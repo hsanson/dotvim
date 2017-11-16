@@ -121,6 +121,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'koron/nyancat-vim'
 Plug 'vim-scripts/yaml.vim'
+Plug 'machakann/vim-highlightedyank'
 
 " Vim Plugin Debugging
 Plug 'junegunn/vader.vim'
