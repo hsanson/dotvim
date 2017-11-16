@@ -73,6 +73,7 @@ Plug 'rakr/vim-one'
 
 " Syntax and language support
 "Plug 'sheerun/vim-polyglot'
+Plug 'udalov/kotlin-vim'
 
 " Highlights color codes with the actual color.
 Plug 'chrisbra/color_highlight'
