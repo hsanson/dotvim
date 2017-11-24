@@ -34,7 +34,7 @@ call plug#begin('~/.config/nvim/bundle')
 " Personal plugins
 Plug '~/Projects/vim/vim-android'
 Plug '~/Projects/vim/vim-projtags'
-Plug '~/Projects/vim/vim-resize'
+Plug '~/Projects/vim/vim-winmode'
 Plug '~/Projects/vim/vim-im'
 
 " Helper and tools
@@ -245,6 +245,9 @@ nnoremap <leader>gt :GutentagsUpdate!<CR>
 " NERDTree
 nmap <silent> <leader>p :NERDTreeToggle<CR>
 nmap <silent> <leader>f :NERDTreeFind<cr>
+
+" WinMode
+nmap <leader>w <Plug>WinModeStart
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " neoterm plugin
