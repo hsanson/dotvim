@@ -164,11 +164,10 @@ set splitright
 
 " Set the biggest key as leader
 let mapleader = "\<Space>"
-au TermOpen * map <LocalLeader>\
 
 " Map frequent actions to leader shortcuts
-nnoremap <Leader>w :w<CR>
 nnoremap <Leader>x :wqa<CR>
+nnoremap <Leader>X :wqa!<CR>
 
 " Quicker than reaching ESC for exiting insert mode.
 inoremap jj <ESC>
