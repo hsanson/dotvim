@@ -70,6 +70,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'zeis/vim-kolor'
 Plug 'ajh17/Spacegray.vim'
 Plug 'rakr/vim-one'
+Plug 'morhetz/gruvbox'
 
 " Syntax and language support
 "Plug 'sheerun/vim-polyglot'
