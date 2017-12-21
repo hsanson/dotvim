@@ -57,7 +57,7 @@ Plug 'tpope/vim-surround'
 "Plug 'vim-scripts/matchit.zip'
 "Plug 'vim-scripts/DrawIt'
 "Plug 'dbakker/vim-projectroot'
-Plug 'christoomey/vim-tmux-runner'
+"Plug 'kassio/neoterm'
 "Plug 'simeji/winresizer'
 
 " Text object add ons
@@ -199,12 +199,12 @@ nnoremap <A-0> 0gt
 nnoremap qk <ESC>:cN<CR>
 nnoremap qj <ESC>:cn<CR>
 
-" VTR Plugin
-nnoremap no :VtrOpenRunner<CR>
-nnoremap nc :VtrKillRunner<CR>
-nnoremap ne ggvG:VtrSendLinesToRunner<CR>
-vnoremap ne :VtrSendLinesToRunner<CR>
-nnoremap nm :VtrSendCommandToRunner make<CR>
+" Neoterm
+nnoremap no :Tnew<CR>
+nnoremap nc :Tclose<CR>
+nnoremap ne :TREPLSendFile<CR>
+vnoremap ne :TREPLSendSelection<CR>
+nnoremap nm :T make<CR>
 
 " Enables more fluid resizing of split windows
 nnoremap <C-UP> :ResizeUp<CR>
@@ -248,6 +248,17 @@ nmap <silent> <leader>f :NERDTreeFind<cr>
 
 " WinMode
 nmap <leader>w <Plug>WinModeStart
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" neoterm plugin
+let g:neoterm_size = 20
+let g:neoterm_automap_keys = 'tm'
+let g:neoterm_test_status = {
+      \ 'running': 'RUNNING',
+      \ 'success': 'SUCCESS',
+      \ 'failed': 'FAILED' }
+let g:neoterm_repl_python='python3'
+let g:neoterm_repl_ruby='pry'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Filetype Settings
