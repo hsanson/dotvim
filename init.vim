@@ -33,32 +33,19 @@ call plug#begin('~/.config/nvim/bundle')
 
 " Personal plugins
 Plug '~/Projects/vim/vim-android'
-Plug '~/Projects/vim/vim-projtags'
 Plug '~/Projects/vim/vim-winmode'
 Plug '~/Projects/vim/vim-im'
 
 " Helper and tools
-Plug 'yuratomo/dbg.vim'
-"Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-"Plug 'Shougo/vimshell'
 Plug 'junegunn/vim-easy-align'
-"Plug 'fatih/vim-go'
-"Plug 'tpope/vim-rails'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-speeddating'
-"Plug 'tpope/vim-dispatch'
-Plug 'gregsexton/gitv'
-Plug 'jreybert/vimagit'
-"Plug 'thinca/vim-logcat'
 Plug 'cohama/lexima.vim'
 Plug 'tpope/vim-surround'
-"Plug 'vim-scripts/matchit.zip'
-"Plug 'vim-scripts/DrawIt'
-"Plug 'dbakker/vim-projectroot'
-"Plug 'kassio/neoterm'
-"Plug 'simeji/winresizer'
+Plug 'chrisbra/matchit'
+Plug 'kassio/neoterm'
 
 " Text object add ons
 Plug 'kana/vim-textobj-user'
@@ -67,64 +54,34 @@ Plug 'kana/vim-textobj-function'
 
 " Colorschemes
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'zeis/vim-kolor'
-Plug 'ajh17/Spacegray.vim'
-Plug 'rakr/vim-one'
 Plug 'morhetz/gruvbox'
 
 " Syntax and language support
-"Plug 'sheerun/vim-polyglot'
 Plug 'udalov/kotlin-vim'
-
-" Highlights color codes with the actual color.
+Plug 'vim-scripts/yaml.vim'
 Plug 'chrisbra/color_highlight'
 
 " Document editing
 Plug 'lervag/vimtex'
-Plug 'vim-scripts/VOoM'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'vim-pandoc/vim-pandoc-after'
-
-" Database Connector
-Plug 'krisajenkins/dbext.vim'
 
 " Auto completion
-
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'artur-shaik/vim-javacomplete2'
-
-"Plug 'vim-scripts/javacomplete'
-"Plug 'nwertzberger/javacomplete'
-"Plug 'itszero/javacomplete'
-"Plug 'adragomir/javacomplete'
-"Plug 'Shougo/javacomplete'
-"Plug 'vim-scripts/javaimports.vim'
-
-"Plug 'vim-scripts/rubycomplete.vim.git'
 Plug 'osyo-manga/vim-monster'
 Plug '1995eaton/vim-better-css-completion'
 Plug '1995eaton/vim-better-javascript-completion'
 
 " Code navigation
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-"Plug 'Shougo/unite.vim'
-"Plug 'Shougo/neomru.vim'
-Plug 'yssl/QFEnter'
-Plug 'majutsushi/tagbar'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-grepper'
+Plug 'justinmk/vim-dirvish'
+Plug 'ludovicchabant/vim-gutentags'
 
 " Visual aid and eyecandy
 Plug 'itchyny/lightline.vim'
 Plug 'ryanoasis/vim-devicons'
-Plug 'koron/nyancat-vim'
-Plug 'vim-scripts/yaml.vim'
-Plug 'machakann/vim-highlightedyank'
 
-" Vim Plugin Debugging
+" Vim Plugin Testing
 Plug 'junegunn/vader.vim'
 
 call plug#end()
@@ -144,11 +101,8 @@ set showcmd                           " Display commands as they are typed.
 set showmatch                         " Show briefly matching bracket when closing it.
 set scrolloff=9999                    " Always keep the cursor at the center of window.
 set lazyredraw                        " Improve performance
-"set hidden                           " Allow change buffer without saving.
 set nofoldenable                      " Disable folding that slows down auto-completion
 set nrformats=                        " Stop vim from treating zero padded numbers as octal
-"set foldlevelstart=99
-"let loaded_matchparen = 1            " Disable matchparent that is annoying.
 set laststatus=2
 set noequalalways                     " No automatic resizing of windows.
 set cursorline                        " highlight current line in insert Mode.
@@ -165,8 +119,11 @@ set splitright
 " Set the biggest key as leader
 let mapleader = "\<Space>"
 
-" Map frequent actions to leader shortcuts
-nnoremap <Leader>x :wqa<CR>
+" Map frequent actions to leader shortcuts. These are created to match the same
+" mappings used in the vim-winmode plugin.
+nnoremap <Leader>c :split<CR>
+nnoremap <Leader>v :vsplit<CR>
+nnoremap <Leader>x :close!<CR>
 nnoremap <Leader>X :wqa!<CR>
 
 " Quicker than reaching ESC for exiting insert mode.
@@ -206,12 +163,6 @@ nnoremap ne :TREPLSendFile<CR>
 vnoremap ne :TREPLSendSelection<CR>
 nnoremap nm :T make<CR>
 
-" Enables more fluid resizing of split windows
-nnoremap <C-UP> :ResizeUp<CR>
-nnoremap <C-DOWN> :ResizeDown<CR>
-nnoremap <C-LEFT> :ResizeLeft<CR>
-nnoremap <C-RIGHT> :ResizeRight<CR>
-
 " vim-easy-align Plugin
 vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
@@ -238,13 +189,6 @@ if has('nvim')
   tnoremap <Leader>k <C-\><C-n><C-w>k
   tnoremap <Leader>l <C-\><C-n><C-w>l
 endif
-
-" Gutentags
-nnoremap <leader>gt :GutentagsUpdate!<CR>
-
-" NERDTree
-nmap <silent> <leader>p :NERDTreeToggle<CR>
-nmap <silent> <leader>f :NERDTreeFind<cr>
 
 " WinMode
 nmap <leader>w <Plug>WinModeStart
@@ -301,7 +245,7 @@ augroup SyntaxGroup
 augroup END
 
 let g:one_allow_italics = 1
-colors PaperColor
+colors gruvbox
 
 " Apply some color to the popup menu used for auto-completion.
 highlight Pmenu ctermbg=203 gui=bold
@@ -405,22 +349,6 @@ command! -range=% JSONFormat <line1>,<line2>!jq .
 set mouse=nv                           " Enable the mouse.
 set mousehide
 "set ttymouse=xterm2                   " Allow text selction work with tmux
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ProjTags Plugin
-
-let g:projtags_list = {
-      \ 'java7': ['/home/ryujin/Apps/jdk/src'],
-      \ 'android': [
-      \     '~/vault/java/otto',
-      \     '~/vault/java/google-gson-read-only',
-      \     '~/vault/java/realm-java',
-      \     '~/vault/java/retrofit',
-      \     '~/vault/java/couchbase-lite-android',
-      \     '~/Apps/android-sdk/sources/android-21'
-      \ ],
-      \ 'kernel': ['/usr/src/linux-kbuild-3.1']
-      \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tabs vs Spaces war
@@ -613,107 +541,6 @@ nnoremap <leader>g :Grepper -tool git -jump<cr>
 nnoremap <leader>* :Grepper -tool git -cword -noprompt<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" NERDTree Plugin
-""
-"" Description:
-""  The all powerful file explorer plugin for vim.
-""
-"" Usage:
-""  :NERDTreeToggle
-""
-" Set the window width
-let g:NERDTreeWinSize               = 40
-let g:NERDTreeWinPos                = "left"
-let g:NERDChristmasTree             = 1
-let g:NERDTreeHighlightCursorline   = 1
-let g:NERDTreeAutoCenter            = 0
-let g:NERDTreeHighlightCursorline   = 0
-let g:NERDTreeShowBookmarks         = 1
-let g:NERDTreeQuitOnOpen            = 0
-let g:NERDTreeRespectWildIgnore     = 1
-let g:NERDTreeAutoDeleteBuffer      = 0
-let g:NERDTreeCaseSensitiveSort     = 1
-let g:NERDTreeRespectWildIgnore     = 1
-let g:NERDTreeCascadeSingleChildDir = 1
-let g:NERDTreeCascadeOpenSingleChildDir = 1
-
-" NERDTree to change the current working directory when selecting a root node
-let g:NERDTreeChDirMode = 2
-
-" Function moves to the nerdtree buffer if present, updates it using R mapping
-" and returns to the previous window. This method was copied from janus vim
-" distribution.
-function s:UpdateNERDTree(...)
-  if exists("t:NERDTreeBufName")
-    let nr = bufwinnr(t:NERDTreeBufName)
-    if nr != -1
-      exe nr . "wincmd w"
-      exe substitute(mapcheck("R"), "<CR>", "", "")
-      "exe "vertical resize " . g:NERDTreeWinSize
-      wincmd p
-    endif
-  endif
-endfunction
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" When working on several projects I keep each one in a separate tab. This code
-" here sets the tab name automatically to the project root folder name so I know
-" what project I am working on each tab.
-
-function! ProjectTabName(n)
-  let buflist = tabpagebuflist(a:n)
-  let winnr   = tabpagewinnr(a:n)
-  let bufnr   = buflist[winnr -1]
-  "return fnamemodify(projectroot#guess(bufname(bufnr)), ':t') . ''
-  return "Here"
-endfunction
-
-" Sets the tabline using our custom font icons, highlight and NERDTree based tab
-" names. See :h setting-tabline for details on how this function works.
-function! ProjectTabLine()
-
-  let s = ''
-
-  for i in range(tabpagenr('$'))
-    " select the highlighting
-    if i + 1 == tabpagenr()
-      let s .= '%#TabLineSel#'
-    else
-      let s .= '%#TabLine#'
-    endif
-
-    " set the tab page number (for mouse clicks)
-    let s .= '%' . (i + 1) . 'T'
-
-    " set the tab name
-    let s .= ProjectTabName(i + 1)
-
-  endfor
-
-  " after the last tab fill with TabLineFill and reset tab page nr
-  let s .= '%#TabLineFill#%T'
-
-  " right-align the label to close the current tab page
-  if tabpagenr('$') > 1
-    let s .= '%=%#TabLine#%999X'
-  endif
-
-  return s
-endfunction
-
-set tabline=%!ProjectTabLine()
-
-function! ProjectCwdRoot()
-  if has('nvim')
-    "exec ':tch ' . projectroot#guess("%")
-  else
-    "exec ':chdir ' . projectroot#guess("%")
-  endif
-endfunction
-
-autocmd BufEnter * call ProjectCwdRoot()
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Deoplete Plugin
 ""
 let g:deoplete#enable_at_startup = 1
@@ -755,75 +582,6 @@ let g:gutentags_file_list_command = {
       \ '.hg': 'hg files',
       \ },
       \ }
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" VOoM Plugin
-"" 
-"" Description:
-""  Nice two-pane outliner. It differs from Notes and vimoutliner in that it
-""  does not tries to create a new file type. VOoM instead supports several already
-""  existing file types such as latex, markdown, org, etc.
-""
-"" Usage:
-""
-""  :Voom or :VoomToggle to open the outline tree
-""
-""  Inside the outline tree:
-""
-""    i  Jump to the title in the edit buffer
-""    I  Jump to the end of the section in the edit buffer
-""    aa Add new section at the same level of current node.
-""    AA Add child section to the current node.
-""    R  Move to buffer and visually select all test of the node.
-""    ^^ Move node up.
-""    __ Move node down.
-""    << Move nodes to parent level
-""    >> Move nodes to child level
-""    yy Copy whole node text to "+ register
-""    dd Cut node contents and copy to "+ register
-""    pp Paste nodes from "+ register after current node or fold
-
-let g:voom_tree_placement="right"
-let g:voom_tree_width=30
-let g:voom_ft_modes = {
-      \ 'markdown': 'markdown',
-      \ 'pandoc':   'markdown',
-      \ 'tex':      'latex',
-      \ 'asciidoc': 'asciidoc'
-      \ }
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" TagBar Plugin and Ruby omnicomplete plugin
-""
-"" Description:
-""  Tlist replacement with scoping.
-""
-"" Resources:
-""  https://github.com/majutsushi/tagbar/wiki
-
-"" Add go support to tagbar. Note this only works on Ubuntu or with
-"" exuberant-tags patched with go support.
-let g:tagbar_type_go = {
-    \ 'ctagstype': 'go',
-    \ 'kinds' : [
-        \'p:package',
-        \'f:function',
-        \'v:variables',
-        \'t:type',
-        \'c:const'
-    \]
-\}
-
-"" Markdown support. Note this requires some modifications to your ~/.ctags
-"" file. Check the TagBar wiki for more info.
-let g:tagbar_type_markdown = {
-	\ 'ctagstype' : 'markdown',
-	\ 'kinds' : [
-		\ 'h:Heading_L1',
-		\ 'i:Heading_L2',
-		\ 'k:Heading_L3'
-	\ ]
-\ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Go Plugin
