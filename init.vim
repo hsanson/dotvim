@@ -121,7 +121,7 @@ let mapleader = "\<Space>"
 
 " Map frequent actions to leader shortcuts. These are created to match the same
 " mappings used in the vim-winmode plugin.
-nnoremap <Leader>c :split<CR>
+nnoremap <Leader>s :split<CR>
 nnoremap <Leader>v :vsplit<CR>
 nnoremap <Leader>x :close!<CR>
 nnoremap <Leader>X :wqa!<CR>
