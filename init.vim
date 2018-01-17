@@ -74,7 +74,7 @@ Plug '1995eaton/vim-better-javascript-completion'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-grepper'
-Plug 'justinmk/vim-dirvish'
+Plug 'rafaqz/ranger.vim'
 Plug 'ludovicchabant/vim-gutentags'
 
 " Visual aid and eyecandy
@@ -676,6 +676,12 @@ source ~/.dbext_profiles
 "   files etc in the terminal too. Also configuration is far easier.
 "
 nnoremap <C-p> :Files<ENTER>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ranger Plugin
+"
+nnoremap - :RangerEdit<CR>
+nnoremap <leader>p :RangerEdit<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " DevIcons Plugin
