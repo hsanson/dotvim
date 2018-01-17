@@ -373,10 +373,6 @@ set wildmode=full wildmenu              " Command-line tab completion
 set infercase                           " AutoComplete in Vim
 set completeopt=longest,menu,menuone
 
-" Allow navigation in the select popup using C-j and C-k
-inoremap <expr><C-j>  pumvisible() ? "\<C-n>" : "\<C-j>"
-inoremap <expr><C-k>  pumvisible() ? "\<C-p>" : "\<C-k>"
-
 set wildignore+=*.o,*.obj,*.pyc,*.pyo,*.DS_STORE,*.db,*.swc,*.rbc " Binary objects
 set wildignore+=__pycache__
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip                    " Temp files
