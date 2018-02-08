@@ -35,7 +35,6 @@ call plug#begin('~/.config/nvim/bundle')
 Plug '~/Projects/vim/vim-android'
 Plug '~/Projects/vim/vim-winmode'
 Plug '~/Projects/vim/vim-im'
-Plug '~/Projects/vim/ranger.vim'
 
 " Helper and tools
 Plug 'junegunn/vim-easy-align'
@@ -48,6 +47,7 @@ Plug 'tpope/vim-surround'
 Plug 'chrisbra/matchit'
 Plug 'kassio/neoterm'
 Plug 'joereynolds/SQHell.vim'
+Plug 'rafaqz/ranger.vim'
 
 " Text object add ons
 Plug 'kana/vim-textobj-user'
