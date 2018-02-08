@@ -547,14 +547,16 @@ let g:deoplete#omni#functions.ruby = [ 'monster#omnifunc' ]
 let g:deoplete#omni#functions.c = [ 'ccomplete#Complete' ]
 let g:deoplete#omni#functions.css = [ 'csscomplete#CompleteCSS' ]
 
-let g:deoplete#sources#omni#input_patterns = {}
-let g:deoplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
+endif
+
+let g:deoplete#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+let g:deoplete#omni#input_patterns.java = '[^. *\t]\.\w*'
+let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 
 "" vim-monster Plugin (Ruby autocomplete)
 let g:monster#completion#rcodetools#backend = "async_rct_complete"
-let g:deoplete#sources#omni#input_patterns = {
-\   "ruby" : '[^. *\t]\.\w*\|\h\w*::',
-\}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gutentags
