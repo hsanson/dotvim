@@ -35,6 +35,7 @@ call plug#begin('~/.config/nvim/bundle')
 Plug '~/Projects/vim/vim-android'
 Plug '~/Projects/vim/vim-winmode'
 Plug '~/Projects/vim/vim-im'
+Plug '~/Projects/vim/ranger.vim'
 
 " Helper and tools
 Plug 'junegunn/vim-easy-align'
@@ -74,7 +75,6 @@ Plug '1995eaton/vim-better-javascript-completion'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-grepper'
-Plug 'rafaqz/ranger.vim'
 Plug 'ludovicchabant/vim-gutentags'
 
 " Visual aid and eyecandy
