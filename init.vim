@@ -47,6 +47,7 @@ Plug 'cohama/lexima.vim'
 Plug 'tpope/vim-surround'
 Plug 'chrisbra/matchit'
 Plug 'kassio/neoterm'
+Plug 'joereynolds/SQHell.vim'
 
 " Text object add ons
 Plug 'kana/vim-textobj-user'
