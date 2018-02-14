@@ -417,10 +417,24 @@ set textwidth=80    " Force wrap for lines longer than 80 characters
 "nnoremap <expr> j v:count == 0 ? 'gj' : 'j'  " Enable navigation within long lines (down)
 
 "" Mark with a different background the column 81 for lines that pass over that
-"" limit.
+"" limit. Ensures also that this does not happen in terminal buffers.
+function HighlightColorColumn()
+
+  if exists('g:cc')
+    silent! call matchdelete(g:cc)
+  endif
+
+  if &buftype != 'terminal'
+    let g:cc = matchadd('ColorColumn', '\%81v', 100)
+  endif
+endfunction
+
 if exists('+colorcolumn')
   highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
-  call matchadd('ColorColumn', '\%81v', 100)
+  augroup ColorColumGroup
+    autocmd!
+    au BufWinEnter * call HighlightColorColumn()
+  augroup END
 endif
 
 
