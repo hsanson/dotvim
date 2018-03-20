@@ -111,6 +111,7 @@ set switchbuf=useopen,usetab
 set clipboard+=unnamedplus            " Use + and * registers by default.
 set splitbelow
 set splitright
+set hidden                            " Avoid loosing unsaved work when changing buffers.
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Custom Mappings
