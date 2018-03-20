@@ -626,6 +626,8 @@ let g:go_fmt_autosave = 0
 ""  if *x>3 {                 ysW(        if ( x>3 ) {
 ""  my $str = *whee!;         vlllls'     my $str = 'whee!';
 ""
+autocmd FileType php let b:surround_45 = "<?php \r ?>"
+autocmd FileType ruby let b:surround_45 = "do || \r end"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Amazing nice plugin to work with Databases
