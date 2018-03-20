@@ -557,6 +557,7 @@ nnoremap <leader>* :Grepper -tool git -cword -noprompt<cr>
 "" Deoplete Plugin
 ""
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
 
 let g:deoplete#omni#functions = {}
 let g:deoplete#omni#functions.java = [ 'javacomplete#Complete' ]
