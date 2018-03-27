@@ -61,6 +61,7 @@ Plug 'udalov/kotlin-vim'
 Plug 'vim-scripts/yaml.vim'
 Plug 'chrisbra/color_highlight'
 Plug 'posva/vim-vue'
+Plug 'neomutt/neomutt.vim'
 
 " Document editing
 Plug 'lervag/vimtex'
