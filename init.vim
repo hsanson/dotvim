@@ -243,7 +243,7 @@ augroup SyntaxGroup
   au ColorScheme * hi Normal guibg=NONE ctermbg=NONE
   " Make cursorline transparent too so only the line number is highlighted on the
   " current line.
-  au ColorScheme * hi CursorLine guibg=NONE ctermbg=NONE
+  au ColorScheme * hi CursorLine guibg=NONE ctermbg=NONE term=NONE cterm=NONE
 augroup END
 
 let g:one_allow_italics = 1
@@ -525,7 +525,7 @@ let g:vimtex_compiler_latexmk = {
 ""     work automatically.
 "
 let g:android_sdk_path="/home/ryujin/Apps/android-sdk"
-let g:gradle_daemon=1
+let g:gradle_daemon=0
 let g:netrw_browsex_viewer="google-chrome"
 
 let g:gradle_glyph_error=''
