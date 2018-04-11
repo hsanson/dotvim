@@ -5,7 +5,7 @@
 ""
 "" Dependencies:
 ""
-""  Some plugins and configurations require some tools to be installed before
+""  Some lugins and configurations require some tools to be installed before
 ""  they can be used. In a Ubuntu/Debian computer you can easily install them
 ""  with the following command:
 ""
@@ -36,6 +36,7 @@ Plug '~/Projects/vim/vim-android'
 Plug '~/Projects/vim/vim-winmode'
 Plug '~/Projects/vim/vim-im'
 Plug '~/Projects/vim/ranger.vim'
+Plug '~/Projects/vim/fzf-global'
 
 " Helper and tools
 Plug 'junegunn/vim-easy-align'
@@ -584,14 +585,21 @@ let g:monster#completion#rcodetools#backend = "async_rct_complete"
 "   So far the best tag auto generation plugin I have user. Does not seem to
 "   block vim like szw/vim-tags or xolox/easytags.git did.
 "
+set cscopetag     " Enable tag commands to use cscope database too.
+set cscopeprg=gtags-cscope
+
+let g:gutentags_generate_on_empty_buffer=1
+let g:gutentags_modules=['ctags', 'gtags_cscope']
 let g:gutentags_cache_dir = '/home/ryujin/.vim/tags'
+let g:gutentags_ctags_exclude_wildignore = 1
 let g:gutentags_ctags_exclude = [
       \ '*.min.js',
       \ '*html*',
       \ 'jquery*.js',
       \ '*/vendor/*',
       \ '*/node_modules/*',
-      \ '*/migrate/*.rb'
+      \ '*/migrate/*.rb',
+      \ '*.class'
       \ ]
 let g:gutentags_file_list_command = {
       \ 'markers': {
@@ -694,7 +702,14 @@ source ~/.dbext_profiles
 "   terminal tool so fuzzy searching is not limited to vim only. It works for
 "   files etc in the terminal too. Also configuration is far easier.
 "
-nnoremap <C-p> :Files<ENTER>
+nnoremap <leader>p :Files<CR>
+nnoremap <leader>g :GitFiles<ENTER>
+"nnoremap <leader>t :call fzf#vim#tags(expand('<cword>'), {'options': '--exact --select-1 --exit-0'})<CR>
+nmap <leader>f <Plug>(fzf-global)
+nmap <leader>t <Plug>(fzf-global-tag)
+nmap <leader>d <Plug>(fzf-global-def)
+nmap <leader>r <Plug>(fzf-global-ref)
+nmap <leader>e <Plug>(fzf-global-reg)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ranger Plugin
