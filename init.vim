@@ -44,7 +44,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-speeddating'
-Plug 'tpope/vim-surround'
+Plug 'machakann/vim-sandwich'
 Plug 'kassio/neoterm'
 Plug 'joereynolds/SQHell.vim'
 
@@ -622,21 +622,21 @@ let g:gutentags_file_list_command = {
 let g:go_fmt_autosave = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Surround Plugin
+"" Sandwich Plugin
 ""
 "" Description:
 ""  Plugin for deleting, changing, and adding surroundings.
 ""
 "" Usage:
-""  Old text                  Command     New text ~
-""  Hello *world!"            ds"         Hello world!
-""  [123+4*56]/2              cs])        (123+456)/2
-""  "Look ma, I'm *HTML!"     cs"<q>      <q>Look ma, I'm HTML!</q>
-""  if *x>3 {                 ysW(        if ( x>3 ) {
-""  my $str = *whee!;         vlllls'     my $str = 'whee!';
+""    sa{motion}{surrounding} - Adds surrounding
+""    sd{motion}{surrounding} - Removes surrounding
+""    sr{current}{replacement} - Replaces surrounding
 ""
-autocmd FileType php let b:surround_45 = "<?php \r ?>"
-autocmd FileType ruby let b:surround_45 = "do || \r end"
+""    Special Surroundings:
+""
+""      sa{motion}f - Adds function surrounding func(...)
+""      sa{motion}t - Add HTML tag surrounding.
+""      sa{motion}i - Add input surrounding.
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Amazing nice plugin to work with Databases
