@@ -715,7 +715,6 @@ nmap <leader>e <Plug>(fzf-global-reg)
 " Ranger Plugin
 "
 nnoremap - :RangerEdit<CR>
-nnoremap <leader>p :RangerEdit<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " DevIcons Plugin
