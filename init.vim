@@ -36,7 +36,6 @@ Plug '~/Projects/vim/vim-android'
 Plug '~/Projects/vim/vim-winmode'
 Plug '~/Projects/vim/vim-im'
 Plug '~/Projects/vim/ranger.vim'
-Plug '~/Projects/vim/fzf-global'
 
 " Helper and tools
 Plug 'junegunn/vim-easy-align'
@@ -67,11 +66,14 @@ Plug 'neomutt/neomutt.vim'
 " Document editing
 Plug 'lervag/vimtex'
 
-" Auto completion
+" Linting and Auto completion
+Plug 'w0rp/ale'
+
+Plug 'autozimu/LanguageClient-neovim', {
+     \ 'branch': 'next',
+     \ 'do': 'bash install.sh',
+     \ }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'osyo-manga/vim-monster'
-Plug '1995eaton/vim-better-css-completion'
-Plug '1995eaton/vim-better-javascript-completion'
 
 " Code navigation
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -98,7 +100,7 @@ set number                            " Show line number column.
 set nobackup                          " Stop vim from creating ~ files.
 set nowritebackup                     " No backups
 set noswapfile                        " More hassel than solution.
-set shortmess=atI                     " Avoid unnecessary hit-enter prompts.
+set shortmess=atIc                    " Avoid unnecessary hit-enter prompts.
 set nojoinspaces                      " Avoid double spaces when joining lines
 set showcmd                           " Display commands as they are typed.
 set showmatch                         " Show briefly matching bracket when closing it.
@@ -562,10 +564,9 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 
 let g:deoplete#omni#functions = {}
-let g:deoplete#omni#functions.java = [ 'javacomplete#Complete' ]
-let g:deoplete#omni#functions.ruby = [ 'monster#omnifunc' ]
-let g:deoplete#omni#functions.c = [ 'ccomplete#Complete' ]
-let g:deoplete#omni#functions.css = [ 'csscomplete#CompleteCSS' ]
+let g:deoplete#omni#functions.javascript = [ 'LanguageClient#complete' ]
+let g:deoplete#omni#functions.python = [ 'LanguageClient#complete' ]
+let g:deoplete#omni#functions.ruby = [ 'LanguageClient#complete' ]
 
 if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
@@ -574,9 +575,6 @@ endif
 let g:deoplete#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 let g:deoplete#omni#input_patterns.java = '[^. *\t]\.\w*'
 let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
-
-"" vim-monster Plugin (Ruby autocomplete)
-let g:monster#completion#rcodetools#backend = "async_rct_complete"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Gutentags
@@ -740,3 +738,47 @@ let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['java'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['rb'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['sh'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['sql'] = ''
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ALE Plugin
+"
+"   pip3 install --user python-language-server jedi proselint autopep8 flake8
+"   sudo gem install solargraph rubocop sqlint
+"   sudo npm install --global prettier
+"
+
+let g:ale_completion_enabled = 0   " We use other plugin for auto-completion
+let g:ale_sign_info = ''
+let g:ale_sign_error = ''
+let g:ale_sign_warning = ''
+let g:ale_open_list = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Neovim LanguageClient
+"
+"   pip3 install --user python-language-server jedi proselint autopep8 flake8
+"   sudo gem install solargraph rubocop sqlint
+"   sudo npm install --global prettier vue-language-server
+"       javascript-typescript-langserver
+"
+" Resources:
+"   https://blog.schembri.me/post/solargraph-in-vim/
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_serverCommands = {}
+
+if executable('javascript-typescript-stdio')
+  let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
+endif
+
+if executable('pyls')
+  let g:LanguageClient_serverCommands.javascript = ['pyls']
+endif
+
+if executable('solargraph')
+  let g:LanguageClient_serverCommands.ruby = ['tcp://localhost:7658']
+endif
+
+if executable('vls')
+  let g:LanguageClient_serverCommands.vue = ['vls']
+endif
+
