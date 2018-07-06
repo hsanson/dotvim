@@ -744,25 +744,38 @@ let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['sql'] = ''
 "
 "   pip3 install --user python-language-server jedi proselint autopep8 flake8
 "   sudo gem install solargraph rubocop sqlint
-"   sudo npm install --global prettier
+"   sudo npm install --global prettier vue-language-server
+"       javascript-typescript-langserver
 "
+" Java Language Server
+"
+"   git clone https://github.com/georgewfraser/vscode-javac.git
+"   cd vscode-javac
+"   sudo apt-get install maven # Requires mvn and java 8 installed.
+"   mvn package
+"   cp out/fat-jar.jar $VIMHOME/tools/javacs.jar
+"
+" Kotlin Language Server
+" 
+"   git clone https://github.com/fwcd/KotlinLanguageServer.git
+"   cd KotlinLanguageServer.git
+"   JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 ./gradlew build -x test
+"   cp -rf build/install/kotlin-language-server ~/.config/nvim/tools/
+"   # Modify ~/.config/nvim/tools/kotlin-language-server/bin/kotlin-language-server
+"   # to override JAVA_HOME so it always uses java 8.
+"
+" Resources:
+"   https://blog.schembri.me/post/solargraph-in-vim/
 
 let g:ale_completion_enabled = 0   " We use other plugin for auto-completion
 let g:ale_sign_info = ''
 let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
-let g:ale_open_list = 1
+let g:ale_open_list = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Neovim LanguageClient
 "
-"   pip3 install --user python-language-server jedi proselint autopep8 flake8
-"   sudo gem install solargraph rubocop sqlint
-"   sudo npm install --global prettier vue-language-server
-"       javascript-typescript-langserver
-"
-" Resources:
-"   https://blog.schembri.me/post/solargraph-in-vim/
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {}
 
@@ -771,14 +784,48 @@ if executable('javascript-typescript-stdio')
 endif
 
 if executable('pyls')
-  let g:LanguageClient_serverCommands.javascript = ['pyls']
+  let g:LanguageClient_serverCommands.python = ['pyls']
 endif
 
 if executable('solargraph')
   let g:LanguageClient_serverCommands.ruby = ['tcp://localhost:7658']
 endif
 
+let s:javacs_path = expand("<sfile>:p:h") . "/tools/java-language-server/javacs.jar"
+if filereadable(s:javacs_path)
+	let g:LanguageClient_serverCommands.java = ['JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64', 'java', '-cp', s:javacs_path, '-Xverify:none', 'org.javacs.Main']
+endif
+
+let s:ktcs_path = expand("<sfile>:p:h") . "/tools/kotlin-language-server/bin/kotlin-language-server"
+if filereadable(s:ktcs_path)
+	let g:LanguageClient_serverCommands.kotlin = [s:ktcs_path]
+endif
+
 if executable('vls')
   let g:LanguageClient_serverCommands.vue = ['vls']
 endif
 
+" Helper method used to check if the loclist is visible or not.
+function! s:visibleLoc()
+   return len(filter(getwininfo(), {i,v -> v.loclist}))
+endfunc
+
+" Magic function that synchronizes the cursor in the loclist with the cursor on
+" the current buffer.
+function! s:followLine()
+   let curLine = line(".")
+   if (exists("b:lastLine") && b:lastLine == curLine) || 0 == s:visibleLoc()
+      return
+   endif
+   let b:lastLine = line(".")
+   let ent = len(filter(getloclist("."), {i,v -> v.lnum <= curLine}))
+   if ent < 1 || (exists("b:lastEntry") && b:lastEntry == ent)
+      return
+   endif
+   let b:lastEntry = ent
+   let pos = [ 0, curLine, col("."), 0 ]
+   exe "ll ".ent
+   call setpos(".", pos)
+endfunc
+
+au CursorMoved <buffer> call <SID>followLine()
