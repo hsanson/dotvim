@@ -79,7 +79,6 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-grepper'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 
 " Visual aid and eyecandy
@@ -276,22 +275,22 @@ let g:lightline = {
   \ 'colorcheme': 'PaperColor',
   \ 'active': {
   \    'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
-  \    'right': [ ['lineinfo'], ['percent'], ['gradle'], ['gutentags'] ]
+  \    'right': [ ['lineinfo'], ['percent'], ['gradle'], ['lsp'] ]
   \ },
   \ 'inactive': {
   \    'left': [ [ 'filename' ] ],
-  \    'right': [ ['lineinfo'], ['percent'], ['gradle'], ['gutentags'] ]
+  \    'right': [ ['lineinfo'], ['percent'], ['gradle'] ]
   \ },
   \ 'component': {
   \    'readonly': '%{&readonly?"":""}',
   \    'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}',
   \    'gradle': '%{exists("*gradle#statusLine")?gradle#statusLine():""}',
-  \    'gutentags': '%{exists("*gutentags#statusline")?gutentags#statusline(" "):""}'
+  \    'lsp': '%{exists("*LanguageClient#statusLine")?LanguageClient#statusLine():""}'
   \    },
   \ 'component_visible_condition': {
   \    'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())',
   \    'gradle': '(exists("*gradle#statusLine") && ""!=gradle#statusLine())',
-  \    'gutentags': '(exists("*gutentags#statusline") && ""!=gutentags#statusline())'
+  \    'lsp': '(exists("*LanguageClient#statusLine") && ""!=LanguageClient#statusLine())'
   \    }
   \ }
 
@@ -577,36 +576,6 @@ let g:deoplete#omni#input_patterns.java = '[^. *\t]\.\w*'
 let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Gutentags
-"
-" Description:
-"   So far the best tag auto generation plugin I have user. Does not seem to
-"   block vim like szw/vim-tags or xolox/easytags.git did.
-"
-set cscopetag     " Enable tag commands to use cscope database too.
-set cscopeprg=gtags-cscope
-
-let g:gutentags_generate_on_empty_buffer=1
-let g:gutentags_modules=['ctags', 'gtags_cscope']
-let g:gutentags_cache_dir = '/home/ryujin/.vim/tags'
-let g:gutentags_ctags_exclude_wildignore = 1
-let g:gutentags_ctags_exclude = [
-      \ '*.min.js',
-      \ '*html*',
-      \ 'jquery*.js',
-      \ '*/vendor/*',
-      \ '*/node_modules/*',
-      \ '*/migrate/*.rb',
-      \ '*.class'
-      \ ]
-let g:gutentags_file_list_command = {
-      \ 'markers': {
-      \ '.git': 'git ls-files',
-      \ '.hg': 'hg files',
-      \ },
-      \ }
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Go Plugin
 "
 " Description:
@@ -703,11 +672,6 @@ source ~/.dbext_profiles
 nnoremap <leader>p :Files<CR>
 nnoremap <leader>g :GitFiles<ENTER>
 "nnoremap <leader>t :call fzf#vim#tags(expand('<cword>'), {'options': '--exact --select-1 --exit-0'})<CR>
-nmap <leader>f <Plug>(fzf-global)
-nmap <leader>t <Plug>(fzf-global-tag)
-nmap <leader>d <Plug>(fzf-global-def)
-nmap <leader>r <Plug>(fzf-global-ref)
-nmap <leader>e <Plug>(fzf-global-reg)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ranger Plugin
