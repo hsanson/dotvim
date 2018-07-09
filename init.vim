@@ -112,10 +112,18 @@ set noequalalways                     " No automatic resizing of windows.
 set cursorline                        " highlight current line in insert Mode.
 set nocursorcolumn                    " Highlight current column in Insert Mode.
 set switchbuf=useopen,usetab
-set clipboard+=unnamedplus            " Use + and * registers by default.
 set splitbelow
 set splitright
 set hidden                            " Avoid loosing unsaved work when changing buffers.
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Clipboard
+""
+""  - unnamedplus: system clipboard (Ctrl-v/Ctrl-p)
+""  - unnamed:     paste clipboard (Linux/Unix only)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set clipboard^=unnamed,unnamedplus 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Custom Mappings
