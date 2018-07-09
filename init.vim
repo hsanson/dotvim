@@ -763,9 +763,9 @@ if executable('solargraph')
   let g:LanguageClient_serverCommands.ruby = ['tcp://localhost:7658']
 endif
 
-let s:javacs_path = expand("<sfile>:p:h") . "/tools/java-language-server/javacs.jar"
+let s:javacs_path = expand("<sfile>:p:h") . "/tools/java-language-server/java-language-server"
 if filereadable(s:javacs_path)
-	let g:LanguageClient_serverCommands.java = ['JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64', 'java', '-cp', s:javacs_path, '-Xverify:none', 'org.javacs.Main']
+	let g:LanguageClient_serverCommands.java = [s:javacs_path]
 endif
 
 let s:ktcs_path = expand("<sfile>:p:h") . "/tools/kotlin-language-server/bin/kotlin-language-server"
