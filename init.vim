@@ -714,6 +714,7 @@ let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['sql'] = ''
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ALE Plugin
 "
+"   sudo apt-get install shellcheck
 "   pip3 install --user python-language-server jedi proselint autopep8 flake8
 "   sudo gem install solargraph rubocop sqlint
 "   sudo npm install --global prettier vue-language-server
