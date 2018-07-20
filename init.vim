@@ -740,7 +740,7 @@ let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['sql'] = ''
 " Resources:
 "   https://blog.schembri.me/post/solargraph-in-vim/
 
-let g:ale_completion_enabled = 0   " We use other plugin for auto-completion
+let g:ale_completion_enabled = 1
 let g:ale_sign_info = ''
 let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
@@ -751,6 +751,9 @@ let g:ale_open_list = 0
 "
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {}
+
+let s:ktcs_path = expand("<sfile>:p:h") . "/tools/kotlin-language-server/bin/kotlin-language-server"
+let g:ale_kotlin_languageserver_executable = s:ktcs_path
 
 if executable('javascript-typescript-stdio')
   let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
