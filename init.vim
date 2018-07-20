@@ -737,6 +737,11 @@ let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['sql'] = ''
 "   # Modify ~/.config/nvim/tools/kotlin-language-server/bin/kotlin-language-server
 "   # to override JAVA_HOME so it always uses java 8.
 "
+" Ktlint
+"   curl -sSLO https://github.com/shyiko/ktlint/releases/download/0.24.0/ktlint
+"   chmod a+x ktlint
+"   sudo mv ktlint /usr/local/bin/
+"
 " Resources:
 "   https://blog.schembri.me/post/solargraph-in-vim/
 
