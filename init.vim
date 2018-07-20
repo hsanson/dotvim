@@ -68,11 +68,6 @@ Plug 'lervag/vimtex'
 
 " Linting and Auto completion
 Plug 'w0rp/ale'
-
-Plug 'autozimu/LanguageClient-neovim', {
-     \ 'branch': 'next',
-     \ 'do': 'bash install.sh',
-     \ }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Code navigation
@@ -742,6 +737,14 @@ let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['sql'] = ''
 "   chmod a+x ktlint
 "   sudo mv ktlint /usr/local/bin/
 "
+" Ruby
+"   After installing solargraph language server you need to start it manually:
+"
+"       solargraph socket
+"
+"   The configuration below assumes the language server is always at
+"   localhost:7658.
+"
 " Resources:
 "   https://blog.schembri.me/post/solargraph-in-vim/
 
@@ -751,40 +754,105 @@ let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
 let g:ale_open_list = 0
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Neovim LanguageClient
-"
-let g:LanguageClient_autoStart = 1
-let g:LanguageClient_serverCommands = {}
+let g:ale_linters = {
+  \   'csh': ['shell'],
+  \   'go': ['gofmt', 'golint', 'go vet'],
+  \   'help': [],
+  \   'perl': ['perlcritic'],
+  \   'python': ['flake8', 'pylint', 'pyls'],
+  \   'rust': ['cargo'],
+  \   'ruby': ['solargraph'],
+  \   'java': ['java-lsp'],
+  \   'javascript': ['javascript-typescript'],
+  \   'spec': [],
+  \   'text': [],
+  \   'zsh': ['shell']
+\}
 
 let s:ktcs_path = expand("<sfile>:p:h") . "/tools/kotlin-language-server/bin/kotlin-language-server"
 let g:ale_kotlin_languageserver_executable = s:ktcs_path
 
-if executable('javascript-typescript-stdio')
-  let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
-endif
-
-if executable('pyls')
-  let g:LanguageClient_serverCommands.python = ['pyls']
-endif
-
-if executable('solargraph')
-  let g:LanguageClient_serverCommands.ruby = ['tcp://localhost:7658']
-endif
-
 let s:javacs_path = expand("<sfile>:p:h") . "/tools/java-language-server/java-language-server"
-if filereadable(s:javacs_path)
-	let g:LanguageClient_serverCommands.java = [s:javacs_path]
-endif
+call ale#linter#Define('java', {
+\   'name': 'java-lsp',
+\   'lsp': 'stdio',
+\   'executable_callback': s:javacs_path,
+\   'command_callback': s:javacs_path,
+\   'language': 'java',
+\   'project_root_callback': "s:findRoot",
+\})
 
-let s:ktcs_path = expand("<sfile>:p:h") . "/tools/kotlin-language-server/bin/kotlin-language-server"
-if filereadable(s:ktcs_path)
-	let g:LanguageClient_serverCommands.kotlin = [s:ktcs_path]
-endif
+call ale#linter#Define('javascript', {
+\   'name': 'javascript-typescript',
+\   'lsp': 'stdio',
+\   'executable_callback': 'javascript-typescript-sdio',
+\   'command_callback': 'javascript-typescript-sdio',
+\   'language': 'javascript',
+\   'project_root_callback': "s:findRoot",
+\})
 
-if executable('vls')
-  let g:LanguageClient_serverCommands.vue = ['vls']
-endif
+call ale#linter#Define('vue', {
+\   'name': 'vls',
+\   'lsp': 'stdio',
+\   'executable_callback': 'vls',
+\   'command_callback': 'vls',
+\   'language': 'vue',
+\   'project_root_callback': "s:findRoot",
+\})
+
+call ale#linter#Define('ruby', {
+\   'name': 'solargraph',
+\   'lsp': 'socket',
+\   'address_callback': 'SolargraphSocket',
+\   'language': 'ruby',
+\   'project_root_callback': "FindBufferRoot",
+\})
+
+function! SolargraphSocket(nr)
+  return "localhost:7658"
+endfunction
+
+" Find project root path based on known directories or files.
+function! s:findRoot(bufnr) abort
+
+  let l:patterns = ['.git', '_darcs', '.hg', '.bzr', '.svn']
+  let l:file = ""
+  let l:path = expand("#".a:bufnr.":p:h")
+
+  if len(l:path) <= 0
+    let l:path = getcwd()
+  endif
+
+  for pattern in l:patterns
+    let l:file = finddir(pattern, l:path . ";$HOME")
+
+    if len(l:file) > 0
+      return copy(fnamemodify(l:file, ":p:h:h"))
+    endif
+
+  endfor
+
+  let l:patterns = ['gradlew', 'AndroidManifest.xml', 'Makefile', 'CMakefile.txt']
+
+  for pattern in l:patterns
+    let l:file = findfile(pattern, l:path . ";$HOME")
+
+    if len(l:file) > 0
+      return copy(fnamemodify(l:file, ":p:h"))
+    endif
+
+  endfor
+
+  return ""
+endfunction
+
+function! FindBufferRoot(nr)
+  return s:findRoot(a:nr)
+endfunction
+
+function! FindRoot()
+  return s:findRoot(bufnr("%"))
+endfunction
 
 " Helper method used to check if the loclist is visible or not.
 function! s:visibleLoc()
