@@ -287,13 +287,11 @@ let g:lightline = {
   \ 'component': {
   \    'readonly': '%{&readonly?"":""}',
   \    'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}',
-  \    'gradle': '%{exists("*gradle#statusLine")?gradle#statusLine():""}',
-  \    'lsp': '%{exists("*LanguageClient#statusLine")?LanguageClient#statusLine():""}'
+  \    'gradle': '%{exists("*gradle#statusLine")?gradle#statusLine():""}'
   \    },
   \ 'component_visible_condition': {
   \    'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())',
-  \    'gradle': '(exists("*gradle#statusLine") && ""!=gradle#statusLine())',
-  \    'lsp': '(exists("*LanguageClient#statusLine") && ""!=LanguageClient#statusLine())'
+  \    'gradle': '(exists("*gradle#statusLine") && ""!=gradle#statusLine())'
   \    }
   \ }
 
@@ -566,9 +564,6 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 
 let g:deoplete#omni#functions = {}
-let g:deoplete#omni#functions.javascript = [ 'LanguageClient#complete' ]
-let g:deoplete#omni#functions.python = [ 'LanguageClient#complete' ]
-let g:deoplete#omni#functions.ruby = [ 'LanguageClient#complete' ]
 
 if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
