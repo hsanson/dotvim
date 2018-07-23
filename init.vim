@@ -712,27 +712,29 @@ let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['sql'] = ''
 "
 " Java Language Server
 "
+"   # Only works with java8 (update-java-alternatives)
 "   git clone https://github.com/georgewfraser/vscode-javac.git
 "   cd vscode-javac
-"   sudo apt-get install maven # Requires mvn and java 8 installed.
+"   sudo apt-get install maven
 "   mvn package
 "   cp out/fat-jar.jar $VIMHOME/tools/javacs.jar
 "
 " Kotlin Language Server
-" 
+"
+"   # Only works with java8 (update-java-alternatives)
 "   git clone https://github.com/fwcd/KotlinLanguageServer.git
 "   cd KotlinLanguageServer.git
-"   JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 ./gradlew build -x test
+"   ./gradlew build -x test
 "   cp -rf build/install/kotlin-language-server ~/.config/nvim/tools/
-"   # Modify ~/.config/nvim/tools/kotlin-language-server/bin/kotlin-language-server
-"   # to override JAVA_HOME so it always uses java 8.
 "
 " Ktlint
+"
 "   curl -sSLO https://github.com/shyiko/ktlint/releases/download/0.24.0/ktlint
 "   chmod a+x ktlint
 "   sudo mv ktlint /usr/local/bin/
 "
-" Ruby
+" Ruby (solargraph)
+"
 "   After installing solargraph language server you need to start it manually:
 "
 "       solargraph socket
