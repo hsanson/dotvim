@@ -758,7 +758,7 @@ let g:ale_linters = {
   \   'perl': ['perlcritic'],
   \   'python': ['flake8', 'pylint', 'pyls'],
   \   'rust': ['cargo'],
-  \   'ruby': ['solargraph'],
+  \   'ruby': ['solargraph', 'rubocop', 'ruby'],
   \   'java': ['java-lsp'],
   \   'javascript': ['javascript-typescript'],
   \   'spec': [],
@@ -806,7 +806,7 @@ call ale#linter#Define('ruby', {
 \})
 
 function! SolargraphSocket(nr)
-  return "localhost:7658"
+  return "127.0.0.1:7658"
 endfunction
 
 " Find project root path based on known directories or files.
