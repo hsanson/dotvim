@@ -67,8 +67,8 @@ Plug 'neomutt/neomutt.vim'
 Plug 'lervag/vimtex'
 
 " Linting and Auto completion
-Plug 'w0rp/ale'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug '~/Projects/vim/ale'
+Plug 'maximbaz/lightline-ale'
 
 " Code navigation
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -274,24 +274,40 @@ let g:colorizer_auto_filetype='css,html'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " lightline status line
 "
+
+let g:lightline#ale#indicator_checking = ''
+let g:lightline#ale#indicator_warnings = ''
+let g:lightline#ale#indicator_errors   = ''
+let g:lightline#ale#indicator_ok       = ''
+
 let g:lightline = {
   \ 'colorcheme': 'PaperColor',
   \ 'active': {
   \    'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
-  \    'right': [ ['lineinfo'], ['percent'], ['gradle'], ['lsp'] ]
+  \    'right': [ ['linter_checking'], ['linter_errors'], ['linter_warnings'], ['linter_ok'], ['lineinfo'], ['percent'] ]
   \ },
   \ 'inactive': {
   \    'left': [ [ 'filename' ] ],
-  \    'right': [ ['lineinfo'], ['percent'], ['gradle'] ]
+  \    'right': [ ['lineinfo'], ['percent'] ]
   \ },
   \ 'component': {
   \    'readonly': '%{&readonly?"":""}',
-  \    'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}',
-  \    'gradle': '%{exists("*gradle#statusLine")?gradle#statusLine():""}'
+  \    'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
   \    },
   \ 'component_visible_condition': {
-  \    'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())',
-  \    'gradle': '(exists("*gradle#statusLine") && ""!=gradle#statusLine())'
+  \    'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+  \    },
+  \ 'component_expand': {
+  \      'linter_checking': 'lightline#ale#checking',
+  \      'linter_warnings': 'lightline#ale#warnings',
+  \      'linter_errors': 'lightline#ale#errors',
+  \      'linter_ok': 'lightline#ale#ok'
+  \    },
+  \ 'component_type': {
+  \      'linter_checking': 'left',
+  \      'linter_warnings': 'warning',
+  \      'linter_errors': 'error',
+  \      'linter_ok': 'left'
   \    }
   \ }
 
@@ -529,6 +545,7 @@ let g:vimtex_compiler_latexmk = {
 "
 let g:android_sdk_path="/home/ryujin/Apps/android-sdk"
 let g:gradle_daemon=0
+let g:gradle_show_signs=0
 let g:netrw_browsex_viewer="google-chrome"
 
 let g:gradle_glyph_error=''
@@ -556,22 +573,6 @@ let g:qfenter_keymap.topen = [ '<C-t>' ]
 ""
 nnoremap <leader>g :Grepper -tool git -jump<cr>
 nnoremap <leader>* :Grepper -tool git -cword -noprompt<cr>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Deoplete Plugin
-""
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
-
-let g:deoplete#omni#functions = {}
-
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
-
-let g:deoplete#omni#input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-let g:deoplete#omni#input_patterns.java = '[^. *\t]\.\w*'
-let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Go Plugin
