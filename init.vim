@@ -755,12 +755,15 @@ let g:ale_open_list = 0
 let g:ale_linters = {
   \   'csh': ['shell'],
   \   'go': ['gofmt', 'golint', 'go vet'],
+  \   'latex': ['proselint'],
+  \   'tex': ['proselint'],
   \   'help': [],
   \   'perl': ['perlcritic'],
   \   'python': ['flake8', 'pylint', 'pyls'],
   \   'rust': ['cargo'],
   \   'ruby': ['solargraph', 'rubocop', 'ruby'],
-  \   'java': ['java-lsp'],
+  \   'java': ['checkstyle', 'pmd', 'javalsp'],
+  \   'kotlin': ['ktlint', 'languageserver'],
   \   'javascript': ['javascript-typescript'],
   \   'spec': [],
   \   'text': [],
@@ -770,87 +773,7 @@ let g:ale_linters = {
 let s:ktcs_path = expand("<sfile>:p:h") . "/tools/kotlin-language-server/bin/kotlin-language-server"
 let g:ale_kotlin_languageserver_executable = s:ktcs_path
 
-let s:javacs_path = expand("<sfile>:p:h") . "/tools/java-language-server/java-language-server"
-call ale#linter#Define('java', {
-\   'name': 'java-lsp',
-\   'lsp': 'stdio',
-\   'executable_callback': s:javacs_path,
-\   'command_callback': s:javacs_path,
-\   'language': 'java',
-\   'project_root_callback': "s:findRoot",
-\})
-
-call ale#linter#Define('javascript', {
-\   'name': 'javascript-typescript',
-\   'lsp': 'stdio',
-\   'executable_callback': 'javascript-typescript-sdio',
-\   'command_callback': 'javascript-typescript-sdio',
-\   'language': 'javascript',
-\   'project_root_callback': "s:findRoot",
-\})
-
-call ale#linter#Define('vue', {
-\   'name': 'vls',
-\   'lsp': 'stdio',
-\   'executable_callback': 'vls',
-\   'command_callback': 'vls',
-\   'language': 'vue',
-\   'project_root_callback': "s:findRoot",
-\})
-
-call ale#linter#Define('ruby', {
-\   'name': 'solargraph',
-\   'lsp': 'socket',
-\   'address_callback': 'SolargraphSocket',
-\   'language': 'ruby',
-\   'project_root_callback': "FindBufferRoot",
-\})
-
-function! SolargraphSocket(nr)
-  return "127.0.0.1:7658"
-endfunction
-
-" Find project root path based on known directories or files.
-function! s:findRoot(bufnr) abort
-
-  let l:patterns = ['.git', '_darcs', '.hg', '.bzr', '.svn']
-  let l:file = ""
-  let l:path = expand("#".a:bufnr.":p:h")
-
-  if len(l:path) <= 0
-    let l:path = getcwd()
-  endif
-
-  for pattern in l:patterns
-    let l:file = finddir(pattern, l:path . ";$HOME")
-
-    if len(l:file) > 0
-      return copy(fnamemodify(l:file, ":p:h:h"))
-    endif
-
-  endfor
-
-  let l:patterns = ['gradlew', 'AndroidManifest.xml', 'Makefile', 'CMakefile.txt']
-
-  for pattern in l:patterns
-    let l:file = findfile(pattern, l:path . ";$HOME")
-
-    if len(l:file) > 0
-      return copy(fnamemodify(l:file, ":p:h"))
-    endif
-
-  endfor
-
-  return ""
-endfunction
-
-function! FindBufferRoot(nr)
-  return s:findRoot(a:nr)
-endfunction
-
-function! FindRoot()
-  return s:findRoot(bufnr("%"))
-endfunction
+let g:ale_java_javalsp_jar = expand("<sfile>:p:h") . "/tools/java-language-server/javacs.jar"
 
 " Helper method used to check if the loclist is visible or not.
 function! s:visibleLoc()
