@@ -393,7 +393,7 @@ set softtabstop=2
 " Improve Vim's Command Line Autocompletion
 set wildmode=full wildmenu              " Command-line tab completion
 set infercase                           " AutoComplete in Vim
-set completeopt=longest,menu,menuone
+set completeopt=longest,menu,menuone,preview,noselect,noinsert
 
 set wildignore+=*.o,*.obj,*.pyc,*.pyo,*.DS_STORE,*.db,*.swc,*.rbc " Binary objects
 set wildignore+=__pycache__
@@ -754,14 +754,14 @@ let g:ale_open_list = 0
 
 let g:ale_linters = {
   \   'csh': ['shell'],
-  \   'go': ['gofmt', 'golint', 'go vet'],
+  \   'go': ['golangserver', 'gofmt', 'golint', 'go vet'],
   \   'latex': ['proselint'],
   \   'tex': ['proselint'],
   \   'help': [],
   \   'perl': ['perlcritic'],
   \   'python': ['flake8', 'pylint', 'pyls'],
   \   'rust': ['cargo'],
-  \   'ruby': ['solargraph', 'rubocop', 'ruby'],
+  \   'ruby': ['solargraph'],
   \   'java': ['checkstyle', 'pmd', 'javalsp'],
   \   'kotlin': ['ktlint', 'languageserver'],
   \   'javascript': ['javascript-typescript'],
@@ -773,7 +773,7 @@ let g:ale_linters = {
 let s:ktcs_path = expand("<sfile>:p:h") . "/tools/kotlin-language-server/bin/kotlin-language-server"
 let g:ale_kotlin_languageserver_executable = s:ktcs_path
 
-let g:ale_java_javalsp_jar = expand("<sfile>:p:h") . "/tools/java-language-server/javacs.jar"
+let g:ale_java_javalsp_jar = expand("<sfile>:p:h") . "/tools/javacs.jar"
 
 " Helper method used to check if the loclist is visible or not.
 function! s:visibleLoc()
