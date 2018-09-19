@@ -62,6 +62,7 @@ Plug 'vim-scripts/yaml.vim'
 Plug 'chrisbra/color_highlight'
 Plug 'posva/vim-vue'
 Plug 'neomutt/neomutt.vim'
+Plug 'JuliaEditorSupport/julia-vim'
 
 " Document editing
 Plug 'lervag/vimtex'
@@ -753,6 +754,7 @@ let g:ale_linters = {
   \   'java': ['checkstyle', 'pmd', 'javalsp'],
   \   'kotlin': ['ktlint', 'languageserver'],
   \   'javascript': ['javascript-typescript'],
+  \   'julia': ['languageserver'],
   \   'spec': [],
   \   'text': [],
   \   'zsh': ['shell']
