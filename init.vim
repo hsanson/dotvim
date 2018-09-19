@@ -75,7 +75,6 @@ Plug 'maximbaz/lightline-ale'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-grepper'
-Plug 'majutsushi/tagbar'
 
 " Visual aid and eyecandy
 Plug 'itchyny/lightline.vim'
