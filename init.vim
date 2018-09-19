@@ -734,18 +734,6 @@ let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['sql'] = ''
 "   chmod a+x ktlint
 "   sudo mv ktlint /usr/local/bin/
 "
-" Ruby (solargraph)
-"
-"   After installing solargraph language server you need to start it manually:
-"
-"       solargraph socket
-"
-"   The configuration below assumes the language server is always at
-"   localhost:7658.
-"
-" Resources:
-"   https://blog.schembri.me/post/solargraph-in-vim/
-
 let g:ale_completion_enabled = 1
 let g:ale_sign_info = ''
 let g:ale_sign_error = ''
@@ -761,7 +749,7 @@ let g:ale_linters = {
   \   'perl': ['perlcritic'],
   \   'python': ['flake8', 'pylint', 'pyls'],
   \   'rust': ['cargo'],
-  \   'ruby': ['solargraph'],
+  \   'ruby': ['rubocop', 'ruby', 'solargraph'],
   \   'java': ['checkstyle', 'pmd', 'javalsp'],
   \   'kotlin': ['ktlint', 'languageserver'],
   \   'javascript': ['javascript-typescript'],
