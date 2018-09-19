@@ -705,11 +705,11 @@ let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['sql'] = ''
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ALE Plugin
 "
-"   sudo apt-get install shellcheck
+"   sudo apt-get install shellcheck chktex lacheck
 "   pip3 install --user python-language-server jedi proselint autopep8 flake8
 "   sudo gem install solargraph rubocop sqlint
 "   sudo npm install --global prettier vue-language-server
-"       javascript-typescript-langserver
+"       javascript-typescript-langserver write-good
 "
 " Java Language Server
 "
@@ -742,9 +742,9 @@ let g:ale_open_list = 0
 
 let g:ale_linters = {
   \   'csh': ['shell'],
-  \   'go': ['golangserver', 'gofmt', 'golint', 'go vet'],
-  \   'latex': ['proselint'],
-  \   'tex': ['proselint'],
+  \   'go': ['gofmt', 'golint', 'go vet', 'golangserver'],
+  \   'latex': ['proselint', 'chktex', 'lacheck'],
+  \   'tex': ['proselint', 'chktex', 'lacheck'],
   \   'help': [],
   \   'perl': ['perlcritic'],
   \   'python': ['flake8', 'pylint', 'pyls'],
@@ -755,7 +755,7 @@ let g:ale_linters = {
   \   'javascript': ['javascript-typescript'],
   \   'julia': ['languageserver'],
   \   'spec': [],
-  \   'text': [],
+  \   'text': ['proselint', 'write-good'],
   \   'zsh': ['shell']
 \}
 
