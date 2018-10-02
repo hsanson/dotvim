@@ -44,7 +44,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-speeddating'
 Plug 'machakann/vim-sandwich'
-Plug 'kassio/neoterm'
+Plug 'epeli/slimux'
+Plug 'jeanCarloMachado/vim-toop'
 Plug 'joereynolds/SQHell.vim'
 
 " Text object add ons
@@ -164,13 +165,6 @@ nnoremap <A-0> 0gt
 nnoremap qk <ESC>:cN<CR>
 nnoremap qj <ESC>:cn<CR>
 
-" Neoterm
-nnoremap no :Tnew<CR>
-nnoremap nc :Tclose<CR>
-nnoremap ne :TREPLSendFile<CR>
-vnoremap ne :TREPLSendSelection<CR>
-nnoremap nm :T make<CR>
-
 " vim-easy-align Plugin
 vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
@@ -202,15 +196,16 @@ endif
 nmap <leader>w <Plug>WinModeStart
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" neoterm plugin
-let g:neoterm_size = 20
-let g:neoterm_automap_keys = 'tm'
-let g:neoterm_test_status = {
-      \ 'running': 'RUNNING',
-      \ 'success': 'SUCCESS',
-      \ 'failed': 'FAILED' }
-let g:neoterm_repl_python='python3'
-let g:neoterm_repl_ruby='pry'
+" Slimux plugin
+let g:slimux_select_from_current_window = 1
+let g:slimx_pane_format = "#(~/.tmux/wname #W)"
+map <Leader>s :SlimuxREPLSendLine<CR>
+map <Leader>ss :SlimuxREPLSendBuffer<CR>
+vmap <Leader>s :SlimuxREPLSendSelection<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"  Toop + Slimux collaboration
+call toop#mapFunction('SlimuxSendCode', "<leader>s")
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Filetype Settings
