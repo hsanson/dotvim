@@ -725,8 +725,13 @@ let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
 let g:ale_open_list = 0
 
+let g:ale_fixers = {
+  \   'bib': ['bibclean']
+\}
+
 let g:ale_linters = {
   \   'csh': ['shell'],
+  \   'bib': ['bibclean'],
   \   'go': ['gofmt', 'golint', 'go vet', 'golangserver'],
   \   'latex': ['proselint', 'chktex', 'lacheck'],
   \   'tex': ['proselint', 'chktex', 'lacheck'],
@@ -741,6 +746,7 @@ let g:ale_linters = {
   \   'julia': ['languageserver'],
   \   'spec': [],
   \   'text': ['proselint', 'write-good'],
+  \   'mail': ['proselint', 'write-good'],
   \   'zsh': ['shell']
 \}
 
