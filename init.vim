@@ -75,7 +75,6 @@ Plug 'maximbaz/lightline-ale'
 " Code navigation
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'mhinz/vim-grepper'
 
 " Visual aid and eyecandy
 Plug 'itchyny/lightline.vim'
@@ -564,12 +563,6 @@ let g:qfenter_keymap.hopen = [ '<C-x>' ]
 let g:qfenter_keymap.topen = [ '<C-t>' ]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Vim-Grepper Plugin
-""
-nnoremap <leader>g :Grepper -tool git -jump<cr>
-nnoremap <leader>* :Grepper -tool git -cword -noprompt<cr>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Go Plugin
 "
 " Description:
@@ -658,14 +651,11 @@ source ~/.dbext_profiles
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FZF Plugin
 "
-" Description:
-"   Faster fuzzy finder alternative to ctrl-p. The best part is that this is a
-"   terminal tool so fuzzy searching is not limited to vim only. It works for
-"   files etc in the terminal too. Also configuration is far easier.
-"
+" Resources:
+"   - https://jesseleite.com/posts/4/project-search-your-feelings
 nnoremap <leader>p :Files<CR>
-nnoremap <leader>g :GitFiles<ENTER>
-"nnoremap <leader>t :call fzf#vim#tags(expand('<cword>'), {'options': '--exact --select-1 --exit-0'})<CR>
+nnoremap <leader>g :GitFiles<CR>
+nnoremap <leader>/ :Ag<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ranger Plugin
