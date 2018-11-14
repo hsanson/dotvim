@@ -46,7 +46,6 @@ Plug 'tpope/vim-speeddating'
 Plug 'machakann/vim-sandwich'
 Plug 'epeli/slimux'
 Plug 'jeanCarloMachado/vim-toop'
-Plug 'joereynolds/SQHell.vim'
 
 " Text object add ons
 Plug 'kana/vim-textobj-user'
