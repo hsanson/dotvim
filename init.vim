@@ -5,12 +5,48 @@
 ""
 "" Dependencies:
 ""
-""  Some lugins and configurations require some tools to be installed before
+""  Some plugins and configurations require some tools to be installed before
 ""  they can be used. In a Ubuntu/Debian computer you can easily install them
 ""  with the following command:
 ""
-""    sudo apt-get install xsel build-essentials openjdk-7-jdk cmake g++
-""      \ pkg-config unzip automake autoconf libtool-bin ranger
+""    sudo apt-get install xsel build-essentials openjdk-7-jdk cmake g++ \
+""      pkg-config unzip automake autoconf libtool-bin ranger \
+""      silversearcher-ag jq zathura python3-pip python2-pip libncurses5-dev \
+""      xsel
+""
+""    pip3 install --user neovim-remote neovim
+""    pip2 install --user neovim-remote neovim
+""
+""  Install optional ALE linters and tools:
+""
+""    sudo apt-get install shellcheck chktex lacheck nodejs ruby2.5 python3-pip
+""    pip3 install --user python-language-server jedi proselint autopep8 flake8
+""    sudo gem install solargraph rubocop sqlint
+""    sudo npm install --global prettier vue-language-server \
+""         javascript-typescript-langserver write-good
+""
+""    Java Language Server
+""
+""      # Only compiles with java8 (update-java-alternatives)
+""      git clone https://github.com/georgewfraser/vscode-javac.git
+""      cd vscode-javac
+""      sudo apt-get install maven
+""      mvn package
+""      cp out/fat-jar.jar $VIMHOME/tools/javacs.jar
+""
+""    Kotlin Language Server
+""
+""       # Only works with java8 (update-java-alternatives)
+""       git clone https://github.com/fwcd/KotlinLanguageServer.git
+""       cd KotlinLanguageServer.git
+""       ./gradlew build -x test
+""       cp -rf build/install/kotlin-language-server ~/.config/nvim/tools/
+""
+""    Ktlint
+""
+""       curl -sSLO https://github.com/shyiko/ktlint/releases/download/0.24.0/ktlint
+""       chmod a+x ktlint
+""       sudo mv ktlint /usr/local/bin/
 ""
 "" Usage:
 ""
@@ -19,7 +55,7 @@
 ""    curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
 ""       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ""
-""  - Start vim and install all bundles.
+""  - Start vim and install all bundles by running :PlugInstall
 ""
 ""  - Carefully read the vimrc file and add the parts you like to your own vimrc
 ""    configuration. Do not copy all this configuration on you home and expect
@@ -32,6 +68,7 @@
 call plug#begin('~/.config/nvim/bundle')
 
 " Personal plugins
+" Clone these from https://github.com/hsanson
 Plug '~/Projects/vim/vim-android'
 Plug '~/Projects/vim/vim-winmode'
 Plug '~/Projects/vim/vim-im'
@@ -342,18 +379,6 @@ cmap w!! w !sudo tee > /dev/null %
 " Requires jq installed and works with non Ascii characters like Japanese.
 command! -range=% JSONFormat <line1>,<line2>!jq .
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Improve QuickFix Window
-
-" Tip: http://vim.wikia.com/wiki/Automatically_open_the_quickfix_window_on_:make
-" Automatically open the quickfix window on :make or close it when it has become
-" empty.
-"autocmd QuickFixCmdPost [^l]* nested cwindow
-"autocmd QuickFixCmdPost    l* nested lwindow
-
-" Move the quickfix window to the bottom of the vim window.
-"autocmd FileType qf wincmd J
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Mouse Settings
 "" Enabling the mouse has some advantages:
@@ -435,12 +460,12 @@ set textwidth=80    " Force wrap for lines longer than 80 characters
 "" limit. Ensures also that this does not happen in terminal buffers.
 function HighlightColorColumn()
 
-  if exists('g:cc')
-    silent! call matchdelete(g:cc)
+  if exists('b:cc')
+    silent! call matchdelete(b:cc)
   endif
 
   if &buftype != 'terminal'
-    let g:cc = matchadd('ColorColumn', '\%81v', 100)
+    let b:cc = matchadd('ColorColumn', '\%81v', 100)
   endif
 endfunction
 
@@ -520,22 +545,6 @@ let g:vimtex_compiler_latexmk = {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" vim-android Plugin
 ""
-"" Description:
-""   Configures vim to make it easier to develop android applications.
-""
-"" Installation:
-""   - Require javacomplete plugin for vim configured and running properly.
-""   - Install plugin via pathogen or vundle
-""   - Set the g:android_sdk_path to your the place you have installed the
-""     android sdk. Use absolute path.
-""
-"" Usage:
-""   - If you have the javacomplete plugin correctly installed then you should
-""     be able to omnicomplete android classes, methods and imports using the
-""     Ctrl-X Ctrl-O and Ctrl-X Ctrl-U commands. See :h omnifunc for details.
-""   - If you use NeoComplCache or YouCompleteMe then the auto-completion should
-""     work automatically.
-"
 let g:android_sdk_path="/home/ryujin/Apps/android-sdk"
 let g:gradle_daemon=0
 let g:gradle_show_signs=0
@@ -592,62 +601,6 @@ let g:go_fmt_autosave = 0
 ""      sa{motion}i - Add input surrounding.
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Amazing nice plugin to work with Databases
-"
-" Description:
-"   This is an amazing plugin that allows you to work with SQL databases within
-"   vim. You can write queries in a buffer and execute them on your databases
-"   getting the results in a split window.
-"
-" Installation:
-"   Depending on the database you wish to use you may need to install different
-"   SQL client tools:
-"
-"   - MySQL install unixodbc package
-"   - PostgresSQL install postgresql-client-common
-"   - Sqlite install sqlite3
-"
-" Usage:
-"
-"  - Create a connection profile for each DB you want to connect. For this add a
-"    line like below to your vimrc:
-"
-"    let g:dbext_default_profile_<name>='type=MYSQL:user=<user>:passwd=<pass>:dbname=<dbname>:extra=--batch --raw --silent -t'
-"
-"    replace the <name>, <user>, <pass> and <dbname> with your connection
-"    parameters and then in a vim buffer run :DBPromptForBufferParameters to
-"    select the profile you want to use.
-"
-"  - With the profiles in place you can open any vim buffer and connect to the
-"    database using:
-"
-"    :DBPromptForBufferParameters or <leader>sbp
-"
-"  - You can also add a profile comment at the top of a file so the connection
-"    is establish when you open it:
-"
-"    // dbext:profile=<name>
-"
-"  - Use the following commands to execute queries on the dabatase:
-"
-"    - <leader>se  - SQL Execute (use this if the query expands multiple lines)
-"    - <leader>sel - SQL Execute current line.
-"    - <leader>st  - Select everything from table under cursor
-"    - <leader>sT  - Same as st but it will prompt you to input a limit value.
-"    - <leader>std - Describe table under cursor
-"    - <leader>slt - List tables in the database
-"    - <leader>slc - Add list of columns of table under cursor to the copy register.
-"    - <leader>sdp - Show stored procedures
-"
-let  g:dbext_default_history_file = '$HOME/.dbext_sql_history.txt'
-let  g:dbext_default_history_size = 1000
-
-" If you share your vim configuration files make sure you keep your database
-" profiles in a separate file. We don't want to share all our databases IP
-" addreses, user and passwords.
-source ~/.dbext_profiles
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FZF Plugin
 "
 " Resources:
@@ -689,35 +642,6 @@ let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['sql'] = ''
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ALE Plugin
 "
-"   sudo apt-get install shellcheck chktex lacheck
-"   pip3 install --user python-language-server jedi proselint autopep8 flake8
-"   sudo gem install solargraph rubocop sqlint
-"   sudo npm install --global prettier vue-language-server
-"       javascript-typescript-langserver write-good
-"
-" Java Language Server
-"
-"   # Only works with java8 (update-java-alternatives)
-"   git clone https://github.com/georgewfraser/vscode-javac.git
-"   cd vscode-javac
-"   sudo apt-get install maven
-"   mvn package
-"   cp out/fat-jar.jar $VIMHOME/tools/javacs.jar
-"
-" Kotlin Language Server
-"
-"   # Only works with java8 (update-java-alternatives)
-"   git clone https://github.com/fwcd/KotlinLanguageServer.git
-"   cd KotlinLanguageServer.git
-"   ./gradlew build -x test
-"   cp -rf build/install/kotlin-language-server ~/.config/nvim/tools/
-"
-" Ktlint
-"
-"   curl -sSLO https://github.com/shyiko/ktlint/releases/download/0.24.0/ktlint
-"   chmod a+x ktlint
-"   sudo mv ktlint /usr/local/bin/
-"
 let g:ale_completion_enabled = 1
 let g:ale_sign_info = ''
 let g:ale_sign_error = ''
@@ -729,15 +653,12 @@ let g:ale_fixers = {
 \}
 
 let g:ale_linters = {
-  \   'csh': ['shell'],
   \   'bib': ['bibclean'],
   \   'go': ['gofmt', 'golint', 'go vet', 'golangserver'],
   \   'latex': ['proselint', 'chktex', 'lacheck'],
   \   'tex': ['proselint', 'chktex', 'lacheck'],
   \   'help': [],
-  \   'perl': ['perlcritic'],
   \   'python': ['flake8', 'pylint', 'pyls'],
-  \   'rust': ['cargo'],
   \   'ruby': ['solargraph', 'rubocop', 'ruby'],
   \   'java': ['javac', 'checkstyle', 'pmd', 'javalsp'],
   \   'kotlin': ['ktlint', 'languageserver'],
@@ -745,8 +666,7 @@ let g:ale_linters = {
   \   'julia': ['languageserver'],
   \   'spec': [],
   \   'text': ['proselint', 'write-good'],
-  \   'mail': ['proselint', 'write-good'],
-  \   'zsh': ['shell']
+  \   'mail': ['proselint', 'write-good']
 \}
 
 let s:ktcs_path = expand("<sfile>:p:h") . "/tools/kotlin-language-server/bin/kotlin-language-server"
