@@ -664,7 +664,7 @@ let g:ale_linters = {
   \   'help': [],
   \   'python': ['flake8', 'pylint', 'pyls'],
   \   'ruby': ['solargraph', 'rubocop', 'ruby'],
-  \   'java': ['javac', 'checkstyle', 'pmd', 'javalsp'],
+  \   'java': ['eclipselsp', 'checkstyle', 'pmd'],
   \   'kotlin': ['ktlint', 'languageserver'],
   \   'javascript': ['javascript-typescript'],
   \   'julia': ['languageserver'],
@@ -673,10 +673,12 @@ let g:ale_linters = {
   \   'mail': ['proselint', 'write-good']
 \}
 
+let g:ale_java_eclipselsp_path = '/home/ryujin/Apps/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository'
+
 let s:ktcs_path = expand("<sfile>:p:h") . "/tools/kotlin-language-server/bin/kotlin-language-server"
 let g:ale_kotlin_languageserver_executable = s:ktcs_path
 
-let g:ale_java_javalsp_jar = expand("<sfile>:p:h") . "/tools/javacs.jar"
+let g:ale_java_javalsp_jar = "/home/ryujin/.config/nvim/tools/javacs.jar"
 
 " Helper method used to check if the loclist is visible or not.
 function! s:visibleLoc()
