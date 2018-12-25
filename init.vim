@@ -662,6 +662,7 @@ let g:ale_linters = {
   \   'go': ['gofmt', 'golint', 'go vet', 'golangserver'],
   \   'latex': ['proselint', 'chktex', 'lacheck'],
   \   'tex': ['proselint', 'chktex', 'lacheck'],
+  \   'plaintex': ['proselint', 'chktex', 'lacheck'],
   \   'help': [],
   \   'python': ['flake8', 'pylint', 'pyls'],
   \   'ruby': ['solargraph', 'rubocop', 'ruby'],
