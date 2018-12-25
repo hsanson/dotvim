@@ -651,6 +651,7 @@ let g:ale_echo_msg_format = '%severity% [%linter%] (%code%) - %s'
 let g:ale_echo_msg_info_str = ''
 let g:ale_echo_msg_error_str = ''
 let g:ale_echo_msg_warning_str = ''
+let g:ale_writegood_options = '--no-passive'
 
 let g:ale_fixers = {
   \   'bib': ['bibclean']
