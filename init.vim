@@ -92,6 +92,7 @@ Plug 'kana/vim-textobj-function'
 " Colorschemes
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'morhetz/gruvbox'
+Plug 'cocopon/iceberg.vim'
 
 " Syntax and language support
 Plug 'udalov/kotlin-vim'
@@ -277,13 +278,15 @@ augroup SyntaxGroup
   autocmd!
   " Force all colorschemes to have transparent background.
   au ColorScheme * hi Normal guibg=NONE ctermbg=NONE
+  au ColorScheme * hi EndOfBuffer guibg=NONE ctermbg=NONE
   " Make cursorline transparent too so only the line number is highlighted on the
   " current line.
   au ColorScheme * hi CursorLine guibg=NONE ctermbg=NONE term=NONE cterm=NONE
 augroup END
 
 let g:one_allow_italics = 1
-colors gruvbox
+"colors gruvbox
+colors iceberg
 
 " Apply some color to the popup menu used for auto-completion.
 highlight Pmenu ctermbg=203 gui=bold
