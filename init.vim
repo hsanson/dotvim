@@ -72,7 +72,6 @@ call plug#begin('~/.config/nvim/bundle')
 Plug '~/Projects/vim/vim-android'
 Plug '~/Projects/vim/vim-winmode'
 Plug '~/Projects/vim/vim-im'
-Plug '~/Projects/vim/ranger.vim'
 
 " Helper and tools
 Plug 'junegunn/vim-easy-align'
@@ -110,6 +109,8 @@ Plug '~/Projects/vim/ale'
 Plug 'maximbaz/lightline-ale'
 
 " Code navigation
+Plug 'rafaqz/ranger.vim'
+
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
