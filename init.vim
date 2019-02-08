@@ -20,7 +20,8 @@
 ""  Install optional ALE linters and tools:
 ""
 ""    sudo apt-get install shellcheck chktex lacheck nodejs ruby2.5 python3-pip
-""    pip3 install --user python-language-server jedi proselint autopep8 flake8
+""    pip3 install --user python-language-server jedi proselint autopep8 \
+""         flake8 pyflakes rope pycodestyle pydocstyle yapf
 ""    sudo gem install solargraph rubocop sqlint
 ""    sudo npm install --global prettier vue-language-server \
 ""         javascript-typescript-langserver write-good
@@ -668,7 +669,7 @@ let g:ale_linters = {
   \   'tex': ['proselint', 'chktex', 'lacheck'],
   \   'plaintex': ['proselint', 'chktex', 'lacheck'],
   \   'help': [],
-  \   'python': ['flake8', 'pylint', 'pyls'],
+  \   'python': ['pyls'],
   \   'ruby': ['solargraph', 'rubocop', 'ruby'],
   \   'java': ['eclipselsp', 'checkstyle', 'pmd'],
   \   'kotlin': ['ktlint', 'languageserver'],
