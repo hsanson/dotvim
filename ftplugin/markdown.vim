@@ -1,4 +1,3 @@
-setlocal omnifunc=htmlcomplete#CompleteTags
 setlocal textwidth=0
 setlocal wrapmargin=20
 setlocal wrap linebreak nolist
