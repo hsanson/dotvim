@@ -317,7 +317,7 @@ let g:lightline#ale#indicator_errors   = ''
 let g:lightline#ale#indicator_ok       = ''
 
 let g:lightline = {
-  \ 'colorcheme': 'PaperColor',
+  \ 'colorcheme': 'iceberg',
   \ 'active': {
   \    'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
   \    'right': [ ['linter_checking'], ['linter_errors'], ['linter_warnings'], ['linter_ok'], ['lineinfo'], ['percent'] ]
