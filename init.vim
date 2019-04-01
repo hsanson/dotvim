@@ -62,6 +62,7 @@
 ""    configuration. Do not copy all this configuration on you home and expect
 ""    everything to work on one try.
 
+let g:ale_completion_enabled = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Plugins
@@ -648,7 +649,6 @@ let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['sql'] = ''
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ALE Plugin
 "
-let g:ale_completion_enabled = 1
 let g:ale_sign_info = ''
 let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
