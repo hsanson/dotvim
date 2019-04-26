@@ -297,7 +297,10 @@ colors iceberg
 
 " Apply some color to the popup menu used for auto-completion.
 highlight Pmenu ctermbg=203 gui=bold
-set pumblend=20
+
+if has('nvim')
+  set pumblend=20
+endif
 
 " Show tabs and tailing spaces.
 " Note: to insert the middle point press "ctrl+k .M" in insert mode. Tha is
