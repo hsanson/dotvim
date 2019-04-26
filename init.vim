@@ -679,14 +679,14 @@ let g:ale_linters = {
   \   'help': [],
   \   'python': ['pyls'],
   \   'ruby': ['solargraph', 'rubocop', 'ruby'],
-  \   'java': ['javac', 'eclipselsp', 'checkstyle'],
+  \   'java': ['checkstyle', 'eclipselsp'],
   \   'kotlin': ['ktlint', 'languageserver'],
   \   'javascript': ['javascript-typescript'],
   \   'text': ['proselint', 'write-good'],
   \   'mail': ['proselint', 'write-good']
 \}
 
-let g:ale_java_eclipselsp_path = '/home/ryujin/Apps/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository'
+let g:ale_java_eclipselsp_path = '/home/ryujin/Apps/eclipse.jdt.ls'
 
 let s:ktcs_path = expand("<sfile>:p:h") . "/tools/kotlin-language-server/bin/kotlin-language-server"
 let g:ale_kotlin_languageserver_executable = s:ktcs_path
