@@ -62,6 +62,10 @@
 ""    configuration. Do not copy all this configuration on you home and expect
 ""    everything to work on one try.
 
+if !has('nvim')
+  call ch_logfile(expand('/tmp/chlogfile.log'), 'w')
+endif
+
 let g:ale_completion_enabled = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
