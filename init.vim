@@ -113,6 +113,7 @@ Plug 'lervag/vimtex'
 " Linting and Auto completion
 Plug '~/Projects/vim/ale'
 Plug 'maximbaz/lightline-ale'
+Plug 'sirver/ultisnips'
 
 " Code navigation
 Plug 'rafaqz/ranger.vim'
@@ -530,6 +531,13 @@ set fencs=utf-8,euc-jp,sjis
 " Internal encoding used by vim buffers, help and commands. This is better to
 " keep the same s tenc.
 set encoding=utf-8
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" UltiSnips Plugin
+"
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vimtex Plugin

@@ -1,0 +1,32 @@
+snippet beg "begin{} / end{}" bA
+\begin{$1}
+	$0
+\end{$1}
+endsnippet
+
+snippet pats "\patentSection{}" bA
+\patentSection{$1}
+
+$0
+endsnippet
+
+snippet patg "\patentParagraph{}" bA
+\patentParagraph{$1}
+
+$0
+endsnippet
+
+snippet mk "Math" wA
+$${1}$`!p
+if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
+    snip.rv = ' '
+else:
+    snip.rv = ''
+`$2
+endsnippet
+
+snippet dm "Math" wA
+\[
+$1
+.\] $0
+endsnippet
