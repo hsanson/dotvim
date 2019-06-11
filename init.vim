@@ -61,6 +61,7 @@
 ""  - Carefully read the vimrc file and add the parts you like to your own vimrc
 ""    configuration. Do not copy all this configuration on you home and expect
 ""    everything to work on one try.
+scriptencoding utf-8
 
 if !has('nvim')
   call ch_logfile(expand('/tmp/chlogfile.log'), 'w')
@@ -133,7 +134,7 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" General Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set bs=2                              " Sane backspace behavior.
+set backspace=2                       " Sane backspace behavior.
 set fileformats=unix,dos              " Use unix file format.
 set number                            " Show line number column.
 set nobackup                          " Stop vim from creating ~ files.
@@ -242,14 +243,14 @@ nmap <leader>w <Plug>WinModeStart
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Slimux plugin
 let g:slimux_select_from_current_window = 1
-let g:slimx_pane_format = "#(~/.tmux/wname #W)"
-map <Leader>s :SlimuxREPLSendLine<CR>
+let g:slimx_pane_format = '#(~/.tmux/wname #W)'
+map <Leader>sl :SlimuxREPLSendLine<CR>
 map <Leader>ss :SlimuxREPLSendBuffer<CR>
 vmap <Leader>s :SlimuxREPLSendSelection<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  Toop + Slimux collaboration
-call toop#mapFunction('SlimuxSendCode', "<leader>s")
+call toop#mapFunction('SlimuxSendCode', '<leader>s')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Filetype Settings
@@ -380,7 +381,7 @@ set directory=/var/tmp//,/tmp//
 "" Improve undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set undolevels=10000
-if has("persistent_undo")
+if has('persistent_undo')
   set undodir=/var/tmp//,/tmp//
   set undofile
 endif
@@ -479,7 +480,7 @@ function HighlightColorColumn()
     silent! call matchdelete(b:cc)
   endif
 
-  if &buftype != 'terminal'
+  if &buftype !=# 'terminal'
     let b:cc = matchadd('ColorColumn', '\%81v', 100)
   endif
 endfunction
@@ -505,7 +506,7 @@ endif
 "" terminal is always UTF-8 and as far as I know the input methods for japanese
 "" supported by Ubuntu are also UTF-8. For this I make sure vim displays and
 "" accepts only UTF-8 encoded text with the tenc parameter.
-set tenc=utf-8
+set termencoding=utf-8
 
 "" Also I prefer to handle all my files in disk as UTF-8 to avoid unnecessary
 "" convertions between encoding formats. If the encoding format of a file on
@@ -514,7 +515,7 @@ set tenc=utf-8
 "" Note that not all encoding conversions are reversible so there may be some
 "" loss of information. This is why is recommended to use always the same
 "" encoding.
-setglobal fenc=utf-8
+setglobal fileencoding=utf-8
 
 "" Unfortunately some others at my work use other encodings that I need to
 "" handle too. If I open a file with a lot of sjis coded text and save it back
@@ -526,7 +527,7 @@ setglobal fenc=utf-8
 "" to use a different file encoding with the command ":edit ++enc=<your_enc>".
 "" If you still see garbage make sure you have a font that can display that
 "" encoding.
-set fencs=utf-8,euc-jp,sjis
+set fileencodings=utf-8,euc-jp,sjis
 
 " Internal encoding used by vim buffers, help and commands. This is better to
 " keep the same s tenc.
@@ -570,10 +571,11 @@ let g:vimtex_compiler_latexmk = {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" vim-android Plugin
 ""
-let g:android_sdk_path="/home/ryujin/Apps/android-sdk"
-let g:gradle_daemon=0
-let g:gradle_show_signs=0
-let g:netrw_browsex_viewer="google-chrome"
+let g:android_sdk_path='/home/ryujin/Apps/android-sdk'
+let g:gradle_daemon=1
+let g:gradle_show_signs=1
+let g:gradle_loclist_show=1
+let g:netrw_browsex_viewer='google-chrome'
 
 let g:gradle_glyph_error=''
 let g:gradle_glyph_warning=''
@@ -712,19 +714,22 @@ endfunc
 " Magic function that synchronizes the cursor in the loclist with the cursor on
 " the current buffer.
 function! s:followLine()
-   let curLine = line(".")
-   if (exists("b:lastLine") && b:lastLine == curLine) || 0 == s:visibleLoc()
+   let curLine = line('.')
+   if (exists('b:lastLine') && b:lastLine == curLine) || 0 == s:visibleLoc()
       return
    endif
-   let b:lastLine = line(".")
-   let ent = len(filter(getloclist("."), {i,v -> v.lnum <= curLine}))
-   if ent < 1 || (exists("b:lastEntry") && b:lastEntry == ent)
+   let b:lastLine = line('.')
+   let ent = len(filter(getloclist('.'), {i,v -> v.lnum <= curLine}))
+   if ent < 1 || (exists('b:lastEntry') && b:lastEntry == ent)
       return
    endif
    let b:lastEntry = ent
-   let pos = [ 0, curLine, col("."), 0 ]
-   exe "ll ".ent
-   call setpos(".", pos)
+   let pos = [ 0, curLine, col('.'), 0 ]
+   exe 'll '.ent
+   call setpos('.', pos)
 endfunc
 
-au CursorMoved <buffer> call <SID>followLine()
+augroup AleGroup
+  autocmd!
+  au CursorMoved <buffer> call <SID>followLine()
+augroup END
