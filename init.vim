@@ -700,19 +700,26 @@ let g:ale_linters = {
   \   'help': [],
   \   'python': ['pyls'],
   \   'ruby': ['solargraph', 'rubocop', 'ruby'],
-  \   'java': ['checkstyle', 'eclipselsp'],
+  \   'java': ['checkstyle', 'javalsp'],
   \   'kotlin': ['ktlint', 'languageserver'],
   \   'javascript': ['javascript-typescript'],
   \   'text': ['proselint', 'write-good'],
+  \   'vim': ['vint'],
   \   'mail': ['proselint', 'write-good']
 \}
 
+let g:ale_java_checkstyle_options = '-c /google_checks.xml'
 let g:ale_java_eclipselsp_path = '/home/ryujin/Apps/eclipse.jdt.ls'
-let s:ktcs_path = expand("<sfile>:p:h") . "/tools/kotlin-language-server/bin/kotlin-language-server"
+let s:ktcs_path = '/home/ryujin/.config/nvim/tools/kotlin-language-server/bin/kotlin-language-server'
 let g:ale_kotlin_languageserver_executable = s:ktcs_path
 
-let g:ale_java_javalsp_executable = "/home/ryujin/Apps/java-language-server/dist/mac/bin/java"
-let g:ale_java_javalsp_jar = "/home/ryujin/.config/nvim/tools/javacs.jar"
+function! LoadDeps(buffer) abort
+  return []
+endfunction
+
+let g:ale_java_javalsp_executable = '/home/ryujin/Apps/java-language-server/dist/mac/bin/launcher'
+let g:ale_java_javalsp_external_deps = []
+let g:ale_java_javalsp_classpaths = 'LoadDeps'
 
 " Helper method used to check if the loclist is visible or not.
 function! s:visibleLoc()
