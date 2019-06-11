@@ -330,7 +330,7 @@ let g:lightline = {
   \ 'colorcheme': 'iceberg',
   \ 'active': {
   \    'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
-  \    'right': [ ['linter_checking'], ['linter_errors'], ['linter_warnings'], ['linter_ok'], ['lineinfo'], ['percent'] ]
+  \    'right': [ ['gradle_project'], ['gradle_running'], ['linter_checking'], ['linter_errors'], ['linter_warnings'], ['linter_ok'], ['lineinfo'], ['percent'] ]
   \ },
   \ 'inactive': {
   \    'left': [ [ 'filename' ] ],
@@ -347,9 +347,17 @@ let g:lightline = {
   \      'linter_checking': 'lightline#ale#checking',
   \      'linter_warnings': 'lightline#ale#warnings',
   \      'linter_errors': 'lightline#ale#errors',
-  \      'linter_ok': 'lightline#ale#ok'
+  \      'linter_ok': 'lightline#ale#ok',
+  \      'gradle_errors': 'lightline#gradle#errors',
+  \      'gradle_warnings': 'lightline#gradle#warnings',
+  \      'gradle_running': 'lightline#gradle#running',
+  \      'gradle_project': 'lightline#gradle#project'
   \    },
   \ 'component_type': {
+  \      'gradle_erros': 'error',
+  \      'gradle_warnings': 'warning',
+  \      'gradle_running': 'left',
+  \      'gradle_project': 'right',
   \      'linter_checking': 'left',
   \      'linter_warnings': 'warning',
   \      'linter_errors': 'error',
