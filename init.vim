@@ -87,7 +87,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-speeddating'
 Plug 'machakann/vim-sandwich'
-Plug 'epeli/slimux'
+Plug '~/Projects/vim/slimux'
 Plug 'jeanCarloMachado/vim-toop'
 
 " Text object add ons
@@ -243,13 +243,15 @@ nmap <leader>w <Plug>WinModeStart
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Slimux plugin
 let g:slimux_select_from_current_window = 1
-let g:slimx_pane_format = '#(~/.tmux/wname #W)'
-map <Leader>sl :SlimuxREPLSendLine<CR>
-map <Leader>ss :SlimuxREPLSendBuffer<CR>
-vmap <Leader>s :SlimuxREPLSendSelection<CR>
+let g:slimux_pane_format = '#(~/.tmux/wname #W)'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"  Toop + Slimux collaboration
+" Toop + Slimux collaboration
+"
+" <leader>sG   Send all text from cursor to end of file.
+" <leader>sGG  Send all text from cursor to start of file.
+" <leader>s$   Send all text from cursor to end of line.
+" <leader>s<motion> Send text from cursor to end of motion.
 call toop#mapFunction('SlimuxSendCode', '<leader>s')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
