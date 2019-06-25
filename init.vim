@@ -583,8 +583,9 @@ let g:vimtex_compiler_latexmk = {
 ""
 let g:android_sdk_path='/home/ryujin/Apps/android-sdk'
 let g:gradle_daemon=1
-let g:gradle_show_signs=1
-let g:gradle_loclist_show=1
+let g:gradle_show_signs=0
+let g:gradle_loclist_show=0
+let g:gradle_sync_on_load=1
 let g:netrw_browsex_viewer='google-chrome'
 
 let g:gradle_glyph_error=''
@@ -700,28 +701,22 @@ let g:ale_linters = {
   \   'tex': ['proselint', 'chktex', 'lacheck'],
   \   'plaintex': ['proselint', 'chktex', 'lacheck'],
   \   'help': [],
-  \   'python': ['pyls'],
+  \   'python': ['flake8', 'pylint', 'pyls'],
   \   'ruby': ['solargraph', 'rubocop', 'ruby'],
-  \   'java': ['checkstyle', 'javalsp'],
-  \   'kotlin': ['ktlint', 'languageserver'],
+  \   'groovy': ['android'],
+  \   'xml': ['android'],
+  \   'java': ['checkstyle', 'javalsp', 'android'],
+  \   'kotlin': ['android', 'ktlint', 'languageserver'],
   \   'javascript': ['javascript-typescript'],
   \   'text': ['proselint', 'write-good'],
   \   'vim': ['vint'],
   \   'mail': ['proselint', 'write-good']
 \}
 
-let g:ale_java_checkstyle_options = '-c /google_checks.xml'
 let g:ale_java_eclipselsp_path = '/home/ryujin/Apps/eclipse.jdt.ls'
 let s:ktcs_path = '/home/ryujin/.config/nvim/tools/kotlin-language-server/bin/kotlin-language-server'
 let g:ale_kotlin_languageserver_executable = s:ktcs_path
-
-function! LoadDeps(buffer) abort
-  return []
-endfunction
-
 let g:ale_java_javalsp_executable = '/home/ryujin/Apps/java-language-server/dist/mac/bin/launcher'
-let g:ale_java_javalsp_external_deps = []
-let g:ale_java_javalsp_classpaths = 'LoadDeps'
 
 " Helper method used to check if the loclist is visible or not.
 function! s:visibleLoc()
