@@ -715,9 +715,7 @@ let g:ale_linters = {
   \   'mail': ['proselint', 'write-good']
 \}
 
-let g:ale_java_eclipselsp_path = '/home/ryujin/Apps/eclipse.jdt.ls'
-let s:ktcs_path = '/home/ryujin/.config/nvim/tools/kotlin-language-server/bin/kotlin-language-server'
-let g:ale_kotlin_languageserver_executable = s:ktcs_path
+let g:ale_kotlin_languageserver_executable = '/home/ryujin/Apps/KotlinLanguageServer/build/install/kotlin-language-server/bin/kotlin-language-server'
 let g:ale_java_javalsp_executable = '/home/ryujin/Apps/java-language-server/dist/mac/bin/launcher'
 
 " Helper method used to check if the loclist is visible or not.
