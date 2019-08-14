@@ -110,6 +110,7 @@ Plug 'JuliaEditorSupport/julia-vim'
 
 " Document editing
 Plug 'lervag/vimtex'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 " Linting and Auto completion
 Plug '~/Projects/vim/ale'
@@ -549,6 +550,12 @@ set encoding=utf-8
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Markdown Plugin
+"
+nmap <leader>lv <Plug>MarkdownPreview
+nmap <leader>ll <Plug>MarkdownPreviewToggle
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vimtex Plugin
