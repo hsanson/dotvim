@@ -4,3 +4,4 @@ bundle/*
 *.swp
 tags/*
 spell/*
+autoload/plug.vim.old
