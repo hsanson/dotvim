@@ -21,7 +21,7 @@
 ""
 ""    sudo apt-get install shellcheck chktex lacheck nodejs ruby2.5 python3-pip
 ""    pip3 install --user python-language-server jedi proselint autopep8 \
-""         flake8 pyflakes rope pycodestyle pydocstyle yapf
+""         flake8 pyflakes rope pycodestyle pydocstyle yapf yamllint
 ""    sudo gem install solargraph rubocop sqlint
 ""    sudo npm install --global prettier vue-language-server \
 ""         javascript-typescript-langserver write-good
@@ -719,6 +719,7 @@ let g:ale_linters = {
   \   'javascript': ['javascript-typescript'],
   \   'text': ['proselint', 'write-good'],
   \   'vim': ['vint'],
+  \   'yaml': ['yamllint'],
   \   'mail': ['proselint', 'write-good']
 \}
 
