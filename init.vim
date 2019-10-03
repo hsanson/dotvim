@@ -114,6 +114,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 " Linting and Auto completion
 Plug '~/Projects/vim/ale'
+Plug 'liuchengxu/vista.vim'
 Plug 'maximbaz/lightline-ale'
 Plug 'sirver/ultisnips'
 
@@ -753,3 +754,14 @@ augroup AleGroup
   autocmd!
   au CursorMoved <buffer> call <SID>followLine()
 augroup END
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vista Plugin
+"
+let g:vista_default_executive='ale'
+let g:vista_top_level_blink=[0, 0]
+let g:vista_blink=[0, 0]
+let g:vista#renderer#icons = {
+      \ 'field': '',
+      \ 'fields': '',
+      \}
