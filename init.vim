@@ -698,6 +698,8 @@ let g:ale_echo_msg_error_str = ''
 let g:ale_echo_msg_warning_str = ''
 let g:ale_writegood_options = '--no-passive'
 let g:ale_use_global_executables = 1
+let g:ale_virtualtext_cursor = 1
+let g:ale_virtualtext_prefix = ' '
 
 let g:ale_fixers = {
   \   'bib': ['bibclean'],
