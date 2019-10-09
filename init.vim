@@ -312,7 +312,7 @@ endif
 " Note: to insert the middle point press "ctrl+k .M" in insert mode. Tha is
 " control + k followed by a <dot> and the capital M.
 set list
-exec "set lcs=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+exec 'set lcs=tab:\uBB\uBB,trail:\uB7,nbsp:~'
 
 " Highlight japanese space
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
