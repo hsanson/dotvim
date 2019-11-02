@@ -79,6 +79,7 @@ call plug#begin('~/.config/nvim/bundle')
 Plug '~/Projects/vim/vim-android'
 Plug '~/Projects/vim/vim-winmode'
 Plug '~/Projects/vim/vim-im'
+Plug '~/Projects/vim/vim-openapi'
 
 " Helper and tools
 Plug 'junegunn/vim-easy-align'
@@ -697,13 +698,14 @@ let g:ale_echo_msg_info_str = ''
 let g:ale_echo_msg_error_str = ''
 let g:ale_echo_msg_warning_str = ''
 let g:ale_writegood_options = '--no-passive'
-let g:ale_use_global_executables = 1
 let g:ale_virtualtext_cursor = 1
 let g:ale_virtualtext_prefix = ' '
 
 let g:ale_fixers = {
   \   'bib': ['bibclean'],
-  \   'python': ['yapf']
+  \   'python': ['yapf'],
+  \   'openapi': ['prettier'],
+  \   'yaml': ['prettier']
 \}
 
 let g:ale_linters = {
@@ -719,10 +721,11 @@ let g:ale_linters = {
   \   'xml': ['android'],
   \   'java': ['checkstyle', 'javalsp', 'android'],
   \   'kotlin': ['android', 'ktlint', 'languageserver'],
-  \   'javascript': ['javascript-typescript'],
+  \   'javascript': ['eslint'],
   \   'text': ['proselint', 'write-good'],
   \   'vim': ['vint'],
   \   'yaml': ['yamllint'],
+  \   'openapi': ['yamllint', 'ibm-validator'],
   \   'mail': ['proselint', 'write-good']
 \}
 
