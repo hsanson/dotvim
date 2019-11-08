@@ -61,7 +61,6 @@
 ""  - Carefully read the vimrc file and add the parts you like to your own vimrc
 ""    configuration. Do not copy all this configuration on you home and expect
 ""    everything to work on one try.
-scriptencoding utf-8
 
 if !has('nvim')
   call ch_logfile(expand('/tmp/chlogfile.log'), 'w')
@@ -545,6 +544,7 @@ set fileencodings=utf-8,euc-jp,sjis
 " Internal encoding used by vim buffers, help and commands. This is better to
 " keep the same s tenc.
 set encoding=utf-8
+scriptencoding utf-8
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UltiSnips Plugin
