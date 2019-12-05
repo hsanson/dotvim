@@ -19,7 +19,7 @@
 ""
 ""  Install optional ALE linters and tools:
 ""
-""    sudo apt-get install shellcheck chktex lacheck nodejs ruby2.5 python3-pip
+""    sudo apt-get install shellcheck chktex lacheck nodejs ruby2.5 python3-pip fzy
 ""    pip3 install --user python-language-server jedi proselint autopep8 \
 ""         flake8 pyflakes rope pycodestyle pydocstyle yapf yamllint
 ""    sudo gem install solargraph rubocop sqlint mdl
@@ -121,9 +121,7 @@ Plug 'sirver/ultisnips'
 
 " Code navigation
 Plug 'mcchrish/nnn.vim'
-
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug 'cloudhead/neovim-fuzzy'
 
 " Visual aid and eyecandy
 Plug 'itchyny/lightline.vim'
