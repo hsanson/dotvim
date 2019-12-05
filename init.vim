@@ -10,7 +10,7 @@
 ""  with the following command:
 ""
 ""    sudo apt-get install xsel build-essentials openjdk-7-jdk cmake g++ \
-""      pkg-config unzip automake autoconf libtool-bin ranger \
+""      pkg-config unzip automake autoconf libtool-bin \
 ""      silversearcher-ag jq zathura python3-pip python2-pip libncurses5-dev \
 ""      xsel
 ""
@@ -120,7 +120,7 @@ Plug 'maximbaz/lightline-ale'
 Plug 'sirver/ultisnips'
 
 " Code navigation
-Plug 'rafaqz/ranger.vim'
+Plug 'mcchrish/nnn.vim'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -648,18 +648,37 @@ let g:go_fmt_autosave = 0
 ""      sa{motion}i - Add input surrounding.
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" FZF Plugin
+" FZY Plugin
 "
 " Resources:
 "   - https://jesseleite.com/posts/4/project-search-your-feelings
-nnoremap <leader>p :Files<CR>
-nnoremap <leader>g :GitFiles<CR>
-nnoremap <leader>/ :Ag<CR>
+nnoremap <leader>p :FuzzyOpen<CR>
+nnoremap <leader>o :FuzzyGrep<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Ranger Plugin
+" NNN Plugin
 "
-nnoremap - :RangerEdit<CR>
+let g:nnn#set_default_mappings = 0
+nnoremap - :Np '%:p:h'<CR>
+
+" Floating window (neovim)
+function! s:layout()
+  let buf = nvim_create_buf(v:false, v:true)
+
+  let height = &lines - (float2nr(&lines / 3))
+  let width = float2nr(&columns - (&columns * 2 / 3))
+
+  let opts = {
+        \ 'relative': 'editor',
+        \ 'row': 2,
+        \ 'col': 8,
+        \ 'width': width,
+        \ 'height': height
+        \ }
+
+  call nvim_open_win(buf, v:true, opts)
+endfunction
+let g:nnn#layout = 'call ' . string(function('<SID>layout')) . '()'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " DevIcons Plugin
