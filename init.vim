@@ -22,7 +22,7 @@
 ""    sudo apt-get install shellcheck chktex lacheck nodejs ruby2.5 python3-pip
 ""    pip3 install --user python-language-server jedi proselint autopep8 \
 ""         flake8 pyflakes rope pycodestyle pydocstyle yapf yamllint
-""    sudo gem install solargraph rubocop sqlint
+""    sudo gem install solargraph rubocop sqlint mdl
 ""    sudo npm install --global prettier vue-language-server \
 ""         javascript-typescript-langserver write-good
 ""
@@ -728,6 +728,7 @@ let g:ale_fixers = {
 \}
 
 let g:ale_linters = {
+  \   'markdown': ['mdl'],
   \   'bib': ['bibclean'],
   \   'go': ['gofmt', 'golint', 'go vet', 'golangserver'],
   \   'latex': ['proselint', 'chktex', 'lacheck'],
