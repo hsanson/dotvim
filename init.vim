@@ -121,6 +121,7 @@ Plug 'sirver/ultisnips'
 " Code navigation
 Plug 'mcchrish/nnn.vim'
 Plug 'cloudhead/neovim-fuzzy'
+Plug 'KaraMCC/vim-gemini'
 
 " Visual aid and eyecandy
 Plug 'itchyny/lightline.vim'
