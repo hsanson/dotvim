@@ -89,6 +89,7 @@ Plug 'tpope/vim-speeddating'
 Plug 'machakann/vim-sandwich'
 Plug '~/Projects/vim/slimux'
 Plug 'jeanCarloMachado/vim-toop'
+Plug 'romainl/vim-cool'
 
 " Text object add ons
 Plug 'kana/vim-textobj-user'
