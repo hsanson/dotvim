@@ -107,7 +107,8 @@ Plug 'vim-scripts/yaml.vim'
 Plug 'chrisbra/color_highlight'
 Plug 'posva/vim-vue'
 Plug 'neomutt/neomutt.vim'
-Plug 'JuliaEditorSupport/julia-vim'
+Plug 'tpope/vim-markdown'
+Plug 'habamax/vim-asciidoctor'
 
 " Document editing
 Plug 'lervag/vimtex'
