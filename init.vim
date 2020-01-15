@@ -726,6 +726,7 @@ let g:ale_linters = {
   \   'mail': ['proselint', 'write-good']
 \}
 
+let g:ale_java_checkstyle_config='config/checkstyle/checkstyle.xml'
 let g:ale_kotlin_languageserver_executable = '/home/ryujin/Apps/KotlinLanguageServer/build/install/kotlin-language-server/bin/kotlin-language-server'
 let g:ale_java_javalsp_executable = '/home/ryujin/Apps/java-language-server/dist/mac/bin/launcher'
 
