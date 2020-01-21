@@ -158,6 +158,7 @@ set switchbuf=useopen,usetab
 set splitbelow
 set splitright
 set hidden                            " Avoid loosing unsaved work when changing buffers.
+set spelllang=en,es
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
