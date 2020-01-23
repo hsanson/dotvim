@@ -698,10 +698,12 @@ let g:ale_virtualtext_cursor = 1
 let g:ale_virtualtext_prefix = ' '
 
 let g:ale_fixers = {
+  \   '*': ['remove_trailing_lines', 'trim_whitespace'],
   \   'bib': ['bibclean'],
   \   'python': ['yapf'],
   \   'openapi': ['prettier'],
-  \   'yaml': ['prettier']
+  \   'yaml': ['prettier'],
+  \   'ruby': ['rubocop']
 \}
 
 let g:ale_linters = {
