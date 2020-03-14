@@ -112,7 +112,6 @@ Plug 'habamax/vim-asciidoctor'
 
 " Document editing
 Plug 'lervag/vimtex'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 " Linting and Auto completion
 Plug '~/Projects/vim/ale'
@@ -125,7 +124,6 @@ Plug 'prabirshrestha/asyncomplete-file.vim'
 " Code navigation
 Plug 'mcchrish/nnn.vim'
 Plug 'cloudhead/neovim-fuzzy'
-Plug 'KaraMCC/vim-gemini'
 
 " Visual aid and eyecandy
 Plug 'itchyny/lightline.vim'
@@ -739,7 +737,6 @@ let g:ale_linters = {
   \   'xml': ['android'],
   \   'java': ['checkstyle', 'pmd', 'javalsp'],
   \   'kotlin': ['ktlint'],
-  \   'javascript': ['eslint'],
   \   'text': ['proselint', 'write-good'],
   \   'vim': ['vint'],
   \   'yaml': ['yamllint'],
