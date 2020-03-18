@@ -79,6 +79,7 @@ Plug '~/Projects/vim/vim-android'
 Plug '~/Projects/vim/vim-winmode'
 Plug '~/Projects/vim/vim-im'
 Plug '~/Projects/vim/vim-openapi'
+Plug '~/Projects/vim/vim-review'
 
 " Helper and tools
 Plug 'junegunn/vim-easy-align'
