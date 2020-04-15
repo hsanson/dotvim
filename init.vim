@@ -40,12 +40,11 @@
 ""       # Only works with java8 (update-java-alternatives)
 ""       git clone https://github.com/fwcd/KotlinLanguageServer.git
 ""       cd KotlinLanguageServer.git
-""       ./gradlew build -x test
-""       cp -rf build/install/kotlin-language-server ~/.config/nvim/tools/
+""       ./gradlew :server:installDist
 ""
 ""    Ktlint
 ""
-""       curl -sSLO https://github.com/shyiko/ktlint/releases/download/0.24.0/ktlint
+""       curl -sSLO https://github.com/shyiko/ktlint/releases/download/0.36.0/ktlint
 ""       chmod a+x ktlint
 ""       sudo mv ktlint /usr/local/bin/
 ""
