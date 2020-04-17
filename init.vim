@@ -116,7 +116,6 @@ Plug 'lervag/vimtex'
 " Linting and Auto completion
 Plug '~/Projects/vim/ale'
 Plug 'liuchengxu/vista.vim'
-Plug 'maximbaz/lightline-ale'
 Plug 'sirver/ultisnips'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-file.vim'
@@ -126,7 +125,8 @@ Plug 'mcchrish/nnn.vim'
 Plug 'cloudhead/neovim-fuzzy'
 
 " Visual aid and eyecandy
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Vim Plugin Testing
 Plug 'junegunn/vader.vim'
@@ -299,7 +299,8 @@ augroup SyntaxGroup
 augroup END
 
 let g:one_allow_italics = 1
-colors PaperColor
+colors iceberg
+let g:airline_theme='iceberg'
 
 " Apply some color to the popup menu used for auto-completion.
 highlight Pmenu ctermbg=203 gui=bold
@@ -339,52 +340,35 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
 augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" lightline status line
+" airline status line
 "
+let g:airline_powerline_fonts = 1
+let airline#extensions#ale#warning_symbol = ''
+let airline#extensions#ale#error_symbol = ''
+let airline#extensions#ale#checking_symbol = ''
+let airline#extensions#ale#show_line_numbers = 0
+let g:airline#extensions#whitespace#enabled = 0
 
-let g:lightline#ale#indicator_checking = ''
-let g:lightline#ale#indicator_warnings = ''
-let g:lightline#ale#indicator_errors   = ''
-let g:lightline#ale#indicator_ok       = ''
-
-let g:lightline = {
-  \ 'colorcheme': 'iceberg',
-  \ 'active': {
-  \    'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'readonly', 'filename', 'modified' ] ],
-  \    'right': [ ['gradle_project'], ['gradle_running'], ['linter_checking'], ['linter_errors'], ['linter_warnings'], ['linter_ok'], ['lineinfo'], ['percent'] ]
-  \ },
-  \ 'inactive': {
-  \    'left': [ [ 'filename' ] ],
-  \    'right': [ ['lineinfo'], ['percent'] ]
-  \ },
-  \ 'component': {
-  \    'readonly': '%{&readonly?"":""}',
-  \    'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
-  \    },
-  \ 'component_visible_condition': {
-  \    'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
-  \    },
-  \ 'component_expand': {
-  \      'linter_checking': 'lightline#ale#checking',
-  \      'linter_warnings': 'lightline#ale#warnings',
-  \      'linter_errors': 'lightline#ale#errors',
-  \      'linter_ok': 'lightline#ale#ok',
-  \      'gradle_errors': 'lightline#gradle#errors',
-  \      'gradle_warnings': 'lightline#gradle#warnings',
-  \      'gradle_running': 'lightline#gradle#running',
-  \      'gradle_project': 'lightline#gradle#project'
-  \    },
-  \ 'component_type': {
-  \      'gradle_erros': 'error',
-  \      'gradle_warnings': 'warning',
-  \      'gradle_running': 'left',
-  \      'gradle_project': 'right',
-  \      'linter_checking': 'left',
-  \      'linter_warnings': 'warning',
-  \      'linter_errors': 'error',
-  \      'linter_ok': 'left'
-  \    }
-  \ }
+let g:airline_mode_map = {
+    \ '__'     : '-',
+    \ 'c'      : 'C',
+    \ 'i'      : 'I',
+    \ 'ic'     : 'I',
+    \ 'ix'     : 'I',
+    \ 'n'      : 'N',
+    \ 'multi'  : 'M',
+    \ 'ni'     : 'N',
+    \ 'no'     : 'N',
+    \ 'R'      : 'R',
+    \ 'Rv'     : 'R',
+    \ 's'      : 'S',
+    \ 'S'      : 'S',
+    \ ''     : 'S',
+    \ 't'      : 'T',
+    \ 'v'      : 'V',
+    \ 'V'      : 'V',
+    \ ''     : 'V',
+    \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Search
