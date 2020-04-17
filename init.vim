@@ -159,6 +159,7 @@ set splitbelow
 set splitright
 set hidden                            " Avoid loosing unsaved work when changing buffers.
 set spelllang=en,es
+set noemoji                           " Fix emoji rendering.
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -689,6 +690,7 @@ let g:nnn#layout = 'call ' . string(function('<SID>layout')) . '()'
 let g:ale_sign_info = ''
 let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
+let g:ale_sign_priority = 4
 let g:ale_open_list = 0
 let g:ale_echo_msg_format = '%severity% [%linter%] (%code%) - %s'
 let g:ale_echo_msg_info_str = ''
@@ -729,9 +731,16 @@ let g:ale_linters = {
   \   'mail': ['proselint', 'write-good']
 \}
 
+let g:ale_pattern_options = {
+\   '.gitlab-ci\.yml$': {
+\       'ale_linters': ['gitlablint', 'yamllint'],
+\   },
+\}
+
 let g:ale_java_checkstyle_config='config/checkstyle/checkstyle.xml'
-let g:ale_kotlin_languageserver_executable = '/home/ryujin/Apps/KotlinLanguageServer/server/build/install/server/bin/kotlin-language-server'
+let g:ale_kotlin_languageserver_executable = '/home/ryujin/Apps/KotlinLanguageServer/server/build/install/server/bin/server'
 let g:ale_java_javalsp_executable = '/home/ryujin/Apps/java-language-server/dist/lang_server_linux.sh'
+let g:ale_sh_bashate_options = '-i E003 --max-lin-length 100'
 
 " Helper method used to check if the loclist is visible or not.
 function! s:visibleLoc()
@@ -771,3 +780,4 @@ let g:vista#renderer#icons = {
       \ 'field': '',
       \ 'fields': '',
       \}
+
