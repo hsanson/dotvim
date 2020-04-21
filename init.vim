@@ -14,7 +14,7 @@
 ""      silversearcher-ag jq zathura python3-pip python2-pip libncurses5-dev \
 ""      xsel
 ""
-""    pip3 install --user neovim-remote neovim
+""    pip3 install --user neovim-remote neovim vim-vint
 ""    pip2 install --user neovim-remote neovim
 ""
 ""  Install optional ALE linters and tools:
