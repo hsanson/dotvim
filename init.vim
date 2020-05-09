@@ -19,7 +19,7 @@
 ""
 ""  Install optional ALE linters and tools:
 ""
-""    sudo apt-get install shellcheck chktex lacheck nodejs ruby2.5 python3-pip fzy
+""    sudo apt-get install shellcheck chktex lacheck nodejs ruby2.5 python3-pip
 ""    pip3 install --user python-language-server jedi proselint autopep8 \
 ""         flake8 pyflakes rope pycodestyle pydocstyle yapf yamllint
 ""    sudo gem install solargraph rubocop sqlint mdl
@@ -100,7 +100,6 @@ Plug 'kana/vim-textobj-function'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'morhetz/gruvbox'
 Plug 'cocopon/iceberg.vim'
-Plug 'morhetz/gruvbox'
 
 " Syntax and language support
 Plug 'udalov/kotlin-vim'
@@ -123,7 +122,9 @@ Plug 'prabirshrestha/asyncomplete-file.vim'
 
 " Code navigation
 Plug 'mcchrish/nnn.vim'
-Plug 'cloudhead/neovim-fuzzy'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 
 " Visual aid and eyecandy
 Plug 'vim-airline/vim-airline'
@@ -631,12 +632,13 @@ let g:go_fmt_autosave = 0
 ""      sa{motion}i - Add input surrounding.
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" FZY Plugin
+" FZF Plugin
 "
 " Resources:
 "   - https://jesseleite.com/posts/4/project-search-your-feelings
-nnoremap <leader>p :FuzzyOpen<CR>
-nnoremap <leader>o :FuzzyGrep<CR>
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+nnoremap <leader>p :Files<CR>
+nnoremap <leader>o :Ag<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NNN Plugin
