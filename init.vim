@@ -684,7 +684,8 @@ let g:ale_fixers = {
   \   'python': ['yapf'],
   \   'openapi': ['prettier'],
   \   'yaml': ['prettier'],
-  \   'ruby': ['rubocop']
+  \   'ruby': ['rubocop'],
+  \   'kotlin': ['ktlint']
 \}
 
 let g:ale_linters = {
@@ -700,7 +701,7 @@ let g:ale_linters = {
   \   'groovy': ['android'],
   \   'xml': ['android'],
   \   'java': ['checkstyle', 'javalsp'],
-  \   'kotlin': ['ktlint', 'languageserver'],
+  \   'kotlin': ['ktlin', 'languageserver'],
   \   'javascript': ['eslint'],
   \   'text': ['proselint', 'write-good'],
   \   'vim': ['vint'],
