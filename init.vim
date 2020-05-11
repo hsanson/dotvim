@@ -35,6 +35,12 @@
 ""      mvn package
 ""      cp out/fat-jar.jar $VIMHOME/tools/javacs.jar
 ""
+""    Eclipse Language Server
+""
+""       git clone https://github.com/eclipse/eclipse.jdt.ls.git
+""       cd eclipse.jdt.ls
+""       ./mvnw clean verify
+""
 ""    Kotlin Language Server
 ""
 ""       # Only works with java8 (update-java-alternatives)
@@ -723,6 +729,8 @@ let g:ale_java_checkstyle_config='config/checkstyle/checkstyle.xml'
 let g:ale_kotlin_languageserver_executable = '/home/ryujin/Apps/KotlinLanguageServer/server/build/install/server/bin/server'
 let g:ale_java_javalsp_executable = '/home/ryujin/Apps/java-language-server/dist/lang_server_linux.sh'
 let g:ale_sh_bashate_options = '-i E003 --max-lin-length 100'
+
+let g:ale_java_eclipselsp_path = '/home/ryujin/Apps/eclipse.jdt.ls'
 
 " Helper method used to check if the loclist is visible or not.
 function! s:visibleLoc()
