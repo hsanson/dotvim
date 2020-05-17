@@ -301,6 +301,7 @@ augroup SyntaxGroup
   autocmd!
   " Force all colorschemes to have transparent background.
   au ColorScheme * hi Normal guibg=NONE ctermbg=NONE
+  au ColorScheme * hi NormalFloat guibg=NONE ctermbg=NONE
   au ColorScheme * hi EndOfBuffer guibg=NONE ctermbg=NONE
   " Make cursorline transparent too so only the line number is highlighted on the
   " current line.
@@ -652,22 +653,41 @@ nnoremap <leader>o :Ag<CR>
 let g:nnn#set_default_mappings = 0
 nnoremap - :Np '%:p:h'<CR>
 
-" Floating window (neovim)
+" Floating window with borders for NNN
+" https://github.com/neovim/neovim/issues/9718#issuecomment-559573308
 function! s:layout()
   let buf = nvim_create_buf(v:false, v:true)
 
   let height = &lines - (float2nr(&lines / 3))
-  let width = float2nr(&columns - (&columns * 2 / 3))
-
+  let width = float2nr(&columns - (&columns / 3))
+  let row = (&lines / 2) - (height / 2)
+  let column = (&columns / 2) - (width / 2)
   let opts = {
         \ 'relative': 'editor',
-        \ 'row': 2,
-        \ 'col': 8,
+        \ 'row': row,
+        \ 'col': column,
         \ 'width': width,
-        \ 'height': height
+        \ 'height': height,
+        \ 'style': 'minimal'
         \ }
-
-  call nvim_open_win(buf, v:true, opts)
+  let top = '╭' . repeat('─', width - 2) . '╮'
+  let mid = '│' . repeat(' ', width - 2) . '│'
+  let bot = '╰' . repeat('─', width - 2) . '╯'
+  let lines = [top] + repeat([mid], height - 2) + [bot]
+  let s:buf = nvim_create_buf(v:false, v:true)
+  call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
+  call nvim_open_win(s:buf, v:true, opts)
+  set winhl=Normal:Floating
+  let opts.row += 1
+  let opts.height -= 2
+  let opts.col += 2
+  let opts.width -= 4
+  call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
+  augroup NNNGroup
+    autocmd!
+    au BufWipeout <buffer> exe 'bw '.s:buf
+  augroup END
+  "call nvim_open_win(buf, v:true, opts)
 endfunction
 let g:nnn#layout = 'call ' . string(function('<SID>layout')) . '()'
 
