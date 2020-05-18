@@ -702,9 +702,10 @@ endfun
 function! LazyGit() abort
   let buf = nvim_create_buf(v:false, v:true)
 
-  let border = 10
-  let height = &lines - border
-  let width = &columns - border
+  let vertical_border = 2
+  let horizontal_border = 15
+  let height = &lines - vertical_border
+  let width = &columns - horizontal_border
   let row = (&lines / 2) - (height / 2)
   let column = (&columns / 2) - (width / 2)
   let opts = {
