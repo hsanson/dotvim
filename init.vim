@@ -715,6 +715,45 @@ function! LazyGit() abort
 endfunction
 
 nnoremap <Leader>g :call LazyGit()<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" FloatTerm
+"
+function! FloatTerm() abort
+  let buf = nvim_create_buf(v:false, v:true)
+
+  let vertical_border = 2
+  let horizontal_border = 15
+  let height = &lines - vertical_border
+  let width = &columns - horizontal_border
+  let row = (&lines / 2) - (height / 2)
+  let column = (&columns / 2) - (width / 2)
+  let opts = {
+        \ 'relative': 'editor',
+        \ 'row': row,
+        \ 'col': column,
+        \ 'width': width,
+        \ 'height': height,
+        \ 'style': 'minimal'
+        \ }
+  let top = '╭' . repeat('─', width - 2) . '╮'
+  let mid = '│' . repeat(' ', width - 2) . '│'
+  let bot = '╰' . repeat('─', width - 2) . '╯'
+  let lines = [top] + repeat([mid], height - 2) + [bot]
+  let s:buf = nvim_create_buf(v:false, v:true)
+  call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
+  call nvim_open_win(s:buf, v:true, opts)
+  set winhl=Normal:Floating
+  let opts.row += 1
+  let opts.height -= 2
+  let opts.col += 2
+  let opts.width -= 4
+  call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
+  call termopen('bash', { 'on_exit': 'OnLazyGitExit' })
+  startinsert
+endfunction
+
+nnoremap <Leader>t :call FloatTerm()<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ALE Plugin
 "
