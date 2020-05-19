@@ -71,7 +71,7 @@ if !has('nvim')
   call ch_logfile(expand('/tmp/chlogfile.log'), 'w')
 endif
 
-let g:ale_completion_enabled = 0
+let g:ale_completion_enabled = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Plugins
@@ -123,8 +123,6 @@ Plug 'lervag/vimtex'
 Plug '~/Projects/vim/ale'
 Plug 'liuchengxu/vista.vim'
 Plug 'sirver/ultisnips'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-file.vim'
 
 " Code navigation
 Plug 'mcchrish/nnn.vim'
@@ -331,23 +329,6 @@ match ZenkakuSpace /　/
 
 " Highlight color codes with the actual color. Requires color_highlight plugin.
 let g:colorizer_auto_filetype='css,html'
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Asynccomplte
-"
-augroup AsyncComplete
-au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#ale#get_source_options({
-      \ 'priority': 10,
-      \ }))
-
-au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-    \ 'name': 'file',
-    \ 'whitelist': ['*'],
-    \ 'priority': 9,
-    \ 'completor': function('asyncomplete#sources#file#completor')
-    \ }))
-augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " airline status line
