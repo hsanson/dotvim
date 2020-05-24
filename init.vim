@@ -625,6 +625,7 @@ let g:go_fmt_autosave = 0
 " Resources:
 "   - https://jesseleite.com/posts/4/project-search-your-feelings
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 nnoremap <leader>p :Files<CR>
 nnoremap <leader>o :Ag<CR>
 
