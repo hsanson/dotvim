@@ -128,7 +128,7 @@ Plug 'sirver/ultisnips'
 Plug 'mcchrish/nnn.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-
+Plug 'unblevable/quick-scope'
 
 " Visual aid and eyecandy
 Plug 'vim-airline/vim-airline'
@@ -522,6 +522,11 @@ scriptencoding utf-8
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" QuickScope Configuration
+"
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Markdown Plugin
