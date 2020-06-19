@@ -29,11 +29,10 @@
 ""    Java Language Server
 ""
 ""      # Only compiles with java8 (update-java-alternatives)
-""      git clone https://github.com/georgewfraser/vscode-javac.git
-""      cd vscode-javac
-""      sudo apt-get install maven
-""      mvn package
-""      cp out/fat-jar.jar $VIMHOME/tools/javacs.jar
+""      git clone https://github.com/georgewfraser/java-language-server
+""      cd java-language-server
+""      ./scripts/link_{linux|mac|windows}.sh
+""      mvn package -DskipTests
 ""
 ""    Eclipse Language Server
 ""
@@ -816,7 +815,7 @@ let g:ale_pattern_options = {
 
 let g:ale_java_checkstyle_config='config/checkstyle/checkstyle.xml'
 let g:ale_kotlin_languageserver_executable = '/home/ryujin/Apps/KotlinLanguageServer/server/build/install/server/bin/kotlin-language-server'
-let g:ale_java_javalsp_executable = '/home/ryujin/Apps/java-language-server/dist/lang_server_linux.sh'
+let g:ale_java_javalsp_executable = '$HOME/Apps/java-language-server/dist/lang_server_linux.sh'
 let g:ale_sh_bashate_options = '-i E003 --max-lin-length 100'
 
 let g:ale_java_eclipselsp_path = '/home/ryujin/Apps/eclipse.jdt.ls'
