@@ -49,7 +49,7 @@
 ""
 ""    Ktlint
 ""
-""       curl -sSLO https://github.com/shyiko/ktlint/releases/download/0.36.0/ktlint
+""       curl -sSLO https://github.com/shyiko/ktlint/releases/download/0.37.2/ktlint
 ""       chmod a+x ktlint
 ""       sudo mv ktlint /usr/local/bin/
 ""
@@ -798,7 +798,7 @@ let g:ale_linters = {
   \   'groovy': ['android'],
   \   'xml': ['android'],
   \   'java': ['checkstyle', 'javalsp'],
-  \   'kotlin': ['ktlin', 'languageserver'],
+  \   'kotlin': ['ktlint', 'languageserver'],
   \   'javascript': ['eslint'],
   \   'text': ['proselint', 'write-good'],
   \   'vim': ['vint'],
@@ -815,7 +815,7 @@ let g:ale_pattern_options = {
 
 let g:ale_java_checkstyle_config='config/checkstyle/checkstyle.xml'
 let g:ale_kotlin_languageserver_executable = '/home/ryujin/Apps/KotlinLanguageServer/server/build/install/server/bin/kotlin-language-server'
-let g:ale_java_javalsp_executable = '$HOME/Apps/java-language-server/dist/lang_server_linux.sh'
+let g:ale_java_javalsp_executable = '/home/ryujin/Apps/java-language-server/dist/lang_server_linux.sh'
 let g:ale_sh_bashate_options = '-i E003 --max-lin-length 100'
 
 let g:ale_java_eclipselsp_path = '/home/ryujin/Apps/eclipse.jdt.ls'
