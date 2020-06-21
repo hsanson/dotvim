@@ -24,7 +24,8 @@
 ""         flake8 pyflakes rope pycodestyle pydocstyle yapf yamllint
 ""    sudo gem install solargraph rubocop sqlint mdl
 ""    sudo npm install --global prettier vue-language-server \
-""         javascript-typescript-langserver write-good
+""         javascript-typescript-langserver write-good \
+""         dockerfile_lint
 ""
 ""    Java Language Server
 ""
@@ -787,6 +788,7 @@ let g:ale_fixers = {
 
 let g:ale_linters = {
   \   'markdown': ['mdl'],
+  \   'dockerfile': ['dockerfile_lint'],
   \   'bib': ['bibclean'],
   \   'go': ['gofmt', 'golint', 'go vet', 'golangserver'],
   \   'latex': ['proselint', 'chktex', 'lacheck'],
