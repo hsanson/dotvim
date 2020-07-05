@@ -71,7 +71,6 @@ if !has('nvim')
   call ch_logfile(expand('/tmp/chlogfile.log'), 'w')
 endif
 
-let g:ale_completion_enabled = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Plugins
@@ -123,6 +122,8 @@ Plug 'lervag/vimtex'
 Plug '~/Projects/vim/ale'
 Plug 'liuchengxu/vista.vim'
 Plug 'sirver/ultisnips'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-file.vim'
 
 " Code navigation
 Plug 'mcchrish/nnn.vim'
@@ -524,6 +525,15 @@ let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Asyncomplete
+"
+augroup AsynCompleteAle
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#ale#get_source_options({
+      \ 'priority': 10,
+      \ }))
+augroup END
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " QuickScope Configuration
 "
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
@@ -775,6 +785,7 @@ let g:ale_echo_msg_warning_str = ''
 let g:ale_writegood_options = '--no-passive'
 let g:ale_virtualtext_cursor = 1
 let g:ale_virtualtext_prefix = ' '
+set omnifunc=ale#completion#OmniFunc
 
 let g:ale_fixers = {
   \   '*': ['remove_trailing_lines', 'trim_whitespace'],
