@@ -9,17 +9,16 @@
 ""  they can be used. In a Ubuntu/Debian computer you can easily install them
 ""  with the following command:
 ""
-""    sudo apt-get install xsel build-essentials openjdk-7-jdk cmake g++ \
+""    sudo apt-get install xsel cmake g++ \
 ""      pkg-config unzip automake autoconf libtool-bin \
-""      silversearcher-ag jq zathura python3-pip python2-pip libncurses5-dev \
+""      silversearcher-ag jq zathura libncurses5-dev \
 ""      xsel
 ""
 ""    pip3 install --user neovim-remote neovim vim-vint
-""    pip2 install --user neovim-remote neovim
 ""
 ""  Install optional ALE linters and tools:
 ""
-""    sudo apt-get install shellcheck chktex lacheck nodejs ruby2.5 python3-pip
+""    sudo apt-get install shellcheck chktex lacheck nodejs ruby2.5
 ""    pip3 install --user python-language-server jedi proselint autopep8 \
 ""         flake8 pyflakes rope pycodestyle pydocstyle yapf yamllint
 ""    sudo gem install solargraph rubocop sqlint mdl
@@ -798,7 +797,8 @@ let g:ale_fixers = {
 \}
 
 let g:ale_linters = {
-  \   'markdown': ['mdl'],
+  \   'markdown': ['mdl', 'vale'],
+  \   'asciidoctor': ['vale'],
   \   'dockerfile': ['dockerfile_lint'],
   \   'bib': ['bibclean'],
   \   'go': ['gofmt', 'golint', 'go vet', 'golangserver'],
@@ -825,6 +825,10 @@ let g:ale_pattern_options = {
 \       'ale_linters': ['gitlablint', 'yamllint'],
 \   },
 \}
+
+let g:ale_linter_aliases = {
+      \ 'asciidoctor': 'asciidoc'
+      \}
 
 let g:ale_java_checkstyle_config='config/checkstyle/checkstyle.xml'
 let g:ale_kotlin_languageserver_executable = '/home/ryujin/Apps/KotlinLanguageServer/server/build/install/server/bin/kotlin-language-server'
