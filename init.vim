@@ -841,34 +841,6 @@ let g:ale_sh_bashate_options = '-i E003 --max-lin-length 100'
 
 let g:ale_java_eclipselsp_path = '/home/ryujin/Apps/eclipse.jdt.ls'
 
-" Helper method used to check if the loclist is visible or not.
-function! s:visibleLoc()
-   return len(filter(getwininfo(), {i,v -> v.loclist}))
-endfunc
-
-" Magic function that synchronizes the cursor in the loclist with the cursor on
-" the current buffer.
-function! s:followLine()
-   let curLine = line('.')
-   if (exists('b:lastLine') && b:lastLine == curLine) || 0 == s:visibleLoc()
-      return
-   endif
-   let b:lastLine = line('.')
-   let ent = len(filter(getloclist('.'), {i,v -> v.lnum <= curLine}))
-   if ent < 1 || (exists('b:lastEntry') && b:lastEntry == ent)
-      return
-   endif
-   let b:lastEntry = ent
-   let pos = [ 0, curLine, col('.'), 0 ]
-   exe 'll '.ent
-   call setpos('.', pos)
-endfunc
-
-augroup AleGroup
-  autocmd!
-  au CursorMoved <buffer> call <SID>followLine()
-augroup END
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vista Plugin
 "
