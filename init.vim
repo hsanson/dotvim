@@ -644,8 +644,10 @@ let g:go_fmt_autosave = 0
 "   - https://jesseleite.com/posts/4/project-search-your-feelings
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
-nnoremap <leader>p :Files<CR>
-nnoremap <leader>o :Ag<CR>
+command! -bang -nargs=* Find call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
+nnoremap <leader>p :GFiles<CR>
+nnoremap <leader>o :Find<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NNN Plugin
