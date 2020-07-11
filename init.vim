@@ -525,8 +525,13 @@ let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Asyncomplete
 "
+inoremap <expr> <C-j>   pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <C-k>   pumvisible() ? "\<C-p>" : "\<C-k>"
+inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+
 augroup AsynCompleteAle
-au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#ale#get_source_options({
+  au User asyncomplete_setup call asyncomplete#register_source(
+      \ asyncomplete#sources#ale#get_source_options({
       \ 'priority': 10,
       \ }))
 augroup END
