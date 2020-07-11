@@ -307,8 +307,7 @@ augroup SyntaxGroup
 augroup END
 
 let g:one_allow_italics = 1
-colors gruvbox
-let g:airline_theme='gruvbox'
+colors iceberg
 
 " Apply some color to the popup menu used for auto-completion.
 highlight Pmenu ctermbg=203 gui=bold
