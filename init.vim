@@ -790,7 +790,6 @@ let g:ale_echo_msg_warning_str = ''
 let g:ale_writegood_options = '--no-passive'
 let g:ale_virtualtext_cursor = 1
 let g:ale_virtualtext_prefix = ' '
-set omnifunc=ale#completion#OmniFunc
 
 let g:ale_fixers = {
   \   '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -842,6 +841,23 @@ let g:ale_java_javalsp_executable = '/home/ryujin/Apps/java-language-server/dist
 let g:ale_sh_bashate_options = '-i E003 --max-lin-length 100'
 
 let g:ale_java_eclipselsp_path = '/home/ryujin/Apps/eclipse.jdt.ls'
+
+function ALELSPMappings()
+  for linter in ale#linter#Get(&filetype)
+    if !empty(linter.lsp) && ale#lsp_linter#CheckWithLSP(bufnr(''), linter)
+      nnoremap <buffer> gk :ALEDocumentation<cr>
+      nnoremap <buffer> gr :ALEFindReferences<cr>
+      nnoremap <buffer> gd :ALEGoToDefinition<cr>
+      nnoremap <buffer> gy :ALEGoToTypeDefinition<cr>
+      nnoremap <buffer> gh :ALEHover<cr>
+      setlocal omnifunc=ale#completion#OmniFunc
+    endif
+  endfor
+endfunction
+
+augroup ALEMappings
+  autocmd BufRead,FileType * call ALELSPMappings()
+augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vista Plugin
