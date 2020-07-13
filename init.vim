@@ -83,6 +83,8 @@ Plug '~/Projects/vim/vim-winmode'
 Plug '~/Projects/vim/vim-im'
 Plug '~/Projects/vim/vim-openapi'
 Plug '~/Projects/vim/vim-review'
+Plug '~/Projects/vim/slimux'
+Plug '~/Projects/vim/ale'
 
 " Helper and tools
 Plug 'junegunn/vim-easy-align'
@@ -91,7 +93,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-speeddating'
 Plug 'machakann/vim-sandwich'
-Plug '~/Projects/vim/slimux'
 Plug 'jeanCarloMachado/vim-toop'
 Plug 'romainl/vim-cool'
 
@@ -118,7 +119,6 @@ Plug 'habamax/vim-asciidoctor'
 Plug 'lervag/vimtex'
 
 " Linting and Auto completion
-Plug '~/Projects/vim/ale'
 Plug 'liuchengxu/vista.vim'
 Plug 'sirver/ultisnips'
 Plug 'prabirshrestha/asyncomplete.vim'
