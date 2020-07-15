@@ -646,7 +646,7 @@ let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 command! -bang -nargs=* Find call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
-nnoremap <leader>p :GFiles<CR>
+nnoremap <leader>p :Files<CR>
 nnoremap <leader>o :Find<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
