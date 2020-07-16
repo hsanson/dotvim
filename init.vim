@@ -68,8 +68,8 @@
 
 if !has('nvim')
   call ch_logfile(expand('/tmp/chlogfile.log'), 'w')
+  set ttymouse=xterm
 endif
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Plugins
@@ -120,9 +120,14 @@ Plug 'lervag/vimtex'
 
 " Linting and Auto completion
 Plug 'liuchengxu/vista.vim'
-Plug 'sirver/ultisnips'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-file.vim'
+
+if has('python3')
+    Plug 'sirver/ultisnips'
+    Plug 'honza/vim-snippets'
+    Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
+endif
 
 " Code navigation
 Plug 'mcchrish/nnn.vim'
@@ -237,15 +242,6 @@ nnoremap <Leader>j <C-w>j
 nnoremap <Leader>k <C-w>k
 nnoremap <Leader>l <C-w>l
 
-" Allow moving between terminal buffer and normal buffers using leader and hjkl
-" navigation keys.
-if has('nvim')
-  tnoremap <Esc> <C-\><C-n>
-  tnoremap <Leader>h <C-\><C-n><C-w>h
-  tnoremap <Leader>j <C-\><C-n><C-w>j
-  tnoremap <Leader>k <C-\><C-n><C-w>k
-  tnoremap <Leader>l <C-\><C-n><C-w>l
-endif
 
 " WinMode
 nmap <leader>w <Plug>WinModeStart
@@ -258,11 +254,12 @@ let g:slimux_pane_format = '#(~/.tmux/wname #W)'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Toop + Slimux collaboration
 "
-" <leader>sG   Send all text from cursor to end of file.
-" <leader>sGG  Send all text from cursor to start of file.
-" <leader>s$   Send all text from cursor to end of line.
-" <leader>s<motion> Send text from cursor to end of motion.
-call toop#mapFunction('SlimuxSendCode', '<leader>s')
+" <leader>rG   Send all text from cursor to end of file.
+" <leader>rGG  Send all text from cursor to start of file.
+" <leader>r$   Send all text from cursor to end of line.
+" <leader>r_   Send current line independent of cursor position.
+" <leader>r<motion> Send text from cursor to end of motion.
+call toop#mapFunction('SlimuxSendCode', '<leader>r')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Filetype Settings
@@ -288,7 +285,8 @@ filetype plugin indent on " Re-enable after pathogen is loaded.
 syntax on sync minlines=256
 
 " Enable true color support in NEOVIM
-if has('termguicolors')
+" Setting this on vim disables terminal colors.
+if has('nvim') && has('termguicolors')
   set termguicolors
 endif
 
@@ -405,9 +403,8 @@ command! -range=% JSONFormat <line1>,<line2>!jq .
 ""   - Selecting text with the mouse wont include the left numbering.
 "" Note: Mouse features do not work when running vim inside a tmux window.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set mouse=nv                           " Enable the mouse.
+set mouse=a                           " Enable the mouse.
 set mousehide
-"set ttymouse=xterm2                   " Allow text selction work with tmux
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tabs vs Spaces war
@@ -518,9 +515,7 @@ scriptencoding utf-8
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UltiSnips Plugin
 "
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+let g:UltiSnipsExpandTrigger='<c-e>'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Asyncomplete
@@ -534,6 +529,14 @@ augroup AsynCompleteAle
       \ asyncomplete#sources#ale#get_source_options({
       \ 'priority': 10,
       \ }))
+
+  if has('python3')
+    call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
+        \ 'name': 'ultisnips',
+        \ 'whitelist': ['*'],
+        \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
+        \ }))
+endif
 augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
