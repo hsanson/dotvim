@@ -451,7 +451,14 @@ let html_number_lines = 0
 " Auto formatting options. These determine where lines will be broken when
 " auto wrapping. The last two options (mM) are needed for multi byte characters (e.g.
 " Japanese)
-set formatoptions=tcqjmM
+set formatoptions=tcrqjmM
+
+" Some runtime configuration files like to override formatoptions depending on
+" filetype but we like to keep out the o option so forced here for all
+" filetypes.
+augroup FormatOptions
+  au FileType * setlocal formatoptions-=o
+augroup END
 
 " There are two word wrap methods, one with line breaks that adds an actual
 " '\n' character at the break place and without line breaks that only displays
