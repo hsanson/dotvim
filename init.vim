@@ -427,7 +427,7 @@ set softtabstop=2
 " Improve Vim's Command Line Autocompletion
 set wildmode=full wildmenu              " Command-line tab completion
 set infercase                           " AutoComplete in Vim
-set completeopt=longest,menu,menuone,preview,noselect,noinsert
+set completeopt=menu,preview
 
 set wildignore+=*.o,*.obj,*.pyc,*.pyo,*.DS_STORE,*.db,*.swc,*.rbc " Binary objects
 set wildignore+=__pycache__
@@ -529,6 +529,8 @@ let g:UltiSnipsExpandTrigger='<c-e>'
 "
 inoremap <expr> <C-j>   pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <C-k>   pumvisible() ? "\<C-p>" : "\<C-k>"
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <S-Tab>   pumvisible() ? "\<C-p>" : "\<C-k>"
 inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 
 augroup AsynCompleteAle
@@ -538,12 +540,13 @@ augroup AsynCompleteAle
       \ }))
 
   if has('python3')
+    let g:UltiSnipsExpandTrigger='<C-e>'
     call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
         \ 'name': 'ultisnips',
         \ 'whitelist': ['*'],
         \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
         \ }))
-endif
+  endif
 augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
