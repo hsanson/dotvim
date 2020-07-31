@@ -24,7 +24,7 @@
 ""    sudo gem install solargraph rubocop sqlint mdl
 ""    sudo npm install --global prettier vue-language-server \
 ""         javascript-typescript-langserver write-good \
-""         dockerfile_lint
+""         dockerfile_lint markdownlint-cli
 ""
 ""    Java Language Server
 ""
@@ -815,7 +815,7 @@ let g:ale_fixers = {
 \}
 
 let g:ale_linters = {
-  \   'markdown': ['mdl', 'vale'],
+  \   'markdown': ['markdownlint', 'vale'],
   \   'asciidoctor': ['vale'],
   \   'dockerfile': ['dockerfile_lint'],
   \   'bib': ['bibclean'],
