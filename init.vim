@@ -114,6 +114,7 @@ Plug 'posva/vim-vue'
 Plug 'neomutt/neomutt.vim'
 Plug 'tpope/vim-markdown'
 Plug 'habamax/vim-asciidoctor'
+Plug 'java-syntax.vim'
 
 " Document editing
 Plug 'lervag/vimtex'
