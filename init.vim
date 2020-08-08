@@ -105,6 +105,7 @@ Plug 'kana/vim-textobj-function'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'morhetz/gruvbox'
 Plug 'cocopon/iceberg.vim'
+Plug 'jcorbin/darkula'
 
 " Syntax and language support
 Plug 'udalov/kotlin-vim'
@@ -114,7 +115,6 @@ Plug 'posva/vim-vue'
 Plug 'neomutt/neomutt.vim'
 Plug 'tpope/vim-markdown'
 Plug 'habamax/vim-asciidoctor'
-Plug 'java-syntax.vim'
 
 " Document editing
 Plug 'lervag/vimtex'
@@ -306,7 +306,7 @@ augroup SyntaxGroup
 augroup END
 
 let g:one_allow_italics = 1
-colors iceberg
+colors darkula
 
 " Apply some color to the popup menu used for auto-completion.
 highlight Pmenu ctermbg=203 gui=bold
