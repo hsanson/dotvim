@@ -428,7 +428,7 @@ set softtabstop=2
 " Improve Vim's Command Line Autocompletion
 set wildmode=full wildmenu              " Command-line tab completion
 set infercase                           " AutoComplete in Vim
-set completeopt=menu,preview
+set completeopt=menuone,noinsert,longest,preview
 
 set wildignore+=*.o,*.obj,*.pyc,*.pyo,*.DS_STORE,*.db,*.swc,*.rbc " Binary objects
 set wildignore+=__pycache__
@@ -528,11 +528,12 @@ let g:UltiSnipsExpandTrigger='<c-e>'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Asyncomplete
 "
-inoremap <expr> <C-j>   pumvisible() ? "\<C-n>" : "\<C-j>"
-inoremap <expr> <C-k>   pumvisible() ? "\<C-p>" : "\<C-k>"
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<C-j>"
-inoremap <expr> <S-Tab>   pumvisible() ? "\<C-p>" : "\<C-k>"
-inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+inoremap <expr> <cr>  pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+inoremap <expr> <Tab> pumvisible() ? asyncomplete#close_popup() : "\<Tab>"
+
+let g:asyncomplete_auto_completeopt = 0
 
 augroup AsynCompleteAle
   au User asyncomplete_setup call asyncomplete#register_source(
