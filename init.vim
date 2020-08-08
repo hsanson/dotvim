@@ -157,7 +157,6 @@ set noswapfile                        " More hassel than solution.
 set shortmess=atIc                    " Avoid unnecessary hit-enter prompts.
 set nojoinspaces                      " Avoid double spaces when joining lines
 set showcmd                           " Display commands as they are typed.
-set showmatch                         " Show briefly matching bracket when closing it.
 set scrolloff=9999                    " Always keep the cursor at the center of window.
 set lazyredraw                        " Improve performance
 set nofoldenable                      " Disable folding that slows down auto-completion
@@ -303,6 +302,9 @@ augroup SyntaxGroup
   " Make cursorline transparent too so only the line number is highlighted on the
   " current line.
   au ColorScheme * hi CursorLine guibg=NONE ctermbg=NONE term=NONE cterm=NONE
+
+  " Disable match paren that confuses me
+  au VimEnter * execute "NoMatchParen"
 augroup END
 
 let g:one_allow_italics = 1
