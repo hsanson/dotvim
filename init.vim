@@ -12,7 +12,7 @@
 ""    sudo apt-get install xsel cmake g++ \
 ""      pkg-config unzip automake autoconf libtool-bin \
 ""      silversearcher-ag jq zathura libncurses5-dev \
-""      xsel
+""      xsel texlive-extra-utils
 ""
 ""    pip3 install --user neovim-remote neovim vim-vint
 ""
