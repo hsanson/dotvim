@@ -114,6 +114,7 @@ Plug 'chrisbra/color_highlight'
 Plug 'posva/vim-vue'
 Plug 'neomutt/neomutt.vim'
 Plug 'tpope/vim-markdown'
+Plug 'reasonml-editor/vim-reason-plus'
 Plug 'habamax/vim-asciidoctor'
 
 " Document editing
@@ -856,6 +857,7 @@ let g:ale_java_checkstyle_config='config/checkstyle/checkstyle.xml'
 let g:ale_kotlin_languageserver_executable = '/home/ryujin/Apps/KotlinLanguageServer/server/build/install/server/bin/kotlin-language-server'
 let g:ale_java_javalsp_executable = '/home/ryujin/Apps/java-language-server/dist/lang_server_linux.sh'
 let g:ale_sh_bashate_options = '-i E003 --max-lin-length 100'
+let g:ale_reason_ls_executable = '/home/ryujin/Apps/rls-linux/reason-language-server'
 
 let g:ale_java_eclipselsp_path = '/home/ryujin/Apps/eclipse.jdt.ls'
 
