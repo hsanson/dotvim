@@ -106,6 +106,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'morhetz/gruvbox'
 Plug 'cocopon/iceberg.vim'
 Plug 'jcorbin/darkula'
+Plug 'franbach/miramare'
 
 " Syntax and language support
 Plug 'udalov/kotlin-vim'
