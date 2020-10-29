@@ -672,7 +672,7 @@ nnoremap <leader>o :Find<CR>
 " NNN Plugin
 "
 let g:nnn#set_default_mappings = 0
-nnoremap - :Np '%:p:h'<CR>
+nnoremap - :Np %:p:h<CR>
 
 " Floating window with borders for NNN
 " https://github.com/neovim/neovim/issues/9718#issuecomment-559573308

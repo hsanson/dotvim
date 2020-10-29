@@ -5,7 +5,8 @@ setlocal softtabstop=2
 setlocal shiftwidth=2
 setlocal textwidth=0
 setlocal wrap
-setlocal lbr
+setlocal linebreak
+setlocal spell
 
 setlocal formatoptions=cqln
 setlocal formatlistpat=^\\s*
