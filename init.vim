@@ -121,6 +121,7 @@ Plug 'habamax/vim-asciidoctor'
 
 " Document editing
 Plug 'lervag/vimtex'
+Plug 'alok/notational-fzf-vim'
 
 " Linting and Auto completion
 Plug 'liuchengxu/vista.vim'
@@ -566,6 +567,12 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 "
 nmap <leader>lv <Plug>MarkdownPreview
 nmap <leader>ll <Plug>MarkdownPreviewToggle
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Notational FZF Plugin
+"
+let g:nv_search_paths = ['~/Seafile/Notes']
+let g:nv_default_extension = '.adoc'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vimtex Plugin
