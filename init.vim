@@ -577,7 +577,7 @@ let g:nv_default_extension = '.adoc'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vimtex Plugin
 "
-let g:vimtex_view_method = 'zathura'
+let g:vimtex_view_method = 'general'
 let g:vimtex_quickfix_mode=0
 let conceallevel=1
 let g:tex_conceal='abdmg'
