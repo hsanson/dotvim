@@ -830,7 +830,7 @@ let g:ale_fixers = {
 
 let g:ale_linters = {
   \   'markdown': ['markdownlint', 'vale'],
-  \   'asciidoctor': ['vale'],
+  \   'asciidoc': ['vale'],
   \   'dockerfile': ['dockerfile_lint'],
   \   'bib': ['bibclean'],
   \   'go': ['gofmt', 'golint', 'go vet', 'golangserver'],
