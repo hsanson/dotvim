@@ -571,7 +571,7 @@ nmap <leader>ll <Plug>MarkdownPreviewToggle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Notational FZF Plugin
 "
-let g:nv_search_paths = ['~/Seafile/Notes']
+let g:nv_search_paths = ['~/Seafile/Notes', '~/Documents/Seafile/Notes']
 let g:nv_default_extension = '.adoc'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
