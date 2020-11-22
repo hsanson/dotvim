@@ -4,6 +4,7 @@ setlocal wrap           " Enable wrap of lines pass the right window border.
 setlocal linebreak      " Force wrap at word boundaries not chars
 setlocal nolist         " List command breaks soft wrapping.
 setlocal showbreak=…
+setlocal spell
 vnoremap j gj
 vnoremap k gk
 vnoremap 4 g$
