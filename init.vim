@@ -529,7 +529,9 @@ scriptencoding utf-8
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " UltiSnips Plugin
 "
-let g:UltiSnipsExpandTrigger='<c-e>'
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Asyncomplete
@@ -548,7 +550,6 @@ augroup AsynCompleteAle
       \ }))
 
   if has('python3')
-    let g:UltiSnipsExpandTrigger='<C-e>'
     call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
         \ 'name': 'ultisnips',
         \ 'whitelist': ['*'],
