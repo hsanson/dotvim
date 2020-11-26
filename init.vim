@@ -19,12 +19,12 @@
 ""  Install optional ALE linters and tools:
 ""
 ""    sudo apt-get install shellcheck chktex lacheck nodejs ruby2.5
-""    pip3 install --user python-language-server jedi proselint autopep8 \
+""    pip3 install --user jedi proselint autopep8 \
 ""         flake8 pyflakes rope pycodestyle pydocstyle yapf yamllint
 ""    sudo gem install solargraph rubocop sqlint mdl
 ""    sudo npm install --global prettier vue-language-server \
 ""         javascript-typescript-langserver write-good \
-""         dockerfile_lint markdownlint-cli
+""         dockerfile_lint markdownlint-cli pyright
 ""
 ""    Java Language Server
 ""
@@ -838,7 +838,7 @@ let g:ale_linters = {
   \   'tex': ['proselint', 'chktex', 'lacheck'],
   \   'plaintex': ['proselint', 'chktex', 'lacheck'],
   \   'help': [],
-  \   'python': ['flake8', 'pylint', 'pyls'],
+  \   'python': ['flake8', 'pylint', 'pyright'],
   \   'ruby': ['solargraph', 'rubocop', 'ruby'],
   \   'groovy': ['android'],
   \   'xml': ['android'],
