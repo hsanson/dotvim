@@ -135,7 +135,7 @@ if has('python3')
 endif
 
 " Code navigation
-Plug 'mcchrish/nnn.vim'
+Plug 'dylanaraps/fff.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'unblevable/quick-scope'
@@ -677,12 +677,11 @@ nnoremap <leader>p :Files<CR>
 nnoremap <leader>o :Find<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NNN Plugin
+" FFF Plugin
 "
-let g:nnn#set_default_mappings = 0
-nnoremap - :Np %:p:h<CR>
+nnoremap - :F %:p:h<CR>
 
-" Floating window with borders for NNN
+" Floating window with borders for NNN and FFF
 " https://github.com/neovim/neovim/issues/9718#issuecomment-559573308
 function! s:layout()
   let buf = nvim_create_buf(v:false, v:true)
@@ -718,7 +717,7 @@ function! s:layout()
   augroup END
   "call nvim_open_win(buf, v:true, opts)
 endfunction
-let g:nnn#layout = 'call ' . string(function('<SID>layout')) . '()'
+let g:fff#split = 'call ' . string(function('<SID>layout')) . '()'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Lazygit
