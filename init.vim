@@ -684,8 +684,7 @@ nnoremap - :F %:p:h<CR>
 " Floating window with borders for NNN and FFF
 " https://github.com/neovim/neovim/issues/9718#issuecomment-559573308
 function! s:layout()
-  let buf = nvim_create_buf(v:false, v:true)
-
+  let s:cwin = winnr()
   let height = &lines - (float2nr(&lines / 3))
   let width = float2nr(&columns - (&columns / 3))
   let row = (&lines / 2) - (height / 2)
@@ -714,8 +713,8 @@ function! s:layout()
   augroup NNNGroup
     autocmd!
     au BufWipeout <buffer> exe 'bw '.s:buf
+    au BufWipeout <buffer> exe s:cwin . 'wincmd w'
   augroup END
-  "call nvim_open_win(buf, v:true, opts)
 endfunction
 let g:fff#split = 'call ' . string(function('<SID>layout')) . '()'
 
@@ -728,8 +727,6 @@ function! OnLazyGitExit(job_id, code, event) abort
 endfun
 
 function! LazyGit() abort
-  let buf = nvim_create_buf(v:false, v:true)
-
   let vertical_border = 2
   let horizontal_border = 15
   let height = &lines - vertical_border
@@ -767,8 +764,6 @@ nnoremap <Leader>g :call LazyGit()<CR>
 " FloatTerm
 "
 function! FloatTerm() abort
-  let buf = nvim_create_buf(v:false, v:true)
-
   let vertical_border = 2
   let horizontal_border = 15
   let height = &lines - vertical_border
