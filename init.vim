@@ -549,6 +549,13 @@ augroup AsynCompleteAle
       \ 'priority': 10,
       \ }))
 
+  au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+    \ 'name': 'file',
+    \ 'allowlist': ['*'],
+    \ 'priority': 15,
+    \ 'completor': function('asyncomplete#sources#file#completor')
+    \ }))
+
   if has('python3')
     call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
         \ 'name': 'ultisnips',
