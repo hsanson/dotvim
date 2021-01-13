@@ -102,7 +102,9 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'kana/vim-textobj-function'
 
 " Colorschemes
-Plug 'nvim-treesitter/nvim-treesitter'
+if has('nvim')
+  Plug 'nvim-treesitter/nvim-treesitter'
+endif
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'morhetz/gruvbox'
 Plug 'cocopon/iceberg.vim'
