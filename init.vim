@@ -26,6 +26,8 @@
 ""         javascript-typescript-langserver write-good \
 ""         dockerfile_lint markdownlint-cli pyright
 ""
+""    curl https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
+""
 ""    Java Language Server
 ""
 ""      # Only compiles with java8 (update-java-alternatives)
@@ -120,6 +122,7 @@ Plug 'neomutt/neomutt.vim'
 Plug 'tpope/vim-markdown'
 Plug 'reasonml-editor/vim-reason-plus'
 Plug 'habamax/vim-asciidoctor'
+Plug 'hashivim/vim-terraform'
 
 " Document editing
 Plug 'lervag/vimtex'
@@ -852,6 +855,7 @@ let g:ale_linters = {
   \   'vim': ['vint'],
   \   'yaml': ['yamllint'],
   \   'openapi': ['yamllint', 'ibm-validator'],
+  \   'terraform': ['terraform', 'tflint', 'terraform-ls'],
   \   'mail': ['proselint', 'write-good']
 \}
 
