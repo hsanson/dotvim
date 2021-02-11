@@ -908,3 +908,17 @@ let g:vista#renderer#icons = {
 " Hexokinase Plugin
 "
 let g:Hexokinase_refreshEvents = ['TextChanged', 'InsertLeave']
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Aciidoc Plugin
+let g:asciidoctor_syntax_conceal = 1
+let g:asciidoctor_folding = 1
+let g:asciidoctor_img_paste_command = 'xclip -selection clipboard -t image/png -o > %s%s'
+
+function! ViewMappings()
+  nnoremap <buffer> <leader>lv :silent exe '!google-chrome ' . expand('%:p')<CR>
+endfunction
+
+augroup AsciiDoctor | au!
+  au BufNew,BufRead *.adoc,*.md call ViewMappings()
+augroup end
