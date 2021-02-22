@@ -112,6 +112,9 @@ Plug 'morhetz/gruvbox'
 Plug 'cocopon/iceberg.vim'
 Plug 'jcorbin/darkula'
 Plug 'franbach/miramare'
+Plug 'arcticicestudio/nord-vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'ghifarit53/tokyonight-vim'
 
 " Syntax and language support
 Plug 'udalov/kotlin-vim'
@@ -317,7 +320,7 @@ augroup SyntaxGroup
 augroup END
 
 let g:one_allow_italics = 1
-colors gruvbox
+colors tokyonight
 
 " Apply some color to the popup menu used for auto-completion.
 highlight Pmenu ctermbg=203 gui=bold
