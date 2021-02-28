@@ -126,6 +126,7 @@ Plug 'tpope/vim-markdown'
 Plug 'reasonml-editor/vim-reason-plus'
 Plug 'habamax/vim-asciidoctor'
 Plug 'hashivim/vim-terraform'
+Plug 'pearofducks/ansible-vim'
 
 " Document editing
 Plug 'lervag/vimtex'
@@ -856,6 +857,7 @@ let g:ale_linters = {
   \   'javascript': ['eslint'],
   \   'text': ['proselint', 'write-good'],
   \   'vim': ['vint'],
+  \   'ansible': ['ansible-lint'],
   \   'yaml': ['yamllint'],
   \   'openapi': ['yamllint', 'ibm-validator'],
   \   'terraform': ['terraform', 'tflint', 'terraform-ls'],
