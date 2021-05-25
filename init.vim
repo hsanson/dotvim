@@ -30,7 +30,6 @@
 ""
 ""    Java Language Server
 ""
-""      # Only compiles with java8 (update-java-alternatives)
 ""      git clone https://github.com/georgewfraser/java-language-server
 ""      cd java-language-server
 ""      ./scripts/link_{linux|mac|windows}.sh
@@ -44,7 +43,6 @@
 ""
 ""    Kotlin Language Server
 ""
-""       # Only works with java8 (update-java-alternatives)
 ""       git clone https://github.com/fwcd/KotlinLanguageServer.git
 ""       cd KotlinLanguageServer.git
 ""       ./gradlew :server:installDist
