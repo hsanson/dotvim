@@ -184,7 +184,7 @@ set noemoji                           " Fix emoji rendering.
 ""  - unnamedplus: system clipboard (Ctrl-v/Ctrl-p)
 ""  - unnamed:     paste clipboard (Linux/Unix only)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set clipboard^=unnamed
+set clipboard=unnamedplus
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Custom Mappings
