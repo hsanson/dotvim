@@ -829,7 +829,7 @@ let g:ale_linters = {
   \   'ruby': ['solargraph', 'rubocop', 'ruby', 'standardrb'],
   \   'groovy': ['android'],
   \   'xml': ['android'],
-  \   'java': ['android', 'checkstyle', 'eclipselsp'],
+  \   'java': ['android', 'checkstyle', 'javalsp'],
   \   'kotlin': ['ktlint', 'languageserver'],
   \   'javascript': ['eslint'],
   \   'text': ['proselint', 'write-good'],
