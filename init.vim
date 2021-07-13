@@ -22,7 +22,7 @@
 ""    pip3 install --user jedi proselint autopep8 \
 ""         flake8 pyflakes rope pycodestyle pydocstyle yapf yamllint
 ""    sudo gem install solargraph rubocop sqlint mdl
-""    sudo npm install --global prettier vue-language-server \
+""    sudo npm install --global prettier vls \
 ""         javascript-typescript-langserver write-good \
 ""         dockerfile_lint markdownlint-cli pyright
 ""
@@ -804,6 +804,7 @@ let g:ale_echo_msg_warning_str = ''
 let g:ale_writegood_options = '--no-passive'
 let g:ale_virtualtext_cursor = 1
 let g:ale_virtualtext_prefix = ' '
+let g:ale_hover_to_preview = 1
 
 let g:ale_fixers = {
   \   '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -832,6 +833,7 @@ let g:ale_linters = {
   \   'java': ['android', 'checkstyle', 'javalsp'],
   \   'kotlin': ['ktlint', 'languageserver'],
   \   'javascript': ['eslint'],
+  \   'vue': ['vls'],
   \   'text': ['proselint', 'write-good'],
   \   'vim': ['vint'],
   \   'ansible': ['ansible-lint'],
