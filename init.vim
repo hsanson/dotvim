@@ -902,5 +902,5 @@ function! ViewMappings()
 endfunction
 
 augroup AsciiDoctor | au!
-  au BufNew,BufRead *.adoc,*.md call ViewMappings()
+  au BufNew,BufRead *.adoc,*.md,*.html call ViewMappings()
 augroup end
