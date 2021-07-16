@@ -136,7 +136,6 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-file.vim'
 
 " Code navigation
-Plug 'dylanaraps/fff.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'unblevable/quick-scope'
@@ -670,58 +669,12 @@ nnoremap <leader>p :Files<CR>
 nnoremap <leader>o :Find<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" FFF Plugin
+" Ranger
 "
-nnoremap - :F %:p:h<CR>
-
-" Floating window with borders for NNN and FFF
-" https://github.com/neovim/neovim/issues/9718#issuecomment-559573308
-function! s:layout()
-  let s:cwin = winnr()
-  let height = &lines - (float2nr(&lines / 3))
-  let width = float2nr(&columns - (&columns / 3))
-  let row = (&lines / 2) - (height / 2)
-  let column = (&columns / 2) - (width / 2)
-  let opts = {
-        \ 'relative': 'editor',
-        \ 'row': row,
-        \ 'col': column,
-        \ 'width': width,
-        \ 'height': height,
-        \ 'style': 'minimal'
-        \ }
-  let top = '╭' . repeat('─', width - 2) . '╮'
-  let mid = '│' . repeat(' ', width - 2) . '│'
-  let bot = '╰' . repeat('─', width - 2) . '╯'
-  let lines = [top] + repeat([mid], height - 2) + [bot]
-  let s:buf = nvim_create_buf(v:false, v:true)
-  call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
-  call nvim_open_win(s:buf, v:true, opts)
-  set winhl=Normal:Floating
-  let opts.row += 1
-  let opts.height -= 2
-  let opts.col += 2
-  let opts.width -= 4
-  call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
-  augroup NNNGroup
-    autocmd!
-    au BufWipeout <buffer> exe 'bw '.s:buf
-    au BufWipeout <buffer> exe s:cwin . 'wincmd w'
-  augroup END
-endfunction
-let g:fff#split = 'call ' . string(function('<SID>layout')) . '()'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Lazygit
-"
-function! OnLazyGitExit(job_id, code, event) abort
-  close
-  silent! exec 'bd'
-endfun
-
-function! LazyGit() abort
+function! Ranger(dirname) abort
+  let s:cwin = win_getid(winnr())
   let vertical_border = 2
-  let horizontal_border = 15
+  let horizontal_border = 2
   let height = &lines - vertical_border
   let width = &columns - horizontal_border
   let row = (&lines / 2) - (height / 2)
@@ -740,18 +693,43 @@ function! LazyGit() abort
   let lines = [top] + repeat([mid], height - 2) + [bot]
   let s:buf = nvim_create_buf(v:false, v:true)
   call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
-  call nvim_open_win(s:buf, v:true, opts)
+  let s:cwin1 = nvim_open_win(s:buf, v:true, opts)
   set winhl=Normal:Floating
   let opts.row += 1
   let opts.height -= 2
   let opts.col += 2
   let opts.width -= 4
-  call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
-  call termopen('lazygit', { 'on_exit': 'OnLazyGitExit' })
+  let s:cwin2 = nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
+
+  let s:callback = {
+        \  'tempname': tempname(),
+        \  'cwin': s:cwin,
+        \  'cwin1': s:cwin1,
+        \  'cwin2': s:cwin2
+        \}
+
+  function! s:callback.on_exit(id, code, event) dict abort
+    try
+      if filereadable(self.tempname)
+        let names = readfile(self.tempname)
+        exe 'silent! edit ' . fnameescape(names[0])
+        call nvim_win_set_buf(self.cwin, nvim_win_get_buf(0))
+        "exe self.cwin . 'wincmd w'
+      endif
+    endtry
+    call nvim_set_current_win(self.cwin)
+    call nvim_win_close(self.cwin1, v:true)
+    call nvim_win_close(self.cwin2, v:true)
+  endfunction
+
+  let cmd = 'ranger --choosefiles='.s:callback.tempname.' '.shellescape(a:dirname)
+  call termopen(cmd, s:callback)
   startinsert
 endfunction
 
-nnoremap <Leader>g :call LazyGit()<CR>
+if has('nvim')
+  nnoremap - :call Ranger(expand("%:p:h"))<CR>
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FloatTerm
