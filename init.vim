@@ -836,6 +836,7 @@ let g:ale_kotlin_languageserver_executable = '/home/ryujin/Apps/KotlinLanguageSe
 let g:ale_java_javalsp_executable = '/home/ryujin/Apps/java-language-server/dist/lang_server_linux.sh'
 let g:ale_sh_bashate_options = '-i E003 --max-lin-length 100'
 let g:ale_reason_ls_executable = '/home/ryujin/Apps/rls-linux/reason-language-server'
+let g:ale_ruby_rubocop_auto_correct_all = 1
 
 let g:ale_java_eclipselsp_path = '/home/ryujin/Apps/eclipse.jdt.ls'
 
