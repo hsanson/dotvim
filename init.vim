@@ -154,7 +154,7 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set backspace=2                       " Sane backspace behavior.
 set fileformats=unix,dos              " Use unix file format.
-set number                            " Show line number column.
+set nonumber                          " Show line number column.
 set nobackup                          " Stop vim from creating ~ files.
 set nowritebackup                     " No backups
 set noswapfile                        " More hassel than solution.
@@ -167,7 +167,7 @@ set nofoldenable                      " Disable folding that slows down auto-com
 set nrformats=                        " Stop vim from treating zero padded numbers as octal
 set laststatus=2
 set noequalalways                     " No automatic resizing of windows.
-set cursorline                        " highlight current line in insert Mode.
+set nocursorline                      " highlight current line in insert Mode.
 set nocursorcolumn                    " Highlight current column in Insert Mode.
 set switchbuf=useopen,usetab
 set splitbelow
@@ -286,7 +286,8 @@ filetype plugin indent on " Re-enable after pathogen is loaded.
 ""
 
 " Enable syntax
-syntax on sync minlines=256
+" syntax on sync minlines=256
+syntax on
 
 " Enable true color support in NEOVIM
 " Setting this on vim disables terminal colors.
@@ -338,7 +339,7 @@ let g:colorizer_auto_filetype='css,html'
 " airline status line
 "
 let g:airline_powerline_fonts = 1
-let airline#extensions#ale#warning_symbol = ''
+let airline#extensions#ale#warning_symbol = ''
 let airline#extensions#ale#error_symbol = ''
 let airline#extensions#ale#checking_symbol = ''
 let airline#extensions#ale#show_line_numbers = 0
@@ -606,9 +607,9 @@ let g:gradle_loclist_show=0
 let g:gradle_sync_on_load=1
 let g:netrw_browsex_viewer='google-chrome'
 
-let g:gradle_glyph_error=''
-let g:gradle_glyph_warning=''
-let g:gradle_glyph_gradle=''
+let g:gradle_glyph_error=''
+let g:gradle_glyph_warning=''
+let g:gradle_glyph_gradle=''
 let g:gradle_glyph_android=''
 let g:gradle_glyph_building=''
 
@@ -770,15 +771,15 @@ nnoremap <Leader>t :call FloatTerm()<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ALE Plugin
 "
-let g:ale_sign_info = ''
-let g:ale_sign_error = ''
-let g:ale_sign_warning = ''
+let g:ale_sign_info = ''
+let g:ale_sign_error = ''
+let g:ale_sign_warning = ''
 let g:ale_sign_priority = 4
 let g:ale_open_list = 0
 let g:ale_echo_msg_format = '%severity% [%linter%] (%code%) - %s'
-let g:ale_echo_msg_info_str = ''
-let g:ale_echo_msg_error_str = ''
-let g:ale_echo_msg_warning_str = ''
+let g:ale_echo_msg_info_str = ''
+let g:ale_echo_msg_error_str = ''
+let g:ale_echo_msg_warning_str = ''
 let g:ale_writegood_options = '--no-passive'
 let g:ale_virtualtext_cursor = 1
 let g:ale_virtualtext_prefix = ' '
