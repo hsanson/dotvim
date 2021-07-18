@@ -339,31 +339,43 @@ let g:colorizer_auto_filetype='css,html'
 " airline status line
 "
 let g:airline_powerline_fonts = 1
+let g:airline_right_sep=' '
+let g:airline_left_sep=''
 let airline#extensions#ale#warning_symbol = ''
 let airline#extensions#ale#error_symbol = ''
 let airline#extensions#ale#checking_symbol = ''
 let airline#extensions#ale#show_line_numbers = 0
 let g:airline#extensions#whitespace#enabled = 0
+let g:airline_detect_iminsert=1
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+let g:airline_symbols.paste = ''
+let g:airline_symbols.crypt = ''
+let g:airline_symbols.whitespace = 'Ξ'
+let g:airline_symbols.branch = ''
 
 let g:airline_mode_map = {
-    \ '__'     : '-',
-    \ 'c'      : 'C',
-    \ 'i'      : 'I',
-    \ 'ic'     : 'I',
-    \ 'ix'     : 'I',
-    \ 'n'      : 'N',
-    \ 'multi'  : 'M',
-    \ 'ni'     : 'N',
-    \ 'no'     : 'N',
-    \ 'R'      : 'R',
-    \ 'Rv'     : 'R',
-    \ 's'      : 'S',
-    \ 'S'      : 'S',
-    \ ''     : 'S',
-    \ 't'      : 'T',
-    \ 'v'      : 'V',
-    \ 'V'      : 'V',
-    \ ''     : 'V',
+    \ '__'     : '- ',
+    \ 'c'      : ' ',
+    \ 'i'      : ' ',
+    \ 'ic'     : ' ',
+    \ 'ix'     : ' ',
+    \ 'n'      : ' ',
+    \ 'multi'  : 'M ',
+    \ 'ni'     : ' ',
+    \ 'no'     : ' ',
+    \ 'R'      : 'R ',
+    \ 'Rv'     : 'R ',
+    \ 's'      : 'S ',
+    \ 'S'      : 'S ',
+    \ ''     : 'S ',
+    \ 't'      : 'T ',
+    \ 'v'      : '﯎ ',
+    \ 'V'      : '﯎ ',
+    \ ''     : '﯎ ',
     \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
