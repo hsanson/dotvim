@@ -347,6 +347,9 @@ let airline#extensions#ale#checking_symbol = ''
 let airline#extensions#ale#show_line_numbers = 0
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_detect_iminsert=1
+let g:airline_skip_empty_sections=1
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+let g:airline#extensions#bufferline#enabled = 0
 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
