@@ -799,6 +799,7 @@ let g:ale_writegood_options = '--no-passive'
 let g:ale_virtualtext_cursor = 1
 let g:ale_virtualtext_prefix = ' '
 let g:ale_hover_to_preview = 1
+let g:ale_sign_column_always = 1
 
 let g:ale_fixers = {
   \   '*': ['remove_trailing_lines', 'trim_whitespace'],
