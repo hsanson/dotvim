@@ -108,11 +108,9 @@ endif
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'morhetz/gruvbox'
 Plug 'cocopon/iceberg.vim'
-Plug 'jcorbin/darkula'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'franbach/miramare'
 Plug 'arcticicestudio/nord-vim'
-Plug 'altercation/vim-colors-solarized'
-Plug 'ghifarit53/tokyonight-vim'
 
 " Syntax and language support
 Plug 'udalov/kotlin-vim'
@@ -313,7 +311,7 @@ augroup SyntaxGroup
 augroup END
 
 let g:one_allow_italics = 1
-colors PaperColor
+colors dracula
 
 " Apply some color to the popup menu used for auto-completion.
 highlight Pmenu ctermbg=203 gui=bold
@@ -339,8 +337,8 @@ let g:colorizer_auto_filetype='css,html'
 " airline status line
 "
 let g:airline_powerline_fonts = 1
-let g:airline_right_sep=' '
-let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline_left_sep=''
 let airline#extensions#ale#warning_symbol = ''
 let airline#extensions#ale#error_symbol = ''
 let airline#extensions#ale#checking_symbol = ''
