@@ -152,7 +152,7 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set backspace=2                       " Sane backspace behavior.
 set fileformats=unix,dos              " Use unix file format.
-set nonumber                          " Show line number column.
+set number                            " Show line number column.
 set nobackup                          " Stop vim from creating ~ files.
 set nowritebackup                     " No backups
 set noswapfile                        " More hassel than solution.
@@ -165,7 +165,7 @@ set nofoldenable                      " Disable folding that slows down auto-com
 set nrformats=                        " Stop vim from treating zero padded numbers as octal
 set laststatus=2
 set noequalalways                     " No automatic resizing of windows.
-set nocursorline                      " highlight current line in insert Mode.
+set cursorline                        " highlight current line in insert Mode.
 set nocursorcolumn                    " Highlight current column in Insert Mode.
 set switchbuf=useopen,usetab
 set splitbelow
@@ -726,9 +726,7 @@ function! Ranger(dirname) abort
     try
       if filereadable(self.tempname)
         let names = readfile(self.tempname)
-        exe 'silent! edit ' . fnameescape(names[0])
-        call nvim_win_set_buf(self.cwin, nvim_win_get_buf(0))
-        "exe self.cwin . 'wincmd w'
+        call win_execute(self.cwin, 'silent! edit ' . fnameescape(names[0]))
       endif
     endtry
     call nvim_set_current_win(self.cwin)
