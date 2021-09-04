@@ -478,6 +478,7 @@ set formatoptions=tcrqjmM
 " filetype but we like to keep out the o option so forced here for all
 " filetypes.
 augroup FormatOptions
+  autocmd!
   au FileType * setlocal formatoptions-=o
 augroup END
 
@@ -551,6 +552,7 @@ inoremap <expr> <Tab> pumvisible() ? asyncomplete#close_popup() : "\<Tab>"
 let g:asyncomplete_auto_completeopt = 0
 
 augroup AsynCompleteAle
+  autocmd!
   au User asyncomplete_setup call asyncomplete#register_source(
       \ asyncomplete#sources#ale#get_source_options({
       \ 'priority': 10,
@@ -880,6 +882,7 @@ function ALELSPMappings()
 endfunction
 
 augroup ALEMappings
+  autocmd!
   autocmd BufRead,FileType * call ALELSPMappings()
 augroup END
 
@@ -910,5 +913,6 @@ function! ViewMappings()
 endfunction
 
 augroup AsciiDoctor | au!
+  autocmd!
   au BufNew,BufRead *.adoc,*.md,*.html call ViewMappings()
 augroup end
