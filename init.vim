@@ -869,21 +869,17 @@ let g:ale_ruby_rubocop_auto_correct_all = 1
 let g:ale_java_eclipselsp_path = '/home/ryujin/Apps/eclipse.jdt.ls'
 
 function ALELSPMappings()
-  for linter in ale#linter#Get(&filetype)
-    if !empty(linter.lsp) && ale#lsp_linter#CheckWithLSP(bufnr(''), linter)
-      nnoremap <buffer> gk :ALEDocumentation<cr>
-      nnoremap <buffer> gr :ALEFindReferences<cr>
-      nnoremap <buffer> gd :ALEGoToDefinition<cr>
-      nnoremap <buffer> gy :ALEGoToTypeDefinition<cr>
-      nnoremap <buffer> gh :ALEHover<cr>
-      setlocal omnifunc=ale#completion#OmniFunc
-    endif
-  endfor
+  nnoremap <buffer> gk :ALEDocumentation<cr>
+  nnoremap <buffer> gr :ALEFindReferences<cr>
+  nnoremap <buffer> gd :ALEGoToDefinition<cr>
+  nnoremap <buffer> gy :ALEGoToTypeDefinition<cr>
+  nnoremap <buffer> gh :ALEHover<cr>
+  setlocal omnifunc=ale#completion#OmniFunc
 endfunction
 
 augroup ALEMappings
   autocmd!
-  autocmd BufRead,FileType * call ALELSPMappings()
+  autocmd User ALELSPStarted call ALELSPMappings()
 augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
