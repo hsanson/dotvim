@@ -250,6 +250,9 @@ nnoremap <Leader>j <C-w>j
 nnoremap <Leader>k <C-w>k
 nnoremap <Leader>l <C-w>l
 
+" Quick spell correcting
+" https://castel.dev/post/lecture-notes-1/
+inoremap <C-s> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " WinMode
 nmap <leader>w <Plug>WinModeStart
