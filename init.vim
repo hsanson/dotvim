@@ -123,6 +123,7 @@ Plug 'reasonml-editor/vim-reason-plus'
 Plug 'habamax/vim-asciidoctor'
 Plug 'hashivim/vim-terraform'
 Plug 'pearofducks/ansible-vim'
+Plug 'peterhoeg/vim-qml'
 
 " Document editing
 Plug 'lervag/vimtex'
