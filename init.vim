@@ -827,6 +827,8 @@ let g:ale_hover_to_floating_preview = 1
 let g:ale_detail_to_floating_preview = 1
 let g:ale_floating_window_border = ['│', '─', '╭', '╮', '╯', '╰']
 let g:ale_sign_column_always = 1
+let g:ale_python_auto_pipenv = 1
+let g:ale_python_auto_poetry = 1
 
 let g:ale_fixers = {
   \   '*': ['remove_trailing_lines', 'trim_whitespace'],
