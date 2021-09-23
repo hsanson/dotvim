@@ -260,6 +260,9 @@ inoremap <C-s> <c-g>u<Esc>[s1z=`]a<c-g>u
 " WinMode
 nmap <leader>w <Plug>WinModeStart
 
+" Disable accidental Ex mode
+nnoremap Q <Nop>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Slimux plugin
 let g:slimux_select_from_current_window = 1
