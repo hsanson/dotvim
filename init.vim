@@ -345,9 +345,6 @@ set listchars=tab:→\ ,nbsp:␣,trail:•,extends:»,precedes:«
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 match ZenkakuSpace /　/
 
-" Highlight color codes with the actual color. Requires color_highlight plugin.
-let g:colorizer_auto_filetype='css,html'
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " airline status line
 "
