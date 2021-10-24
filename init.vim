@@ -49,7 +49,7 @@
 ""
 ""    Ktlint
 ""
-""       curl -sSLO https://github.com/shyiko/ktlint/releases/download/0.37.2/ktlint
+""       curl -sSLO https://github.com/shyiko/ktlint/releases/download/0.42.1/ktlint
 ""       chmod a+x ktlint
 ""       sudo mv ktlint /usr/local/bin/
 ""
