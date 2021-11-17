@@ -151,6 +151,10 @@ Plug 'unblevable/quick-scope'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" SQL
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
+
 " Vim Plugin Testing
 Plug 'junegunn/vader.vim'
 
@@ -941,3 +945,26 @@ augroup AsciiDoctor | au!
   autocmd!
   au BufNew,BufRead *.adoc,*.md,*.html call ViewMappings()
 augroup end
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Dadbod and Dadbod-UI Plugins
+"
+let g:db_ui_icons = {
+    \ 'expanded': '▾',
+    \ 'collapsed': '▸',
+    \ 'saved_query': '*',
+    \ 'new_query': '+',
+    \ 'tables': '~',
+    \ 'buffers': '»',
+    \ 'connection_ok': '✓',
+    \ 'connection_error': '✕',
+    \ }
+
+let g:db_ui_winwidth = 50
+
+let g:db_ui_save_location = '~/.config/dadbod/queries'
+
+" Source dabbod database connection configurations.
+if filereadable(expand('~/.config/dadbod/connections'))
+  source ~/.config/dadbod/connections
+endif
