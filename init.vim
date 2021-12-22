@@ -869,8 +869,9 @@ let g:ale_linters = {
   \   'ansible': ['ansible-lint'],
   \   'yaml': ['yamllint'],
   \   'openapi': ['yamllint', 'ibm-validator'],
-  \   'terraform': ['terraform', 'tflint', 'terraform-ls'],
-  \   'mail': ['proselint', 'write-good']
+  \   'terraform': ['checkov', 'terraform', 'tflint', 'terraform-ls'],
+  \   'mail': ['proselint', 'write-good'],
+  \   'rust': ['analyzer']
 \}
 
 let g:ale_pattern_options = {
