@@ -867,7 +867,7 @@ let g:ale_linters = {
   \   'text': ['proselint', 'write-good'],
   \   'vim': ['vint'],
   \   'ansible': ['ansible-lint'],
-  \   'yaml': ['yamllint'],
+  \   'yaml': ['yamllint', 'yaml-language-server'],
   \   'openapi': ['yamllint', 'ibm-validator'],
   \   'terraform': ['checkov', 'terraform', 'tflint', 'terraform-ls'],
   \   'mail': ['proselint', 'write-good'],
