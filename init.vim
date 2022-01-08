@@ -175,6 +175,7 @@ set showcmd                           " Display commands as they are typed.
 set scrolloff=9999                    " Always keep the cursor at the center of window.
 set lazyredraw                        " Improve performance
 set nofoldenable                      " Disable folding that slows down auto-completion
+set foldlevel=99
 set nrformats=                        " Stop vim from treating zero padded numbers as octal
 set laststatus=2
 set noequalalways                     " No automatic resizing of windows.
@@ -348,6 +349,13 @@ set listchars=tab:→\ ,nbsp:␣,trail:•,extends:»,precedes:«
 " Highlight japanese space
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 match ZenkakuSpace /　/
+
+" Use treesitter for folding
+if has('nvim')
+  set fillchars=fold:\ 
+  set foldmethod=expr
+  set foldexpr=nvim_treesitter#foldexpr()
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " airline status line
