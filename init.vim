@@ -874,7 +874,7 @@ let g:ale_linters = {
   \   'ansible': ['ansible-lint'],
   \   'yaml': ['yamllint', 'yaml-language-server'],
   \   'openapi': ['yamllint', 'ibm-validator'],
-  \   'terraform': ['checkov', 'terraform', 'tflint', 'terraform-ls'],
+  \   'terraform': ['checkov', 'terraform', 'tflint', 'terraform_ls'],
   \   'mail': ['proselint', 'write-good'],
   \   'rust': ['analyzer']
 \}
