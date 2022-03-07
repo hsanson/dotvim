@@ -20,7 +20,8 @@
 ""
 ""    sudo apt-get install shellcheck chktex lacheck nodejs ruby2.5
 ""    pip3 install --user jedi proselint autopep8 \
-""         flake8 pyflakes rope pycodestyle pydocstyle yapf yamllint
+""         flake8 pyflakes rope pycodestyle pydocstyle yapf \
+""         yamllint jedi-language-server
 ""    sudo gem install solargraph rubocop sqlint mdl
 ""    sudo npm install --global prettier vls \
 ""         javascript-typescript-langserver write-good \
@@ -840,6 +841,7 @@ let g:ale_floating_window_border = ['│', '─', '╭', '╮', '╯', '╰']
 let g:ale_sign_column_always = 1
 let g:ale_python_auto_pipenv = 1
 let g:ale_python_auto_poetry = 1
+let g:ale_completion_autoimport = 1
 
 let g:ale_fixers = {
   \   '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -852,7 +854,7 @@ let g:ale_fixers = {
 \}
 
 let g:ale_linters = {
-  \   'markdown': ['markdownlint', 'vale'],
+  \   'markdown': [ 'vale'],
   \   'asciidoc': ['vale'],
   \   'dockerfile': ['dockerfile_lint'],
   \   'bib': ['bibclean'],
@@ -861,11 +863,11 @@ let g:ale_linters = {
   \   'tex': ['proselint', 'chktex', 'lacheck'],
   \   'plaintex': ['proselint', 'chktex', 'lacheck'],
   \   'help': [],
-  \   'python': ['flake8', 'pylint', 'pyright'],
+  \   'python': ['flake8', 'pylint', 'jedils'],
   \   'ruby': ['solargraph', 'rubocop', 'ruby', 'standardrb'],
   \   'groovy': ['android'],
   \   'xml': ['android'],
-  \   'java': ['android', 'checkstyle', 'javalsp'],
+  \   'java': ['eclipselsp'],
   \   'kotlin': ['ktlint', 'languageserver'],
   \   'javascript': ['eslint'],
   \   'vue': ['vls'],
@@ -904,7 +906,6 @@ let g:ale_java_javalsp_executable = '/home/ryujin/Apps/java-language-server/dist
 let g:ale_sh_bashate_options = '-i E003 --max-lin-length 100'
 let g:ale_reason_ls_executable = '/home/ryujin/Apps/rls-linux/reason-language-server'
 let g:ale_ruby_rubocop_auto_correct_all = 1
-
 let g:ale_java_eclipselsp_path = '/home/ryujin/Apps/eclipse.jdt.ls'
 
 function ALELSPMappings()
