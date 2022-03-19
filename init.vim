@@ -178,7 +178,6 @@ set lazyredraw                        " Improve performance
 set nofoldenable                      " Disable folding that slows down auto-completion
 set foldlevel=99
 set nrformats=                        " Stop vim from treating zero padded numbers as octal
-set laststatus=2
 set noequalalways                     " No automatic resizing of windows.
 set cursorline                        " highlight current line in insert Mode.
 set nocursorcolumn                    " Highlight current column in Insert Mode.
@@ -353,7 +352,7 @@ match ZenkakuSpace /　/
 
 " Use treesitter for folding
 if has('nvim')
-  set fillchars=fold:\ 
+  set fillchars+=fold:\ 
   set foldmethod=expr
   set foldexpr=nvim_treesitter#foldexpr()
 endif
@@ -361,6 +360,15 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " airline status line
 "
+
+if has('nvim')
+  " Support global status bar.
+  " https://www.fileformat.info/info/unicode/block/box_drawing/list.htm
+  set laststatus=3
+  set fillchars+=horiz:═,horizup:╩,horizdown:╦
+  set fillchars+=vert:║,vertleft:╣,vertright:╠,verthoriz:╬
+endif
+
 let g:airline_powerline_fonts = 1
 let g:airline_right_sep=''
 let g:airline_left_sep=''
