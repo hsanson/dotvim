@@ -788,6 +788,8 @@ endfunction
 
 if has('nvim')
   nnoremap - :call Ranger(expand("%:p:h"))<CR>
+else
+  nnoremap - :Explore<CR>
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
