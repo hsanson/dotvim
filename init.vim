@@ -882,7 +882,7 @@ let g:ale_linters = {
   \   'javascript': ['eslint'],
   \   'vue': ['vls'],
   \   'text': ['proselint', 'write-good'],
-  \   'vim': ['vint'],
+  \   'vim': ['vint', 'ale_custom_linting_rules'],
   \   'ansible': ['ansible-lint'],
   \   'yaml': ['yamllint', 'yaml-language-server'],
   \   'openapi': ['yamllint', 'ibm-validator'],
