@@ -108,12 +108,8 @@ if has('nvim')
 endif
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'morhetz/gruvbox'
-Plug 'sainnhe/gruvbox-material'
-Plug 'eddyekofo94/gruvbox-flat.nvim'
 Plug 'cocopon/iceberg.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'franbach/miramare'
-Plug 'arcticicestudio/nord-vim'
 
 " Syntax and language support
 Plug 'udalov/kotlin-vim'
@@ -331,7 +327,7 @@ augroup SyntaxGroup
 augroup END
 
 let g:one_allow_italics = 1
-colors gruvbox-material
+colors gruvbox
 
 " Apply some color to the popup menu used for auto-completion.
 highlight Pmenu ctermbg=203 gui=bold
