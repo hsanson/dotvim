@@ -855,7 +855,7 @@ let g:ale_fixers = {
   \   'python': ['yapf'],
   \   'openapi': ['prettier'],
   \   'yaml': ['prettier'],
-  \   'ruby': ['rubocop', 'standardrb'],
+  \   'ruby': ['rubocop'],
   \   'kotlin': ['ktlint']
 \}
 
@@ -870,7 +870,7 @@ let g:ale_linters = {
   \   'plaintex': ['proselint', 'chktex', 'lacheck'],
   \   'help': [],
   \   'python': ['flake8', 'pylint', 'jedils'],
-  \   'ruby': ['solargraph', 'rubocop', 'ruby', 'standardrb'],
+  \   'ruby': ['solargraph', 'rubocop', 'ruby'],
   \   'groovy': ['android'],
   \   'xml': ['android'],
   \   'java': ['eclipselsp'],
