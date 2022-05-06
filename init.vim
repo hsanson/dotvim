@@ -477,7 +477,7 @@ set softtabstop=2
 " Improve Vim's Command Line Autocompletion
 set wildmode=full wildmenu              " Command-line tab completion
 set infercase                           " AutoComplete in Vim
-set completeopt=menuone,noinsert,longest,preview
+set completeopt=menu,menuone,noselect,noinsert
 
 set wildignore+=*.o,*.obj,*.pyc,*.pyo,*.DS_STORE,*.db,*.swc,*.rbc " Binary objects
 set wildignore+=__pycache__
@@ -848,6 +848,7 @@ let g:ale_sign_column_always = 1
 let g:ale_python_auto_pipenv = 1
 let g:ale_python_auto_poetry = 1
 let g:ale_completion_autoimport = 1
+let g:ale_send_to_neovim_diagnostics = 1
 
 let g:ale_fixers = {
   \   '*': ['remove_trailing_lines', 'trim_whitespace'],
