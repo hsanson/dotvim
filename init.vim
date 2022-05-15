@@ -34,13 +34,13 @@
 ""      git clone https://github.com/georgewfraser/java-language-server
 ""      cd java-language-server
 ""      ./scripts/link_{linux|mac|windows}.sh
-""      mvn package -DskipTests
+""      JAVA_HOME=/usr/lib/jvm/java-14-openjdk-amd64 mvn clean package -DskipTests
 ""
 ""    Eclipse Language Server
 ""
 ""       git clone https://github.com/eclipse/eclipse.jdt.ls.git
 ""       cd eclipse.jdt.ls
-""       JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64 ./mvnw clean verify
+""       JAVA_HOME=/usr/lib/jvm/java-11-amazon-corretto ./mvnw clean verify
 ""
 ""    Kotlin Language Server
 ""
