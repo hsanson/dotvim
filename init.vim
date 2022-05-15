@@ -433,7 +433,11 @@ set directory=/var/tmp//,/tmp//
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set undolevels=10000
 if has('persistent_undo')
-  set undodir=/var/tmp//,/tmp//
+  if has('nvim')
+    set undodir=/tmp//,/var/tmp//
+  else
+    set undodir=/var/tmp//,/tmp//
+  endif
   set undofile
 endif
 
