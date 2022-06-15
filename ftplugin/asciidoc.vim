@@ -32,3 +32,5 @@ setlocal commentstring=//\ %s
 
 nnoremap j gj
 nnoremap k gk
+
+call textobj#quote#init()

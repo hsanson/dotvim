@@ -101,6 +101,7 @@ Plug 'romainl/vim-cool'
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'kana/vim-textobj-function'
+Plug 'preservim/vim-textobj-quote'
 
 " Colorschemes
 if has('nvim')
