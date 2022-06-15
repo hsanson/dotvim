@@ -1056,3 +1056,9 @@ let g:db_ui_save_location = '~/.config/dadbod/queries'
 if filereadable(expand('~/.config/dadbod/connections'))
   source ~/.config/dadbod/connections
 endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Curly Typographic Quotes 'preservim/vim-textobj-quote'
+"
+noremap <silent> <leader>" <plug>ReplaceWithCurly
+noremap <silent> <leader>' <plug>ReplaceWithStraight
