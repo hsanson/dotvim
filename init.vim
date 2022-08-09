@@ -40,7 +40,7 @@
 ""
 ""       git clone https://github.com/eclipse/eclipse.jdt.ls.git
 ""       cd eclipse.jdt.ls
-""       JAVA_HOME=/usr/lib/jvm/java-11-amazon-corretto ./mvnw clean verify
+""       JAVA_HOME=/usr/lib/jvm/java-17-amazon-corretto ./mvnw clean verify
 ""
 ""    Kotlin Language Server
 ""
