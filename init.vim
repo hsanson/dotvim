@@ -38,9 +38,21 @@
 ""
 ""    Eclipse Language Server
 ""
-""       git clone https://github.com/eclipse/eclipse.jdt.ls.git
-""       cd eclipse.jdt.ls
-""       JAVA_HOME=/usr/lib/jvm/java-17-amazon-corretto ./mvnw clean verify
+""       Download milestone build from:
+""
+""       https://download.eclipse.org/jdtls/milestones/1.14.0/
+""
+""       Uncompress somewhere like:
+""
+""       tar xvfz jdt-language-server-1.14.0-202207211651.tar.gz $HOME/Apps/jdt-1.14.0
+""
+""       Configure ALE:
+""
+""       let g:ale_java_eclipselsp_path = '$HOME/Apps/jdt-1.14.0'
+""       let g:ale_java_eclipselsp_executable = '/usr/lib/jvm/java-17-amazon-corretto/bin/java'
+""
+""       Note that jdt-1.14.0 require Java 17 to properly run so make sure to
+""       g:ale_java_eclipselsp_executable to the correct java binary.
 ""
 ""    Kotlin Language Server
 ""
@@ -921,7 +933,6 @@ let g:ale_sign_column_always = 1
 let g:ale_python_auto_pipenv = 1
 let g:ale_python_auto_poetry = 1
 let g:ale_completion_autoimport = 1
-let g:ale_send_to_neovim_diagnostics = 1
 
 let g:ale_fixers = {
   \   '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -983,11 +994,12 @@ call airline#parts#define_function(
    \])
 
 let g:ale_kotlin_languageserver_executable = '/home/ryujin/Apps/KotlinLanguageServer/server/build/install/server/bin/kotlin-language-server'
-let g:ale_java_javalsp_executable = '/home/ryujin/Apps/java-language-server/dist/lang_server_linux.sh'
+" let g:ale_java_javalsp_executable = '/home/ryujin/Apps/java-language-server/dist/lang_server_linux.sh'
 let g:ale_sh_bashate_options = '-i E003 --max-lin-length 100'
 let g:ale_reason_ls_executable = '/home/ryujin/Apps/rls-linux/reason-language-server'
 let g:ale_ruby_rubocop_auto_correct_all = 1
-let g:ale_java_eclipselsp_path = '/home/ryujin/Apps/eclipse.jdt.ls'
+let g:ale_java_eclipselsp_path = '/home/ryujin/Apps/jdt-1.14.0'
+let g:ale_java_eclipselsp_executable = '/usr/lib/jvm/java-17-amazon-corretto/bin/java'
 
 function ALELSPMappings()
   nnoremap <buffer> gk :ALEDocumentation<cr>
