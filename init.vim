@@ -445,14 +445,7 @@ set directory=/var/tmp//,/tmp//
 "" Improve undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set undolevels=10000
-if has('persistent_undo')
-  if has('nvim')
-    set undodir=/tmp//,/var/tmp//
-  else
-    set undodir=/var/tmp//,/tmp//
-  endif
-  set undofile
-endif
+set undofile
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Force write with sudo.
