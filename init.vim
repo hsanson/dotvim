@@ -40,18 +40,20 @@
 ""
 ""       Download milestone build from:
 ""
-""       https://download.eclipse.org/jdtls/milestones/1.14.0/
+""       https://download.eclipse.org/jdtls/milestones/1.15.0/
 ""
 ""       Uncompress somewhere like:
 ""
-""       tar xvfz jdt-language-server-1.14.0-202207211651.tar.gz $HOME/Apps/jdt-1.14.0
+""       mkdir $HOME/Apps/jdt-1.15.0
+""       tar xvfz jdt-language-server-1.15.0-202207211651.tar.gz $HOME/Apps/jdt-1.15.0
+""       ln -sf $HOME/Apps/jdt $HOME/Apps/jdt-1.15.0
 ""
 ""       Configure ALE:
 ""
-""       let g:ale_java_eclipselsp_path = '$HOME/Apps/jdt-1.14.0'
+""       let g:ale_java_eclipselsp_path = '$HOME/Apps/jdt-1.15.0'
 ""       let g:ale_java_eclipselsp_executable = '/usr/lib/jvm/java-17-amazon-corretto/bin/java'
 ""
-""       Note that jdt-1.14.0 require Java 17 to properly run so make sure to
+""       Note that jdt-1.15.0 require Java 17 to properly run so make sure to
 ""       g:ale_java_eclipselsp_executable to the correct java binary.
 ""
 ""    Kotlin Language Server
@@ -991,7 +993,7 @@ let g:ale_kotlin_languageserver_executable = '/home/ryujin/Apps/KotlinLanguageSe
 let g:ale_sh_bashate_options = '-i E003 --max-lin-length 100'
 let g:ale_reason_ls_executable = '/home/ryujin/Apps/rls-linux/reason-language-server'
 let g:ale_ruby_rubocop_auto_correct_all = 1
-let g:ale_java_eclipselsp_path = '/home/ryujin/Apps/jdt-1.14.0'
+let g:ale_java_eclipselsp_path = '/home/ryujin/Apps/jdt'
 let g:ale_java_eclipselsp_executable = '/usr/lib/jvm/java-17-amazon-corretto/bin/java'
 
 function ALELSPMappings()
