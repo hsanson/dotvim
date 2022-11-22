@@ -40,20 +40,20 @@
 ""
 ""       Download milestone build from:
 ""
-""       https://download.eclipse.org/jdtls/milestones/1.15.0/
+""       https://download.eclipse.org/jdtls/milestones/1.17.0/
 ""
 ""       Uncompress somewhere like:
 ""
-""       mkdir $HOME/Apps/jdt-1.15.0
-""       tar xvfz jdt-language-server-1.15.0-202207211651.tar.gz $HOME/Apps/jdt-1.15.0
-""       ln -sf $HOME/Apps/jdt $HOME/Apps/jdt-1.15.0
+""       mkdir $HOME/Apps/jdt-1.17.0
+""       tar xvfz jdt-language-server-1.17.0-202207211651.tar.gz -C $HOME/Apps/jdt-1.17.0
+""       ln -sf $HOME/Apps/jdt-1.17.0 $HOME/Apps/jdt
 ""
 ""       Configure ALE:
 ""
-""       let g:ale_java_eclipselsp_path = '$HOME/Apps/jdt-1.15.0'
+""       let g:ale_java_eclipselsp_path = '$HOME/Apps/jdt'
 ""       let g:ale_java_eclipselsp_executable = '/usr/lib/jvm/java-17-amazon-corretto/bin/java'
 ""
-""       Note that jdt-1.15.0 require Java 17 to properly run so make sure to
+""       Note that jdt-1.17.0 require Java 17 to properly run so make sure to
 ""       g:ale_java_eclipselsp_executable to the correct java binary.
 ""
 ""    Kotlin Language Server
