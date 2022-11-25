@@ -110,6 +110,7 @@ Plug 'tpope/vim-speeddating'
 Plug 'machakann/vim-sandwich'
 Plug 'jeanCarloMachado/vim-toop'
 Plug 'romainl/vim-cool'
+Plug 'uga-rosa/translate.nvim'
 
 " Text object add ons
 Plug 'kana/vim-textobj-user'
