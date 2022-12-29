@@ -40,13 +40,13 @@
 ""
 ""       Download milestone build from:
 ""
-""       https://download.eclipse.org/jdtls/milestones/1.17.0/
+""       https://download.eclipse.org/jdtls/milestones/1.18.0/
 ""
 ""       Uncompress somewhere like:
 ""
-""       mkdir $HOME/Apps/jdt-1.17.0
-""       tar xvfz jdt-language-server-1.17.0-202207211651.tar.gz -C $HOME/Apps/jdt-1.17.0
-""       ln -sf $HOME/Apps/jdt-1.17.0 $HOME/Apps/jdt
+""       mkdir $HOME/Apps/jdt-1.18.0
+""       tar xvfz jdt-language-server-1.18.0-202207211651.tar.gz -C $HOME/Apps/jdt-1.18.0
+""       ln -sf $HOME/Apps/jdt-1.18.0 $HOME/Apps/jdt
 ""
 ""       Configure ALE:
 ""
