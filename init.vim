@@ -126,6 +126,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'morhetz/gruvbox'
 Plug 'cocopon/iceberg.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 
 " Syntax and language support
 Plug 'udalov/kotlin-vim'
@@ -343,7 +344,7 @@ augroup SyntaxGroup
 augroup END
 
 let g:one_allow_italics = 1
-colors gruvbox
+colors catppuccin_frappe
 
 " Apply some color to the popup menu used for auto-completion.
 highlight Pmenu ctermbg=203 gui=bold
