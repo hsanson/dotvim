@@ -160,6 +160,7 @@ endif
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'unblevable/quick-scope'
+Plug 'kevinhwang91/rnvimr'
 
 " Visual aid and eyecandy
 Plug 'vim-airline/vim-airline'
@@ -740,172 +741,18 @@ nnoremap <leader>p :Files<CR>
 nnoremap <leader>o :Find<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" FFF
+" rnvimr (Ranger Plugin)
 "
-function! FFF(dirname) abort
-  let s:cwin = win_getid(winnr())
-  let vertical_border = 10
-  let horizontal_border = 50
-  let height = &lines - vertical_border
-  let width = &columns - horizontal_border
-  let row = (&lines / 2) - (height / 2)
-  let column = (&columns / 2) - (width / 2)
-  let opts = {
-        \ 'relative': 'editor',
-        \ 'row': row,
-        \ 'col': column,
-        \ 'width': width,
-        \ 'height': height,
-        \ 'style': 'minimal'
-        \ }
-  let top = '╭' . repeat('─', width - 2) . '╮'
-  let mid = '│' . repeat(' ', width - 2) . '│'
-  let bot = '╰' . repeat('─', width - 2) . '╯'
-  let lines = [top] + repeat([mid], height - 2) + [bot]
-  let s:buf = nvim_create_buf(v:false, v:true)
-  call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
-  let s:cwin1 = nvim_open_win(s:buf, v:true, opts)
-  set winhl=Normal:Floating
-  let opts.row += 1
-  let opts.height -= 2
-  let opts.col += 2
-  let opts.width -= 4
-  let s:cwin2 = nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
-
-  let tmp_file = $XDG_CACHE_HOME
-
-  if !isdirectory(tmp_file)
-      let tmp_file = $HOME . '/.cache'
- endif
-
-  let tmp_file .= '/fff/opened_file'
-  let tmp_file = fnameescape(tmp_file)
-
-  let s:callback = {
-        \  'tempname': tmp_file,
-        \  'cwin': s:cwin,
-        \  'cwin1': s:cwin1,
-        \  'cwin2': s:cwin2
-        \}
-
-  function! s:callback.on_exit(id, code, event) dict abort
-    try
-      if filereadable(self.tempname)
-        let names = readfile(self.tempname)
-        call win_execute(self.cwin, 'silent! edit ' . fnameescape(names[0]))
-      endif
-    endtry
-    call nvim_set_current_win(self.cwin)
-    call nvim_win_close(self.cwin1, v:true)
-    call nvim_win_close(self.cwin2, v:true)
-  endfunction
-
-  let cmd = 'fff -p ' . shellescape(a:dirname)
-  call termopen(cmd, s:callback)
-  startinsert
-endfunction
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Ranger
-"
-function! Ranger(dirname) abort
-  let s:cwin = win_getid(winnr())
-  let vertical_border = 2
-  let horizontal_border = 2
-  let height = &lines - vertical_border
-  let width = &columns - horizontal_border
-  let row = (&lines / 2) - (height / 2)
-  let column = (&columns / 2) - (width / 2)
-  let opts = {
-        \ 'relative': 'editor',
-        \ 'row': row,
-        \ 'col': column,
-        \ 'width': width,
-        \ 'height': height,
-        \ 'style': 'minimal'
-        \ }
-  let top = '╭' . repeat('─', width - 2) . '╮'
-  let mid = '│' . repeat(' ', width - 2) . '│'
-  let bot = '╰' . repeat('─', width - 2) . '╯'
-  let lines = [top] + repeat([mid], height - 2) + [bot]
-  let s:buf = nvim_create_buf(v:false, v:true)
-  call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
-  let s:cwin1 = nvim_open_win(s:buf, v:true, opts)
-  set winhl=Normal:Floating
-  let opts.row += 1
-  let opts.height -= 2
-  let opts.col += 2
-  let opts.width -= 4
-  let s:cwin2 = nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
-
-  let s:callback = {
-        \  'tempname': tempname(),
-        \  'cwin': s:cwin,
-        \  'cwin1': s:cwin1,
-        \  'cwin2': s:cwin2
-        \}
-
-  function! s:callback.on_exit(id, code, event) dict abort
-    try
-      if filereadable(self.tempname)
-        let names = readfile(self.tempname)
-        call win_execute(self.cwin, 'silent! edit ' . fnameescape(names[0]))
-      endif
-    endtry
-    call nvim_set_current_win(self.cwin)
-    call nvim_win_close(self.cwin1, v:true)
-    call nvim_win_close(self.cwin2, v:true)
-  endfunction
-
-  let cmd = 'ranger --choosefiles='.s:callback.tempname.' '.shellescape(a:dirname)
-  call termopen(cmd, s:callback)
-  startinsert
-endfunction
+let g:rnvimr_enable_ex = 1
+let g:rnvimr_enable_picker = 1
+let g:rnvimr_enable_bw = 1
 
 if has('nvim')
-  " nnoremap - :call Ranger(expand("%:p:h"))<CR>
-  nnoremap - :call FFF(expand("%:p:h"))<CR>
-else
-  nnoremap - :Explore<CR>
+  nnoremap <silent> - :RnvimrToggle<CR>
 endif
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" FloatTerm
-"
-function! FloatTerm() abort
-  let vertical_border = 2
-  let horizontal_border = 15
-  let height = &lines - vertical_border
-  let width = &columns - horizontal_border
-  let row = (&lines / 2) - (height / 2)
-  let column = (&columns / 2) - (width / 2)
-  let opts = {
-        \ 'relative': 'editor',
-        \ 'row': row,
-        \ 'col': column,
-        \ 'width': width,
-        \ 'height': height,
-        \ 'style': 'minimal'
-        \ }
-  let top = '╭' . repeat('─', width - 2) . '╮'
-  let mid = '│' . repeat(' ', width - 2) . '│'
-  let bot = '╰' . repeat('─', width - 2) . '╯'
-  let lines = [top] + repeat([mid], height - 2) + [bot]
-  let s:buf = nvim_create_buf(v:false, v:true)
-  call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
-  call nvim_open_win(s:buf, v:true, opts)
-  set winhl=Normal:Floating
-  let opts.row += 1
-  let opts.height -= 2
-  let opts.col += 2
-  let opts.width -= 4
-  call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
-  call termopen('bash', { 'on_exit': 'OnLazyGitExit' })
-  startinsert
-endfunction
 
-nnoremap <Leader>t :call FloatTerm()<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ALE Plugin
 "
