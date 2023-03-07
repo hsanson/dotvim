@@ -345,7 +345,7 @@ augroup SyntaxGroup
 augroup END
 
 let g:one_allow_italics = 1
-colors catppuccin_frappe
+colors gruvbox
 
 " Apply some color to the popup menu used for auto-completion.
 highlight Pmenu ctermbg=203 gui=bold
@@ -832,7 +832,7 @@ call airline#parts#define_function(
    \ 'lightline#gradle#running'
    \)
 
- let g:airline_section_x = airline#section#create_right([
+let g:airline_section_x = airline#section#create_right([
    \ 'filetype',
    \ 'gradle-running'
    \])
