@@ -127,6 +127,7 @@ Plug 'morhetz/gruvbox'
 Plug 'cocopon/iceberg.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+Plug 'navarasu/onedark.nvim'
 
 " Syntax and language support
 Plug 'udalov/kotlin-vim'
@@ -345,7 +346,8 @@ augroup SyntaxGroup
 augroup END
 
 let g:one_allow_italics = 1
-colors gruvbox
+let g:onedark_config = { 'style': 'dark' }
+colors onedark
 
 " Apply some color to the popup menu used for auto-completion.
 highlight Pmenu ctermbg=203 gui=bold
