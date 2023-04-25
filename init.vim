@@ -137,7 +137,6 @@ Plug 'posva/vim-vue'
 Plug 'neomutt/neomutt.vim'
 Plug 'tpope/vim-markdown'
 Plug 'reasonml-editor/vim-reason-plus'
-Plug 'habamax/vim-asciidoctor'
 Plug 'hashivim/vim-terraform'
 Plug 'pearofducks/ansible-vim'
 Plug 'peterhoeg/vim-qml'
@@ -792,7 +791,6 @@ let g:ale_fixers = {
 
 let g:ale_linters = {
   \   'ansible': ['ansible-lint'],
-  \   'asciidoc': [],
   \   'bib': ['bibclean'],
   \   'c': ['clangd'],
   \   'dockerfile': ['dockerfile_lint'],
