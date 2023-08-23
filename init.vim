@@ -276,6 +276,11 @@ nnoremap <Leader>l <C-w>l
 " https://castel.dev/post/lecture-notes-1/
 inoremap <C-s> <c-g>u<Esc>[s1z=`]a<c-g>u
 
+" Remap number increment/decrement so it does not conflict with tmux
+" control keys (C-a)
+nnoremap <A-a> <C-a>
+nnoremap <A-x> <C-x>
+
 " WinMode
 nmap <leader>w <Plug>WinModeStart
 
