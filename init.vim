@@ -783,6 +783,7 @@ let g:ale_sign_column_always = 1
 let g:ale_python_auto_pipenv = 1
 let g:ale_python_auto_poetry = 1
 let g:ale_completion_autoimport = 1
+let g:ale_use_neovim_diagnostics_api = 0
 
 let g:ale_fixers = {
   \   '*': ['remove_trailing_lines', 'trim_whitespace'],
