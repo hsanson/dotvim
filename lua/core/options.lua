@@ -32,6 +32,7 @@ opt.pumblend = 20                     -- Transparency to popup menu
 opt.laststatus = 3
 opt.linebreak = true
 opt.termguicolors = true
+opt.background = 'dark'
 opt.showmatch = false                 -- Do not highlight matching parenthesis
 
 -- Show tabs and tailing spaces.

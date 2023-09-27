@@ -29,7 +29,7 @@ lazy.setup({
           compile = true,
           commentStyle = { italic = true },
           transparent = true,
-          dimInactive = true,
+          dimInactive = false,
           -- Themes wave, lotus, or dragon
           theme = 'dragon'
         })
@@ -94,5 +94,15 @@ lazy.setup({
       end,
     },
 
+    -- Personal Plugins
+    { "hsanson/ale", dev = true },
+    { "hsanson/vim-im", dev = true },
+    { "hsanson/vim-winmode", dev = true },
+    { "hsanson/vim-openapi", dev = true },
+    { "hsanson/vim-review", dev = true },
+    { "hsanson/vim-android", dev = true}
+  },
+  dev = {
+    path = '~/Projects/vim'
   }
 })

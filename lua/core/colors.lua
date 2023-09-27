@@ -3,7 +3,7 @@ local autocmd = vim.api.nvim_create_autocmd   -- Create autocommand
 
 -- Change this to the color scheme to use
 -- onedark, kanagawa, monokai, rose-pine
-local colorscheme = "kanagawa"
+local colorscheme = "onedark"
 
 local status_ok, color_scheme = pcall(require, colorscheme)
 if not status_ok then
