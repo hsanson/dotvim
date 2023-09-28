@@ -21,8 +21,6 @@ opt.updatetime = 250                  -- ms to wait for trigger event
 opt.nrformats = ""                    -- Stop vim from treating zero padded numbers as octal
 opt.equalalways = false               -- No automatic resizing of windows.
 opt.cursorline = true                 -- highlight current line in insert Mode.
-opt.cursorcolumn = false              -- Highlight current column in Insert Mode.
-opt.switchbuf = useopen,usetab
 opt.splitbelow = true
 opt.splitright = true
 opt.hidden = true                     -- Avoid loosing unsaved work when changing buffers.
@@ -39,7 +37,13 @@ opt.showmatch = false                 -- Do not highlight matching parenthesis
 -- Note: to insert the middle point press "ctrl+k .M" in insert mode. Tha is
 -- control + k followed by a <dot> and the capital M.
 opt.list = true
-opt.listchars = 'tab:→ ,nbsp:␣,trail:•,extends:»,precedes:«'
+opt.listchars = {
+  tab = '→ ',
+  nbsp = '␣',
+  trail = '•',
+  extends = '»',
+  precedes = '«'
+}
 
 -------------------------------------------------------------------------------
 -- Search Settings
@@ -116,37 +120,3 @@ opt.formatoptions = tcrqjmM
 -- To enable word wrap with line breaks use the textwidth option below.
 -- Note: Use "gq}" to wrap the current paragraph if it is not well formatted.
 opt.textwidth = 80
-
--------------------------------------------------------------------------------
--- Disable built-in plugins
-local disabled_built_ins = {
-   "2html_plugin",
-   "getscript",
-   "getscriptPlugin",
-   "gzip",
-   "logipat",
-   "netrw",
-   "netrwPlugin",
-   "netrwSettings",
-   "netrwFileHandlers",
-   "matchit",
-   "tar",
-   "tarPlugin",
-   "rrhelper",
-   "spellfile_plugin",
-   "vimball",
-   "vimballPlugin",
-   "zip",
-   "zipPlugin",
-   "tutor",
-   "rplugin",
-   "synmenu",
-   "optwin",
-   "compiler",
-   "bugreport",
-   "ftplugin",
-}
-
-for _, plugin in pairs(disabled_built_ins) do
-   g["loaded_" .. plugin] = 1
-end

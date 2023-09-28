@@ -3,8 +3,6 @@ local g = vim.g
 -------------------------------------------------------------------------------
 -- Custom Mappings
 -------------------------------------------------------------------------------
-vim.keymap.set('n', '<space>', '<nop>')
-g.mapleader = " "
 
 -- Window Management
 vim.keymap.set('n', '<leader>s', '<cmd>split<cr>')
@@ -36,7 +34,4 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-
--- WinMode
-vim.keymap.set('n', '<leader>w', '<Plug>WinModeStart', {})
-
+vim.keymap.set('n', '<leader>fn', ':Telescope find_files search_dirs=~/Seafile/Notes<cr>', {})
