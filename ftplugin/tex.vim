@@ -24,5 +24,3 @@ nnoremap <leader>lt :VimtexLabelsToggle<Enter>
 "" Enable concealed text that shows symbols like \beta as β
 "" http://b4winckler.wordpress.com/2010/08/07/using-the-conceal-vim-feature-with-latex
 setlocal conceallevel=2
-
-call textobj#quote#init()

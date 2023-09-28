@@ -5,6 +5,7 @@ return {
   config = function()
     local g = vim.g
 
+    g.ale_disable_lsp = 'auto'
     g.ale_sign_info = ''
     g.ale_sign_error = ''
     g.ale_sign_warning = ''
@@ -15,16 +16,17 @@ return {
     g.ale_echo_msg_error_str = ''
     g.ale_echo_msg_warning_str = ''
     g.ale_writegood_options = '--no-passive'
-    g.ale_virtualtext_cursor = 1
+    g.ale_virtualtext_cursor = 0
     g.ale_virtualtext_prefix = ' '
-    g.ale_floating_preview = 1
-    g.ale_hover_to_preview = 1
-    g.ale_hover_to_floating_preview = 1
-    g.ale_detail_to_floating_preview = 1
+    g.ale_floating_preview = 0
+    g.ale_hover_to_preview = 0
+    g.ale_hover_to_floating_preview = 0
+    g.ale_detail_to_floating_preview = 0
     g.ale_floating_window_border = {'│', '─', '╭', '╮', '╯', '╰'}
-    g.ale_sign_column_always = 1
+    g.ale_set_signs = 0
+    g.ale_sign_column_always = 0
     g.ale_python_auto_pipenv = 1
-    g.ale_use_neovim_diagnostics_api = 0
+    g.ale_use_neovim_diagnostics_api = 1
 
     g.ale_kotlin_languageserver_executable = '/home/ryujin/Apps/KotlinLanguageServer/server/build/install/server/bin/kotlin-language-server'
     -- g.ale_java_javalsp_executable = '/home/ryujin/Apps/java-language-server/dist/lang_server_linux.sh'

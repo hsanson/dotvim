@@ -1,4 +1,2 @@
-require('core/lazy')
-require('core/options')
-require('core/autocmds')
-require('core/keymaps')
+require("ryujin.core")
+require("ryujin.lazy")

@@ -16,7 +16,8 @@ vim.g.mapleader = " "
 
 require("lazy").setup(
   {
-    { import = "plugins" }
+    { import = "ryujin.plugins" },
+    { import = "ryujin.plugins.lsp" },
   },
   {
     dev = {
