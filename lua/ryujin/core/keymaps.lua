@@ -1,8 +1,8 @@
-local g = vim.g
-
 -------------------------------------------------------------------------------
 -- Custom Mappings
 -------------------------------------------------------------------------------
+vim.keymap.set('n', '<space>', '<nop>')
+vim.g.mapleader = " "
 
 -- Window Management
 vim.keymap.set('n', '<leader>s', '<cmd>split<cr>')

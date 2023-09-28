@@ -1,15 +1,14 @@
-local g = vim.g
 local opt = vim.opt
 
 -------------------------------------------------------------------------------
 -- General Settings
 -------------------------------------------------------------------------------
-opt.fileformats = unix,dos            -- Use unix file format.
+opt.fileformats = "unix,dos"          -- Use unix file format.
 opt.number = true                     -- Show line number column.
 opt.backup = false                    -- Stop vim from creating ~ files.
 opt.writebackup = false               -- No backups
 opt.swapfile = false                  -- More hassel than solution.
-opt.shortmess = atsIc                 -- Avoid unnecessary hit-enter prompts.
+opt.shortmess = "atsIc"               -- Avoid unnecessary hit-enter prompts.
 opt.joinspaces = false                -- Avoid double spaces when joining lines
 opt.showcmd = true                    -- Display commands as they are typed.
 opt.scrolloff = 9999                    -- Always keep the cursor at the center of window.
@@ -24,7 +23,7 @@ opt.cursorline = true                 -- highlight current line in insert Mode.
 opt.splitbelow = true
 opt.splitright = true
 opt.hidden = true                     -- Avoid loosing unsaved work when changing buffers.
-opt.spelllang=en,es
+opt.spelllang = "en,es"
 opt.emoji = false                     -- Fix emoji rendering.
 opt.pumblend = 20                     -- Transparency to popup menu
 opt.laststatus = 3
@@ -52,7 +51,7 @@ opt.hlsearch = true
 opt.incsearch = true
 opt.ignorecase = true
 opt.smartcase = false
-opt.inccommand = nosplit
+opt.inccommand = "nosplit"
 opt.path = '/usr/include,/usr/local/include,**;$HOME'
 
 -------------------------------------------------------------------------------
@@ -61,7 +60,7 @@ opt.path = '/usr/include,/usr/local/include,**;$HOME'
 --  - unnamedplus: system clipboard (Ctrl-v/Ctrl-p)
 --  - unnamed:     paste clipboard (Linux/Unix only)
 -------------------------------------------------------------------------------
-opt.clipboard = unnamedplus
+opt.clipboard = "unnamedplus"
 
 -------------------------------------------------------------------------------
 -- Mouse Settings
@@ -70,7 +69,7 @@ opt.clipboard = unnamedplus
 --   - Selecting text with the mouse wont include the left numbering.
 -- Note: Mouse features do not work when running vim inside a tmux window.
 -------------------------------------------------------------------------------
-opt.mouse = a
+opt.mouse = "a"
 
 -------------------------------------------------------------------------------
 -- Tabs vs Spaces war
@@ -111,7 +110,7 @@ opt.wildignore:append '*/.sass-cache/*'
 -- Auto formatting options. These determine where lines will be broken when
 -- auto wrapping. The last two options (mM) are needed for multi byte characters (e.g.
 -- Japanese)
-opt.formatoptions = tcrqjmM
+opt.formatoptions = "tcrqjmM"
 
 -- There are two word wrap methods, one with line breaks that adds an actual
 -- '\n' character at the break place and without line breaks that only displays
