@@ -20,6 +20,12 @@ require("lazy").setup(
     { import = "ryujin.plugins.lsp" },
   },
   {
+    install = {
+      colorscheme = { "onedark" }
+    },
+    ui = {
+      border = "rounded"
+    },
     dev = {
       path = "~/Projects/vim"
     },
