@@ -25,7 +25,7 @@ return {
         "vimls",
         "yamlls",
         "volar",
-        "sqlls",
+        "sqls",
         "cssls",
         "docker_compose_language_service",
         "dockerls",
@@ -36,6 +36,7 @@ return {
         "lua_ls",
         "jedi_language_server",
         "ruby_ls",
+        "gopls",
         "tailwindcss"
       },
       automatic_installation = true
