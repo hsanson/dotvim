@@ -3,11 +3,13 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
-    "nanotee/sqls.nvim"
+    "nanotee/sqls.nvim",
+    "nvim-lua/lsp-status.nvim"
   },
   config = function()
     local lspconfig = require("lspconfig")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
+    local lsp_status = require("lsp-status")
     local keymap = vim.keymap
 
     local opts = { noremap = true, silent = true }
@@ -54,7 +56,10 @@ return {
       keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
     end
 
-    local capabilities = cmp_nvim_lsp.default_capabilities()
+    local capabilities = vim.tbl_extend('keep',
+      cmp_nvim_lsp.default_capabilities(),
+      lsp_status.capabilities
+    )
 
     local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
 
@@ -63,11 +68,16 @@ return {
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
 
+    -- Registere lsp-status progress handler
+    lsp_status.register_progress()
+
+    -- Enable lsp debugging
     vim.lsp.set_log_level("debug")
 
     lspconfig["html"].setup({
       capabilities = capabilities,
-      on_attach = function(_, bufnr)
+      on_attach = function(client, bufnr)
+        lsp_status.on_attach(client)
         set_keymaps(bufnr)
       end,
       filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss" }
@@ -75,56 +85,56 @@ return {
 
     lspconfig["cssls"].setup({
       capabilities = capabilities,
-      on_attach = function(_, bufnr)
+      on_attach = function(client, bufnr)
+        lsp_status.on_attach(client)
         set_keymaps(bufnr)
       end,
     })
 
     lspconfig["docker_compose_language_service"].setup({
       capabilities = capabilities,
-      on_attach = function(_, bufnr)
+      on_attach = function(client, bufnr)
+        lsp_status.on_attach(client)
         set_keymaps(bufnr)
       end,
     })
 
     lspconfig["dockerls"].setup({
       capabilities = capabilities,
-      on_attach = function(_, bufnr)
+      on_attach = function(client, bufnr)
+        lsp_status.on_attach(client)
+        set_keymaps(bufnr)
+      end,
+    })
+
+    lspconfig["jsonls"].setup({
+      capabilities = capabilities,
+      on_attach = function(client, bufnr)
+        lsp_status.on_attach(client)
+        set_keymaps(bufnr)
+      end,
+    })
+
+    lspconfig["spectral"].setup({
+      capabilities = capabilities,
+      on_attach = function(client, bufnr)
+        lsp_status.on_attach(client)
         set_keymaps(bufnr)
       end,
     })
 
     lspconfig["graphql"].setup({
       capabilities = capabilities,
-      on_attach = function(_, bufnr)
-        set_keymaps(bufnr)
-      end,
-    })
-
-    lspconfig["jdtls"].setup({
-      capabilities = capabilities,
-      on_attach = function(_, bufnr)
+      on_attach = function(client, bufnr)
+        lsp_status.on_attach(client)
         set_keymaps(bufnr)
       end,
     })
 
     lspconfig["jedi_language_server"].setup({
       capabilities = capabilities,
-      on_attach = function(_, bufnr)
-        set_keymaps(bufnr)
-      end,
-    })
-
-    lspconfig["kotlin_language_server"].setup({
-      capabilities = capabilities,
-      on_attach = function(_, bufnr)
-        set_keymaps(bufnr)
-      end,
-    })
-
-    lspconfig["lua_ls"].setup({
-      capabilities = capabilities,
-      on_attach = function(_, bufnr)
+      on_attach = function(client, bufnr)
+        lsp_status.on_attach(client)
         set_keymaps(bufnr)
       end,
       settings = {
@@ -142,9 +152,18 @@ return {
       }
     })
 
+    lspconfig["ltex"].setup({
+      capabilities = capabilities,
+      on_attach = function(client, bufnr)
+        lsp_status.on_attach(client)
+        set_keymaps(bufnr)
+      end,
+    })
+
     lspconfig["ruby_ls"].setup({
       capabilities = capabilities,
-      on_attach = function(_, bufnr)
+      on_attach = function(client, bufnr)
+        lsp_status.on_attach(client)
         set_keymaps(bufnr)
       end,
     })
@@ -156,6 +175,7 @@ return {
       end,
       capabilities = capabilities,
       on_attach = function(client, bufnr)
+        lsp_status.on_attach(client)
         require('sqls').on_attach(client, bufnr)
       end
     })
@@ -242,49 +262,64 @@ return {
 
     lspconfig["tailwindcss"].setup({
       capabilities = capabilities,
-      on_attach = function(_, bufnr)
+      on_attach = function(client, bufnr)
+        lsp_status.on_attach(client)
         set_keymaps(bufnr)
       end,
     })
 
     lspconfig["gopls"].setup({
       capabilities = capabilities,
-      on_attach = function(_, bufnr)
+      on_attach = function(client, bufnr)
+        lsp_status.on_attach(client)
         set_keymaps(bufnr)
       end,
     })
 
     lspconfig["terraformls"].setup({
       capabilities = capabilities,
-      on_attach = function(_, bufnr)
+      on_attach = function(client, bufnr)
+        lsp_status.on_attach(client)
         set_keymaps(bufnr)
       end,
     })
 
     lspconfig["texlab"].setup({
       capabilities = capabilities,
-      on_attach = function(_, bufnr)
+      on_attach = function(client, bufnr)
+        lsp_status.on_attach(client)
         set_keymaps(bufnr)
       end,
     })
 
     lspconfig["vimls"].setup({
       capabilities = capabilities,
-      on_attach = function(_, bufnr)
+      on_attach = function(client, bufnr)
+        lsp_status.on_attach(client)
         set_keymaps(bufnr)
       end,
     })
 
     lspconfig["volar"].setup({
       capabilities = capabilities,
-      on_attach = function(_, bufnr)
+      on_attach = function(client, bufnr)
+        lsp_status.on_attach(client)
         set_keymaps(bufnr)
       end,
     })
 
     lspconfig["yamlls"].setup({
       capabilities = capabilities,
-      on_attach = function(_, bufnr)
+      on_attach = function(client, bufnr)
+        lsp_status.on_attach(client)
+        set_keymaps(bufnr)
+      end,
+    })
+
+    lspconfig["kotlin_language_server"].setup({
+      capabilities = capabilities,
+      on_attach = function(client, bufnr)
+        lsp_status.on_attach(client)
         set_keymaps(bufnr)
       end,
     })
