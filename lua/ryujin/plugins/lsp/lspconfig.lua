@@ -323,5 +323,13 @@ return {
         set_keymaps(bufnr)
       end,
     })
+
+    lspconfig["lua_ls"].setup({
+      capabilities = capabilities,
+      on_attach = function(client, bufnr)
+        lsp_status.on_attach(client)
+        set_keymaps(bufnr)
+      end,
+    })
   end
 }
