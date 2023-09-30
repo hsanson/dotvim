@@ -22,6 +22,11 @@ return {
           }
         }
       },
+      pickers = {
+        colorscheme = {
+          enable_preview = true
+        }
+      },
       extensions = {
         fzf = {
           fuzzy = true,                    -- false will only do exact matching
@@ -37,6 +42,7 @@ return {
 
     -- Telescope
     local builtin = require('telescope.builtin')
+    vim.keymap.set('n', '<leader>fc', builtin.colorscheme, {})
     vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
     vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
     vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
