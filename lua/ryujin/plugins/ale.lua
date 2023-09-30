@@ -48,7 +48,6 @@ return {
         \   'c': ['clangd'],
         \   'dockerfile': ['dockerfile_lint'],
         \   'go': ['gofmt', 'golint', 'go vet'],
-        \   'groovy': ['android'],
         \   'help': [],
         \   'javascript': ['eslint'],
         \   'kotlin': ['ktlint'],
@@ -64,7 +63,6 @@ return {
         \   'tex': ['proselint', 'chktex', 'lacheck'],
         \   'text': ['proselint', 'write-good'],
         \   'vim': ['vint', 'ale_custom_linting_rules'],
-        \   'xml': ['android'],
         \   'yaml': ['yamllint', 'yaml-language-server']
       \}
 

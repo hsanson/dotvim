@@ -36,7 +36,18 @@ return {
 
     local config = {
       cmd = { mason_path .. "/bin/jdtls" },
-      root_dir = root_path
+      root_dir = root_path,
+      settings = {
+        java = {
+          jdt = {
+            ls = {
+              androidSupport = true,
+              lombokSupport = true,
+              protoBufSupport = true
+            }
+          }
+        }
+      }
     }
 
     local client_id = jdtls.start_or_attach(config)
