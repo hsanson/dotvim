@@ -40,10 +40,11 @@ return {
     }
 
     local client_id = jdtls.start_or_attach(config)
-    local client = vim.lsp.get_client_by_id(client_id)
 
-    lsp_status.register_progress()
-    lsp_status.on_attach(client)
-
+    if client_id then
+      local client = vim.lsp.get_client_by_id(client_id)
+      lsp_status.register_progress()
+      lsp_status.on_attach(client)
+    end
   end
 }

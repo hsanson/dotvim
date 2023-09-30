@@ -1,17 +1,3 @@
--- local feline = {
---   'famiu/feline.nvim',
---   dependencies = {
---     'nvim-tree/nvim-web-devicons',
---     'lewis6991/gitsigns.nvim'
---   },
---   config = function()
---     local feline = require('feline')
-
---     feline.setup()
---     feline.winbar.setup()
---   end
--- }
-
 local lualine = {
   "nvim-lualine/lualine.nvim",
   dependencies = {
@@ -101,7 +87,7 @@ local lualine = {
           {'filetype'},
         },
         lualine_b = {},
-        lualine_c = { filename_module }, 
+        lualine_c = { filename_module },
         lualine_x = {},
         lualine_y = {},
         lualine_z = {'encoding', 'fileformat'}

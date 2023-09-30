@@ -4,7 +4,8 @@ return {
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     "nanotee/sqls.nvim",
-    "nvim-lua/lsp-status.nvim"
+    "nvim-lua/lsp-status.nvim",
+    "folke/neodev.nvim"
   },
   config = function()
     local lspconfig = require("lspconfig")
@@ -71,8 +72,9 @@ return {
     -- Registere lsp-status progress handler
     lsp_status.register_progress()
 
-    -- Enable lsp debugging
-    vim.lsp.set_log_level("debug")
+    -- Enable lsp debugging. Only enable when debugging to avoid
+    -- performance degradation on normal use.
+    -- vim.lsp.set_log_level("debug")
 
     lspconfig["html"].setup({
       capabilities = capabilities,
@@ -324,8 +326,18 @@ return {
       end,
     })
 
+    -- neodev plugin must be setup before lspconfig lua_ls.
+    require("neodev").setup({})
+
     lspconfig["lua_ls"].setup({
       capabilities = capabilities,
+      settings = {
+        Lua = {
+          completion = {
+            callSnippet = "Replace"
+          }
+        }
+      },
       on_attach = function(client, bufnr)
         lsp_status.on_attach(client)
         set_keymaps(bufnr)
