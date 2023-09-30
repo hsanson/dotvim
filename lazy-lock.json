@@ -26,6 +26,7 @@
   "sqls.nvim": { "branch": "main", "commit": "4b1274b5b44c48ce784aac23747192f5d9d26207" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "6c921ca12321edaa773e324ef64ea301a1d0da62" },
   "telescope.nvim": { "branch": "0.1.x", "commit": "54930e1abfc94409e1bb9266e752ef8379008592" },
+  "transparent.nvim": { "branch": "main", "commit": "3af6232c8d39d51062702e875ff6407c1eeb0391" },
   "vim-commentary": { "branch": "master", "commit": "e87cd90dc09c2a203e13af9704bd0ef79303d755" },
   "vim-hexokinase": { "branch": "master", "commit": "62324b43ea858e268fb70665f7d012ae67690f43" },
   "vim-nightfly-guicolors": { "branch": "master", "commit": "a7cfb457ff433fe1e44511d951be2e97f84b44ad" },

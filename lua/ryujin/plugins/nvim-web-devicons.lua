@@ -28,20 +28,92 @@ return {
        -- same as `override` but specifically for overrides by filename
        -- takes effect when `strict` is true
        override_by_filename = {
+        ["docker-compose.yml"] = {
+          icon = "",
+          color = "#458ee6",
+          cterm_color = "68",
+          name = "Dockerfile",
+        },
+        ["dockerfile"] = {
+          icon = "",
+          color = "#458ee6",
+          cterm_color = "68",
+          name = "Dockerfile",
+        },
+        [".dockerignore"] = {
+          icon = "",
+          color = "#458ee6",
+          cterm_color = "68",
+          name = "Dockerfile",
+        },
         [".gitignore"] = {
           icon = "",
           color = "#f1502f",
           name = "Gitignore"
-        }
+        },
        };
        -- same as `override` but specifically for overrides by extension
        -- takes effect when `strict` is true
        override_by_extension = {
+        ["doc"] = {
+          icon = "",
+          color = "#185abd",
+          cterm_color = "26",
+          name = "Doc",
+        },
+        ["docx"] = {
+          icon = "",
+          color = "#185abd",
+          cterm_color = "26",
+          name = "Docx",
+        },
         ["log"] = {
           icon = "",
           color = "#81e043",
           name = "Log"
-        }
+        },
+        ["ppt"] = {
+          icon = "",
+          color = "#cb4a32",
+          cterm_color = "214",
+          name = "Ppt",
+        },
+        ["svg"] = {
+          icon = "",
+          color = "#FFB13B",
+          cterm_color = "214",
+          name = "Svg",
+        },
+        ["txt"] = {
+          icon = "",
+          color = "#89e051",
+          cterm_color = "113",
+          name = "Txt",
+        },
+        ["xml"] = {
+          icon = "",
+          color = "#e37933",
+          cterm_color = "166",
+          name = "Xml",
+        },
+        ["xls"] = {
+          icon = "",
+          color = "#207245",
+          cterm_color = "29",
+          name = "Xls",
+        },
+        ["xlsx"] = {
+          icon = "",
+          color = "#207245",
+          cterm_color = "29",
+          name = "Xlsx",
+        },
+        ["tex"] = {
+          icon = "",
+          color = "#3D6117",
+          cterm_color = "22",
+          name = "Tex",
+        },
        };
     }
   end
