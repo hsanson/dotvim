@@ -3,13 +3,11 @@ return {
   ft = "java",
   dependencies = {
     "williamboman/mason.nvim",
-    "nvim-lua/lsp-status.nvim"
   },
   config = function()
 
     local jdtls = require('jdtls')
     local mason = require("mason-registry")
-    local lsp_status = require("lsp-status")
 
     -- Check if JDTLS is installed via Mason
     if not mason.is_installed("jdtls") then
@@ -51,11 +49,5 @@ return {
     }
 
     local client_id = jdtls.start_or_attach(config)
-
-    if client_id then
-      local client = vim.lsp.get_client_by_id(client_id)
-      lsp_status.register_progress()
-      lsp_status.on_attach(client)
-    end
   end
 }

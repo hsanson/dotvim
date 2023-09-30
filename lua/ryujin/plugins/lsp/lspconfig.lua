@@ -4,13 +4,11 @@ return {
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     "nanotee/sqls.nvim",
-    "nvim-lua/lsp-status.nvim",
     "folke/neodev.nvim"
   },
   config = function()
     local lspconfig = require("lspconfig")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
-    local lsp_status = require("lsp-status")
     local keymap = vim.keymap
 
     local opts = { noremap = true, silent = true }
@@ -66,8 +64,8 @@ return {
     })
 
     local capabilities = vim.tbl_extend('keep',
-      cmp_nvim_lsp.default_capabilities(),
-      lsp_status.capabilities
+      vim.lsp.protocol.make_client_capabilities(),
+      cmp_nvim_lsp.default_capabilities()
     )
 
     local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
@@ -77,68 +75,41 @@ return {
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
 
-    -- Registere lsp-status progress handler
-    lsp_status.register_progress()
-
     -- Enable lsp debugging. Only enable when debugging to avoid
     -- performance degradation on normal use.
-    -- vim.lsp.set_log_level("debug")
+    vim.lsp.set_log_level("debug")
 
     lspconfig["html"].setup({
       capabilities = capabilities,
-      on_attach = function(client, _)
-        lsp_status.on_attach(client)
-      end,
       filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss" }
     })
 
     lspconfig["cssls"].setup({
       capabilities = capabilities,
-      on_attach = function(client, _)
-        lsp_status.on_attach(client)
-      end,
     })
 
     lspconfig["docker_compose_language_service"].setup({
       capabilities = capabilities,
-      on_attach = function(client, _)
-        lsp_status.on_attach(client)
-      end,
     })
 
     lspconfig["dockerls"].setup({
       capabilities = capabilities,
-      on_attach = function(client, _)
-        lsp_status.on_attach(client)
-      end,
     })
 
     lspconfig["jsonls"].setup({
       capabilities = capabilities,
-      on_attach = function(client, _)
-        lsp_status.on_attach(client)
-      end,
     })
 
     lspconfig["spectral"].setup({
       capabilities = capabilities,
-      on_attach = function(client, _)
-        lsp_status.on_attach(client)
-      end,
     })
 
     lspconfig["graphql"].setup({
       capabilities = capabilities,
-      on_attach = function(client, _)
-        lsp_status.on_attach(client)
-      end,
     })
 
     lspconfig["jedi_language_server"].setup({
       capabilities = capabilities,
-      on_attach = function(client, _)
-        lsp_status.on_attach(client)
-      end,
       settings = {
         Lua = {
           diagnostics = {
@@ -156,16 +127,10 @@ return {
 
     lspconfig["ltex"].setup({
       capabilities = capabilities,
-      on_attach = function(client, _)
-        lsp_status.on_attach(client)
-      end,
     })
 
     lspconfig["ruby_ls"].setup({
       capabilities = capabilities,
-      on_attach = function(client, _)
-        lsp_status.on_attach(client)
-      end,
     })
 
     lspconfig["sqls"].setup({
@@ -175,7 +140,6 @@ return {
       end,
       capabilities = capabilities,
       on_attach = function(client, _)
-        lsp_status.on_attach(client)
         require('sqls').on_attach(client, _)
       end
     })
@@ -261,58 +225,34 @@ return {
 
     lspconfig["tailwindcss"].setup({
       capabilities = capabilities,
-      on_attach = function(client, _)
-        lsp_status.on_attach(client)
-      end,
     })
 
     lspconfig["gopls"].setup({
       capabilities = capabilities,
-      on_attach = function(client, _)
-        lsp_status.on_attach(client)
-      end,
     })
 
     lspconfig["terraformls"].setup({
       capabilities = capabilities,
-      on_attach = function(client, _)
-        lsp_status.on_attach(client)
-      end,
     })
 
     lspconfig["texlab"].setup({
       capabilities = capabilities,
-      on_attach = function(client, _)
-        lsp_status.on_attach(client)
-      end,
     })
 
     lspconfig["vimls"].setup({
       capabilities = capabilities,
-      on_attach = function(client, _)
-        lsp_status.on_attach(client)
-      end,
     })
 
     lspconfig["volar"].setup({
       capabilities = capabilities,
-      on_attach = function(client, _)
-        lsp_status.on_attach(client)
-      end,
     })
 
     lspconfig["yamlls"].setup({
       capabilities = capabilities,
-      on_attach = function(client, _)
-        lsp_status.on_attach(client)
-      end,
     })
 
     lspconfig["kotlin_language_server"].setup({
       capabilities = capabilities,
-      on_attach = function(client, _)
-        lsp_status.on_attach(client)
-      end,
     })
 
     -- neodev plugin must be setup before lspconfig lua_ls.
@@ -327,9 +267,6 @@ return {
           }
         }
       },
-      on_attach = function(client, _)
-        lsp_status.on_attach(client)
-      end,
     })
   end
 }
