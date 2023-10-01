@@ -1,6 +1,10 @@
 return {
   {
     "kevinhwang91/rnvimr",
+    -- Load on startup so netwr hijack works when opening
+    -- directories directly from command line.
+    -- E.g. vim ./
+    lazy = false,
     keys = {
       { "-", "<cmd>RnvimrToggle<cr>", desc = "Open Ranger" }
     },
