@@ -6,15 +6,15 @@ return {
     local g = vim.g
 
     g.ale_disable_lsp = 'auto'
-    g.ale_sign_info = ''
-    g.ale_sign_error = ''
-    g.ale_sign_warning = ''
+    g.ale_sign_info = g.symbol_info
+    g.ale_sign_error = g.symbol_error
+    g.ale_sign_warning = g.symbol_warn
     g.ale_sign_priority = 4
     g.ale_open_list = 0
     g.ale_echo_msg_format = '%severity% [%linter%] (%code%) - %s'
-    g.ale_echo_msg_info_str = ''
-    g.ale_echo_msg_error_str = ''
-    g.ale_echo_msg_warning_str = ''
+    g.ale_echo_msg_info_str = g.symbol_info
+    g.ale_echo_msg_error_str = g.symbol_error
+    g.ale_echo_msg_warning_str = g.symbol_warn
     g.ale_writegood_options = '--no-passive'
     g.ale_virtualtext_cursor = 1
     g.ale_virtualtext_prefix = ' '
