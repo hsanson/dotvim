@@ -10,6 +10,7 @@ return {
     local lspconfig = require("lspconfig")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
     local keymap = vim.keymap
+    local g = vim.g
 
     local opts = { noremap = true, silent = true }
 
@@ -68,7 +69,12 @@ return {
       cmp_nvim_lsp.default_capabilities()
     )
 
-    local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
+    local signs = {
+      Error = g.symbol_error,
+      Warn = g.symbol_warn,
+      Hint = g.symbol_hint,
+      Info = g.symbol_info
+    }
 
     for type, icon in pairs(signs) do
       local hl = "DiagnosticSign" .. type

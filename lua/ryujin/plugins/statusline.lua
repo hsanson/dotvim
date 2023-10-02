@@ -6,6 +6,7 @@ local lualine = {
   },
   config = function()
     local lualine = require("lualine")
+    local g = vim.g
 
     local filename_module = {
       'filename',
@@ -93,7 +94,17 @@ local lualine = {
       sections = {
         lualine_a = { 'mode' },
         lualine_b = {'branch', diff_module},
-        lualine_c = { 'diagnostics' },
+        lualine_c = {
+          {
+            'diagnostics',
+            symbols = {
+              error = g.symbol_error .. ' ',
+              warn = g.symbol_warn .. ' ',
+              info = g.symbol_info .. ' ',
+              hint = g.symbol_hint .. ' '
+            },
+          }
+        },
         lualine_x = {
           { lsp_progress }
         },
