@@ -7,12 +7,12 @@ opt.list = false      -- List command breaks soft wrapping.
 opt.showbreak='…'
 opt.spell = true
 
-vim.keymap('n', 'j', 'gj')
-vim.keymap('n', 'k', 'gk')
+vim.keymap.set('n', 'j', 'gj', {})
+vim.keymap.set('n', 'k', 'gk', {})
 
-vim.keymap('n', '<leader>lv', '<cmd>VimtexView<cr>',
+vim.keymap.set('n', '<leader>lv', '<cmd>VimtexView<cr>',
   { desc = "Preview latex document" })
-vim.keymap('n', '<leader>ll', '<cmd>VimtexCompile<cr>',
+vim.keymap.set('n', '<leader>ll', '<cmd>VimtexCompile<cr>',
   { desc = "Compile latex document" })
 
 -- Enable concealed text that shows symbols like \beta as β
