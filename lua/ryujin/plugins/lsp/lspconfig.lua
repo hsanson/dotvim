@@ -148,8 +148,13 @@ return {
       end
     })
 
-    lspconfig["ruby_ls"].setup({
+    lspconfig["solargraph"].setup({
       capabilities = capabilities,
+      settings = {
+        solargraph = {
+          diagnostics = true
+        }
+      }
     })
 
     lspconfig["sqls"].setup({
