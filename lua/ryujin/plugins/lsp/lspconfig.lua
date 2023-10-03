@@ -86,11 +86,6 @@ return {
     -- performance degradation on normal use.
     -- vim.lsp.set_log_level("debug")
 
-    lspconfig["html"].setup({
-      capabilities = capabilities,
-      filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss" }
-    })
-
     lspconfig["cssls"].setup({
       capabilities = capabilities,
     })
@@ -103,17 +98,20 @@ return {
       capabilities = capabilities,
     })
 
-    lspconfig["jsonls"].setup({
-      capabilities = capabilities,
-    })
-
-    lspconfig["spectral"].setup({
+    lspconfig["gopls"].setup({
       capabilities = capabilities,
     })
 
     lspconfig["graphql"].setup({
       capabilities = capabilities,
     })
+
+    lspconfig["html"].setup({
+      capabilities = capabilities,
+      filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss" }
+    })
+
+    -- jdtls configuration is managed by nvim-jdtls plugin
 
     lspconfig["jedi_language_server"].setup({
       capabilities = capabilities,
@@ -132,6 +130,14 @@ return {
       }
     })
 
+    lspconfig["jsonls"].setup({
+      capabilities = capabilities,
+    })
+
+    lspconfig["kotlin_language_server"].setup({
+      capabilities = capabilities,
+    })
+
     lspconfig["ltex"].setup({
       capabilities = capabilities,
       on_attach = function(client, bufnr)
@@ -148,6 +154,20 @@ return {
       end
     })
 
+    -- neodev plugin must be setup before lspconfig lua_ls.
+    require("neodev").setup({})
+
+    lspconfig["lua_ls"].setup({
+      capabilities = capabilities,
+      settings = {
+        Lua = {
+          completion = {
+            callSnippet = "Replace"
+          }
+        }
+      },
+    })
+
     lspconfig["solargraph"].setup({
       capabilities = capabilities,
       settings = {
@@ -155,6 +175,10 @@ return {
           diagnostics = true
         }
       }
+    })
+
+    lspconfig["spectral"].setup({
+      capabilities = capabilities,
     })
 
     lspconfig["sqls"].setup({
@@ -251,10 +275,6 @@ return {
       capabilities = capabilities,
     })
 
-    lspconfig["gopls"].setup({
-      capabilities = capabilities,
-    })
-
     lspconfig["terraformls"].setup({
       capabilities = capabilities,
     })
@@ -304,22 +324,5 @@ return {
       capabilities = capabilities,
     })
 
-    lspconfig["kotlin_language_server"].setup({
-      capabilities = capabilities,
-    })
-
-    -- neodev plugin must be setup before lspconfig lua_ls.
-    require("neodev").setup({})
-
-    lspconfig["lua_ls"].setup({
-      capabilities = capabilities,
-      settings = {
-        Lua = {
-          completion = {
-            callSnippet = "Replace"
-          }
-        }
-      },
-    })
   end
 }
