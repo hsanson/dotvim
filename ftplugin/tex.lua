@@ -10,11 +10,21 @@ opt.spell = true
 vim.keymap.set('n', 'j', 'gj', {})
 vim.keymap.set('n', 'k', 'gk', {})
 
-vim.keymap.set('n', '<leader>lv', '<cmd>VimtexView<cr>',
-  { desc = "Preview latex document" })
-vim.keymap.set('n', '<leader>ll', '<cmd>VimtexCompile<cr>',
-  { desc = "Compile latex document" })
-
 -- Enable concealed text that shows symbols like \beta as β
 -- http://b4winckler.wordpress.com/2010/08/07/using-the-conceal-vim-feature-with-latex
 opt.conceallevel = 2
+
+-- Custom keymaps for texlab lsp
+local opts = { noremap = true, silent = true }
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('TexlabLspConfig', {}),
+  callback = function(ev)
+    opts.buffer = ev.buf
+    opts.desc = "Texlab build pdf"
+    vim.keymap.set("n", "<leader>ll", "<cmd>TexlabBuild<CR>", opts)
+
+    opts.desc = "Texlab view pdf"
+    vim.keymap.set("n", "<leader>lv", "<cmd>TexlabForward<CR>", opts)
+  end
+})

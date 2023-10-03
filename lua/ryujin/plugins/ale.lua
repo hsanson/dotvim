@@ -51,7 +51,7 @@ return {
         \   'help': [],
         \   'javascript': ['eslint'],
         \   'kotlin': ['ktlint'],
-        \   'latex': ['proselint', 'chktex', 'lacheck'],
+        \   'latex': ['proselint', 'lacheck'],
         \   'mail': ['proselint', 'write-good'],
         \   'markdown': ['markdownlint'],
         \   'openapi': ['yamllint', 'ibm-validator'],
@@ -60,7 +60,7 @@ return {
         \   'ruby': ['rubocop', 'ruby'],
         \   'rust': ['analyzer'],
         \   'terraform': ['checkov', 'terraform', 'tflint'],
-        \   'tex': ['proselint', 'chktex', 'lacheck'],
+        \   'tex': ['proselint', 'lacheck'],
         \   'text': ['proselint', 'write-good'],
         \   'vim': ['vint', 'ale_custom_linting_rules'],
         \   'yaml': ['yamllint', 'yaml-language-server']

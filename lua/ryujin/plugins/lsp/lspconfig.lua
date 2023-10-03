@@ -83,7 +83,7 @@ return {
 
     -- Enable lsp debugging. Only enable when debugging to avoid
     -- performance degradation on normal use.
-    vim.lsp.set_log_level("debug")
+    -- vim.lsp.set_log_level("debug")
 
     lspconfig["html"].setup({
       capabilities = capabilities,
@@ -243,6 +243,35 @@ return {
 
     lspconfig["texlab"].setup({
       capabilities = capabilities,
+      settings = {
+        texlab = {
+          build = {
+            onSave = false,
+            auxDirectory = './out',
+            logDirectory = './out',
+            pdfDirectory = './out',
+            executable = 'latexmk',
+            args = {
+              '-verbose',
+              '-pdf',
+              '-synctex=1',
+              '-interaction=nonstopmode',
+              '-auxdir=./out',
+              '-outdir=./out',
+              '%f'
+            },
+            forwardSearchAfter = true
+          },
+          chktex = {
+            onEdit = true,
+            onOpenAndSave = true
+          },
+          forwardSearch = {
+            executable = 'zathura',
+            args = { '--synctex-forward', "%l:1:%f", "%p" }
+          }
+        }
+      }
     })
 
     lspconfig["vimls"].setup({
