@@ -4,7 +4,8 @@ return {
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     "nanotee/sqls.nvim",
-    "folke/neodev.nvim"
+    "folke/neodev.nvim",
+    "barreiroleo/ltex_extra.nvim"
   },
   config = function()
     local lspconfig = require("lspconfig")
@@ -133,6 +134,18 @@ return {
 
     lspconfig["ltex"].setup({
       capabilities = capabilities,
+      on_attach = function(client, bufnr)
+        require("ltex_extra").setup({
+          -- https://valentjn.github.io/ltex/supported-languages.html#natural-languages
+          load_langs = { 'en-US', 'es', 'ja-JP' },
+          init_check = true,
+          path = vim.fn.expand("~") .. "/.local/share/ltex",
+          -- string : "none", "trace", "debug", "info", "warn", "error", "fatal"
+          log_leve = "none",
+          -- Not needed since lspconfig takes care of it
+          server_opts = nil
+        })
+      end
     })
 
     lspconfig["ruby_ls"].setup({
