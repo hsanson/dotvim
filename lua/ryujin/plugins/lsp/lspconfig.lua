@@ -139,7 +139,7 @@ return {
           -- https://valentjn.github.io/ltex/supported-languages.html#natural-languages
           load_langs = { 'en-US', 'es', 'ja-JP' },
           init_check = true,
-          path = vim.fn.expand("~") .. "/.local/share/ltex",
+          path = vim.fn.expand("~") .. "/.config/ltex",
           -- string : "none", "trace", "debug", "info", "warn", "error", "fatal"
           log_leve = "none",
           -- Not needed since lspconfig takes care of it
