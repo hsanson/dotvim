@@ -8,7 +8,6 @@ opt.shiftwidth = 2
 opt.textwidth = 0
 opt.wrap = true
 opt.linebreak = true
-opt.spell = true
 
 vim.keymap.set('n', 'j', 'gj')
 vim.keymap.set('n', 'k', 'gk')

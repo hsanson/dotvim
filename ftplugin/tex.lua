@@ -5,7 +5,6 @@ opt.wrap = true       -- Enable wrap of lines pass the right window border.
 opt.linebreak = true  -- Force wrap at word boundaries not chars
 opt.list = false      -- List command breaks soft wrapping.
 opt.showbreak='…'
-opt.spell = true
 
 vim.keymap.set('n', 'j', 'gj', {})
 vim.keymap.set('n', 'k', 'gk', {})

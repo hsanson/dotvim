@@ -1,6 +1,5 @@
 local opt = vim.opt_local
 
-opt.spell = true
 opt.linebreak = true
 
 vim.keymap.set('n', '<leader>lv', function()

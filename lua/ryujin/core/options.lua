@@ -23,7 +23,6 @@ opt.cursorline = true                 -- highlight current line in insert Mode.
 opt.splitbelow = true
 opt.splitright = true
 opt.hidden = true                     -- Avoid loosing unsaved work when changing buffers.
-opt.spelllang = "en,es"
 opt.emoji = false                     -- Fix emoji rendering.
 opt.pumblend = 20                     -- Transparency to popup menu
 opt.laststatus = 3
