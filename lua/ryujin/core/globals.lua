@@ -11,3 +11,6 @@ g.symbol_info  = ''
 g.symbol_gradle = 'ﳄ'
 g.symbol_android = ''
 g.symbol_progress = ''
+
+-- Quick Scope configuration
+g.qs_highlight_on_keys = {'f', 'F', 't', 'T'}
