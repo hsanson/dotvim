@@ -132,6 +132,19 @@ return {
 
     lspconfig["jsonls"].setup({
       capabilities = capabilities,
+      settings = {
+        json = {
+          format = { enable = true },
+          schemas = {
+            {
+              fileMatch = {
+                "db/flows/*/questions.json"
+              },
+              url = ".fhir.schema.json"
+            }
+          }
+        }
+      }
     })
 
     lspconfig["kotlin_language_server"].setup({
