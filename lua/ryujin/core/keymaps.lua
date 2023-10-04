@@ -16,6 +16,10 @@ vim.keymap.set('n', '<leader>j', '<C-w>j')
 vim.keymap.set('n', '<leader>k', '<C-w>k')
 vim.keymap.set('n', '<leader>l', '<C-w>l')
 
+-- Tabs Navigation
+vim.keymap.set('n', 'tt', '<cmd>tabnext<cr>')
+vim.keymap.set('n', 'tn', '<cmd>tabnew<cr>')
+
 -- Remap number increment/decrement so it does not conflict with tmux
 -- control keys (C-a)
 vim.keymap.set('n', '<A-a>', '<C-a>')
