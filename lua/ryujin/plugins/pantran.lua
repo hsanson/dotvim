@@ -5,7 +5,7 @@ return {
     local opts = {noremap = true, silent = true, expr = true}
 
     pantran.setup({
-      default_engine = "argos",
+      default_engine = "google",
       engines = {
         argos = {
           default_source = "auto",
