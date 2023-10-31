@@ -53,6 +53,11 @@ local lualine = {
     end
 
     local function sqls_connection()
+
+      if (vim.bo.filetype ~= 'sql') then
+        return ''
+      end
+
       local icon = ''
 
       if (vim.b.sqls_driver == 'postgresql') then
