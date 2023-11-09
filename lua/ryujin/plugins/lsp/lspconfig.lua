@@ -153,6 +153,9 @@ return {
 
     lspconfig["ltex"].setup({
       capabilities = capabilities,
+      filetypes = {
+        "bib", "gitcommit", "markdown", "org", "plaintex", "rst", "rnoweb", "tex", "pandoc", "quarto", "rmd", "asciidoc"
+      },
       on_attach = function(client, bufnr)
         require("ltex_extra").setup({
           -- https://valentjn.github.io/ltex/supported-languages.html#natural-languages
@@ -160,7 +163,7 @@ return {
           init_check = true,
           path = vim.fn.expand("~") .. "/.config/ltex",
           -- string : "none", "trace", "debug", "info", "warn", "error", "fatal"
-          log_leve = "none",
+          log_level = "none",
           -- Not needed since lspconfig takes care of it
           server_opts = nil
         })
