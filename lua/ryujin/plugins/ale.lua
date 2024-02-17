@@ -1,5 +1,5 @@
 return {
-  "hsanson/ale",
+  dir = "/home/ryujin/Projects/vim/ale",
   dev = true,
   lazy = false,
   config = function()
@@ -60,7 +60,7 @@ return {
         \   'ruby': ['rubocop', 'ruby'],
         \   'rust': ['analyzer'],
         \   'terraform': ['checkov', 'terraform', 'tflint'],
-        \   'tex': ['proselint', 'lacheck'],
+        \   'tex': ['proselint', 'lacheck', 'chktex'],
         \   'text': ['proselint', 'write-good'],
         \   'vim': ['vint', 'ale_custom_linting_rules'],
         \   'yaml': ['yamllint', 'yaml-language-server']
