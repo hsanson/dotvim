@@ -1,4 +1,10 @@
 return {
+  --
+  -- REPL
+  -- <leader>cs to open REPL
+  -- <leader>cr in visual mode or with motion to send to REPL
+  -- <leader>crr to send current line.
+  --
   "milanglacier/yarepl.nvim",
   enabled = true,
   config = function()
@@ -19,11 +25,10 @@ return {
             aichat = { cmd = 'aichat', formatter = yarepl.formatter.bracketed_pasting },
             radian = { cmd = 'radian', formatter = yarepl.formatter.bracketed_pasting },
             ipython = { cmd = 'ipython', formatter = yarepl.formatter.bracketed_pasting },
-            python = { cmd = 'python', formatter = yarepl.formatter.trim_empty_lines },
             R = { cmd = 'R', formatter = yarepl.formatter.trim_empty_lines },
             bash = { cmd = 'bash', formatter = yarepl.formatter.trim_empty_lines },
             zsh = { cmd = 'zsh', formatter = yarepl.formatter.bracketed_pasting },
-            ruby = { cmd = 'irb', formatter = yarepl.formatter.bracketed_pasting },
+            ruby = { cmd = 'pry', formatter = yarepl.formatter.trim_empty_lines },
         },
         -- when a REPL process exits, should the window associated with those REPLs closed?
         close_on_exit = true,
@@ -47,7 +52,6 @@ return {
       end
     end
 
-    
     local keymap = vim.api.nvim_set_keymap
 
     keymap('n', '<Leader>cs', '', {
@@ -75,4 +79,3 @@ return {
     })
   end
 }
-
