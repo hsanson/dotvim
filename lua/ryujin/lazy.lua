@@ -16,6 +16,7 @@ require("lazy").setup(
     { import = "ryujin.plugins" },
     { import = "ryujin.plugins.lsp" },
     { import = "ryujin.plugins.colorschemes" },
+    { import = "ryujin.plugins.filetypes" },
   },
   {
     install = {
