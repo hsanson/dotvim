@@ -6,7 +6,7 @@ return {
     require('bamboo').setup {
       -- optional configuration here
       transparent = true,
-      dim_inactive = true,
+      dim_inactive = false,
 
       lualine = {
         transparent = true
