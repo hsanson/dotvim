@@ -129,7 +129,8 @@ local lualine = {
           }
         },
         lualine_x = {
-          { lsp_progress }
+          { lsp_progress },
+          { "rest" }
         },
         lualine_y = {
           { function() return sqls_connection() end },
