@@ -15,7 +15,7 @@ return {
     g.ale_echo_msg_info_str = g.symbol_info
     g.ale_echo_msg_error_str = g.symbol_error
     g.ale_echo_msg_warning_str = g.symbol_warn
-    g.ale_writegood_options = '--no-passive'
+    g.ale_writegood_options = '--no-passive --no-weasel --no-tooWordy --no-adverb'
     g.ale_virtualtext_cursor = 1
     g.ale_virtualtext_prefix = ' '
     g.ale_floating_preview = 0
