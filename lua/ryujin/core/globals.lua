@@ -14,3 +14,8 @@ g.symbol_progress = ''
 
 -- Quick Scope configuration
 g.qs_highlight_on_keys = {'f', 'F', 't', 'T'}
+
+-- Mason configuration
+g.package_installed = "󰏗"
+g.package_pending = "󱧘"
+g.package_uninstalled = "󱧖"
