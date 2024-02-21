@@ -19,9 +19,6 @@ require("lazy").setup(
     { import = "ryujin.plugins.filetypes" },
   },
   {
-    install = {
-      colorscheme = { "onedark" }
-    },
     ui = {
       border = "rounded"
     },
