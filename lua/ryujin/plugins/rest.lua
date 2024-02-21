@@ -6,6 +6,7 @@ return {
   dir = "/home/ryujin/Projects/vim/rest.nvim",
   branch = "add-pre-script-configuration",
   dev = true,
+  ft = "http",
   dependencies = { { "nvim-lua/plenary.nvim" } },
   config = function()
     require("rest-nvim").setup({
@@ -146,7 +147,5 @@ return {
         -- vim.print(opts)
       end,
     })
-
-
   end
 }

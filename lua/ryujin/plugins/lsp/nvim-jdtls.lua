@@ -48,6 +48,6 @@ return {
       }
     }
 
-    local client_id = jdtls.start_or_attach(config)
+    local _ = jdtls.start_or_attach(config)
   end
 }
