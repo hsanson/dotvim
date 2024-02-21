@@ -53,11 +53,6 @@ local lualine = {
     end
 
     local function sqls_connection()
-
-      if (vim.bo.filetype ~= 'sql') then
-        return ''
-      end
-
       local icon = ''
 
       if (vim.b.sqls_driver == 'postgresql') then
@@ -65,13 +60,13 @@ local lualine = {
       elseif vim.b.sqls_driver == 'mysql' then
         icon = ''
       elseif vim.b.sqls_drver == 'mssql' then
-        icon = ''
+        icon = ''
       end
 
       if vim.b.sqls_name ~= nil then
         return string.format('%s %s', icon, vim.b.sqls_name)
       else
-        return " (No connection)"
+        return "󱘵"
       end
     end
 
@@ -116,7 +111,10 @@ local lualine = {
       },
       sections = {
         lualine_a = { 'mode' },
-        lualine_b = {'branch', diff_module},
+        lualine_b = {
+          { 'branch', icon = "" },
+          diff_module
+        },
         lualine_c = {
           {
             'diagnostics',
@@ -133,7 +131,7 @@ local lualine = {
           { function() return (vim.bo.filetype == "http" and "rest" or "") end }
         },
         lualine_y = {
-          { function() return sqls_connection() end },
+          { function() return (vim.bo.filetype == "sql" and sqls_connection() or "") end },
           { function() return progress_module() end }
         },
         lualine_z = {'location'}
