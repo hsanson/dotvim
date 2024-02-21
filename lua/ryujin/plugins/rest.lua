@@ -6,9 +6,13 @@ return {
   dir = "/home/ryujin/Projects/vim/rest.nvim",
   branch = "add-pre-script-configuration",
   dev = true,
+  lazy = true,
   ft = "http",
   dependencies = { { "nvim-lua/plenary.nvim" } },
   config = function()
+
+    require("telescope").load_extension('rest')
+
     require("rest-nvim").setup({
       -- Open request results in a horizontal split
       result_split_horizontal = false,

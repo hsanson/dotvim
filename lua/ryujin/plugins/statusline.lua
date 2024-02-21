@@ -130,7 +130,7 @@ local lualine = {
         },
         lualine_x = {
           { lsp_progress },
-          { "rest" }
+          { function() return (vim.bo.filetype == "http" and "rest" or "") end }
         },
         lualine_y = {
           { function() return sqls_connection() end },
