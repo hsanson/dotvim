@@ -121,24 +121,6 @@ return {
       search_back = true,
     })
 
-    local keymap = vim.api.nvim_set_keymap
-
-    keymap('n', '<Leader>rr', '<Plug>RestNvim<CR>', {
-      desc = 'Execute REST request',
-    })
-
-    keymap('n', '<Leader>rt', '<Plug>RestNvimPreview', {
-      desc = 'Preview REST curl command',
-    })
-
-    vim.keymap.set('n', '<Leader>re', function()
-        require("telescope").extensions.rest.select_env()
-      end, {
-      desc = 'Select REST environment file',
-      noremap = true
-    })
-
-
     local augroup = vim.api.nvim_create_augroup   -- Create/get autocommand group
     local autocmd = vim.api.nvim_create_autocmd   -- Create autocommand
     local group = augroup('RestGroup', { clear = true })
