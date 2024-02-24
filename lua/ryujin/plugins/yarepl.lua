@@ -58,7 +58,7 @@ return {
 
     local keymap = vim.api.nvim_set_keymap
 
-    keymap('n', '<Leader>rt', ':REPLStart', {
+    keymap('n', '<Leader>rt', ':REPLStart<CR>', {
       desc = 'Start an REPL',
     })
 

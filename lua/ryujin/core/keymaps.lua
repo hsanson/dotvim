@@ -27,3 +27,6 @@ vim.keymap.set('n', '<A-x>', '<C-x>')
 
 -- Disable accidental Ex mode
 vim.keymap.set('n', 'Q', '<nop>')
+
+-- Terminal
+vim.keymap.set('t', '<ESC>', '<C-\\><C-n>', {noremap = true})
