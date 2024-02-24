@@ -16,19 +16,19 @@ return {
 
     yarepl.setup {
         -- see `:h buflisted`, whether the REPL buffer should be buflisted.
-        buflisted = true,
+        buflisted = false,
         -- whether the REPL buffer should be a scratch buffer.
-        scratch = true,
+        scratch = false,
         -- the filetype of the REPL buffer created by `yarepl`
         ft = 'REPL',
         -- How yarepl open the REPL window, can be a string or a lua function.
         -- See below example for how to configure this option
-        wincmd = 'belowright 15 split',
+        wincmd = "belowright 20 split",
         -- The available REPL palattes that `yarepl` can create REPL based on
         metas = {
             aichat = { cmd = 'aichat', formatter = yarepl.formatter.bracketed_pasting },
             radian = { cmd = 'radian', formatter = yarepl.formatter.bracketed_pasting },
-            ipython = { cmd = 'ipython', formatter = yarepl.formatter.bracketed_pasting },
+            python = { cmd = 'ipython', formatter = yarepl.formatter.bracketed_pasting },
             R = { cmd = 'R', formatter = yarepl.formatter.trim_empty_lines },
             bash = { cmd = 'bash', formatter = yarepl.formatter.trim_empty_lines },
             zsh = { cmd = 'zsh', formatter = yarepl.formatter.bracketed_pasting },
@@ -58,8 +58,7 @@ return {
 
     local keymap = vim.api.nvim_set_keymap
 
-    keymap('n', '<Leader>rt', '', {
-      callback = run_cmd_with_count 'REPLStart',
+    keymap('n', '<Leader>rt', ':REPLStart', {
       desc = 'Start an REPL',
     })
 
