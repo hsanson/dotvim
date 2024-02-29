@@ -29,6 +29,7 @@ return {
     g.ale_use_neovim_diagnostics_api = 1
     g.ale_sh_bashate_options = '-i E003 --max-lin-length 100'
     g.ale_ruby_rubocop_auto_correct_all = 1
+    g.ale_go_golangci_lint_package = 1
 
     vim.cmd([[
 
@@ -47,7 +48,7 @@ return {
         \   'bib': ['bibclean'],
         \   'c': ['clangd'],
         \   'dockerfile': ['dockerfile_lint'],
-        \   'go': ['gofmt', 'golint', 'go vet'],
+        \   'go': ['golangci-lint', 'gofmt', 'golint', 'go vet'],
         \   'help': [],
         \   'javascript': ['eslint'],
         \   'kotlin': ['ktlint'],
