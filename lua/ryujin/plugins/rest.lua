@@ -4,7 +4,7 @@ return {
   --   sudo apt install fd-find
   --   ln -s /usr/bin/fdfind ~/.local/bin/fd
   dir = "/home/ryujin/Projects/vim/rest.nvim",
-  branch = "add-pre-script-configuration",
+  branch = "main",
   dev = true,
   lazy = true,
   ft = "http",
