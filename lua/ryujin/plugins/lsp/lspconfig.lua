@@ -300,7 +300,7 @@ return {
       settings = {
         texlab = {
           build = {
-            onSave = false,
+            onSave = true,
             auxDirectory = './out',
             logDirectory = './out',
             pdfDirectory = './out',
