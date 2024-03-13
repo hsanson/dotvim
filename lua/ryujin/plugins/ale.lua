@@ -31,51 +31,49 @@ return {
     g.ale_ruby_rubocop_auto_correct_all = 1
     g.ale_go_golangci_lint_package = 1
 
-    vim.cmd([[
+    g.ale_fixers = {
+      ["*"] = {'remove_trailing_lines', 'trim_whitespace'},
+      bib = {'bibclean'},
+      python = {'yapf'},
+      openapi = {'prettier'},
+      yaml = {'prettier'},
+      ruby = {'rubocop'},
+      kotlin = {'ktlint'}
+    }
 
-      let g:ale_fixers = {
-        \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-        \   'bib': ['bibclean'],
-        \   'python': ['yapf'],
-        \   'openapi': ['prettier'],
-        \   'yaml': ['prettier'],
-        \   'ruby': ['rubocop'],
-        \   'kotlin': ['ktlint']
-      \}
+    g.ale_linters = {
+       ansible = {'ansible-lint'},
+       bib = {'bibclean'},
+       c = {'clangd'},
+       dockerfile = {'dockerfile_lint'},
+       go = {'golangci-lint', 'gofmt', 'golint', 'go vet'},
+       help = {},
+       hurl = {'hurlfmt'},
+       javascript = {'eslint'},
+       kotlin = {'ktlint'},
+       latex = {'proselint', 'lacheck'},
+       mail = {'proselint', 'write-good'},
+       markdown = {'markdownlint'},
+       openapi = {'yamllint', 'ibm-validator'},
+       plaintex = {'proselint', 'chktex', 'lacheck'},
+       python = {'flake8', 'pylint', 'jedils'},
+       ruby = {'rubocop', 'ruby'},
+       rust = {'analyzer'},
+       terraform = {'checkov', 'terraform', 'tflint'},
+       tex = {'proselint', 'lacheck', 'chktex'},
+       text = {'proselint', 'write-good'},
+       vim = {'vint', 'ale_custom_linting_rules'},
+       yaml = {'yamllint', 'yaml-language-server'}
+    }
 
-      let g:ale_linters = {
-        \   'ansible': ['ansible-lint'],
-        \   'bib': ['bibclean'],
-        \   'c': ['clangd'],
-        \   'dockerfile': ['dockerfile_lint'],
-        \   'go': ['golangci-lint', 'gofmt', 'golint', 'go vet'],
-        \   'help': [],
-        \   'javascript': ['eslint'],
-        \   'kotlin': ['ktlint'],
-        \   'latex': ['proselint', 'lacheck'],
-        \   'mail': ['proselint', 'write-good'],
-        \   'markdown': ['markdownlint'],
-        \   'openapi': ['yamllint', 'ibm-validator'],
-        \   'plaintex': ['proselint', 'chktex', 'lacheck'],
-        \   'python': ['flake8', 'pylint', 'jedils'],
-        \   'ruby': ['rubocop', 'ruby'],
-        \   'rust': ['analyzer'],
-        \   'terraform': ['checkov', 'terraform', 'tflint'],
-        \   'tex': ['proselint', 'lacheck', 'chktex'],
-        \   'text': ['proselint', 'write-good'],
-        \   'vim': ['vint', 'ale_custom_linting_rules'],
-        \   'yaml': ['yamllint', 'yaml-language-server']
-      \}
+    g.ale_pattern_options = {
+      ['.gitlab-ci\\.yml$'] = {
+        ale_linters = { 'gitlablint', 'yamllint' }
+      }
+    }
 
-      let g:ale_pattern_options = {
-      \   '.gitlab-ci\.yml$': {
-      \       'ale_linters': ['gitlablint', 'yamllint'],
-      \   },
-      \}
-
-      let g:ale_linter_aliases = {
-            \ 'asciidoctor': 'asciidoc'
-            \}
-    ]])
+    g.ale_linter_aliases = {
+      asciidoctor = 'asciidoc'
+    }
   end
 }
