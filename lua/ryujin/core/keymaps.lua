@@ -3,6 +3,7 @@
 -------------------------------------------------------------------------------
 vim.keymap.set('n', '<space>', '<nop>')
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- Window Management
 vim.keymap.set('n', '<leader>s', '<cmd>split<cr>')

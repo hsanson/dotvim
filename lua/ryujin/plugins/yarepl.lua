@@ -7,9 +7,9 @@ return {
   --
   "milanglacier/yarepl.nvim",
   enabled = true,
-  keys = {
-    { "<leader>rt" },
-    { "<leader>rr" },
+  ft = {
+    "python",
+    "ruby"
   },
   config = function()
     local yarepl = require("yarepl")
@@ -58,26 +58,26 @@ return {
 
     local keymap = vim.api.nvim_set_keymap
 
-    keymap('n', '<Leader>rt', ':REPLStart<CR>', {
+    keymap('n', '<localleader>rt', ':REPLStart<CR>', {
       desc = 'Start an REPL',
     })
 
-    keymap('v', '<Leader>rr', '', {
+    keymap('v', '<localleader>rr', '', {
       callback = run_cmd_with_count 'REPLSendVisual',
       desc = 'Send visual region',
     })
 
-    keymap('n', '<Leader>rrr', '', {
+    keymap('n', '<localleader>rrr', '', {
       callback = run_cmd_with_count 'REPLSendLine',
       desc = 'Send current line',
     })
 
-    keymap('n', '<Leader>rr', '', {
+    keymap('n', '<localleader>rr', '', {
       callback = run_cmd_with_count 'REPLSendMotion',
       desc = 'Send motion',
     })
 
-    keymap('n', '<Leader>rc', '<CMD>REPLCleanup<CR>', {
+    keymap('n', '<localleader>rc', '<CMD>REPLCleanup<CR>', {
       desc = 'Clear REPLs.',
     })
   end

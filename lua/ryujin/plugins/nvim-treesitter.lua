@@ -8,7 +8,14 @@ return {
     local nvim_treesitter = require("nvim-treesitter.configs")
 
     nvim_treesitter.setup {
-      ensure_installed = "all",
+      ensure_installed = {
+        "bash", "awk", "bibtex", "cmake", "cpp", "csv", "css", "dart", "diff", "dockerfile",
+        "git_config", "git_rebase", "gitcommit", "gitignore", "gnuplot", "gomod", "gosum",
+        "gpg", "graphql", "helm", "html", "http", "hurl", "ini", "java", "javascript", "jq",
+        "json", "json5", "julia", "kotlin", "latex", "lua", "luadoc", "markdown",
+        "markdown_inline", "muttrc", "po", "regex", "ruby", "sql", "swift", "terraform",
+        "tmux", "toml", "tsv", "vim", "vimdoc", "vue", "xml", "yaml", "c", "lua", "python"
+      },
       sync_install = false,
       auto_install = true,
       ignore_install = { },
@@ -17,6 +24,7 @@ return {
         disable = { },
         additional_vim_regex_highlighting = false,
       },
+      modules = {},
       textobjects = {
         select = {
           enable = true,
