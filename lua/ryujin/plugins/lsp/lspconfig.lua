@@ -154,7 +154,8 @@ return {
     lspconfig["ltex"].setup({
       capabilities = capabilities,
       filetypes = {
-        "bib", "gitcommit", "markdown", "org", "plaintex", "rst", "rnoweb", "tex", "pandoc", "quarto", "rmd", "asciidoc"
+        "bib", "gitcommit", "markdown", "org", "plaintex", "rst",
+        "rnoweb", "tex", "pandoc", "quarto", "rmd"
       },
       on_attach = function(client, bufnr)
         require("ltex_extra").setup({
