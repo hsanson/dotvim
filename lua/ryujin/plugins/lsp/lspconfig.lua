@@ -198,13 +198,15 @@ return {
     })
 
     lspconfig["sqls"].setup({
-      deprecate = false,
+      cmd = {"/home/ryujin/Projects/vim/sqls/sqls", "-l", "/tmp/sqls.log", "-t"},
+      filetypes = { 'sql', 'mysql' },
+      single_file_support = true,
       root_dir = function()
-        return "/home/ryujin/Projects/Sql/jointriage_pro_db"
+        return "/home/ryujin/.config/sqls"
       end,
       capabilities = capabilities,
-      on_attach = function(client, _)
-        require('sqls').on_attach(client, _)
+      on_attach = function(client, bufnr)
+        require('sqls').on_attach(client, bufnr)
       end
     })
 

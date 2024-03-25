@@ -4,14 +4,24 @@ local lualine = require("lualine")
 
 local group = augroup('SqlsGroup', { clear = true })
 
+vim.keymap.set('n', '<localleader>re', '<cmd>SqlsSwitchConnection<cr>', {
+  desc = "Sqls switch connection",
+  remap = false,
+  buffer = 0
+})
+
+vim.keymap.set('n', '<localleader>rr', '<cmd>SqlsExecuteQuery<cr>', {
+  desc = "Sqls execute query",
+  remap = false,
+  buffer = 0
+})
+
 autocmd('User', {
   group = group,
   pattern = 'SqlsConnectionChoice',
   callback = function(event)
     local choice = vim.split(event.data.choice, ' ')
     vim.notify(vim.inspect(choice))
-    vim.keymap.set('n', '<leader>ll', '<Plug>(sqls-execute-query)', { buffer = event.buf, silent = true })
-
     vim.b[event.buf].sqls_name = choice[3]
     vim.b[event.buf].sqls_driver = choice[2]
     lualine.refresh()
