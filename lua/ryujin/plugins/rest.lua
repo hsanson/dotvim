@@ -29,7 +29,7 @@ return {
       pattern = "RestStartRequest",
       callback = function(_)
         local url = _G._rest_nvim_req_data.request.url
-        vim.print(_G._rest_nvim_req_data)
+        -- vim.print(_G._rest_nvim_req_data)
 
         -- Only process request to JoinTriage servers.
         if(not string.find(url, "jointriage"))
@@ -44,7 +44,7 @@ return {
         -- variables.
         if(not session_id or not session_token)
         then
-          vim.print("No session id or token. Login first")
+          -- vim.print("No session id or token. Login first")
           return
         end
 
