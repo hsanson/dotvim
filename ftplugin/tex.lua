@@ -24,6 +24,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set("n", "<leader>ll", "<cmd>TexlabBuild<CR>", opts)
 
     opts.desc = "Texlab view pdf"
-    vim.keymap.set("n", "<leader>lv", "<cmd>TexlabForward<CR>", opts)
+    vim.keymap.set("n", "<leader>rr", "<cmd>TexlabForward<CR>", opts)
   end
 })
