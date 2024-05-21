@@ -33,7 +33,7 @@ return {
         "ltex",
         "lua_ls",
         "rubocop",
-        "ruby_ls",
+        "ruby_lsp",
         "solargraph",
         "spectral",
         "sqls",

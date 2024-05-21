@@ -16,6 +16,13 @@ vim.keymap.set('n', '<localleader>rr', '<cmd>SqlsExecuteQuery<cr>', {
   buffer = 0
 })
 
+vim.keymap.set('v', '<localleader>rr', ':SqlsExecuteQuery<cr>', {
+  desc = "Sqls execute query in visual mode",
+  remap = false,
+  buffer = 0
+})
+
+
 autocmd('User', {
   group = group,
   pattern = 'SqlsConnectionChoice',
