@@ -155,7 +155,7 @@ return {
       capabilities = capabilities,
       filetypes = {
         "bib", "gitcommit", "markdown", "org", "plaintex", "rst",
-        "rnoweb", "tex", "pandoc", "quarto", "rmd"
+        "rnoweb", "tex", "pandoc", "quarto", "rmd", "asciidoc"
       },
       on_attach = function(client, bufnr)
         require("ltex_extra").setup({
