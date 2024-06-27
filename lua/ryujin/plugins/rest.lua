@@ -3,12 +3,9 @@ return {
   -- Telescope integration required `fd` binary present.
   --   sudo apt install fd-find
   --   ln -s /usr/bin/fdfind ~/.local/bin/fd
-  dir = "/home/ryujin/Projects/vim/rest.nvim",
-  branch = "main",
-  dev = true,
-  lazy = true,
+  "rest-nvim/rest.nvim",
+  -- dir = "/home/ryujin/Projects/vim/rest.nvim",
   ft = "http",
-  dependencies = { "luarocks.nvim" },
   config = function()
 
     require("telescope").load_extension('rest')
