@@ -70,17 +70,28 @@ return {
       cmp_nvim_lsp.default_capabilities()
     )
 
-    local signs = {
-      Error = g.symbol_error,
-      Warn = g.symbol_warn,
-      Hint = g.symbol_hint,
-      Info = g.symbol_info
-    }
-
-    for type, icon in pairs(signs) do
-      local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-    end
+    vim.diagnostic.config({
+      signs = {
+        text = {
+          [vim.diagnostic.severity.WARN] = g.symbol_warn,
+          [vim.diagnostic.severity.ERROR] = g.symbol_error,
+          [vim.diagnostic.severity.INFO] = g.symbol_info,
+          [vim.diagnostic.severity.HINT] = g.symbol_hint
+        },
+        linehl = {
+          [vim.diagnostic.severity.WARN] = "DiagnosticSign" .. g.symbol_warn,
+          [vim.diagnostic.severity.ERROR] = "DiagnosticSign" .. g.symbol_error,
+          [vim.diagnostic.severity.INFO] = "DiagnosticSign" .. g.symbol_info,
+          [vim.diagnostic.severity.HINT] = "DiagnosticSign" .. g.symbol_hint
+        },
+        numhl = {
+          [vim.diagnostic.severity.WARN] = "",
+          [vim.diagnostic.severity.ERROR] = "",
+          [vim.diagnostic.severity.INFO] = "",
+          [vim.diagnostic.severity.HINT] = ""
+        }
+      }
+    })
 
     -- Enable lsp debugging. Only enable when debugging to avoid
     -- performance degradation on normal use.
