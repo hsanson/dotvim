@@ -77,18 +77,6 @@ return {
           [vim.diagnostic.severity.ERROR] = g.symbol_error,
           [vim.diagnostic.severity.INFO] = g.symbol_info,
           [vim.diagnostic.severity.HINT] = g.symbol_hint
-        },
-        linehl = {
-          [vim.diagnostic.severity.WARN] = "DiagnosticSign" .. g.symbol_warn,
-          [vim.diagnostic.severity.ERROR] = "DiagnosticSign" .. g.symbol_error,
-          [vim.diagnostic.severity.INFO] = "DiagnosticSign" .. g.symbol_info,
-          [vim.diagnostic.severity.HINT] = "DiagnosticSign" .. g.symbol_hint
-        },
-        numhl = {
-          [vim.diagnostic.severity.WARN] = "",
-          [vim.diagnostic.severity.ERROR] = "",
-          [vim.diagnostic.severity.INFO] = "",
-          [vim.diagnostic.severity.HINT] = ""
         }
       }
     })
