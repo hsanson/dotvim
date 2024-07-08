@@ -1,14 +1,8 @@
 return {
-  "mfussenegger/nvim-jdtls",
+  "nvim-java/nvim-java",
   ft = "java",
-  -- Disabled in favor of nvim-java.nvim
-  enabled = false,
-  dependencies = {
-    "williamboman/mason.nvim",
-  },
   config = function()
-
-    local jdtls = require('jdtls')
+    require('java').setup()
     local mason = require("mason-registry")
 
     -- Check if JDTLS is installed via Mason
@@ -32,11 +26,14 @@ return {
     end
 
     local mason_path = vim.fn.expand("$HOME/.local/share/nvim/mason")
-    local root_path = vim.fs.dirname(vim.fs.find({'gradlew', '.git', 'mvnw'}, { upward = true })[1])
 
     local config = {
       cmd = { mason_path .. "/bin/jdtls" },
-      root_dir = root_path,
+      root_dir = function()
+        return vim.fs.dirname(
+          vim.fs.find({'gradlew', '.git', 'mvnw'}, { upward = true })[1]
+        )
+      end,
       settings = {
         java = {
           jdt = {
@@ -50,6 +47,7 @@ return {
       }
     }
 
-    local _ = jdtls.start_or_attach(config)
+    require("lspconfig").jdtls.setup(config)
+    -- local _ = jdtls.start_or_attach(config)
   end
 }
