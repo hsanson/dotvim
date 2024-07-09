@@ -19,7 +19,7 @@ return {
             loading = "⏳",
             done = "✅ "
           },
-          lualine = "",
+          lualine = "🐼",
         },
         -- additional cURL options
         -- e.g. { "--insecure", "-A", "Mozilla/5.0" }
