@@ -128,11 +128,10 @@ local lualine = {
         },
         lualine_x = {
           { lsp_progress },
-          { function() return (vim.bo.filetype == "http" and "rest" or "") end }
+          'kulala',
         },
         lualine_y = {
           { function() return (vim.bo.filetype == "sql" and sqls_connection() or "") end },
-          'kulala',
           { function() return progress_module() end }
         },
         lualine_z = {'location'}
