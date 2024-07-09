@@ -132,6 +132,7 @@ local lualine = {
         },
         lualine_y = {
           { function() return (vim.bo.filetype == "sql" and sqls_connection() or "") end },
+          'kulala',
           { function() return progress_module() end }
         },
         lualine_z = {'location'}

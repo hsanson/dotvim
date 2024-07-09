@@ -13,6 +13,17 @@ return {
         default_env = "dev",
         -- enable/disable debug mode
         debug = false,
+        -- default icons
+        icons = {
+          inlay = {
+            loading = "⏳",
+            done = "✅ "
+          },
+          lualine = "",
+        },
+        -- additional cURL options
+        -- e.g. { "--insecure", "-A", "Mozilla/5.0" }
+        additional_curl_options = {},
       })
     end
   },
