@@ -1,6 +1,7 @@
 return {
   "mikavilpas/yazi.nvim",
   event = "VeryLazy",
+  enabled = false,
   keys = {
     -- 👇 in this section, choose your own keymappings!
     {
