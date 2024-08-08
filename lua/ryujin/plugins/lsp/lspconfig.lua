@@ -150,25 +150,47 @@ return {
       capabilities = capabilities,
     })
 
-    lspconfig["ltex"].setup({
-      capabilities = capabilities,
-      filetypes = {
-        "bib", "gitcommit", "markdown", "org", "plaintex", "rst",
-        "rnoweb", "tex", "pandoc", "quarto", "rmd", "asciidoc"
-      },
-      on_attach = function(client, bufnr)
-        require("ltex_extra").setup({
-          -- https://valentjn.github.io/ltex/supported-languages.html#natural-languages
-          load_langs = { 'en-US', 'es', 'ja-JP' },
-          init_check = true,
-          path = vim.fn.expand("~") .. "/.config/ltex",
-          -- string : "none", "trace", "debug", "info", "warn", "error", "fatal"
-          log_level = "none",
-          -- Not needed since lspconfig takes care of it
-          server_opts = nil
-        })
-      end
+    lspconfig["harper_ls"].setup({
+      settings = {
+          ["harper-ls"] = {
+            linters = {
+              spell_check = true,
+              spelled_numbers = false,
+              an_a = true,
+              sentence_capitalization = true,
+              unclosed_quotes = true,
+              wrong_quotes = false,
+              long_sentences = true,
+              repeated_words = true,
+              spaces = true,
+              matcher = true,
+              correct_number_suffix = true,
+              number_suffix_capitalization = true,
+              multiple_sequential_pronouns = true
+            }
+          }
+        },
     })
+
+    -- lspconfig["ltex"].setup({
+    --   capabilities = capabilities,
+    --   filetypes = {
+    --     "bib", "gitcommit", "markdown", "org", "plaintex", "rst",
+    --     "rnoweb", "tex", "pandoc", "quarto", "rmd", "asciidoc"
+    --   },
+    --   on_attach = function(client, bufnr)
+    --     require("ltex_extra").setup({
+    --       -- https://valentjn.github.io/ltex/supported-languages.html#natural-languages
+    --       load_langs = { 'en-US', 'es', 'ja-JP' },
+    --       init_check = true,
+    --       path = vim.fn.expand("~") .. "/.config/ltex",
+    --       -- string : "none", "trace", "debug", "info", "warn", "error", "fatal"
+    --       log_level = "none",
+    --       -- Not needed since lspconfig takes care of it
+    --       server_opts = nil
+    --     })
+    --   end
+    -- })
 
     -- neodev plugin must be setup before lspconfig lua_ls.
     require("neodev").setup({})

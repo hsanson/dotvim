@@ -25,6 +25,7 @@ return {
         "dockerls",
         "gopls",
         "graphql",
+        "harper_ls",
         "html",
         "jdtls",
         "jedi_language_server",
