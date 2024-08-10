@@ -190,25 +190,25 @@ return {
         },
     })
 
-    -- lspconfig["ltex"].setup({
-    --   capabilities = capabilities,
-    --   filetypes = {
-    --     "bib", "gitcommit", "markdown", "org", "plaintex", "rst",
-    --     "rnoweb", "tex", "pandoc", "quarto", "rmd", "asciidoc"
-    --   },
-    --   on_attach = function(client, bufnr)
-    --     require("ltex_extra").setup({
-    --       -- https://valentjn.github.io/ltex/supported-languages.html#natural-languages
-    --       load_langs = { 'en-US', 'es', 'ja-JP' },
-    --       init_check = true,
-    --       path = vim.fn.expand("~") .. "/.config/ltex",
-    --       -- string : "none", "trace", "debug", "info", "warn", "error", "fatal"
-    --       log_level = "none",
-    --       -- Not needed since lspconfig takes care of it
-    --       server_opts = nil
-    --     })
-    --   end
-    -- })
+    lspconfig["ltex"].setup({
+      capabilities = capabilities,
+      filetypes = {
+        "bib", "gitcommit", "markdown", "org", "plaintex", "rst",
+        "rnoweb", "tex", "pandoc", "quarto", "rmd"
+      },
+      on_attach = function(client, bufnr)
+        require("ltex_extra").setup({
+          -- https://valentjn.github.io/ltex/supported-languages.html#natural-languages
+          load_langs = { 'en-US', 'es', 'ja-JP' },
+          init_check = true,
+          path = vim.fn.expand("~") .. "/.config/ltex",
+          -- string : "none", "trace", "debug", "info", "warn", "error", "fatal"
+          log_level = "none",
+          -- Not needed since lspconfig takes care of it
+          server_opts = nil
+        })
+      end
+    })
 
     -- neodev plugin must be setup before lspconfig lua_ls.
     require("neodev").setup({})
