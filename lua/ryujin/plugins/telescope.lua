@@ -32,11 +32,11 @@ return {
       },
       extensions = {
         fzf = {
-          fuzzy = true,                    -- false will only do exact matching
-          override_generic_sorter = true,  -- override the generic sorter
-          override_file_sorter = true,     -- override the file sorter
-          case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-                                           -- the default case_mode is "smart_case"
+          fuzzy = true,                    -- False will only do exact matching
+          override_generic_sorter = true,  -- Override the generic sorter
+          override_file_sorter = true,     -- Override the file sorter
+          case_mode = "smart_case",        -- Or "ignore_case" or "respect_case"
+                                           -- The default case_mode is "smart_case"
         },
         zoxide = {
           prompt_title = "[ Walking on the shoulders of TJ ]",
@@ -47,7 +47,7 @@ return {
               end
             },
             ["<C-s>"] = {
-              before_action = function(selection) print("before C-s") end,
+              before_action = function(_) print("before C-s") end,
               action = function(selection)
                 vim.cmd.edit(selection.path)
               end
@@ -68,7 +68,12 @@ return {
     vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
     vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
     vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-    vim.keymap.set('n', '<leader>fn', ':Telescope find_files search_dirs=~/Seafile/Notes<cr>', {})
-    vim.keymap.set("n", "<leader>cd", telescope.extensions.zoxide.list)
+    vim.keymap.set('n', '<leader>ft', function()
+      builtin.grep_string({search_dirs={"/home/ryujin/Seafile/Notes/Allm"}, search="\\[\\s*\\]", use_regex=true})
+    end, {})
+    vim.keymap.set('n', '<leader>fn', function()
+      builtin.find_files({search_dirs={"~/Seafile/Notes"}})
+    end, {})
+    vim.keymap.set("n", "<leader>cd", telescope.extensions.zoxide.list, {})
   end
 }
