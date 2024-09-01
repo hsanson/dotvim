@@ -12,10 +12,9 @@ autocmd('BufWrite', {
 })
 
 -------------------------------------------------------------------------------
--- Transparency
--- Must be done before loading the color scheme
 augroup('SyntaxGroup', {})
 
+-- Highlight Zenkaku blank spaces
 autocmd('ColorScheme', {
   group = 'SyntaxGroup',
   pattern = { '*' },
