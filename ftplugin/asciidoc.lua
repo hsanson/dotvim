@@ -12,5 +12,7 @@ opt.linebreak = true
 vim.keymap.set('n', 'j', 'gj')
 vim.keymap.set('n', 'k', 'gk')
 vim.keymap.set('n', '<leader>rr', function()
-  vim.cmd("!google-chrome '" .. vim.fn.expand("%:p") .. "'")
+  local autosave = require('autosave.actions')
+  autosave.buf_enable()
+  vim.cmd("AsciiDocPreview")
 end, { silent = true })
