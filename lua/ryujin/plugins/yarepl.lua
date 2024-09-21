@@ -9,7 +9,8 @@ return {
   enabled = true,
   ft = {
     "python",
-    "ruby"
+    "ruby",
+    "sh"
   },
   config = function()
     local yarepl = require("yarepl")
@@ -58,7 +59,21 @@ return {
 
     local keymap = vim.api.nvim_set_keymap
 
-    vim.keymap.set('n', '<localleader>re', ':REPLStart<CR>', { silent = true, desc = 'Start an REPL', })
+    vim.keymap.set('n', '<localleader>re', function()
+      local ft = vim.bo.filetype
+
+      if ft == "ruby" then
+        vim.cmd("REPLStart ruby")
+      elseif ft == "python" then
+        vim.cmd("REPLStart python")
+      elseif ft == "sh" then
+        vim.cmd("REPLStart bash")
+      else
+        vim.cmd("REPLStart")
+      end
+
+      vim.cmd(vim.api.nvim_replace_termcodes("normal <C-w><C-p>", true, true, true))
+    end, { silent = true, desc = 'Start an REPL', })
 
     keymap('v', '<localleader>rr', '', {
       callback = run_cmd_with_count 'REPLSendVisual',
