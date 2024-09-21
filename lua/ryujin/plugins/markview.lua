@@ -13,6 +13,19 @@ return {
               vim.wo[win].conceallevel = 2;
               vim.wo[win].concealcursor = "nc";
           end
+      },
+
+      -- Headings
+      headings = {
+        enable = true,
+        textoff = 0,
+        shift_width = 0
+      },
+
+      code_blocks = {
+        enable = true,
+        pad_amount = 2,
+        pad_cahr = " "
       }
     })
   end
