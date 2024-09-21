@@ -1,6 +1,5 @@
 return {
   'linrongbin16/lsp-progress.nvim',
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
   event = 'User LspProgressStatusUpdated',
   config = function()
     require('lsp-progress').setup()

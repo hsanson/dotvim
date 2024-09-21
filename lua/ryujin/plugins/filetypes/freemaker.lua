@@ -1,3 +1,4 @@
 return {
-  "andreshazard/vim-freemarker"
+  "andreshazard/vim-freemarker",
+  ft = { "freemaker" }
 }
