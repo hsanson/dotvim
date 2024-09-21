@@ -58,9 +58,7 @@ return {
 
     local keymap = vim.api.nvim_set_keymap
 
-    keymap('n', '<localleader>rt', ':REPLStart<CR>', {
-      desc = 'Start an REPL',
-    })
+    vim.keymap.set('n', '<localleader>re', ':REPLStart<CR>', { silent = true, desc = 'Start an REPL', })
 
     keymap('v', '<localleader>rr', '', {
       callback = run_cmd_with_count 'REPLSendVisual',
@@ -73,7 +71,7 @@ return {
     })
 
     keymap('n', '<localleader>rr', '', {
-      callback = run_cmd_with_count 'REPLSendMotion',
+      callback = run_cmd_with_count 'REPLSendOperator',
       desc = 'Send motion',
     })
 
