@@ -6,7 +6,7 @@ return {
   opts = {
     transparent = true,
     italic_comments = true,
-    hide_fillchars = true,
+    hide_fillchars = false,
     terminal_colors = true,
     borderless_telescope = false
   }
