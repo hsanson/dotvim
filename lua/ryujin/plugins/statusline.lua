@@ -115,6 +115,12 @@ local lualine = {
           diff_module
         },
         lualine_c = {
+        },
+        lualine_x = {
+          { lsp_progress },
+          'kulala',
+        },
+        lualine_y = {
           {
             'diagnostics',
             symbols = {
@@ -123,13 +129,8 @@ local lualine = {
               info = g.symbol_info .. ' ',
               hint = g.symbol_hint .. ' '
             },
-          }
-        },
-        lualine_x = {
-          { lsp_progress },
-          'kulala',
-        },
-        lualine_y = {
+          },
+          { 'lsp-status' },
           { function() return (vim.bo.filetype == "sql" and sqls_connection() or "") end },
           { function() return progress_module() end }
         },
