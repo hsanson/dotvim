@@ -30,7 +30,6 @@ return {
         "jdtls",
         "jedi_language_server",
         "jsonls",
-        "kotlin_language_server",
         "ltex",
         "lua_ls",
         "rubocop",

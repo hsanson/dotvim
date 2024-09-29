@@ -146,27 +146,27 @@ return {
       }
     })
 
-    lspconfig["kotlin_language_server"].setup({
-      capabilities = capabilities,
-      file_types = { "kotlin" },
-      root_dir = function(fname)
-        local root_files = {
-          'settings.gradle', -- Gradle
-          'settings.gradle.kts', -- Gradle
-          'build.xml', -- Ant
-          'pom.xml', -- Maven
-        }
+    -- lspconfig["kotlin_language_server"].setup({
+    --   capabilities = capabilities,
+    --   file_types = { "kotlin" },
+    --   root_dir = function(fname)
+    --     local root_files = {
+    --       'settings.gradle', -- Gradle
+    --       'settings.gradle.kts', -- Gradle
+    --       'build.xml', -- Ant
+    --       'pom.xml', -- Maven
+    --     }
 
-        local fallback_root_files = {
-          'build.gradle', -- Gradle
-          'build.gradle.kts', -- Gradle
-        }
+    --     local fallback_root_files = {
+    --       'build.gradle', -- Gradle
+    --       'build.gradle.kts', -- Gradle
+    --     }
 
-        local primary = lspconfig.util.root_pattern(unpack(root_files))(fname)
-        local fallback = lspconfig.util.root_pattern(unpack(fallback_root_files))(fname)
-        return primary or fallback
-      end
-    })
+    --     local primary = lspconfig.util.root_pattern(unpack(root_files))(fname)
+    --     local fallback = lspconfig.util.root_pattern(unpack(fallback_root_files))(fname)
+    --     return primary or fallback
+    --   end
+    -- })
 
     lspconfig["harper_ls"].setup({
       settings = {
