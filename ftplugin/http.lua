@@ -21,3 +21,19 @@ vim.keymap.set('n', '<localleader>rh', function()
   remap = false,
   buffer = 0
 })
+
+vim.keymap.set('n', '<localleader>ri', function()
+    require("kulala").inspect()
+  end, {
+  desc = 'Inspect current request.',
+  remap = false,
+  buffer = 0
+})
+
+vim.keymap.set('n', '<localleader>rc', function()
+    require("kulala").copy()
+  end, {
+  desc = 'Copy curl command to clipboard',
+  remap = false,
+  buffer = 0
+})

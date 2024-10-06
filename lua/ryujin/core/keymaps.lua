@@ -6,28 +6,25 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Window Management
-vim.keymap.set('n', '<leader>s', '<cmd>split<cr>', {})
-vim.keymap.set('n', '<leader>v', '<cmd>vsplit<cr>', {})
-vim.keymap.set('n', '<leader>x', '<cmd>close!<cr>', {})
-vim.keymap.set('n', '<leader>q', '<cmd>:wqa<cr>', {})
+vim.keymap.set('n', '<leader>s', '<cmd>split<cr>', {desc = "Split window"})
+vim.keymap.set('n', '<leader>v', '<cmd>vsplit<cr>', {desc = "Vertical split window"})
+vim.keymap.set('n', '<leader>x', '<cmd>close!<cr>', {desc = "Close buffer."})
+vim.keymap.set('n', '<leader>q', '<cmd>:wqa<cr>', {desc = "Quit neovim"})
 
 -- Window Navigation
-vim.keymap.set('n', '<leader>h', '<C-w>h', {})
-vim.keymap.set('n', '<leader>j', '<C-w>j', {})
-vim.keymap.set('n', '<leader>k', '<C-w>k', {})
-vim.keymap.set('n', '<leader>l', '<C-w>l', {})
+vim.keymap.set('n', '<leader>h', '<C-w>h', {desc = "Jump left pane"})
+vim.keymap.set('n', '<leader>j', '<C-w>j', {desc = "Jump below pane"})
+vim.keymap.set('n', '<leader>k', '<C-w>k', {desc = "Jump above pane"})
+vim.keymap.set('n', '<leader>l', '<C-w>l', {desc = "Jump right pane"})
 
 -- Tabs Navigation
-vim.keymap.set('n', 'tt', '<cmd>tabnext<cr>', {})
-vim.keymap.set('n', 'tn', '<cmd>tabnew<cr>', {})
+vim.keymap.set('n', 'tt', '<cmd>tabnext<cr>', {desc = "Tab next"})
+vim.keymap.set('n', 'tn', '<cmd>tabnew<cr>', {desc = "Tab new"})
 
 -- Remap number increment/decrement so it does not conflict with tmux
 -- control keys (C-a)
-vim.keymap.set('n', '<A-a>', '<C-a>', {})
-vim.keymap.set('n', '<A-x>', '<C-x>', {})
+vim.keymap.set('n', '<A-a>', '<C-a>', {desc = "Increment number"})
+vim.keymap.set('n', '<A-x>', '<C-x>', {desc = "Decrement number"})
 
 -- Disable accidental Ex mode
-vim.keymap.set('n', 'Q', '<nop>', {})
-
--- Terminal
-vim.keymap.set('t', '<ESC>', '<C-\\><C-n>', {noremap = true})
+vim.keymap.set('n', 'Q', '<nop>', {desc = "Force quit neovim"})

@@ -5,4 +5,4 @@ opt.linebreak = true
 vim.keymap.set('n', '<leader>rr', function()
   require('autosave.actions').buf_enable()
   vim.cmd("!google-chrome '" .. vim.fn.expand("%:p") .. "'")
-end, { silent = true })
+end, { silent = true, desc = "Preview" })

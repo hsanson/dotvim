@@ -8,8 +8,10 @@ return {
       require('kulala').setup({
         default_view = "body",
         default_env = "dev",
-        debug = false,
+        debug = true,
         default_winbar_panes = { "body", "headers", "headers_body", "script_output" },
+        winbar = true,
+        environment_scope = "g",
         icons = {
           inlay = {
             loading = "⏳",
