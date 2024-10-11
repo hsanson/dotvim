@@ -146,6 +146,24 @@ return {
       }
     })
 
+    -- Add kulala_ls as valid LSP to lsp-config
+    local configs = require 'lspconfig.configs'
+
+    if not configs.kulala_ls then
+      configs.kulala_ls = {
+        default_config = {
+          cmd = { 'kulala-ls', '--stdio' },
+          root_dir = lspconfig.util.root_pattern('http-client.env.json'),
+          filetypes = { 'http' },
+        },
+      }
+    end
+
+    -- Configure kulala_ls
+    lspconfig["kulala_ls"].setup({
+      capabilities = capabilities,
+    })
+
     -- lspconfig["kotlin_language_server"].setup({
     --   capabilities = capabilities,
     --   file_types = { "kotlin" },
