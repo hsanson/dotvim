@@ -3,7 +3,6 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
-    "nanotee/sqls.nvim",
     "folke/neodev.nvim",
     "barreiroleo/ltex_extra.nvim"
   },
@@ -254,98 +253,6 @@ return {
     lspconfig["spectral"].setup({
       capabilities = capabilities,
     })
-
-    lspconfig["sqls"].setup({
-      cmd = {"/home/ryujin/Projects/vim/sqls/sqls", "-l", "/tmp/sqls.log", "-t"},
-      filetypes = { 'sql', 'mysql' },
-      single_file_support = true,
-      root_dir = function()
-        return "/home/ryujin/.config/sqls"
-      end,
-      capabilities = capabilities,
-      on_attach = function(client, bufnr)
-        require('sqls').on_attach(client, bufnr)
-      end
-    })
-
-    -- lspconfig["sqlls"].setup({
-    --   cmd = { "sql-language-server", "up", "--method", "stdio", "-d" },
-    --   enabled = false,
-    --   capabilities = vim.tbl_extend(
-    --     "force",
-    --     capabilities,
-    --     { executeCommandProvider = true, codeActionProvider = { resolveProvider = false } }
-    --   ),
-    --   on_attach = function(client, bufnr)
-
-    --     vim.api.nvim_buf_create_user_command(bufnr, 'SqllsSwitchConnection', function(args)
-
-    --       if not client then
-    --         vim.notify('sqlls: Client is nil')
-    --         return
-    --       end
-
-    --       -- Read project sqlls configuration and extract connection name if any
-    --       local function get_project_config()
-    --         local file = io.open(client.config.root_dir .. '/.sqllsrc.json', "r")
-    --         if not file then return {} end
-    --         local file_json = vim.json.decode(file:read("*a"), {})
-    --         if not file_json then return {} end
-    --         if not file_json.name then return {} end
-    --         return {file_json.name}
-    --       end
-
-    --       -- Read personal sqlls configuration and extract all connections names
-    --       -- if any
-    --       local function get_personal_config()
-    --         local config = vim.fn.expand("$HOME/.config/sql-language-server/.sqllsrc.json")
-    --         local file = io.open(config, "r")
-    --         if not file then return {} end
-    --         local file_json = vim.json.decode(file:read("*a"), {})
-    --         if not file_json then return {} end
-    --         if not file_json.connections then return {} end
-    --         return file_json.connections
-    --       end
-
-    --       -- Merge the names retrieved from personal and project configurations.
-    --       local names = vim.tbl_map(function(val)
-    --         return val.name
-    --       end, get_personal_config())
-
-    --       local all_names = vim.list_extend(names, get_project_config())
-
-    --       vim.notify(vim.inspect(all_names))
-
-    --       local function switchDatabase(name)
-    --         client.request(
-    --           'workspace/executeCommand',
-    --           {
-    --             command = "switchDataBaseConnection",
-    --             arguments = name
-    --           },
-    --           function(err, result, _, _)
-    --             if err then
-    --               vim.notify('sqlls: ' .. err.message, vim.log.levels.ERROR)
-    --               return
-    --             end
-    --             if not result then
-    --               return
-    --             end
-    --             vim.notify('sqlls: ' .. result, vim.log.levels.DEBUG)
-    --           end,
-    --           bufnr
-    --         )
-    --       end
-
-    --       vim.ui.select(all_names, {
-    --         prompt = "Select connection:",
-    --       }, function(choice)
-    --         switchDatabase(choice)
-    --       end)
-
-    --     end, {})
-    --   end
-    -- })
 
     lspconfig["tailwindcss"].setup({
       capabilities = capabilities,

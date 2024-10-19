@@ -36,7 +36,6 @@ return {
         "ruby_lsp",
         "solargraph",
         "spectral",
-        "sqls",
         "tailwindcss",
         "terraformls",
         "texlab",

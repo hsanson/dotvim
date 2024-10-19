@@ -1,47 +1,11 @@
-local augroup = vim.api.nvim_create_augroup   -- Create/get autocommand group
-local autocmd = vim.api.nvim_create_autocmd   -- Create autocommand
-local lualine = require("lualine")
+vim.keymap.set('n', '<localleader>re', function()
+    require("usql").select_connection()
+  end, { desc = "Usql switch connection", remap = false, buffer = 0 })
 
-local group = augroup('SqlsGroup', { clear = true })
+vim.keymap.set('n', '<localleader>rr', function()
+    require("usql").run_statement()
+  end, { desc = "Usql execute SQL statement under the cursor", remap = false, buffer = 0 })
 
-vim.keymap.set('n', '<localleader>re', '<cmd>SqlsSwitchConnection<cr>', {
-  desc = "Sqls switch connection",
-  remap = false,
-  buffer = 0
-})
-
-vim.keymap.set('n', '<localleader>rr', '<cmd>SqlsExecuteQuery<cr>', {
-  desc = "Sqls execute query",
-  remap = false,
-  buffer = 0
-})
-
-vim.keymap.set('v', '<localleader>rr', ':SqlsExecuteQuery<cr>', {
-  desc = "Sqls execute query in visual mode",
-  remap = false,
-  buffer = 0
-})
-
-
-autocmd('User', {
-  group = group,
-  pattern = 'SqlsConnectionChoice',
-  callback = function(event)
-    local choice = vim.split(event.data.choice, ' ')
-    vim.notify(vim.inspect(choice))
-    vim.b[event.buf].sqls_name = choice[3]
-    vim.b[event.buf].sqls_driver = choice[2]
-    lualine.refresh()
-  end
-})
-
-autocmd('User', {
-  group = group,
-  pattern = 'SqlsDatabaseChoice',
-  callback = function(event)
-    local choice = vim.split(event.data.choice, ' ')
-    vim.notify(vim.inspect(choice))
-    vim.b[event.buf].sqls_db = choice[1]
-    lualine.refresh()
-  end
-})
+vim.keymap.set('n', '<localleader>rf', function()
+    require("usql").run_file()
+  end, { desc = "Usql execute SQL file", remap = false, buffer = 0 })

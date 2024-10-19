@@ -51,24 +51,6 @@ local lualine = {
       return string.format('%s', icons[position])
     end
 
-    local function sqls_connection()
-      local icon = ''
-
-      if (vim.b.sqls_driver == 'postgresql') then
-        icon = ''
-      elseif vim.b.sqls_driver == 'mysql' then
-        icon = ''
-      elseif vim.b.sqls_drver == 'mssql' then
-        icon = ''
-      end
-
-      if vim.b.sqls_name ~= nil then
-        return string.format('%s %s', icon, vim.b.sqls_name)
-      else
-        return "󱘵"
-      end
-    end
-
     local function lsp_progress()
       return require("lsp-progress").progress({
         format = function(messages)
@@ -131,7 +113,7 @@ local lualine = {
             },
           },
           { 'lsp-status' },
-          { function() return (vim.bo.filetype == "sql" and sqls_connection() or "") end },
+          { 'usql' },
           { function() return progress_module() end }
         },
         lualine_z = {'location'}
