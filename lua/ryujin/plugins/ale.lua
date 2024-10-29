@@ -1,5 +1,5 @@
 return {
-  dir = "/home/ryujin/Projects/vim/ale",
+  dir = "~/Projects/vim/ale",
   dev = true,
   lazy = false,
   config = function()

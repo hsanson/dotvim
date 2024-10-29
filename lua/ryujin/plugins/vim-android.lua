@@ -4,7 +4,7 @@ return {
   config = function()
     local g = vim.g
 
-    g.android_sdk_path='/home/ryujin/Apps/android-sdk'
+    g.android_sdk_path='~/Apps/android-sdk'
     g.gradle_daemon=1
     g.gradle_show_signs=0
     g.gradle_loclist_show=0

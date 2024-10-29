@@ -69,7 +69,7 @@ return {
     vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
     vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
     vim.keymap.set('n', '<leader>ft', function()
-      builtin.grep_string({search_dirs={"/home/ryujin/Seafile/Notes/Allm"}, search="\\[\\s*\\]", use_regex=true})
+      builtin.grep_string({search_dirs={"~/Seafile/Notes/Allm"}, search="\\[\\s*\\]", use_regex=true})
     end, {})
     vim.keymap.set('n', '<leader>fn', function()
       builtin.find_files({search_dirs={"~/Seafile/Notes"}})
