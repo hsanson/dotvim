@@ -28,3 +28,6 @@ vim.keymap.set('n', '<A-x>', '<C-x>', {desc = "Decrement number"})
 
 -- Disable accidental Ex mode
 vim.keymap.set('n', 'Q', '<nop>', {desc = "Force quit neovim"})
+
+vim.keymap.set('n', '<A-f>', '<C-f>')
+vim.keymap.set('n', '<A-b>', '<C-b>')
