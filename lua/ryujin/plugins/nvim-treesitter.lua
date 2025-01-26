@@ -12,7 +12,7 @@ return {
         "bash", "awk", "bibtex", "cmake", "cpp", "csv", "css", "dart", "diff", "dockerfile",
         "git_config", "git_rebase", "gitcommit", "gitignore", "gnuplot", "gomod", "gosum",
         "gpg", "graphql", "helm", "html", "http", "hurl", "ini", "java", "javascript", "jq",
-        "json", "json5", "julia", "kotlin", "latex", "lua", "luadoc", "markdown",
+        "json", "json5", "julia", "kotlin", "latex", "lua", "luadoc", "markdown", "typst",
         "markdown_inline", "muttrc", "po", "regex", "ruby", "sql", "swift", "terraform",
         "tmux", "toml", "tsv", "vim", "vimdoc", "vue", "xml", "yaml", "c", "lua", "python"
       },
