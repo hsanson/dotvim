@@ -56,12 +56,12 @@
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "dae2eac9d91464448b584c7949a31df8faefec56" },
   "telescope-zoxide": { "branch": "main", "commit": "54bfe630bad08dc9891ec78c7cf8db38dd725c97" },
   "telescope.nvim": { "branch": "0.1.x", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
-  "todo.txt-vim": { "branch": "master", "commit": "cfe9568a006f4f25386140df658f43087a7cc979" },
   "transparent.nvim": { "branch": "main", "commit": "8a2749a2fa74f97fe6557f61b89ac7fd873f3c21" },
   "vim-freemarker": { "branch": "master", "commit": "993bda23e72e4c074659970c1e777cb19d8cf93e" },
   "vim-fugitive": { "branch": "master", "commit": "d74a7cff4cfcf84f83cc7eccfa365488f3bbabc2" },
   "vim-nightfly-guicolors": { "branch": "master", "commit": "1105d1b755ba59df2dc663f68e0c8228ded2afe9" },
   "vim-sandwich": { "branch": "master", "commit": "74cf93d58ccc567d8e2310a69860f1b93af19403" },
   "which-key.nvim": { "branch": "main", "commit": "1f8d414f61e0b05958c342df9b6a4c89ce268766" },
-  "yarepl.nvim": { "branch": "main", "commit": "148a4828325d2075c6d34d7796bc2f62f279588e" }
+  "yarepl.nvim": { "branch": "main", "commit": "148a4828325d2075c6d34d7796bc2f62f279588e" },
+  "yazi.nvim": { "branch": "main", "commit": "9a39d68534cb5ae7250aa50fcc233335843dd786" }
 }

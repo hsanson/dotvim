@@ -5,7 +5,7 @@ return {
     -- directories directly from command line.
     -- E.g. vim ./
     lazy = false,
-    enabled = true,
+    enabled = false,
     keys = {
       { "-", "<cmd>RnvimrToggle<cr>", desc = "Open Ranger" }
     },
