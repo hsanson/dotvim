@@ -46,7 +46,7 @@ return {
        bib = {'bibclean'},
        c = {'clangd'},
        dockerfile = {'dockerfile_lint'},
-       go = {'golangci-lint', 'gofmt', 'golint', 'go vet'},
+       go = {'golangci-lint'},
        help = {},
        hurl = {'hurlfmt'},
        javascript = {'eslint'},
