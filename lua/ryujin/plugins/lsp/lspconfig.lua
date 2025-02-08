@@ -2,7 +2,6 @@ return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
     "folke/neodev.nvim",
     "barreiroleo/ltex_extra.nvim",
     "saghen/blink.cmp"
@@ -10,7 +9,6 @@ return {
   config = function()
     local lspconfig = require("lspconfig")
     local util = require("lspconfig/util")
-    -- local cmp_nvim_lsp = require("cmp_nvim_lsp")
     local keymap = vim.keymap
     local g = vim.g
 
@@ -76,7 +74,6 @@ return {
     local capabilities = vim.tbl_extend('keep',
       vim.lsp.protocol.make_client_capabilities(),
       require('blink.cmp').get_lsp_capabilities()
-      -- cmp_nvim_lsp.default_capabilities()
     )
 
     vim.diagnostic.config({
