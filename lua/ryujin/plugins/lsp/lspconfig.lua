@@ -4,11 +4,13 @@ return {
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     "folke/neodev.nvim",
-    "barreiroleo/ltex_extra.nvim"
+    "barreiroleo/ltex_extra.nvim",
+    "saghen/blink.cmp"
   },
   config = function()
     local lspconfig = require("lspconfig")
-    local cmp_nvim_lsp = require("cmp_nvim_lsp")
+    local util = require("lspconfig/util")
+    -- local cmp_nvim_lsp = require("cmp_nvim_lsp")
     local keymap = vim.keymap
     local g = vim.g
 
@@ -52,7 +54,7 @@ return {
         keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 
         opts.desc = "Show documentation"
-        keymap.set("n", "<leader>gh", vim.lsp.buf.hover, opts)
+        keymap.set("n", "<leader>gh", vim.lsp.buf.signature_help, opts)
 
         opts.desc = "Restart LSP"
         keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
@@ -73,7 +75,8 @@ return {
 
     local capabilities = vim.tbl_extend('keep',
       vim.lsp.protocol.make_client_capabilities(),
-      cmp_nvim_lsp.default_capabilities()
+      require('blink.cmp').get_lsp_capabilities()
+      -- cmp_nvim_lsp.default_capabilities()
     )
 
     vim.diagnostic.config({
@@ -105,6 +108,16 @@ return {
 
     lspconfig["gopls"].setup({
       capabilities = capabilities,
+      root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+      settings = {
+        gopls = {
+          completeUnimported = true,
+          usePlaceholders = true,
+          analyses = {
+            unusedparams = true
+          }
+        }
+      }
     })
 
     lspconfig["graphql"].setup({
