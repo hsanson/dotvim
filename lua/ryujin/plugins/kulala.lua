@@ -14,8 +14,9 @@ return {
         environment_scope = "g",
         icons = {
           inlay = {
-            loading = "⏳",
-            done = "✅ "
+            loading = " ",
+            done = " ",
+            error = " "
           },
           lualine = "🐼",
         },
