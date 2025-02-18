@@ -54,7 +54,7 @@ return {
        latex = {'proselint', 'lacheck'},
        mail = {'proselint', 'write-good'},
        markdown = {'markdownlint'},
-       openapi = {'yamllint', 'ibm-validator'},
+       openapi = {'yamllint', 'ibm-validator', 'vacuum'},
        plaintex = {'proselint', 'chktex', 'lacheck'},
        python = {'flake8', 'pylint', 'jedils'},
        ruby = {'rubocop', 'ruby'},

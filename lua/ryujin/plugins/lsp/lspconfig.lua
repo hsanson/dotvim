@@ -270,9 +270,20 @@ return {
       }
     })
 
-    lspconfig["spectral"].setup({
+    lspconfig["vacuum"].setup({
       capabilities = capabilities,
+      root_dir = util.root_pattern("vacuum.conf.yaml", ".git"),
+      filetypes = {
+        "yaml.openapi",
+        "json.openapi",
+        "openapi.yaml",
+        "openapi.json"
+      }
     })
+
+    -- lspconfig["spectral"].setup({
+    --   capabilities = capabilities,
+    -- })
 
     lspconfig["tailwindcss"].setup({
       capabilities = capabilities,
