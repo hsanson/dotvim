@@ -17,10 +17,6 @@ vim.keymap.set('n', '<leader>j', '<C-w>j', {desc = "Jump below pane"})
 vim.keymap.set('n', '<leader>k', '<C-w>k', {desc = "Jump above pane"})
 vim.keymap.set('n', '<leader>l', '<C-w>l', {desc = "Jump right pane"})
 
--- Tabs Navigation
-vim.keymap.set('n', 'tt', '<cmd>tabnext<cr>', {desc = "Tab next"})
-vim.keymap.set('n', 'tn', '<cmd>tabnew<cr>', {desc = "Tab new"})
-
 -- Remap number increment/decrement so it does not conflict with tmux
 -- control keys (C-a)
 vim.keymap.set('n', '<A-a>', '<C-a>', {desc = "Increment number"})
