@@ -42,6 +42,7 @@ return {
         "vale_ls",
         "vimls",
         "volar",
+        "vacuum",
         "yamlls",
       },
       automatic_installation = true

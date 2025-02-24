@@ -13,9 +13,7 @@ opt.joinspaces = false                -- Avoid double spaces when joining lines
 opt.showcmd = true                    -- Display commands as they are typed.
 opt.scrolloff = 9999                    -- Always keep the cursor at the center of window.
 opt.lazyredraw = true                 -- Improve performance
-opt.foldenable = false                -- Disable folding that slows down auto-completion
 opt.synmaxcol = 250                   -- Improve scroll performance with long lines
-opt.foldlevel = 99
 opt.updatetime = 250                  -- ms to wait for trigger event
 opt.nrformats = ""                    -- Stop vim from treating zero padded numbers as octal
 opt.equalalways = false               -- No automatic resizing of windows.
@@ -86,6 +84,14 @@ opt.shiftwidth = 2
 opt.tabstop = 2
 opt.softtabstop = 2
 opt.smartindent = true
+
+-------------------------------------------------------------------------------
+-- Fold Settings
+-------------------------------------------------------------------------------
+opt.foldenable = true
+opt.foldlevelstart = 99
+opt.foldlevel = 99
+opt.foldcolumn = "1"
 
 -------------------------------------------------------------------------------
 -- Improve Vim's Command Line Autocompletion
