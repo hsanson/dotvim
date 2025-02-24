@@ -3,6 +3,10 @@ return {
 	config = function()
     require('coverage').setup({
       auto_reload = true,
+      signs = {
+        covered = { hl = "CoverageCovered", text = "" },
+        uncovered = { hl = "CoverageUncovered", text = "▎" },
+      },
       lang = {
         go = {
           coverage_file = vim.fn.getcwd() .. "/coverage.out",
