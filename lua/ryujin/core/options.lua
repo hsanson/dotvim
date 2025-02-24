@@ -92,6 +92,7 @@ opt.foldenable = true
 opt.foldlevelstart = 99
 opt.foldlevel = 99
 opt.foldcolumn = "1"
+opt.statuscolumn = '%=%l%s%#FoldColumn#%{foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? " " : " ") : "  " }%*'
 
 -------------------------------------------------------------------------------
 -- Improve Vim's Command Line Autocompletion
