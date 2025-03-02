@@ -40,6 +40,15 @@ return {
       vim.cmd.tabclose()
     end
 
+    vim.cmd("hi DapBreakpointColor guifg=#ff6e5e")
+    vim.cmd("hi DapRejectedColor guifg=#7b8496")
+    vim.cmd("hi DapStoppedColor guifg=#f1ff5e")
+    vim.fn.sign_define("DapBreakpoint", { text = "󰏃 ", texthl = "DapBreakpointColor", linehl = "", numhl = "" })
+    vim.fn.sign_define("DapBreakpointCondition", { text = "󰏃 ", texthl = "DapBreakpointColor", linehl = "", numhl = "" })
+    vim.fn.sign_define("DapLogPoint", { text = "󰏃 ", texthl = "DapBreakpointColor", linehl = "", numhl = "" })
+    vim.fn.sign_define("DapBreakpointRejected", { text = "󰏃 ", texthl = "DapRejectedColor", linehl = "", numhl = "" })
+    vim.fn.sign_define("DapStopped", { text = " ", texthl = "DapStoppedColor", linehl = "", numhl = "" })
+
     local opts = { noremap = true, silent = true, desc = "DAP continue" }
     vim.keymap.set('n', '<Left>', function() require('dap').continue() end, opts)
     opts.desc = "DAP step over"
