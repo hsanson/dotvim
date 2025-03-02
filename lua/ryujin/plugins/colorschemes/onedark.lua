@@ -4,9 +4,9 @@ return {
   priority = 1000,
   config = function()
     require("onedark").setup({
+      transparent = true,
       -- styles: dark, darker, cool, deep, warm, warmer, light
-      style = 'darker',
-      colors = { fg = '#b2bbcc' }, --default: #a0a8b7
+      style = 'dark',
     })
   end
 }

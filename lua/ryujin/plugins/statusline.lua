@@ -97,7 +97,6 @@ local lualine = {
           diff_module
         },
         lualine_c = {
-          filename_module
         },
         lualine_x = {
           { lsp_progress },
@@ -115,7 +114,6 @@ local lualine = {
           },
           { 'lsp-status' },
           { 'usql' },
-          { 'filetype' },
           { function() return progress_module() end }
         },
         lualine_z = {'location'}

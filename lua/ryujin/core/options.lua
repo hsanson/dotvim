@@ -29,6 +29,18 @@ opt.termguicolors = true
 opt.background = 'dark'
 opt.showmatch = false                 -- Do not highlight matching parenthesis
 
+-- Box drawing Unicode characters:
+-- https://shapecatcher.com/unicode/block/Box_Drawing
+vim.opt.fillchars = {
+  horiz = '━',
+  horizup = '┻',
+  horizdown = '┳',
+  vert = '┃',
+  vertleft  = '┫',
+  vertright = '┣',
+  verthoriz = '╋',
+}
+
 -- Show tabs and tailing spaces.
 -- Note: to insert the middle point press "ctrl+k .M" in insert mode. Tha is
 -- control + k followed by a <dot> and the capital M.
