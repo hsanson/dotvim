@@ -75,11 +75,11 @@ local lualine = {
       options = {
         icons_enabled = true,
         theme = 'auto',
-        section_separators = { left = ' ', right = ' '},
+        section_separators = { left = '', right = ''},
         component_separators = { left = '', right = ''},
         disabled_filetypes = {
           statusline = {},
-          winbar = {},
+          winbar = {'dap-view', 'kulala-ui'},
         },
         ignore_focus = {},
         always_divide_middle = true,
@@ -122,6 +122,26 @@ local lualine = {
       },
       inactive_sections = {},
       tabline = {},
+      winbar = {
+        lualine_a = {
+          {'filetype'},
+        },
+        lualine_b = {},
+        lualine_c = { filename_module },
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {'encoding', 'fileformat'}
+      },
+      inactive_winbar = {
+        lualine_a = {
+          {'filetype'},
+        },
+        lualine_b = {},
+        lualine_c = { filename_module },
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {'encoding', 'fileformat'}
+      },
       extensions = {}
     })
 
