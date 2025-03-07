@@ -2,7 +2,7 @@ local opt = vim.opt_local
 
 opt.linebreak = true
 
-vim.keymap.set('n', '<leader>rr', function()
+vim.keymap.set('n', '<leaderleader>rr', function()
   require('autosave.actions').buf_enable()
 
   local linux_exe = 'google-chrome'
@@ -15,4 +15,4 @@ vim.keymap.set('n', '<leader>rr', function()
   then
     vim.cmd("silent !" .. mac_exe .. " '" .. vim.fn.expand("%:p") .. "'")
   end
-end, { silent = true, desc = "Preview" })
+end, { silent = true, desc = "Preview", buffer = true })

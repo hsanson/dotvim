@@ -8,7 +8,7 @@ return {
     "rcasia/neotest-java",
     "codymikol/neotest-kotlin",
     "olimorris/neotest-rspec",
-    "nvim-neotest/neotest-go",
+    { "fredrikaverpil/neotest-golang", version = "*" },
   },
   config = function()
     local neotest_ns = vim.api.nvim_create_namespace("neotest")
@@ -23,25 +23,18 @@ return {
     }, neotest_ns)
     require("neotest").setup({
       adapters = {
-        -- require("neotest-java"),
-        -- require("neotest-kotest"),
         require("neotest-rspec"),
-        require("neotest-go")({
-          recursive_run = true,
-          args = { "-coverprofile=" .. vim.fn.getcwd() .. "/coverage.out" },
+        require("neotest-golang")({
+          runner = "go",
+          go_test_args = {
+            "-v",
+            "-race",
+            "-count=1",
+            "-coverprofile=" .. vim.fn.getcwd() .. "/coverage.out"
+          },
         })
       }
     })
 
-    local opts = { noremap = true, silent = true, desc = "Run test under cursor" }
-    vim.keymap.set('n', '<Leader>rr', ':lua require("neotest").run.run()<CR>', opts)
-    opts.desc = "Run all tests inside current file"
-    vim.keymap.set('n', '<Leader>rf', ':lua require("neotest").run.run(vim.fn.expand("%"))<CR>', opts)
-    opts.desc = "Debug current file"
-    vim.keymap.set('n', '<Leader>rd', ':lua require("neotest").run.run({ strategy = "dap" })<CR>', opts)
-    opts.desc = "Run all test suite"
-    vim.keymap.set('n', '<Leader>rA', ':lua require("neotest").run.run(vim.fn.getcwd())<CR>', opts)
-    opts.desc = "Show test results"
-    vim.keymap.set('n', '<Leader>rh', ':lua require("neotest").output.open({ enter = true })<CRj', opts)
   end
 }

@@ -11,7 +11,7 @@ opt.linebreak = true
 
 vim.keymap.set('n', 'j', 'gj')
 vim.keymap.set('n', 'k', 'gk')
-vim.keymap.set('n', '<leader>rr', function()
+vim.keymap.set('n', '<localleader>rr', function()
   require('autosave.actions').buf_enable()
   vim.cmd("AsciiDocPreview")
-end, { silent = true, desc = "Preview" })
+end, { silent = true, desc = "Preview", buffer =true })
