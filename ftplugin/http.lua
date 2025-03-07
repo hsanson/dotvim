@@ -3,7 +3,7 @@ vim.keymap.set('n', '<localleader>rr', function()
   end, {
   desc = 'Execute request under cursor',
   remap = false,
-  buffer = 0
+  buffer = true
 })
 
 vim.keymap.set('n', '<localleader>re', function()
@@ -11,7 +11,7 @@ vim.keymap.set('n', '<localleader>re', function()
   end, {
   desc = 'Select Kulala environment file',
   remap = false,
-  buffer = 0
+  buffer = true
 })
 
 vim.keymap.set('n', '<localleader>rh', function()
@@ -19,7 +19,7 @@ vim.keymap.set('n', '<localleader>rh', function()
   end, {
   desc = 'Toogle headers and body response views',
   remap = false,
-  buffer = 0
+  buffer = true
 })
 
 vim.keymap.set('n', '<localleader>ri', function()
@@ -27,7 +27,7 @@ vim.keymap.set('n', '<localleader>ri', function()
   end, {
   desc = 'Inspect current request.',
   remap = false,
-  buffer = 0
+  buffer = true
 })
 
 vim.keymap.set('n', '<localleader>rc', function()
@@ -35,5 +35,5 @@ vim.keymap.set('n', '<localleader>rc', function()
   end, {
   desc = 'Copy curl command to clipboard',
   remap = false,
-  buffer = 0
+  buffer = true
 })
