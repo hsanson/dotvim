@@ -2,7 +2,7 @@ local opt = vim.opt_local
 
 opt.linebreak = true
 
-vim.keymap.set('n', '<leaderleader>rr', function()
+vim.keymap.set('n', '<localleader>rr', function()
   require('autosave.actions').buf_enable()
 
   local linux_exe = 'google-chrome'
