@@ -9,18 +9,19 @@ return {
         default_view = "body",
         default_env = "dev",
         debug = true,
-        winbar = true,
-        default_winbar_panes = { "body", "headers", "headers_body", "script_output" },
         environment_scope = "g",
-        icons = {
-          inlay = {
-            loading = " ",
-            done = " ",
-            error = " "
+        ui = {
+          winbar = true,
+          default_winbar_panes = { "body", "headers", "headers_body", "script_output" },
+          icons = {
+            inlay = {
+              loading = " ",
+              done = " ",
+              error = " "
+            },
+            lualine = "🐼",
           },
-          lualine = "🐼",
         },
-
         contenttypes = {
           ["application/vnd.api+json"] = {
             ft = "kulala-ui",

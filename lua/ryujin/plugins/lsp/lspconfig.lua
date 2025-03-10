@@ -273,6 +273,7 @@ return {
     lspconfig["vacuum"].setup({
       capabilities = capabilities,
       root_dir = util.root_pattern("vacuum.conf.yaml", ".git"),
+      cmd = { "vacuum", "--config", "vacuum.conf.yaml", "--ignore-file", "vacuum.ignore.yaml", "language-server" },
       filetypes = {
         "yaml.openapi",
         "json.openapi",
