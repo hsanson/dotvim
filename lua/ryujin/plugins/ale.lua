@@ -34,7 +34,8 @@ return {
 
     g.ale_fixers = {
       ["*"] = {'remove_trailing_lines', 'trim_whitespace'},
-      go  = { 'gofmt' },
+      go  = { 'gofmt', 'goimports' },
+      http = { 'kulala_fmt' },
       bib = {'bibclean'},
       python = {'yapf'},
       openapi = {'prettier'},
