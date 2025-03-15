@@ -24,22 +24,22 @@ return {
         },
         contenttypes = {
           ["application/vnd.api+json"] = {
-            ft = "kulala-ui",
+            ft = "json",
             formatter = { "jq", "." },
             pathresolver = require("kulala.parser.jsonpath").parse,
           },
           ["application/json"] = {
-            ft = "kulala-ui",
+            ft = "json",
             formatter = { "jq", "." },
             pathresolver = require("kulala.parser.jsonpath").parse,
           },
           ["application/xml"] = {
-            ft = "kulala-ui",
+            ft = "xml",
             formatter = { "xmllint", "--format", "-" },
             pathresolver = { "xmllint", "--xpath", "{{path}}", "-" },
           },
           ["text/html"] = {
-            ft = "kulala-ui",
+            ft = "html",
             formatter = { "xmllint", "--format", "--html", "-" },
             pathresolver = {},
           },
