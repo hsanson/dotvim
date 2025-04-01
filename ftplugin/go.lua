@@ -13,7 +13,10 @@ opts.desc = "Debug current file"
 vim.keymap.set('n', '<localleader>rd', ':lua require("neotest").run.run({ suite = false, strategy = "dap" })<CR>', opts)
 
 opts.desc = "Run all test suite"
-vim.keymap.set('n', '<localleader>rA', ':lua require("neotest").run.run(vim.fn.getcwd())<CR>', opts)
+vim.keymap.set('n', '<localleader>ra', ':lua require("neotest").run.run({ suite = true })<CR>', opts)
+
+opts.desc = "Toggle test summary"
+vim.keymap.set('n', '<localleader>rt', ':Neotest summary<CR>', opts)
 
 opts.desc = "Show test results"
 vim.keymap.set('n', '<localleader>rh', ':lua require("neotest").output.open({ enter = false, short = false })<CR>', opts)
