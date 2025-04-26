@@ -31,7 +31,6 @@ return {
       use_neovim_diagnostics_api = 1,
       sh_bashate_options = "-i E003 --max-lin-length 100",
       ruby_rubocop_auto_correct_all = 1,
-      go_golangci_lint_package = 1,
       fix_on_save = 1,
       lua_stylua_options = "--indent-type Spaces --indent-width 2",
 
