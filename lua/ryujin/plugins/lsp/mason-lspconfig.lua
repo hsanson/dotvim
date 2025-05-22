@@ -26,7 +26,6 @@ return {
         "texlab",
         "vale_ls",
         "vimls",
-        "volar",
         "vacuum",
         "yamlls",
       },
