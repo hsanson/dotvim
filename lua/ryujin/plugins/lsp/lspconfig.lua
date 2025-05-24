@@ -4,7 +4,7 @@ return {
   dependencies = {
     "folke/neodev.nvim",
     "barreiroleo/ltex_extra.nvim",
-    "saghen/blink.cmp"
+    "saghen/blink.cmp",
   },
   config = function()
     local lspconfig = require("lspconfig")
@@ -14,8 +14,8 @@ return {
 
     local opts = { noremap = true, silent = true }
 
-    vim.api.nvim_create_autocmd('LspAttach', {
-      group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+    vim.api.nvim_create_autocmd("LspAttach", {
+      group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(ev)
         opts.buffer = ev.buf
         opts.desc = "Show LSP references"
@@ -58,23 +58,21 @@ return {
         keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
 
         opts.desc = "LSP Format buffer"
-        keymap.set('n', '<leader>gf', function()
-          vim.lsp.buf.format { async = true }
+        keymap.set("n", "<leader>gf", function()
+          vim.lsp.buf.format({ async = true })
         end, opts)
 
         -- Enable inlay hints if server supports them
-        local id = vim.tbl_get(ev, 'data', 'client_id')
+        local id = vim.tbl_get(ev, "data", "client_id")
         local client = id and vim.lsp.get_client_by_id(id)
-        if client and client.supports_method('textDocument/inlayHint') then
-          vim.lsp.inlay_hint.enable(true, {bufnr = ev.buf})
+        if client and client.supports_method("textDocument/inlayHint") then
+          vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
         end
-      end
+      end,
     })
 
-    local capabilities = vim.tbl_extend('keep',
-      vim.lsp.protocol.make_client_capabilities(),
-      require('blink.cmp').get_lsp_capabilities()
-    )
+    local capabilities =
+      vim.tbl_extend("keep", vim.lsp.protocol.make_client_capabilities(), require("blink.cmp").get_lsp_capabilities())
 
     vim.diagnostic.config({
       signs = {
@@ -82,9 +80,9 @@ return {
           [vim.diagnostic.severity.WARN] = g.symbol_warn,
           [vim.diagnostic.severity.ERROR] = g.symbol_error,
           [vim.diagnostic.severity.INFO] = g.symbol_info,
-          [vim.diagnostic.severity.HINT] = g.symbol_hint
-        }
-      }
+          [vim.diagnostic.severity.HINT] = g.symbol_hint,
+        },
+      },
     })
 
     -- Enable lsp debugging. Only enable when debugging to avoid
@@ -111,10 +109,10 @@ return {
           completeUnimported = true,
           usePlaceholders = true,
           analyses = {
-            unusedparams = true
-          }
-        }
-      }
+            unusedparams = true,
+          },
+        },
+      },
     })
 
     lspconfig["graphql"].setup({
@@ -123,26 +121,26 @@ return {
 
     lspconfig["html"].setup({
       capabilities = capabilities,
-      filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss" }
+      filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss" },
     })
 
-    -- jdtls configuration is managed by nvim-jdtls plugin
+    -- JDTLS configuration is managed by nvim-jdtls plugin
 
     lspconfig["jedi_language_server"].setup({
       capabilities = capabilities,
       settings = {
         Lua = {
           diagnostics = {
-            globals = { "vim" }
+            globals = { "vim" },
           },
           workspace = {
             library = {
               [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-              [vim.fn.stdpath("config") .. "/lua"] = true
-            }
-          }
-        }
-      }
+              [vim.fn.stdpath("config") .. "/lua"] = true,
+            },
+          },
+        },
+      },
     })
 
     lspconfig["jsonls"].setup({
@@ -153,24 +151,24 @@ return {
           schemas = {
             {
               fileMatch = {
-                "db/flows/*/questions.json"
+                "db/flows/*/questions.json",
               },
-              url = ".fhir.schema.json"
-            }
-          }
-        }
-      }
+              url = ".fhir.schema.json",
+            },
+          },
+        },
+      },
     })
 
     -- Add kulala_ls as valid LSP to lsp-config
-    local configs = require 'lspconfig.configs'
+    local configs = require("lspconfig.configs")
 
     if not configs.kulala_ls then
       configs.kulala_ls = {
         default_config = {
-          cmd = { 'kulala-ls', '--stdio' },
-          root_dir = lspconfig.util.root_pattern('http-client.env.json'),
-          filetypes = { 'http' },
+          cmd = { "kulala-ls", "--stdio" },
+          root_dir = lspconfig.util.root_pattern("http-client.env.json"),
+          filetypes = { "http" },
         },
       }
     end
@@ -180,6 +178,7 @@ return {
       capabilities = capabilities,
     })
 
+    -- harper: ignore
     -- lspconfig["kotlin_language_server"].setup({
     --   capabilities = capabilities,
     --   file_types = { "kotlin" },
@@ -204,60 +203,69 @@ return {
 
     lspconfig["harper_ls"].setup({
       settings = {
-          ["harper-ls"] = {
-            linters = {
-              spell_check = true,
-              spelled_numbers = false,
-              an_a = true,
-              sentence_capitalization = true,
-              unclosed_quotes = true,
-              wrong_quotes = false,
-              long_sentences = true,
-              repeated_words = true,
-              spaces = true,
-              matcher = true,
-              correct_number_suffix = true,
-              number_suffix_capitalization = true,
-              multiple_sequential_pronouns = true
-            }
-          }
+        ["harper-ls"] = {
+          linters = {
+            spell_check = true,
+            spelled_numbers = false,
+            an_a = true,
+            sentence_capitalization = true,
+            unclosed_quotes = true,
+            wrong_quotes = false,
+            long_sentences = true,
+            repeated_words = true,
+            spaces = true,
+            matcher = true,
+            correct_number_suffix = true,
+            number_suffix_capitalization = true,
+            multiple_sequential_pronouns = true,
+          },
         },
+      },
     })
 
     lspconfig["ltex"].setup({
       capabilities = capabilities,
       filetypes = {
-        "bib", "gitcommit", "markdown", "org", "plaintex", "rst",
-        "rnoweb", "tex", "pandoc", "quarto", "rmd"
+        "bib",
+        "gitcommit",
+        "markdown",
+        "org",
+        "plaintex",
+        "rst",
+        "rnoweb",
+        "tex",
+        "pandoc",
+        "quarto",
+        "rmd",
       },
       on_attach = function(client, bufnr)
         require("ltex_extra").setup({
           -- https://valentjn.github.io/ltex/supported-languages.html#natural-languages
-          load_langs = { 'en-US', 'es', 'ja-JP' },
+          load_langs = { "en-US", "es", "ja-JP" },
           init_check = true,
           path = vim.fn.expand("~") .. "/.config/ltex",
           -- string : "none", "trace", "debug", "info", "warn", "error", "fatal"
           log_level = "none",
           -- Not needed since lspconfig takes care of it
-          server_opts = nil
+          server_opts = nil,
         })
-      end
+      end,
     })
 
     -- neodev plugin must be setup before lspconfig lua_ls.
-    require("neodev").setup({})
+    require("neodev").setup()
 
     lspconfig["lua_ls"].setup({
       capabilities = capabilities,
       settings = {
         Lua = {
           completion = {
-            callSnippet = "Replace"
+            callSnippet = "Replace",
           },
           diagnostics = {
-            globals = { 'vim' }
-          }
-        }
+            globals = { "vim" },
+          },
+        },
       },
     })
 
@@ -265,9 +273,9 @@ return {
       capabilities = capabilities,
       settings = {
         solargraph = {
-          diagnostics = true
-        }
-      }
+          diagnostics = true,
+        },
+      },
     })
 
     lspconfig["vacuum"].setup({
@@ -278,8 +286,8 @@ return {
         "yaml.openapi",
         "json.openapi",
         "openapi.yaml",
-        "openapi.json"
-      }
+        "openapi.json",
+      },
     })
 
     -- lspconfig["spectral"].setup({
@@ -300,31 +308,31 @@ return {
         texlab = {
           build = {
             onSave = true,
-            auxDirectory = './out',
-            logDirectory = './out',
-            pdfDirectory = './out',
-            executable = 'latexmk',
+            auxDirectory = "./out",
+            logDirectory = "./out",
+            pdfDirectory = "./out",
+            executable = "latexmk",
             args = {
-              '-verbose',
-              '-pdf',
-              '-synctex=1',
-              '-interaction=nonstopmode',
-              '-auxdir=./out',
-              '-outdir=./out',
-              '%f'
+              "-verbose",
+              "-pdf",
+              "-synctex=1",
+              "-interaction=nonstopmode",
+              "-auxdir=./out",
+              "-outdir=./out",
+              "%f",
             },
-            forwardSearchAfter = true
+            forwardSearchAfter = true,
           },
           chktex = {
             onEdit = true,
-            onOpenAndSave = true
+            onOpenAndSave = true,
           },
           forwardSearch = {
-            executable = 'zathura',
-            args = { '--synctex-forward', "%l:1:%f", "%p" }
-          }
-        }
-      }
+            executable = "zathura",
+            args = { "--synctex-forward", "%l:1:%f", "%p" },
+          },
+        },
+      },
     })
 
     lspconfig["vimls"].setup({
@@ -338,6 +346,5 @@ return {
     lspconfig["yamlls"].setup({
       capabilities = capabilities,
     })
-
-  end
+  end,
 }
