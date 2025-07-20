@@ -8,6 +8,8 @@ return {
       -- that can interfere with completions from copilot-cmp
       suggestion = { enabled = false },
       panel = { enabled = false },
+      -- Specify the model to use
+      copilot_model = "sonnet-4.0",  -- Or "sonnet-3.7"
     })
   end,
 }
