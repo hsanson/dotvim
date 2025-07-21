@@ -64,7 +64,7 @@ return {
         -- Enable inlay hints if server supports them
         local id = vim.tbl_get(ev, "data", "client_id")
         local client = id and vim.lsp.get_client_by_id(id)
-        if client and client.supports_method("textDocument/inlayHint") then
+        if client and client:supports_method("textDocument/inlayHint") then
           vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
         end
       end,
