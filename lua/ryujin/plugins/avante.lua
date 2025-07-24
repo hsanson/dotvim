@@ -14,5 +14,13 @@ return {
   opts = {
     provider = "copilot",
     auto_suggestions = false,
+    providers = {
+      copilot = {
+        model = "claude-sonnet-4-20250514",
+      },
+    },
+    web_search_engine = {
+      provider = "brave",
+    },
   },
 }
