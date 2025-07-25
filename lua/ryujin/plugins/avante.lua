@@ -22,5 +22,20 @@ return {
     web_search_engine = {
       provider = "brave",
     },
+    behaviour = {
+      auto_suggestions = false,
+    },
+    windows = {
+      position = "right",
+      wrap = true,
+      width = 40,
+      sidebar_header = {
+        enabled = false,
+      },
+      input = {
+        prefix = "> ",
+        height = 20,
+      },
+    },
   },
 }
