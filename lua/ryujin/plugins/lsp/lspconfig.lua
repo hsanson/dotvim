@@ -3,7 +3,6 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "folke/neodev.nvim",
-    "barreiroleo/ltex_extra.nvim",
   },
   config = function()
     local lspconfig = require("lspconfig")
@@ -203,10 +202,19 @@ return {
     --   end
     -- })
 
+    lspconfig["vale_ls"].setup({
+      capabilities = capabilities,
+      settings = {
+        filetypes = { "markdown", "text", "tex", "rst", "asciidoc" },
+      },
+    })
+
     lspconfig["harper_ls"].setup({
+      capabilities = capabilities,
       settings = {
         ["harper-ls"] = {
           linters = {
+            isolateEnglish = true,
             spell_check = true,
             spelled_numbers = false,
             an_a = true,
@@ -223,35 +231,6 @@ return {
           },
         },
       },
-    })
-
-    lspconfig["ltex"].setup({
-      capabilities = capabilities,
-      filetypes = {
-        "bib",
-        "gitcommit",
-        "markdown",
-        "org",
-        "plaintex",
-        "rst",
-        "rnoweb",
-        "tex",
-        "pandoc",
-        "quarto",
-        "rmd",
-      },
-      on_attach = function(client, bufnr)
-        require("ltex_extra").setup({
-          -- https://valentjn.github.io/ltex/supported-languages.html#natural-languages
-          load_langs = { "en-US", "es", "ja-JP" },
-          init_check = true,
-          path = vim.fn.expand("~") .. "/.config/ltex",
-          -- string : "none", "trace", "debug", "info", "warn", "error", "fatal"
-          log_level = "none",
-          -- Not needed since lspconfig takes care of it
-          server_opts = nil,
-        })
-      end,
     })
 
     -- neodev plugin must be setup before lspconfig lua_ls.
