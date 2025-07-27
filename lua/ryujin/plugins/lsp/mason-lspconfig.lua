@@ -19,7 +19,6 @@ return {
         "lua_ls",
         "rubocop",
         "ruby_lsp",
-        "solargraph",
         "spectral",
         "tailwindcss",
         "terraformls",

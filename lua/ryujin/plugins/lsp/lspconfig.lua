@@ -250,12 +250,36 @@ return {
       },
     })
 
-    lspconfig["solargraph"].setup({
+    lspconfig["ruby_lsp"].setup({
       capabilities = capabilities,
-      settings = {
-        solargraph = {
-          diagnostics = true,
+      init_options = {
+        enabledFeatures = {
+          "documentSymbols",
+          "foldingRanges",
+          "selectionRanges",
+          "semanticHighlighting",
+          "completion",
+          "hover",
+          "signatureHelp",
+          "definition",
+          "typeDefinition",
+          "implementation",
+          "references",
+          "documentHighlight",
+          "codeAction",
+          "codeLens",
+          "formatting",
+          "onTypeFormatting",
+          "rename",
+          "diagnostics",
+          "inlayHints",
+          "workspaceSymbol",
+          "documentLink",
+          "callHierarchy",
+          "executeCommand",
         },
+        formatter = "standard",
+        linters = { "standard" },
       },
     })
 
