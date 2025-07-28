@@ -6,14 +6,13 @@ return {
     "nvim-lua/popup.nvim",
     "nvim-treesitter/nvim-treesitter",
     "nvim-tree/nvim-web-devicons",
-    "jvgrootveld/telescope-zoxide",
     "BurntSushi/ripgrep",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
   },
   config = function()
     local telescope = require("telescope")
     local actions = require("telescope.actions")
-    local z_utils = require("telescope._extensions.zoxide.utils")
+    local open_with_trouble = require("trouble.sources.telescope").open
 
     telescope.setup({
       defaults = {
@@ -21,10 +20,14 @@ return {
           i = {
             ["<C-k>"] = actions.move_selection_previous,
             ["<C-j>"] = actions.move_selection_next,
-            ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+            ["<C-t>"] = open_with_trouble,
             ["<A-k>"] = actions.move_selection_previous,
             ["<A-j>"] = actions.move_selection_next,
-            ["<A-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+            ["<A-t>"] = open_with_trouble,
+            ["<Tab>"] = function(prompt_bufnr)
+              actions.toggle_selection(prompt_bufnr)
+              actions.move_selection_next(prompt_bufnr)
+            end,
           },
         },
       },
@@ -41,30 +44,10 @@ return {
           case_mode = "smart_case", -- Or "ignore_case" or "respect_case"
           -- The default case_mode is "smart_case"
         },
-        zoxide = {
-          prompt_title = "[ Walking on the shoulders of TJ ]",
-          mappings = {
-            default = {
-              after_action = function(selection)
-                print("Update to (" .. selection.z_score .. ") " .. selection.path)
-              end,
-            },
-            ["<C-s>"] = {
-              before_action = function(_)
-                print("before C-s")
-              end,
-              action = function(selection)
-                vim.cmd.edit(selection.path)
-              end,
-            },
-            ["<C-q>"] = { action = z_utils.create_basic_command("split") },
-          },
-        },
       },
     })
 
     telescope.load_extension("fzf")
-    telescope.load_extension("zoxide")
 
     -- Telescope
     local builtin = require("telescope.builtin")
@@ -91,6 +74,5 @@ return {
     vim.keymap.set("n", "<leader>fn", function()
       builtin.find_files({ search_dirs = { "~/Seafile/Notes" } })
     end, {})
-    vim.keymap.set("n", "<leader>cd", telescope.extensions.zoxide.list, {})
   end,
 }
