@@ -65,6 +65,14 @@ local lualine = {
       return string.format("%s", icons[position])
     end
 
+    local function current_root()
+      local rooter = require("rooter")
+      local path = rooter.current_root()
+      path = string.gsub(path, "/$", "") -- remove last / if present
+      path = vim.fn.fnamemodify(path, ":t")
+      return string.format("%s", path)
+    end
+
     local function lsp_progress()
       return require("lsp-progress").progress({
         format = function(messages)
@@ -119,10 +127,14 @@ local lualine = {
       sections = {
         lualine_a = { "mode" },
         lualine_b = {
+          function()
+            return current_root()
+          end,
+        },
+        lualine_c = {
           { "branch", icon = "" },
           diff_module,
         },
-        lualine_c = {},
         lualine_x = {
           { lsp_progress },
           "kulala",
