@@ -104,7 +104,6 @@ return {
 
     lspconfig["gopls"].setup({
       capabilities = capabilities,
-      root_dir = util.root_pattern("go.work", "go.mod", ".git"),
       settings = {
         gopls = {
           completeUnimported = true,
@@ -168,7 +167,7 @@ return {
       configs.kulala_ls = {
         default_config = {
           cmd = { "kulala-ls", "--stdio" },
-          root_dir = lspconfig.util.root_pattern("http-client.env.json"),
+          root_markers = lspconfig.util.root_pattern("http-client.env.json"),
           filetypes = { "http" },
         },
       }
@@ -204,6 +203,7 @@ return {
 
     lspconfig["vale_ls"].setup({
       capabilities = capabilities,
+      root_markers = { ".vale.ini", ".git" },
       settings = {
         filetypes = { "markdown", "text", "tex", "rst", "asciidoc" },
       },
@@ -285,7 +285,7 @@ return {
 
     lspconfig["vacuum"].setup({
       capabilities = capabilities,
-      root_dir = util.root_pattern("vacuum.conf.yaml", ".git"),
+      root_markers = util.root_pattern("vacuum.conf.yaml", ".git"),
       cmd = { "vacuum", "--config", "vacuum.conf.yaml", "--ignore-file", "vacuum.ignore.yaml", "language-server" },
       filetypes = {
         "yaml.openapi",
