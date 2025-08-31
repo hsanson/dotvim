@@ -9,5 +9,7 @@ return {
       enable_logger = true, -- enable runtime log via logger.nvim
       command = "tcd", -- cd, tcd or lcd
     })
+
+    vim.keymap.set("n", "<leader>fp", ":Telescope project<cr>", {})
   end,
 }
