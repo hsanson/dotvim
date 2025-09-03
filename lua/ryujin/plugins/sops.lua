@@ -1,0 +1,3 @@
+return {
+  "lemarsu/sops.nvim",
+}
