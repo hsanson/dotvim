@@ -173,6 +173,15 @@ return {
       }
     end
 
+    -- Configure tinymist
+    lspconfig["tinymist"].setup({
+      settings = {
+        formatterMode = "typstyle",
+        exportPdf = "onType",
+        semanticTokens = "disable",
+      },
+    })
+
     -- Configure kulala_ls
     lspconfig["kulala_ls"].setup({
       capabilities = capabilities,

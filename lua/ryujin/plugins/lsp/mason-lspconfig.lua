@@ -23,6 +23,7 @@ return {
         "tailwindcss",
         "terraformls",
         "texlab",
+        "tinymist",
         "vale_ls",
         "vimls",
         "vacuum",
