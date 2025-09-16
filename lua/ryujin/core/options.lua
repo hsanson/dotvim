@@ -3,42 +3,42 @@ local opt = vim.opt
 -------------------------------------------------------------------------------
 -- General Settings
 -------------------------------------------------------------------------------
-opt.fileformats = "unix,dos"          -- Use unix file format.
-opt.number = true                     -- Show line number column.
-opt.backup = false                    -- Stop vim from creating ~ files.
-opt.writebackup = false               -- No backups
-opt.swapfile = false                  -- More hassel than solution.
-opt.shortmess = "atsIc"               -- Avoid unnecessary hit-enter prompts.
-opt.joinspaces = false                -- Avoid double spaces when joining lines
-opt.showcmd = true                    -- Display commands as they are typed.
-opt.scrolloff = 9999                    -- Always keep the cursor at the center of window.
-opt.lazyredraw = true                 -- Improve performance
-opt.synmaxcol = 250                   -- Improve scroll performance with long lines
-opt.updatetime = 250                  -- ms to wait for trigger event
-opt.nrformats = ""                    -- Stop vim from treating zero padded numbers as octal
-opt.equalalways = false               -- No automatic resizing of windows.
-opt.cursorline = true                 -- highlight current line in insert Mode.
+opt.fileformats = "unix,dos" -- Use unix file format.
+opt.number = true -- Show line number column.
+opt.backup = false -- Stop vim from creating ~ files.
+opt.writebackup = false -- No backups
+opt.swapfile = false -- More hassel than solution.
+opt.shortmess = "atsIc" -- Avoid unnecessary hit-enter prompts.
+opt.joinspaces = false -- Avoid double spaces when joining lines
+opt.showcmd = true -- Display commands as they are typed.
+opt.scrolloff = 9999 -- Always keep the cursor at the center of window.
+opt.lazyredraw = true -- Improve performance
+opt.synmaxcol = 250 -- Improve scroll performance with long lines
+opt.updatetime = 250 -- ms to wait for trigger event
+opt.nrformats = "" -- Stop vim from treating zero padded numbers as octal
+opt.equalalways = false -- No automatic resizing of windows.
+opt.cursorline = true -- highlight current line in insert Mode.
 opt.splitbelow = true
 opt.splitright = true
-opt.hidden = true                     -- Avoid loosing unsaved work when changing buffers.
-opt.emoji = false                     -- Fix emoji rendering.
-opt.pumblend = 20                     -- Transparency to popup menu
+opt.hidden = true -- Avoid loosing unsaved work when changing buffers.
+opt.emoji = false -- Fix emoji rendering.
+opt.pumblend = 20 -- Transparency to popup menu
 opt.laststatus = 3
 opt.linebreak = true
 opt.termguicolors = true
-opt.background = 'dark'
-opt.showmatch = false                 -- Do not highlight matching parenthesis
+opt.background = "dark"
+opt.showmatch = false -- Do not highlight matching parenthesis
 
 -- Box drawing Unicode characters:
 -- https://shapecatcher.com/unicode/block/Box_Drawing
 vim.opt.fillchars = {
-  horiz = '━',
-  horizup = '┻',
-  horizdown = '┳',
-  vert = '┃',
-  vertleft  = '┫',
-  vertright = '┣',
-  verthoriz = '╋',
+  horiz = "━",
+  horizup = "┻",
+  horizdown = "┳",
+  vert = "┃",
+  vertleft = "┫",
+  vertright = "┣",
+  verthoriz = "╋",
 }
 
 -- Show tabs and tailing spaces.
@@ -46,11 +46,11 @@ vim.opt.fillchars = {
 -- control + k followed by a <dot> and the capital M.
 opt.list = true
 opt.listchars = {
-  tab = '→ ',
-  nbsp = '␣',
-  trail = '•',
-  extends = '»',
-  precedes = '«'
+  tab = "→ ",
+  nbsp = "␣",
+  trail = "•",
+  extends = "»",
+  precedes = "«",
 }
 
 -------------------------------------------------------------------------------
@@ -61,7 +61,7 @@ opt.incsearch = true
 opt.ignorecase = true
 opt.smartcase = false
 opt.inccommand = "nosplit"
-opt.path = '/usr/include,/usr/local/include,**;$HOME'
+opt.path = "/usr/include,/usr/local/include,**;$HOME"
 
 -------------------------------------------------------------------------------
 -- Clipboard
@@ -104,23 +104,24 @@ opt.foldenable = true
 opt.foldlevelstart = 99
 opt.foldlevel = 99
 opt.foldcolumn = "1"
-opt.statuscolumn = '%=%l%s%#FoldColumn#%{foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? " " : " ") : "  " }%*'
+opt.statuscolumn =
+  '%=%l%s%#FoldColumn#%{foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? " " : " ") : "  " }%*'
 
 -------------------------------------------------------------------------------
 -- Improve Vim's Command Line Autocompletion
 -------------------------------------------------------------------------------
-opt.infercase = true                        -- AutoComplete in Vim
-opt.completeopt = 'menu,menuone,noselect,noinsert'
+opt.infercase = true -- AutoComplete in Vim
+opt.completeopt = "menu,menuone,noselect,noinsert"
 
-opt.wildignore:append '*.o,*.obj,*.pyc,*.pyo,*.DS_STORE,*.db,*.swc,*.rbc'
-opt.wildignore:append '__pycache__'
-opt.wildignore:append '*/tmp/*,*.so,*.swp,*.zip'
-opt.wildignore:append 'vendor/rails/**,vendor/gems/**'
-opt.wildignore:append '*.jar,*.class,*.log,*.gz'
-opt.wildignore:append '.git,*.rbc,*.svn'
-opt.wildignore:append '*.jpeg,*.jpg,*.jpeg*,*.png,*.gif'
-opt.wildignore:append '*/log/*,*/.bundle/*,*/bin/*,*/tmp/*,*/build/*'
-opt.wildignore:append '*/.sass-cache/*'
+opt.wildignore:append("*.o,*.obj,*.pyc,*.pyo,*.DS_STORE,*.db,*.swc,*.rbc")
+opt.wildignore:append("__pycache__")
+opt.wildignore:append("*/tmp/*,*.so,*.swp,*.zip")
+opt.wildignore:append("vendor/rails/**,vendor/gems/**")
+opt.wildignore:append("*.jar,*.class,*.log,*.gz")
+opt.wildignore:append(".git,*.rbc,*.svn")
+opt.wildignore:append("*.jpeg,*.jpg,*.jpeg*,*.png,*.gif")
+opt.wildignore:append("*/log/*,*/.bundle/*,*/bin/*,*/tmp/*,*/build/*")
+opt.wildignore:append("*/.sass-cache/*")
 
 -------------------------------------------------------------------------------
 -- Word Wrap
