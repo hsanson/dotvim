@@ -79,6 +79,7 @@ opt.clipboard = "unnamedplus"
 -- Note: Mouse features do not work when running vim inside a tmux window.
 -------------------------------------------------------------------------------
 opt.mouse = "a"
+opt.mousemodel = "extend"
 
 -------------------------------------------------------------------------------
 -- Tabs vs Spaces war
