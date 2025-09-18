@@ -90,19 +90,19 @@ return {
     -- performance degradation on normal use.
     -- vim.lsp.set_log_level("debug")
 
-    lspconfig["cssls"].setup({
+    vim.lsp.config("cssls", {
       capabilities = capabilities,
     })
 
-    lspconfig["docker_compose_language_service"].setup({
+    vim.lsp.config("docker_compose_language_service", {
       capabilities = capabilities,
     })
 
-    lspconfig["dockerls"].setup({
+    vim.lsp.config("dockerls", {
       capabilities = capabilities,
     })
 
-    lspconfig["gopls"].setup({
+    vim.lsp.config("gopls", {
       capabilities = capabilities,
       settings = {
         gopls = {
@@ -115,18 +115,18 @@ return {
       },
     })
 
-    lspconfig["graphql"].setup({
+    vim.lsp.config("graphql", {
       capabilities = capabilities,
     })
 
-    lspconfig["html"].setup({
+    vim.lsp.config("html", {
       capabilities = capabilities,
       filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss" },
     })
 
     -- JDTLS configuration is managed by nvim-jdtls plugin
 
-    lspconfig["jedi_language_server"].setup({
+    vim.lsp.config("jedi_language_server", {
       capabilities = capabilities,
       settings = {
         Lua = {
@@ -143,7 +143,7 @@ return {
       },
     })
 
-    lspconfig["jsonls"].setup({
+    vim.lsp.config("jsonls", {
       capabilities = capabilities,
       settings = {
         json = {
@@ -174,7 +174,7 @@ return {
     end
 
     -- Configure tinymist
-    lspconfig["tinymist"].setup({
+    vim.lsp.config("tinymist", {
       settings = {
         formatterMode = "typstyle",
         exportPdf = "onType",
@@ -183,12 +183,12 @@ return {
     })
 
     -- Configure kulala_ls
-    lspconfig["kulala_ls"].setup({
+    vim.lsp.config("kulala_ls", {
       capabilities = capabilities,
     })
 
     -- harper: ignore
-    -- lspconfig["kotlin_language_server"].setup({
+    -- vim.lsp.config("kotlin_language_server", {
     --   capabilities = capabilities,
     --   file_types = { "kotlin" },
     --   root_dir = function(fname)
@@ -210,7 +210,7 @@ return {
     --   end
     -- })
 
-    lspconfig["vale_ls"].setup({
+    vim.lsp.config("vale_ls", {
       capabilities = capabilities,
       root_markers = { ".vale.ini", ".git" },
       settings = {
@@ -218,7 +218,7 @@ return {
       },
     })
 
-    lspconfig["harper_ls"].setup({
+    vim.lsp.config("harper_ls", {
       capabilities = capabilities,
       settings = {
         ["harper-ls"] = {
@@ -245,7 +245,7 @@ return {
     -- neodev plugin must be setup before lspconfig lua_ls.
     require("neodev").setup()
 
-    lspconfig["lua_ls"].setup({
+    vim.lsp.config("lua_ls", {
       capabilities = capabilities,
       settings = {
         Lua = {
@@ -259,7 +259,7 @@ return {
       },
     })
 
-    lspconfig["ruby_lsp"].setup({
+    vim.lsp.config("ruby_lsp", {
       capabilities = capabilities,
       init_options = {
         enabledFeatures = {
@@ -292,7 +292,7 @@ return {
       },
     })
 
-    lspconfig["vacuum"].setup({
+    vim.lsp.config("vacuum", {
       capabilities = capabilities,
       root_markers = util.root_pattern("vacuum.conf.yaml", ".git"),
       cmd = { "vacuum", "--config", "vacuum.conf.yaml", "--ignore-file", "vacuum.ignore.yaml", "language-server" },
@@ -304,19 +304,19 @@ return {
       },
     })
 
-    -- lspconfig["spectral"].setup({
+    -- vim.lsp.config("spectral", {
     --   capabilities = capabilities,
     -- })
 
-    lspconfig["tailwindcss"].setup({
+    vim.lsp.config("tailwindcss", {
       capabilities = capabilities,
     })
 
-    lspconfig["terraformls"].setup({
+    vim.lsp.config("terraformls", {
       capabilities = capabilities,
     })
 
-    lspconfig["texlab"].setup({
+    vim.lsp.config("texlab", {
       capabilities = capabilities,
       settings = {
         texlab = {
@@ -349,16 +349,42 @@ return {
       },
     })
 
-    lspconfig["vimls"].setup({
+    vim.lsp.config("vimls", {
       capabilities = capabilities,
     })
 
-    lspconfig["volar"].setup({
+    vim.lsp.config("vue_ls", {
       capabilities = capabilities,
     })
 
-    lspconfig["yamlls"].setup({
+    vim.lsp.config("yamlls", {
       capabilities = capabilities,
+    })
+
+    vim.lsp.enable({
+      "cssls",
+      "docker_compose_language_service",
+      "dockerls",
+      "gopls",
+      "graphql",
+      "html",
+      "jedi_language_server",
+      "jsonls",
+      "tinymist",
+      "kulala_ls",
+      "kotlin_language_server",
+      "vale_ls",
+      "harper_ls",
+      "lua_ls",
+      "ruby_lsp",
+      "vacuum",
+      "spectral",
+      "tailwindcss",
+      "terraformls",
+      "texlab",
+      "vimls",
+      "vue_ls",
+      "yamlls",
     })
   end,
 }
