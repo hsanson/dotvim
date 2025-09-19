@@ -1,10 +1,6 @@
 local terminals = {}
 
--- Creates a new floating terminal per working directory or opens one if already
--- created for that path.
-local toggle_terminal = function()
-  local fterm = require("FTerm")
-
+local get_tab_cwd = function()
   local tabnr = vim.fn.tabpagenr()
   local win_list = vim.api.nvim_tabpage_list_wins(tabnr)
 
@@ -16,23 +12,40 @@ local toggle_terminal = function()
   -- Get the first window ID from the list
   local window_nr = win_list[1]
 
-  local workdir = vim.fn.getcwd(window_nr)
+  return vim.fn.getcwd(window_nr)
+end
 
-  if terminals[workdir] == nil then
+local find_or_create_terminal = function(workdir, command)
+  local fterm = require("FTerm")
+  local key = workdir .. "/" .. command
+
+  if terminals[key] == nil then
     vim.notify("Creating new terminal for " .. workdir)
     local new_terminal = fterm:new({
+      cmd = command,
       border = "double",
       dimensions = {
-        height = 0.9,
-        width = 0.9,
+        height = 0.95,
+        width = 0.95,
       },
     })
 
-    terminals[workdir] = new_terminal
+    terminals[key] = new_terminal
   end
 
-  vim.cmd("lcd " .. workdir)
-  terminals[workdir]:toggle()
+  return terminals[key]
+end
+
+-- Creates a new floating terminal per working directory or opens one if already
+-- created for that path.
+local toggle_terminal = function(command)
+  local workdir = get_tab_cwd()
+  local term = find_or_create_terminal(workdir, command)
+
+  if term then
+    vim.cmd("lcd " .. workdir)
+    term:toggle()
+  end
 end
 
 return {
@@ -42,26 +55,33 @@ return {
       "<leader>tr",
       mode = { "n" },
       function()
-        toggle_terminal()
+        toggle_terminal(os.getenv("SHELL"))
       end,
-      desc = "FTerm Toogle",
+      desc = "FTerm Open",
+    },
+    {
+      "<leader>tr",
+      mode = { "t" },
+      function()
+        toggle_terminal(os.getenv("SHELL"))
+      end,
+      desc = "FTerm Open",
+    },
+    {
+      "<leader>aa",
+      mode = { "n" },
+      function()
+        toggle_terminal("opencode")
+      end,
+      desc = "FTerm Open",
+    },
+    {
+      "<leader>aa",
+      mode = { "t" },
+      function()
+        toggle_terminal("opencode")
+      end,
+      desc = "FTerm Open",
     },
   },
-  config = function()
-    -- Auto command to automatically close floating terminal
-    -- when leaving terminal mode.
-    vim.api.nvim_create_augroup("FTermClose", { clear = true })
-
-    vim.api.nvim_create_autocmd("TermLeave", {
-      group = "FTermClose",
-      callback = function()
-        local bufnr = vim.api.nvim_get_current_buf()
-        for _, terminal in pairs(terminals) do
-          if terminal.buf == bufnr then
-            terminal:close()
-          end
-        end
-      end,
-    })
-  end,
 }
