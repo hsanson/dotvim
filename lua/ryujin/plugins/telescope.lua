@@ -12,7 +12,6 @@ return {
   config = function()
     local telescope = require("telescope")
     local actions = require("telescope.actions")
-    local open_with_trouble = require("trouble.sources.telescope").open
 
     telescope.setup({
       defaults = {
@@ -20,10 +19,8 @@ return {
           i = {
             ["<C-k>"] = actions.move_selection_previous,
             ["<C-j>"] = actions.move_selection_next,
-            ["<C-t>"] = open_with_trouble,
             ["<A-k>"] = actions.move_selection_previous,
             ["<A-j>"] = actions.move_selection_next,
-            ["<A-t>"] = open_with_trouble,
             ["<Tab>"] = function(prompt_bufnr)
               actions.toggle_selection(prompt_bufnr)
               actions.move_selection_next(prompt_bufnr)

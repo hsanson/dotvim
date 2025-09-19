@@ -1,3 +1,0 @@
-return {
-  'RaafatTurki/hex.nvim'
-}
