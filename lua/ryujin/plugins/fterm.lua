@@ -67,21 +67,6 @@ return {
       end,
       desc = "FTerm Open",
     },
-    {
-      "<leader>aa",
-      mode = { "n" },
-      function()
-        toggle_terminal("opencode")
-      end,
-      desc = "FTerm Open",
-    },
-    {
-      "<leader>aa",
-      mode = { "t" },
-      function()
-        toggle_terminal("opencode")
-      end,
-      desc = "FTerm Open",
-    },
+
   },
 }
