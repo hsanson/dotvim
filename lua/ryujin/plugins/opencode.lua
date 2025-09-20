@@ -6,7 +6,21 @@ return {
   },
   config = function()
     vim.g.opencode_opts = {
+      input = {
+        win = {
+          position = "float",
+          border = "rounded",
+          title_pos = "center",
+          height = math.floor(vim.o.lines * 0.5),
+          width = math.floor(vim.o.columns * 0.7),
+          relative = "editor",
+          row = math.floor((vim.o.lines - vim.o.lines * 0.5) / 2),
+          col = math.floor((vim.o.columns - vim.o.columns * 0.7) / 2),
+        },
+      },
       terminal = {
+        start_insert = false,
+        auto_insert = false,
         auto_close = true,
         win = {
           position = "right",
@@ -19,12 +33,12 @@ return {
     vim.opt.autoread = true
 
     -- Keymaps following the existing <leader>a* pattern
-    vim.keymap.set("n", "<leader>aa", function()
+    vim.keymap.set("n", "<leader>aA", function()
       require("opencode.config").opts.terminal.cwd = vim.fn.getcwd()
       require("opencode").toggle()
     end, { desc = "Toggle opencode" })
 
-    vim.keymap.set("n", "<leader>aA", function()
+    vim.keymap.set("n", "<leader>aa", function()
       require("opencode.config").opts.terminal.cwd = vim.fn.getcwd()
       require("opencode").ask()
     end, { desc = "Ask opencode" })
@@ -34,7 +48,7 @@ return {
       require("opencode").ask("@cursor: ")
     end, { desc = "Ask opencode about cursor" })
 
-    vim.keymap.set("v", "<leader>as", function()
+    vim.keymap.set("v", "<leader>aa", function()
       require("opencode.config").opts.terminal.cwd = vim.fn.getcwd()
       require("opencode").ask("@selection: ")
     end, { desc = "Ask opencode about selection" })
@@ -44,22 +58,17 @@ return {
       require("opencode").command("session_new")
     end, { desc = "New opencode session" })
 
+    vim.keymap.set("n", "<leader>at", function()
+      require("opencode.config").opts.terminal.cwd = vim.fn.getcwd()
+      require("opencode").command("agent_cycle")
+    end, { desc = "Change agent" })
+
     vim.keymap.set("n", "<leader>ay", function()
       require("opencode.config").opts.terminal.cwd = vim.fn.getcwd()
       require("opencode").command("messages_copy")
     end, { desc = "Copy last opencode response" })
 
-    vim.keymap.set("n", "<S-C-u>", function()
-      require("opencode.config").opts.terminal.cwd = vim.fn.getcwd()
-      require("opencode").command("messages_half_page_up")
-    end, { desc = "Messages half page up" })
-
-    vim.keymap.set("n", "<S-C-d>", function()
-      require("opencode.config").opts.terminal.cwd = vim.fn.getcwd()
-      require("opencode").command("messages_half_page_down")
-    end, { desc = "Messages half page down" })
-
-    vim.keymap.set({ "n", "v" }, "<leader>os", function()
+    vim.keymap.set({ "n", "v" }, "<leader>as", function()
       require("opencode.config").opts.terminal.cwd = vim.fn.getcwd()
       require("opencode").select()
     end, { desc = "Select opencode prompt" })
