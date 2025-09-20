@@ -128,19 +128,6 @@ return {
 
     vim.lsp.config("jedi_language_server", {
       capabilities = capabilities,
-      settings = {
-        Lua = {
-          diagnostics = {
-            globals = { "vim" },
-          },
-          workspace = {
-            library = {
-              [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-              [vim.fn.stdpath("config") .. "/lua"] = true,
-            },
-          },
-        },
-      },
     })
 
     vim.lsp.config("jsonls", {
@@ -254,6 +241,16 @@ return {
           },
           diagnostics = {
             globals = { "vim" },
+          },
+          workspace = {
+            library = {
+              [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+              [vim.fn.stdpath("config") .. "/lua"] = true,
+            },
+            checkThirdParty = false,
+          },
+          telemetry = {
+            enable = false,
           },
         },
       },
