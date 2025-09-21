@@ -13,7 +13,6 @@
   "cyberdream.nvim": { "branch": "main", "commit": "caf4f5e57f8d5e0bb75fe98f4f67965b1fb3326c" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "evangelion.nvim": { "branch": "main", "commit": "d27424adaae997f1ba2f7defa868150fc3877dcb" },
-  "gitsigns.nvim": { "branch": "main", "commit": "f780609807eca1f783a36a8a31c30a48fbe150c5" },
   "img-clip.nvim": { "branch": "main", "commit": "f33f3af9ba50f99d70f8fcb1a8575750ada4ea4a" },
   "kanagawa.nvim": { "branch": "master", "commit": "debe91547d7fb1eef34ce26a5106f277fbfdd109" },
   "kulala.nvim": { "branch": "main", "commit": "ab3effad17d5dbb4d5d34b6289fa4dc97155045c" },
@@ -68,9 +67,9 @@
   "transparent.nvim": { "branch": "main", "commit": "8ac59883de84e9cd1850ea25cf087031c5ba7d54" },
   "typst-preview.nvim": { "branch": "master", "commit": "dea4525d5420b7c32eebda7de15a6beb9d6574fa" },
   "vim-freemarker": { "branch": "master", "commit": "993bda23e72e4c074659970c1e777cb19d8cf93e" },
-  "vim-fugitive": { "branch": "master", "commit": "61b51c09b7c9ce04e821f6cf76ea4f6f903e3cf4" },
   "vim-nightfly-guicolors": { "branch": "master", "commit": "dabb4143b9a68a855a803207c0b6ecca27554444" },
   "vim-sandwich": { "branch": "master", "commit": "74cf93d58ccc567d8e2310a69860f1b93af19403" },
+  "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" },
   "yarepl.nvim": { "branch": "main", "commit": "d9990f94c8e72336af0573b65b78fe2e7c0ba53e" },
   "yazi.nvim": { "branch": "main", "commit": "fda4736c8c4e6eb7035ab9c0be1c17fa9dca0b6e" }
 }
