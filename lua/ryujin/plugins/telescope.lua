@@ -21,6 +21,8 @@ return {
             ["<C-j>"] = actions.move_selection_next,
             ["<A-k>"] = actions.move_selection_previous,
             ["<A-j>"] = actions.move_selection_next,
+            ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+            ["<A-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
             ["<Tab>"] = function(prompt_bufnr)
               actions.toggle_selection(prompt_bufnr)
               actions.move_selection_next(prompt_bufnr)
