@@ -5,7 +5,6 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-lua/popup.nvim",
     "nvim-treesitter/nvim-treesitter",
-    "nvim-tree/nvim-web-devicons",
     "BurntSushi/ripgrep",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
   },
