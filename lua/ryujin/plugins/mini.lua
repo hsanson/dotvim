@@ -8,5 +8,6 @@ return {
         style = "sign",
       },
     })
+    require("mini.icons").setup()
   end,
 }
