@@ -32,9 +32,9 @@ local lualine = {
       colored = false,
 
       symbols = {
-        added = "+",
-        modified = "~",
-        removed = "-",
+        added = " ",
+        modified = " ",
+        removed = " ",
       },
     }
 
