@@ -68,7 +68,6 @@
   "typst-preview.nvim": { "branch": "master", "commit": "dea4525d5420b7c32eebda7de15a6beb9d6574fa" },
   "vim-freemarker": { "branch": "master", "commit": "993bda23e72e4c074659970c1e777cb19d8cf93e" },
   "vim-nightfly-guicolors": { "branch": "master", "commit": "dabb4143b9a68a855a803207c0b6ecca27554444" },
-  "vim-sandwich": { "branch": "master", "commit": "74cf93d58ccc567d8e2310a69860f1b93af19403" },
   "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" },
   "yarepl.nvim": { "branch": "main", "commit": "d9990f94c8e72336af0573b65b78fe2e7c0ba53e" },
   "yazi.nvim": { "branch": "main", "commit": "fda4736c8c4e6eb7035ab9c0be1c17fa9dca0b6e" }
