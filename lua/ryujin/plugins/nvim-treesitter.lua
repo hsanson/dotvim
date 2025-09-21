@@ -1,27 +1,107 @@
 return {
-  'nvim-treesitter/nvim-treesitter',
-  build = ':TSUpdate',
+  "nvim-treesitter/nvim-treesitter",
+  build = ":TSUpdate",
   dependencies = {
-    'nvim-treesitter/nvim-treesitter-textobjects'
+    "nvim-treesitter/nvim-treesitter-textobjects",
   },
   config = function()
     local nvim_treesitter = require("nvim-treesitter.configs")
 
-    nvim_treesitter.setup {
+    nvim_treesitter.setup({
       ensure_installed = {
-        "bash", "awk", "bibtex", "cmake", "cpp", "csv", "css", "dart", "diff", "dockerfile",
-        "git_config", "git_rebase", "gitcommit", "gitignore", "gnuplot", "gomod", "gosum",
-        "gpg", "graphql", "helm", "html", "http", "hurl", "ini", "java", "javascript", "jq",
-        "json", "json5", "julia", "kotlin", "latex", "lua", "luadoc", "markdown", "typst",
-        "markdown_inline", "muttrc", "po", "regex", "ruby", "sql", "swift", "terraform",
-        "tmux", "toml", "tsv", "vim", "vimdoc", "vue", "xml", "yaml", "c", "lua", "python"
+        "awk",
+        "bash",
+        "bibtex",
+        "c",
+        "cmake",
+        "cpp",
+        "css",
+        "csv",
+        "dart",
+        "diff",
+        "dockerfile",
+        "git_config",
+        "git_config",
+        "git_rebase",
+        "gitcommit",
+        "gitcommit",
+        "gitignore",
+        "gitignore",
+        "gnuplot",
+        "gnuplot",
+        "go",
+        "gomod",
+        "gosum",
+        "gowork",
+        "gpg",
+        "graphql",
+        "groovy",
+        "helm",
+        "helm",
+        "html",
+        "http",
+        "hurl",
+        "ini",
+        "java",
+        "javadoc",
+        "javascript",
+        "jinja",
+        "jinja_inline",
+        "jq",
+        "json",
+        "json5",
+        "julia",
+        "kotlin",
+        "kulala_http",
+        "latex",
+        "lua",
+        "lua",
+        "luadoc",
+        "make",
+        "markdown",
+        "markdown_inline",
+        "mermaid",
+        "muttrc",
+        "php",
+        "po",
+        "promql",
+        "pug",
+        "python",
+        "readline",
+        "readline",
+        "regex",
+        "ruby",
+        "rust",
+        "sql",
+        "ssh_config",
+        "swift",
+        "terraform",
+        "terraform",
+        "tmux",
+        "tmux",
+        "toml",
+        "toml",
+        "tsv",
+        "typescript",
+        "typst",
+        "typst",
+        "vala",
+        "vim",
+        "vim",
+        "vimdoc",
+        "vimdoc",
+        "vue",
+        "vue",
+        "xml",
+        "yaml",
+        "zathurarc",
       },
       sync_install = false,
       auto_install = true,
-      ignore_install = { },
+      ignore_install = {},
       highlight = {
         enable = true,
-        disable = { },
+        disable = {},
         additional_vim_regex_highlighting = false,
       },
       modules = {},
@@ -50,9 +130,9 @@ return {
           -- and should return the mode ('v', 'V', or '<c-v>') or a table
           -- mapping query_strings to modes.
           selection_modes = {
-            ['@parameter.outer'] = 'v', -- charwise
-            ['@function.outer'] = 'V', -- linewise
-            ['@class.outer'] = '<c-v>', -- blockwise
+            ["@parameter.outer"] = "v", -- charwise
+            ["@function.outer"] = "V", -- linewise
+            ["@class.outer"] = "<c-v>", -- blockwise
           },
           -- If you set this to `true` (default is `false`) then any textobject is
           -- extended to include preceding or succeeding whitespace. Succeeding
@@ -66,6 +146,6 @@ return {
           include_surrounding_whitespace = false,
         },
       },
-    }
-  end
+    })
+  end,
 }
