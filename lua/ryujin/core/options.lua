@@ -28,6 +28,7 @@ opt.linebreak = true
 opt.termguicolors = true
 opt.background = "dark"
 opt.showmatch = false -- Do not highlight matching parenthesis
+opt.showtabline = 0 -- Disable tabline
 
 -- Box drawing Unicode characters:
 -- https://shapecatcher.com/unicode/block/Box_Drawing
