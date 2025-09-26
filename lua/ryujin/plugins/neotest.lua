@@ -8,15 +8,20 @@ return {
     "rcasia/neotest-java",
     "codymikol/neotest-kotlin",
     "olimorris/neotest-rspec",
-    { "fredrikaverpil/neotest-golang", version = "*" },
+    {
+      "fredrikaverpil/neotest-golang",
+      version = "*",
+      build = function()
+        vim.system({ "go", "install", "gotest.tools/gotestsum@latest" }):wait()
+      end,
+    },
   },
   config = function()
     local neotest_ns = vim.api.nvim_create_namespace("neotest")
     vim.diagnostic.config({
       virtual_text = {
         format = function(diagnostic)
-          local message =
-            diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
+          local message = diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
           return message
         end,
       },
@@ -25,16 +30,15 @@ return {
       adapters = {
         require("neotest-rspec"),
         require("neotest-golang")({
-          runner = "go",
+          runner = "gotestsum",
           go_test_args = {
             "-v",
             "-race",
             "-count=1",
-            "-coverprofile=" .. vim.fn.getcwd() .. "/coverage.out"
+            "-coverprofile=" .. vim.fn.getcwd() .. "/coverage.out",
           },
-        })
-      }
+        }),
+      },
     })
-
-  end
+  end,
 }
