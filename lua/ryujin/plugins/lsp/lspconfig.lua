@@ -154,7 +154,7 @@ return {
       configs.kulala_ls = {
         default_config = {
           cmd = { "kulala-ls", "--stdio" },
-          root_markers = lspconfig.util.root_pattern("http-client.env.json"),
+          root_markers = { "http-client.env.json" },
           filetypes = { "http" },
         },
       }
@@ -291,8 +291,8 @@ return {
 
     vim.lsp.config("vacuum", {
       capabilities = capabilities,
-      root_markers = util.root_pattern("vacuum.conf.yaml", ".git"),
       cmd = { "vacuum", "--config", "vacuum.conf.yaml", "--ignore-file", "vacuum.ignore.yaml", "language-server" },
+      root_markers = { "vacuum.conf.yaml", ".git" },
       filetypes = {
         "yaml.openapi",
         "json.openapi",
