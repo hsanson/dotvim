@@ -291,8 +291,8 @@ return {
 
     vim.lsp.config("vacuum", {
       capabilities = capabilities,
-      cmd = { "vacuum", "--config", "vacuum.conf.yaml", "--ignore-file", "vacuum.ignore.yaml", "language-server" },
       root_markers = { "vacuum.conf.yaml", ".git" },
+      cmd = { "vacuum", "language-server", "--config", "vacuum.conf.yaml", "--ignore-file", "vacuum.ignore.yaml" },
       filetypes = {
         "yaml.openapi",
         "json.openapi",
