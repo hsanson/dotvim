@@ -1,5 +1,6 @@
 return {
   "NickvanDyke/opencode.nvim",
+  enabled = false,
   dependencies = {
     -- Required for better prompt input and embedded terminal
     { "folke/snacks.nvim", opts = { input = { enabled = true } } },
