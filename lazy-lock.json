@@ -57,7 +57,6 @@
   "render-markdown.nvim": { "branch": "main", "commit": "d53856423be5ef3c267d26ee261b0981b372f718" },
   "ripgrep": { "branch": "master", "commit": "f0faa91c68c0d2f8c4b93a5e8546b4d3554f637e" },
   "rooter.nvim": { "branch": "master", "commit": "96ab1a14bb89bcfe9536cc98bebf7e38543f6b51" },
-  "snacks.nvim": { "branch": "main", "commit": "aaab014bc6094514cfd3fae1d3bae92b8f91d519" },
   "sops.nvim": { "branch": "main", "commit": "a8fe2662d254e3ec1d9c50229f3a7a7df076aacc" },
   "spring-boot.nvim": { "branch": "main", "commit": "218c0c26c14d99feca778e4d13f5ec3e8b1b60f0" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "1f08ed60cafc8f6168b72b80be2b2ea149813e55" },
