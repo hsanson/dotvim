@@ -5,8 +5,6 @@ return {
     "folke/neodev.nvim",
   },
   config = function()
-    local lspconfig = require("lspconfig")
-    local util = require("lspconfig/util")
     local keymap = vim.keymap
     local g = vim.g
 
