@@ -108,6 +108,7 @@ return {
       modules = {},
     })
 
+    ---@diagnostic disable-next-line: inject-field
     parser_config.asciidoc = {
       install_info = {
         url = "https://github.com/cathaysia/tree-sitter-asciidoc.git",
@@ -117,6 +118,7 @@ return {
         requires_generate_from_grammar = false,
       },
     }
+    ---@diagnostic disable-next-line: inject-field
     parser_config.asciidoc_inline = {
       install_info = {
         url = "https://github.com/cathaysia/tree-sitter-asciidoc.git",
