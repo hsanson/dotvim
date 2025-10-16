@@ -109,6 +109,26 @@ return {
     })
 
     ---@diagnostic disable-next-line: inject-field
+    --- Install go parser from specific revision that is needed
+    --- for neotest-golang.
+    ---
+    --- To check what revision to install see:
+    ---  https://github.com/nvim-treesitter/nvim-treesitter/blob/main/lua/nvim-treesitter/parsers.lua#L770
+    ---
+    --- To check if the correct vesion is installed:
+    ---
+    ---   cat ~/.local/share/nvim/lazy/nvim-treesitter/parser-info/go.revision
+    parser_config.go = {
+      install_info = {
+        url = "https://github.com/tree-sitter/tree-sitter-go.git",
+        files = { "src/parser.c" },
+        revision = "2346a3ab1bb3857b48b29d779a1ef9799a248cd7",
+        generate_requires_npm = false,
+        requires_generate_from_grammar = false,
+      },
+    }
+
+    ---@diagnostic disable-next-line: inject-field
     parser_config.asciidoc = {
       install_info = {
         url = "https://github.com/cathaysia/tree-sitter-asciidoc.git",
