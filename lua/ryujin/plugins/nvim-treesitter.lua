@@ -11,6 +11,7 @@ return {
     nvim_treesitter.setup({
       ensure_installed = {
         "awk",
+        "asciidoc",
         "bash",
         "bibtex",
         "c",
