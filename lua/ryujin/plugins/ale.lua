@@ -1,5 +1,6 @@
 return {
-  dir = "~/Projects/vim/ale",
+  -- dir = "~/Projects/vim/ale",
+  "hsanson/ale",
   dev = true,
   lazy = false,
   config = function()

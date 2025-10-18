@@ -124,7 +124,10 @@ local lualine = {
           diff_module,
         },
         lualine_x = {
-          { lsp_progress },
+					{
+						"lualine-coverage",
+						scope = "total",
+					},
           "kulala",
           {
             "copilot",
@@ -183,7 +186,12 @@ local lualine = {
         lualine_b = {},
         lualine_c = { filename_module },
         lualine_x = {},
-        lualine_y = {},
+        lualine_y = {
+					{
+						"lualine-coverage",
+						scope = "file",
+					},
+				},
         lualine_z = { "encoding", "fileformat" },
       },
       inactive_winbar = {
