@@ -2,6 +2,7 @@ return {
   "nvim-treesitter/nvim-treesitter",
   dependencies = {
     "cathaysia/tree-sitter-asciidoc",
+    "nvim-treesitter/nvim-treesitter-textobjects",
   },
   build = ":TSUpdate",
   config = function()
@@ -107,6 +108,25 @@ return {
         additional_vim_regex_highlighting = false,
       },
       modules = {},
+      textobjects = {
+        select = {
+          enable = true,
+          lookahead = true,
+          keymaps = {
+            ["af"] = "@function.outer",
+            ["if"] = "@function.inner",
+            ["ac"] = "@class.outer",
+            ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+            ["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
+          },
+          selection_modes = {
+            ['@parameter.outer'] = 'v',
+            ['@function.outer'] = 'V',
+            ['@class.outer'] = '<c-v>',
+          },
+          include_surrounding_whitespace = true,
+        },
+      },
     })
 
     ---@diagnostic disable-next-line: inject-field
