@@ -352,10 +352,6 @@ return {
       capabilities = capabilities,
     })
 
-    vim.lsp.config("yamlls", {
-      capabilities = capabilities,
-    })
-
     vim.lsp.enable({
       "cssls",
       "docker_compose_language_service",
@@ -379,7 +375,6 @@ return {
       "texlab",
       "vimls",
       "vue_ls",
-      "yamlls",
     })
   end,
 }
