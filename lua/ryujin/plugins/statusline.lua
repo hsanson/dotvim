@@ -124,10 +124,6 @@ local lualine = {
           diff_module,
         },
         lualine_x = {
-					{
-						"lualine-coverage",
-						scope = "total",
-					},
           "kulala",
           {
             "copilot",
