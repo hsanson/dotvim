@@ -14,9 +14,28 @@ return {
         }
       }
     })
-    local opts = { noremap = true, silent = true, desc = "Show coverage" }
-    vim.keymap.set('n', '<Leader>rc', '<cmd>CoverageLoad<CR><cmd>Coverage<CR>', opts)
-    opts.desc = "Show coverage summary"
-    vim.keymap.set('n', '<Leader>rC', '<cmd>CoverageLoad<CR><cmd>CoverageSummary<CR>', opts)
+
+    local coverage_group = vim.api.nvim_create_augroup(
+      "CoverageAutoLoad",
+      { clear = true }
+    )
+
+    vim.api.nvim_create_autocmd("FileType", {
+      group = coverage_group,
+      pattern = "go",
+      callback = function()
+        vim.cmd("CoverageLoad")
+      end,
+    })
+
+    local opts = {
+      noremap = true,
+      silent = true,
+      desc = "Show coverage summary"
+    }
+    vim.keymap.set('n',
+      '<Leader>rc',
+      '<cmd>Coverage<CR><cmd>CoverageSummary<CR>',
+      opts)
 	end,
 }
