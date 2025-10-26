@@ -101,7 +101,15 @@ local lualine = {
         component_separators = { left = "", right = "" },
         disabled_filetypes = {
           statusline = {},
-          winbar = { "dap-view", "kulala_ui", "help", "terminal", "nofile" },
+          winbar = {
+            "dap-view",
+            "dap-repl",
+            "nvim-dap-view",
+            "kulala_ui",
+            "help",
+            "terminal",
+            "nofile",
+          },
         },
         ignore_focus = {},
         always_divide_middle = true,
