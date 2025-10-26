@@ -24,7 +24,10 @@ return {
       group = coverage_group,
       pattern = "go",
       callback = function()
-        vim.cmd("CoverageLoad")
+        local coverage_file = vim.fn.getcwd() .. "/coverage.out"
+        if vim.fn.filereadable(coverage_file) ~= 0 then
+          vim.cmd("CoverageLoad")
+        end
       end,
     })
 
