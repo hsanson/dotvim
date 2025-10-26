@@ -127,6 +127,14 @@ return {
           include_surrounding_whitespace = true,
         },
       },
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "<cr>",
+          node_incremental = "<cr>",
+          node_decremental = "<s-cr>",
+        },
+      },
     })
 
     ---@diagnostic disable-next-line: inject-field
