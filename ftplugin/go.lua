@@ -19,7 +19,7 @@ opts.desc = "Toggle test summary"
 vim.keymap.set('n', '<localleader>rt', ':Neotest summary<CR>', opts)
 
 opts.desc = "Show test results"
-vim.keymap.set('n', '<localleader>rh', ':lua require("neotest").output.open({ enter = false, short = false })<CR>', opts)
+vim.keymap.set('n', '<localleader>rh', ':lua require("neotest").output_panel.toggle()<CR>', opts)
 
 opts.desc = "Add variable under cursor to watch list"
 vim.keymap.set('n', '<localleader>rw', ':DapViewWatch<CR>', opts)
