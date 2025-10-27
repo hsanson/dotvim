@@ -25,6 +25,10 @@ require("lazy").setup(
     dev = {
       path = "~/Projects/vim"
     },
+    rocks = {
+      enabled = false,
+      hererocks = false,
+    },
     performance = {
       disabled_plugins = {
         "2html_plugin",
