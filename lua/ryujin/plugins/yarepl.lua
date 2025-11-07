@@ -62,7 +62,7 @@ return {
         bash = { cmd = "bash", formatter = yarepl.formatter.trim_empty_lines },
         zsh = { cmd = "zsh", formatter = yarepl.formatter.bracketed_pasting },
         ruby = { cmd = "pry", formatter = yarepl.formatter.trim_empty_lines },
-        usql = { cmd = "usql --pset pager=off", formatter = sql_formatter },
+        usql = { cmd = "usql -q --pset pager=off", formatter = sql_formatter },
       },
       -- when a REPL process exits, should the window associated with those REPLs closed?
       close_on_exit = true,
