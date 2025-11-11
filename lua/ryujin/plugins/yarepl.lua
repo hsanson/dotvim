@@ -15,33 +15,7 @@ return {
   },
   config = function()
     local yarepl = require("yarepl")
-
-    local sql_formatter = function(lines)
-      for i, line in ipairs(lines) do
-        -- Trim leading and trailing whitespace
-        lines[i] = line:match("^%s*(.-)%s*$")
-        -- Replace multiple spaces with a single space
-        lines[i] = lines[i]:gsub("%s+", " ")
-      end
-
-      -- Remove empty lines from the list
-      for i = #lines, 1, -1 do
-        if lines[i] == "" then
-          table.remove(lines, i)
-        end
-      end
-
-      -- Add ";\r" to the last line if it doesn't start with "\"
-      if lines[#lines]:match("^\\") then
-        lines[#lines] = lines[#lines] .. "\r"
-      elseif lines[#lines]:match(";$") then
-        lines[#lines] = lines[#lines] .. "\r"
-      else
-        lines[#lines] = lines[#lines] .. ";\r"
-      end
-
-      return lines
-    end
+    local usql = require("usql.yarepl")
 
     yarepl.setup({
       -- see `:h buflisted`, whether the REPL buffer should be buflisted.
@@ -62,7 +36,7 @@ return {
         bash = { cmd = "bash", formatter = yarepl.formatter.trim_empty_lines },
         zsh = { cmd = "zsh", formatter = yarepl.formatter.bracketed_pasting },
         ruby = { cmd = "pry", formatter = yarepl.formatter.trim_empty_lines },
-        usql = { cmd = "usql -q --pset pager=off", formatter = sql_formatter },
+        usql = { cmd = usql.cmd, formatter = usql.formatter },
       },
       -- when a REPL process exits, should the window associated with those REPLs closed?
       close_on_exit = true,
