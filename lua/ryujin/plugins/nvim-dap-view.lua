@@ -5,7 +5,7 @@ return {
         show = true,
         -- You can add a "console" section to merge the terminal with the other views
         sections = {
-          "watches", "scopes", "exceptions", "breakpoints", "sessions", "threads", "repl"
+          "watches", "scopes", "exceptions", "breakpoints", "sessions", "threads", "repl", "console"
         },
         -- Must be one of the sections declared above
         default_section = "scopes",
@@ -94,18 +94,6 @@ return {
             custom_buttons = {},
         },
     },
-    windows = {
-        height = 0.25,
-        position = "below",
-        terminal = {
-            width = 0.5,
-            position = "left",
-            -- List of debug adapters for which the terminal should be ALWAYS hidden
-            hide = {},
-            -- Hide the terminal when starting a new session
-            start_hidden = true,
-        },
-    },
     icons = {
         disabled = "",
         disconnect = "",
@@ -124,7 +112,6 @@ return {
     help = {
         border = nil,
     },
-    switchbuf = "usetab,uselast",
     auto_toggle = true,
     follow_tab = false,
   },

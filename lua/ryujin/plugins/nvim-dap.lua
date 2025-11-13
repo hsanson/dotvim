@@ -9,29 +9,71 @@ return {
     local dapgo = require('dap-go')
     local dapui = require('dap-view')
 
-    dapgo.setup()
-    dapui.setup({
-      windows = {
-        height = 20,
-        terminal = {
-          hide = { "go" },
-        }
+    dapgo.setup({
+      delve = {
+        detached = false,
       }
     })
 
+    dapui.setup({
+      windows = {
+        height = 20,
+      }
+    })
+
+    local function find_or_create_tab(tab_name)
+      local tabpages = vim.api.nvim_list_tabpages()
+      local target_tab = nil
+
+      -- Check if tab with this variable already exists
+      for _, tab in ipairs(tabpages) do
+        local success, tab_var = pcall(vim.api.nvim_tabpage_get_var, tab, "tab_name")
+        if success and tab_var == tab_name then
+          target_tab = tab
+          break
+        end
+      end
+
+      -- Switch to existing tab or create new one
+      if target_tab then
+        vim.api.nvim_set_current_tabpage(target_tab)
+      else
+        vim.cmd('tabnew')
+        local current_tab = vim.api.nvim_get_current_tabpage()
+        vim.api.nvim_tabpage_set_var(current_tab, "tab_name", tab_name)
+      end
+    end
+
+    -- Ensure the DAP tab is always used when debugging
+    dap.defaults.fallback.switchbuf = function(bufnr, line, col)
+      find_or_create_tab("DAP")
+      -- Get the first window of the current tab
+      local current_tab = vim.api.nvim_get_current_tabpage()
+      local wins = vim.api.nvim_tabpage_list_wins(current_tab)
+
+      if #wins > 0 then
+        local first_win = wins[1]
+        -- Set the buffer in the first window
+        vim.api.nvim_win_set_buf(first_win, bufnr)
+        -- Set cursor position to the specified line and column
+        vim.api.nvim_win_set_cursor(first_win, {line, col})
+        -- Switch to that window
+        vim.api.nvim_set_current_win(first_win)
+      end
+    end
+
     dap.listeners.before.attach.dapui_config = function()
-      vim.cmd.tabnew('%')
-      local w = math.floor(vim.api.nvim_win_get_width(0) * 40 / 100)
+      find_or_create_tab("DAP")
       dapui.open()
     end
 
     dap.listeners.before.launch.dapui_config = function()
-      vim.cmd.tabnew('%')
-      local w = math.floor(vim.api.nvim_win_get_width(0) * 40 / 100)
+      find_or_create_tab("DAP")
       dapui.open()
     end
 
     dap.listeners.before.event_terminated.dapui_config = function()
+      find_or_create_tab("DAP")
       dapui.close()
       vim.cmd.tabclose()
     end
