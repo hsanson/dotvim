@@ -50,9 +50,6 @@ return {
         opts.desc = "Show documentation"
         keymap.set("n", "<leader>gh", vim.lsp.buf.signature_help, opts)
 
-        opts.desc = "Restart LSP"
-        keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
-
         opts.desc = "LSP Format buffer"
         keymap.set("n", "<leader>gf", function()
           vim.lsp.buf.format({ async = true })

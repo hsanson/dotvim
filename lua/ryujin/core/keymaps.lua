@@ -30,3 +30,4 @@ vim.keymap.set("n", "<A-b>", "<C-b>")
 
 -- Terminal
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+
