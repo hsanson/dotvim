@@ -6,9 +6,9 @@ return {
     config = function()
       -- Setup is required, even if you don't pass any options
       require('kulala').setup({
-        default_view = "body",
+        default_view = "headers_body",
         default_env = "dev",
-        debug = true,
+        debug = false,
         environment_scope = "g",
         ui = {
           winbar = true,
@@ -22,6 +22,8 @@ return {
             lualine = "🐼",
           },
         },
+        global_keymaps = false,
+        kulala_keymaps = true,
         contenttypes = {
           ["application/vnd.api+json"] = {
             ft = "json",
