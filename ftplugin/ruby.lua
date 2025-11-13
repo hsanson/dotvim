@@ -1,16 +1,3 @@
-local opt = vim.opt_local
-
--- PEP8 Code Style Standard
--- https://www.python.org/dev/peps/pep-0008
-
-opt.tabstop = 4
-opt.softtabstop = 4
-opt.shiftwidth= 4
-opt.textwidth = 79
-opt.expandtab = true
-opt.autoindent = true
-opt.fileformat = 'unix'
-
 local function open_repl()
   local yarepl = require("yarepl")
 
@@ -19,7 +6,7 @@ local function open_repl()
 
   if not repl then
     local current_win = vim.api.nvim_get_current_win()
-    vim.cmd("REPLStart python")
+    vim.cmd("REPLStart ruby")
     vim.api.nvim_set_current_win(current_win)
   end
 end
@@ -52,3 +39,4 @@ end, { desc = "Send SQL file" })
 vim.keymap.set("n", "<localleader>rc", "REPLCleanup<CR>", {
   desc = "Clear REPLs.",
 })
+

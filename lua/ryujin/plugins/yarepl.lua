@@ -53,51 +53,5 @@ return {
         },
       },
     })
-
-
-    local function run_cmd_with_count(cmd)
-      return function()
-        vim.cmd(string.format("%d%s", vim.v.count, cmd))
-      end
-    end
-
-    local keymap = vim.api.nvim_set_keymap
-
-    vim.keymap.set("n", "<localleader>re", function()
-      local ft = vim.bo.filetype
-
-      if ft == "ruby" then
-        vim.cmd("REPLStart ruby")
-      elseif ft == "python" then
-        vim.cmd("REPLStart python")
-      elseif ft == "sh" then
-        vim.cmd("REPLStart bash")
-      elseif ft == "sql" then
-        vim.cmd("REPLStart usql")
-      else
-        vim.cmd("REPLStart")
-      end
-
-      vim.cmd(vim.api.nvim_replace_termcodes("normal <C-w><C-p>", true, true, true))
-    end, { silent = true, desc = "Start an REPL" })
-
-    keymap("v", "<localleader>rr", "", {
-      callback = run_cmd_with_count("REPLSendVisual"),
-      desc = "Send visual region",
-    })
-
-    keymap("n", "<localleader>rrr", "", {
-      callback = run_cmd_with_count("REPLSendLine"),
-      desc = "Send current line",
-    })
-
-    keymap("n", "<localleader>rr", "", {
-      callback = run_cmd_with_count("REPLSendOperator"),
-      desc = "Send motion",
-    })
-
-    keymap("n", "<localleader>rc", "<CMD>REPLCleanup<CR>", {
-      desc = "Clear REPLs.",
-    })
   end,
 }

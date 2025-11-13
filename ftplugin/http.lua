@@ -30,10 +30,10 @@ vim.keymap.set('n', '<localleader>ri', function()
   buffer = true
 })
 
-vim.keymap.set('n', '<localleader>rc', function()
-    require("kulala").copy()
+vim.keymap.set('n', '<localleader>rt', function()
+    require("kulala.ui.auth_manager").open_auth_config()
   end, {
-  desc = 'Copy curl command to clipboard',
+  desc = 'Open auth manager',
   remap = false,
   buffer = true
 })
