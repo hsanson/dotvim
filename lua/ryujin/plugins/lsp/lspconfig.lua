@@ -38,10 +38,10 @@ return {
         keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
 
         opts.desc = "Got to previous diagnostics"
-        keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+        keymap.set("n", "[d", function() vim.diagnostic.jump({count = -1}) end, opts)
 
         opts.desc = "Got to next diagnostics"
-        keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+        keymap.set("n", "]d", function() vim.diagnostic.jump({count = 1}) end, opts)
 
         opts.desc = "Show documentation"
         keymap.set("n", "<leader>gh", vim.lsp.buf.signature_help, opts)
@@ -69,10 +69,10 @@ return {
     vim.diagnostic.config({
       signs = {
         text = {
-          [vim.diagnostic.severity.WARN] = vim.g.symbol_warn,
-          [vim.diagnostic.severity.ERROR] = vim.g.symbol_error,
-          [vim.diagnostic.severity.INFO] = vim.g.symbol_info,
-          [vim.diagnostic.severity.HINT] = vim.g.symbol_hint,
+          [vim.diagnostic.severity.WARN] = vim.g["symbol_warn"],
+          [vim.diagnostic.severity.ERROR] = vim.g["symbol_error"],
+          [vim.diagnostic.severity.INFO] = vim.g["symbol_info"],
+          [vim.diagnostic.severity.HINT] = vim.g["symbol_hint"],
         },
       },
     })
