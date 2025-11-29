@@ -1,7 +1,8 @@
+---@diagnostic disable: inject-field
 local g = vim.g
 
--- diagnostic symbols used by vim-android, lualine,
--- and lspconfig.
+-- Diagnostic symbols used by vim-android, `Lualine`,
+-- and LSP configuration.
 g.symbol_error = ""
 g.symbol_warn = ""
 g.symbol_hint = ""

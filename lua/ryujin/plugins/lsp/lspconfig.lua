@@ -1,12 +1,8 @@
 return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
-  dependencies = {
-    "folke/neodev.nvim",
-  },
   config = function()
     local keymap = vim.keymap
-    local g = vim.g
 
     local opts = { noremap = true, silent = true }
 
@@ -73,10 +69,10 @@ return {
     vim.diagnostic.config({
       signs = {
         text = {
-          [vim.diagnostic.severity.WARN] = g.symbol_warn,
-          [vim.diagnostic.severity.ERROR] = g.symbol_error,
-          [vim.diagnostic.severity.INFO] = g.symbol_info,
-          [vim.diagnostic.severity.HINT] = g.symbol_hint,
+          [vim.diagnostic.severity.WARN] = vim.g.symbol_warn,
+          [vim.diagnostic.severity.ERROR] = vim.g.symbol_error,
+          [vim.diagnostic.severity.INFO] = vim.g.symbol_info,
+          [vim.diagnostic.severity.HINT] = vim.g.symbol_hint,
         },
       },
     })
@@ -118,8 +114,6 @@ return {
       capabilities = capabilities,
       filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss" },
     })
-
-    -- JDTLS configuration is managed by nvim-jdtls plugin
 
     vim.lsp.config("jedi_language_server", {
       capabilities = capabilities,
@@ -224,25 +218,24 @@ return {
       },
     })
 
-    -- neodev plugin must be setup before lspconfig lua_ls.
-    require("neodev").setup()
-
     vim.lsp.config("lua_ls", {
       capabilities = capabilities,
       settings = {
         Lua = {
+          runtime = {
+            version = "LuaJIT"
+          },
           completion = {
             callSnippet = "Replace",
           },
           diagnostics = {
-            globals = { "vim" },
+            globals = {
+              "vim",
+              "require",
+            },
           },
           workspace = {
-            library = {
-              [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-              [vim.fn.stdpath("config") .. "/lua"] = true,
-            },
-            checkThirdParty = false,
+            library = vim.api.nvim_get_runtime_file("", true),
           },
           telemetry = {
             enable = false,
