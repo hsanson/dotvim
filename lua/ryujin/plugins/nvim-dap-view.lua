@@ -8,7 +8,7 @@ return {
           "watches", "scopes", "exceptions", "breakpoints", "sessions", "threads", "repl", "console"
         },
         -- Must be one of the sections declared above
-        default_section = "scopes",
+        default_section = "repl",
         -- Configure each section individually
         base_sections = {
             breakpoints = {
