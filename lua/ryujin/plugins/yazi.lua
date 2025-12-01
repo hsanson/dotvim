@@ -34,7 +34,6 @@ local function insert_file_links(selected_files)
   local row = cursor_pos[1]
 
   -- Prepare links based on filetype
-  local links = {}
   for _, file_path in ipairs(selected_files) do
     local filename = vim.fn.fnamemodify(file_path, ":t")
     local link
@@ -55,28 +54,14 @@ local function insert_file_links(selected_files)
       end
     end
 
-    table.insert(links, link)
-  end
-
-  -- Insert links at cursor position
-  if #links > 1 then
-    -- Multiple files: insert each on a new line
-    -- Convert to 0-based indexing for nvim_buf_set_lines
-    local line_idx = row - 1
-    vim.api.nvim_buf_set_lines(current_buf, line_idx + 1, line_idx + 1, false, links)
-    -- Move cursor to after the inserted links
-    vim.api.nvim_win_set_cursor(0, {row + #links, 0})
-  else
-    -- Single file: insert at cursor position
     local current_line = vim.api.nvim_get_current_line()
     local col = cursor_pos[2]
-    local new_line = current_line:sub(1, col) .. links[1] .. current_line:sub(col + 1)
+    local new_line = current_line:sub(1, col) .. link .. current_line:sub(col + 1)
     vim.api.nvim_set_current_line(new_line)
     -- Move cursor to after the inserted link
-    vim.api.nvim_win_set_cursor(0, {row, col + #links[1]})
+    vim.api.nvim_win_set_cursor(0, {row, col + 2 + #link})
   end
 
-  vim.notify(string.format("Inserted %d link(s)", #links), vim.log.levels.INFO)
   return true
 end
 
@@ -102,28 +87,6 @@ return {
       "<c-up>",
       "<cmd>Yazi toggle<cr>",
       desc = "Resume the last yazi session",
-    },
-    {
-      -- Custom keymap for yazi with link insertion capability
-      "<leader>cl",
-      function()
-        require("yazi").yazi(nil, vim.fn.getcwd(), {
-          hooks = {
-            yazi_closed_successfully = function(chosen_files, config, state)
-              if chosen_files and #chosen_files > 0 then
-                local success = insert_file_links(chosen_files)
-                if not success then
-                  -- If not markdown/asciidoc, open normally
-                  for _, file in ipairs(chosen_files) do
-                    vim.cmd("edit " .. vim.fn.fnameescape(file))
-                  end
-                end
-              end
-            end,
-          },
-        })
-      end,
-      desc = "Open yazi and insert links if markdown/asciidoc",
     },
   },
 
