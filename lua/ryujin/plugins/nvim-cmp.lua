@@ -56,7 +56,6 @@ return {
         { name = "copilot" },
         { name = "buffer" },
         { name = "path" },
-        { name = "cmdline" },
       },
 
       mapping = cmp.mapping.preset.insert({
