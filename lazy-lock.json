@@ -23,7 +23,7 @@
   "lua-async-await": { "branch": "main", "commit": "652d94df34e97abe2d4a689edbc4270e7ead1a98" },
   "lualine-lsp-status": { "branch": "main", "commit": "1218d51d4d0b8881a598a77e5d9f334ac31c6cc7" },
   "lualine.nvim": { "branch": "master", "commit": "47f91c416daef12db467145e16bed5bbfe00add8" },
-  "mason-lspconfig.nvim": { "branch": "main", "commit": "7d527c76c43f46294de9c19d39c5a86317809b4b" },
+  "mason-lspconfig.nvim": { "branch": "main", "commit": "0b9bb925c000ae649ff7e7149c8cd00031f4b539" },
   "mason.nvim": { "branch": "main", "commit": "57e5a8addb8c71fb063ee4acda466c7cf6ad2800" },
   "mini.nvim": { "branch": "main", "commit": "94cae4660a8b2d95dbbd56e1fbc6fcfa2716d152" },
   "neomutt.vim": { "branch": "main", "commit": "0081eb9ab89d06b5d29678721463e0148b4b4575" },
@@ -76,5 +76,5 @@
   "vim-nightfly-guicolors": { "branch": "master", "commit": "35b7292334eba451f9f94252c7df1509570f864b" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
   "yarepl.nvim": { "branch": "main", "commit": "e5fa84d2f9cd0cbc09472ee09f2c8b5705176ea3" },
-  "yazi.nvim": { "branch": "main", "commit": "b8aac56472626a511f1d5afb33cefc088602266b" }
+  "yazi.nvim": { "branch": "main", "commit": "06eaf06a555dd481e8f8e9ebb9aaca54c4a0f87b" }
 }
