@@ -19,6 +19,7 @@
   "kulala.nvim": { "branch": "main", "commit": "5d3916195a97928b8f9b79d96029f37d19ba866d" },
   "last-color.nvim": { "branch": "main", "commit": "000e3e50047602f4b9725dd33aff631018592595" },
   "lazy.nvim": { "branch": "main", "commit": "85c7ff3711b730b4030d03144f6db6375044ae82" },
+  "live-preview.nvim": { "branch": "main", "commit": "3e0eb9ea48a6cf8b091c0031830721eeff0efe19" },
   "lsp-progress.nvim": { "branch": "main", "commit": "ae52979ad412371ea6dc39ff70c8dfc681fb42b8" },
   "lua-async-await": { "branch": "main", "commit": "652d94df34e97abe2d4a689edbc4270e7ead1a98" },
   "lualine-lsp-status": { "branch": "main", "commit": "1218d51d4d0b8881a598a77e5d9f334ac31c6cc7" },
