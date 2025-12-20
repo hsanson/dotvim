@@ -60,18 +60,35 @@ return {
 
       mapping = cmp.mapping.preset.insert({
         -- Navigate between completion items
-        ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = "select" }),
-        ["<C-n>"] = cmp.mapping.select_next_item({ behavior = "select" }),
+        ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = "select" }),
+        ["<C-j>"] = cmp.mapping.select_next_item({ behavior = "select" }),
 
         -- `Enter` key to confirm completion
-        ["<CR>"] = cmp.mapping.confirm({ select = false }),
+        --  https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#safely-select-entries-with-cr 
+        ["<CR>"] = cmp.mapping({
+          i = function(fallback)
+            if cmp.visible() and cmp.get_active_entry() then
+              cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+            else
+              fallback()
+            end
+          end,
+          s = cmp.mapping.confirm({ select = true }),
+        }),
 
-        -- Ctrl+Space to trigger completion menu
-        ["<C-l>"] = cmp.mapping.complete(),
-
+        -- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#confirm-candidate-on-tab-immediately-when-theres-only-one-completion-entry
         ["<Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() and has_words_before() then
-            cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+          if cmp.visible() then
+            if #cmp.get_entries() == 1 then
+              cmp.confirm({ select = true })
+            else
+              cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+            end
+          elseif has_words_before() then
+            cmp.complete()
+            if #cmp.get_entries() == 1 then
+              cmp.confirm({ select = true })
+            end
           else
             fallback()
           end
@@ -87,11 +104,8 @@ return {
           "i",
           "s",
         }),
-
-        -- Scroll up and down in the completion documentation
-        ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-d>"] = cmp.mapping.scroll_docs(4),
       }),
+
       formatting = {
         fields = { "kind", "abbr", "menu" },
         format = function(entry, vim_item)
