@@ -7,17 +7,10 @@ return {
 
     local dap = require('dap')
     local dapgo = require('dap-go')
-    local dapui = require('dap-view')
 
     dapgo.setup({
       delve = {
         detached = false,
-      }
-    })
-
-    dapui.setup({
-      windows = {
-        height = 20,
       }
     })
 
@@ -64,17 +57,14 @@ return {
 
     dap.listeners.before.attach.dapui_config = function()
       find_or_create_tab("DAP")
-      dapui.open()
     end
 
     dap.listeners.before.launch.dapui_config = function()
       find_or_create_tab("DAP")
-      dapui.open()
     end
 
     dap.listeners.before.event_terminated.dapui_config = function()
       find_or_create_tab("DAP")
-      dapui.close()
       vim.cmd.tabclose()
     end
 
