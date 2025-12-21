@@ -80,8 +80,17 @@ local lualine = {
         section_separators = { left = "", right = "" },
         component_separators = { left = "", right = "" },
         disabled_filetypes = {
-          statusline = {},
+          statusline = {
+            'AgenticChat',
+            'AgenticInput',
+            'AgenticCode',
+            'AgenticFiles',
+          },
           winbar = {
+            'AgenticChat',
+            'AgenticInput',
+            'AgenticCode',
+            'AgenticFiles',
             "dap-view",
             "dap-repl",
             "nvim-dap-view",
