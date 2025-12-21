@@ -73,26 +73,6 @@ local lualine = {
       return string.format("%s", path)
     end
 
-    local function lsp_progress()
-      return require("lsp-progress").progress({
-        format = function(messages)
-          if #messages > 0 then
-            -- Some LSP progress messages contain `%` characters (e.g. jdtls)
-            -- that break lsp-progress with cryptic Illegal Character errors.
-            -- This code tries to sanitize the messages so things do not break.
-            local sanitized = vim.tbl_map(function(val)
-              local subs, _ = string.gsub(val, "(%d+)%% ", "%1%%%%")
-              return subs
-            end, messages)
-
-            return table.concat(sanitized, " ")
-          end
-
-          return ""
-        end,
-      })
-    end
-
     lualine.setup({
       options = {
         icons_enabled = true,
