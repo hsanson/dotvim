@@ -33,3 +33,15 @@ autocmd('TextYankPost', {
     vim.highlight.on_yank({ higroup = 'IncSearch', timeout = '1000' })
   end
 })
+
+-- Run help tags after Lazy update.
+autocmd("User", {
+  -- インストール、アップデート、または同期（Sync）の完了後に実行
+  pattern = { "LazyInstall", "LazyUpdate", "LazySync" },
+  callback = function()
+    -- ヘルプタグの生成を実行
+    vim.cmd("silent! helptags ALL")
+    -- 完了を通知（任意）
+    vim.notify("Updated helptags", vim.log.levels.INFO)
+  end,
+})
