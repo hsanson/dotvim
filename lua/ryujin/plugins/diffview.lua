@@ -2,6 +2,7 @@ return {
   "sindrets/diffview.nvim",
   cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
   lazy = true,
+  enabled = false,
   opts = {
       hooks = {
         view_leave = function(view)
