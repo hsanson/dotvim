@@ -25,9 +25,12 @@ vim.keymap.set("n", "<A-x>", "<C-x>", { desc = "Decrement number" })
 -- Disable accidental Ex mode
 vim.keymap.set("n", "Q", "<nop>", { desc = "Force quit neovim" })
 
+-- Page scroll on Mac
 vim.keymap.set("n", "<A-f>", "<C-f>")
 vim.keymap.set("n", "<A-b>", "<C-b>")
 
 -- Terminal
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
+-- Primary clipboard copy via mouse
+vim.keymap.set("v", "<LeftRelease>", '"*ygv')
