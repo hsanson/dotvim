@@ -7,9 +7,6 @@ return {
     local dapview = require('dap-view')
 
     dapview.setup({
-      windows = {
-        height = 20,
-      },
       winbar = {
         show = true,
         -- You can add a "console" section to merge the terminal with the other views
