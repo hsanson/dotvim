@@ -15,7 +15,6 @@ return {
         "harper_ls",
         "html",
         "jdtls",
-        "jedi_language_server",
         "jsonls",
         "kotlin_lsp",
         "ltex_plus",
