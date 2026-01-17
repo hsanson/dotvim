@@ -1,7 +1,7 @@
 return {
   "folke/snacks.nvim",
   opts = {
-    picker = { enabled = true },
+    picker = { enabled = true, },
     input = { enabled = true },
     notifier = { enabled = true },
     statuscolumn= { enabled = true },
@@ -63,8 +63,9 @@ return {
       })
     end, desc = "Notes picker" },
     { "<leader>fg", function()
-      Snacks.picker("live_grep", {
-        args = { "--hidden", "--glob", "!**/node_modules/*", "--glob", "!**/.git/*", "--glob", "!**/.gradle/*" }
+      Snacks.picker("grep", {
+        args = { "--hidden", "--glob", "!**/node_modules/*", "--glob", "!**/.git/*", "--glob", "!**/.gradle/*" },
+        live = true
       })
     end, desc = "Live grep" },
     { "<leader>fh", function()
