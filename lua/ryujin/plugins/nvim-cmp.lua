@@ -63,19 +63,6 @@ return {
         ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = "select" }),
         ["<C-j>"] = cmp.mapping.select_next_item({ behavior = "select" }),
 
-        -- `Enter` key to confirm completion
-        --  https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#safely-select-entries-with-cr 
-        ["<CR>"] = cmp.mapping({
-          i = function(fallback)
-            if cmp.visible() and cmp.get_active_entry() then
-              cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
-            else
-              fallback()
-            end
-          end,
-          s = cmp.mapping.confirm({ select = true }),
-        }),
-
         -- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#confirm-candidate-on-tab-immediately-when-theres-only-one-completion-entry
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
