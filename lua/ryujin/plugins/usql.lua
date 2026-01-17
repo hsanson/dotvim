@@ -1,4 +1,4 @@
 return {
-  dir = "~/Projects/vim/usql.nvim",
+  "hsanson/usql.nvim",
   dev = true,
 }
