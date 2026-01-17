@@ -28,16 +28,21 @@ end, {desc = "Switch DB connection"})
 
 vim.keymap.set("n", "<localleader>rr", function()
   open_repl()
-  require("usql.yarepl").send_statement()
+  local usql_yarepl = require("usql.yarepl")
+  usql_yarepl.send_statement()
 end, { desc = "Send SQL Statement" })
 
 vim.keymap.set("n", "<localleader>rf", function()
   open_repl()
-  require("usql.yarepl").send_file()
+  local usql_yarepl = require("usql.yarepl")
+  usql_yarepl.send_buffer()
 end, { desc = "Send SQL file" })
 
-vim.keymap.set("v", "<localleader>rr", "", {
-  callback = run_cmd_with_count("REPLSendVisual"),
+vim.keymap.set("v", "<localleader>rr", function()
+  local usql_yarepl = require("usql.yarepl")
+  local count = vim.v.count
+  usql_yarepl.send_visual({count = count, args = ""})
+end, {
   desc = "Send visual region",
 })
 
