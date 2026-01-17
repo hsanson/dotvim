@@ -1,10 +1,10 @@
 return {
   "MeanderingProgrammer/render-markdown.nvim",
-  ft = { "markdown" },
+  ft = { "markdown", "AgenticChat" },
   config = function()
     require("render-markdown").setup({
       file_types = {
-        "markdown",
+        "markdown", "AgenticChat"
       },
       heading = {
         icons = { "󰬺 ", "󰬻 ", "󰬼 ", "󰬽 ", "󰬾 ", "󰬿 " },
