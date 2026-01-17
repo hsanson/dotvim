@@ -11,19 +11,19 @@ return {
       callback = function(ev)
         opts.buffer = ev.buf
         opts.desc = "Show LSP references"
-        keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
+        keymap.set("n", "gr", function() require("snacks").picker.lsp_references() end, opts)
 
         opts.desc = "Go to declaration"
         keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 
         opts.desc = "Show LSP definitions"
-        keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
+        keymap.set("n", "gd", function() require("snacks").picker.lsp_definitions() end, opts)
 
         opts.desc = "Show LSP implementations"
-        keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
+        keymap.set("n", "gi", function() require("snacks").picker.lsp_implementations() end, opts)
 
         opts.desc = "Show LSP type definitions"
-        keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
+        keymap.set("n", "gt", function() require("snacks").picker.lsp_type_definitions() end, opts)
 
         opts.desc = "Show code actions"
         keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
@@ -32,7 +32,7 @@ return {
         keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 
         opts.desc = "Show buffer diagnostics"
-        keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
+        keymap.set("n", "<leader>D", function() require("snacks").picker.diagnostics({ bufnr = 0 }) end, opts)
 
         opts.desc = "Show line diagnostics"
         keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)

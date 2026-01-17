@@ -10,6 +10,6 @@ return {
       command = "tcd", -- cd, tcd or lcd
     })
 
-    vim.keymap.set("n", "<leader>fp", ":Telescope project<cr>", {})
+    vim.keymap.set("n", "<leader>fp", function() require("snacks").picker.projects() end, {})
   end,
 }
