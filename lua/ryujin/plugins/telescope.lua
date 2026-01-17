@@ -1,5 +1,6 @@
 return {
   "nvim-telescope/telescope.nvim",
+  enabled = false,
   branch = "0.1.x",
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -60,13 +61,7 @@ return {
       })
     end, {})
 
-    vim.keymap.set("n", "<leader>fg", function()
-      builtin.live_grep({
-        additional_args = function(opts)
-          return { "--hidden", "--glob", "!**/node_modules/*", "--glob", "!**/.git/*", "--glob", "!**/.gradle/*" }
-        end,
-      })
-    end, {})
+
 
     vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 

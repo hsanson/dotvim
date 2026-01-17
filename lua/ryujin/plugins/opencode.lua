@@ -1,29 +1,6 @@
 return {
   "NickvanDyke/opencode.nvim",
   enabled = false,
-  dependencies = {
-    -- Recommended for `ask()` and `select()`.
-    -- Required for `snacks` provider.
-    ---@module 'snacks' <- Loads `snacks.nvim` types for configuration intellisense.
-    {
-      "folke/snacks.nvim",
-      opts = {
-        picker = {},
-        input = {
-          enabled = true,
-        },
-        terminal = {
-          win = {
-            position = "float",
-            relative = "editor",
-            row = -1,
-            width = 0.4,
-            border = "rounded",
-          }
-        }
-      },
-    },
-  },
   config = function()
     -- Declare vim globals for type checking
     local vim = vim
