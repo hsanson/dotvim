@@ -1,5 +1,4 @@
 {
-  "FixCursorHold.nvim": { "branch": "master", "commit": "1900f89dc17c603eec29960f57c00bd9ae696495" },
   "Lemons.nvim": { "branch": "master", "commit": "191fac207eb503cbaddf0f981127bdbae9c0950e" },
   "agentic.nvim": { "branch": "main", "commit": "0774466cd1b5a50520439fdc05ec2a5941e87032" },
   "bamboo.nvim": { "branch": "master", "commit": "1309bc88bffcf1bedc3e84e7fa9004de93da774a" },
