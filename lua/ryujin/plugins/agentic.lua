@@ -1,6 +1,6 @@
 return {
   "carlos-algms/agentic.nvim",
-  enabled = false,
+  enabled = true,
 
   event = "VeryLazy",
 
@@ -8,6 +8,36 @@ return {
     -- Available by default: "claude-acp" | "gemini-acp" | "codex-acp" | "opencode-acp"
     provider = "opencode-acp", -- setting the name here is all you need to get started
     debug = true,
+    keymaps = {
+      -- Keybindings for ALL buffers in the widget (chat, prompt, code, files)
+      widget = {
+        close = "q",  -- String for a single keybinding
+        change_mode = {
+          {
+            "<S-Tab>",
+            mode = { "i", "n", "v" },  -- Specify modes for this keybinding
+          },
+        },
+      },
+
+      -- Keybindings for the prompt buffer onlyaa
+      prompt = {
+        submit = {
+          "<CR>",  -- Normal mode, just Enter
+          {
+            "<C-s>",
+            mode = { "n", "v", "i" },
+          },
+        },
+
+        paste_image = {
+          {
+            "<C-p>",
+            mode = { "n", "i" }, -- I like normal and insert modes for this, but feel free to customize
+          },
+        },
+      },
+    }
   },
 
   -- these are just suggested keymaps; customize as desired
