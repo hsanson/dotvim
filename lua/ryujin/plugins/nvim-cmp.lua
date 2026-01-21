@@ -62,6 +62,7 @@ return {
         -- Navigate between completion items
         ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = "select" }),
         ["<C-j>"] = cmp.mapping.select_next_item({ behavior = "select" }),
+        ["<CR>"] = cmp.mapping.confirm({ select = true }),
 
         -- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#confirm-candidate-on-tab-immediately-when-theres-only-one-completion-entry
         ["<Tab>"] = cmp.mapping(function(fallback)
