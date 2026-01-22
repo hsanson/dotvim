@@ -67,12 +67,6 @@ return {
         -- We remove command line `c` mode as it is annoying.
         ["<CR>"] = cmp.mapping({
           i = function(fallback)
-
-            if vim.bo.buftype == "AgenticInput" then
-              fallback()
-              return
-            end
-
             if cmp.visible() and cmp.get_active_entry() then
               cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
             else
@@ -150,6 +144,12 @@ return {
       sources = {
         { name = "buffer" },
       },
+    })
+
+    -- Disable `nvim-cmp` in agentic input buffer to avoid
+    -- conflicting with its own completion system.
+    cmp.setup.filetype({ 'AgenticInput' }, {
+      enabled = false,
     })
 
     cmp.setup.cmdline(":", {
