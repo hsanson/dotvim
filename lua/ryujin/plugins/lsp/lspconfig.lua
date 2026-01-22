@@ -237,6 +237,11 @@ return {
             },
           },
           workspace = {
+            useGitIgnore = true,
+            maxPreload = 1000,
+            preloadFileSize = 100,
+            ignoreDir = { ".git", "node_modules", "dist", "build" },
+            checkThirdParty = false,
             library = vim.api.nvim_get_runtime_file("", true),
           },
           telemetry = {
