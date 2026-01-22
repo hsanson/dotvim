@@ -62,8 +62,25 @@ return {
         -- Navigate between completion items
         ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = "select" }),
         ["<C-j>"] = cmp.mapping.select_next_item({ behavior = "select" }),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
 
+        -- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#safely-select-entries-with-cr
+        -- We remove command line `c` mode as it is annoying.
+        ["<CR>"] = cmp.mapping({
+          i = function(fallback)
+
+            if vim.bo.buftype == "AgenticInput" then
+              fallback()
+              return
+            end
+
+            if cmp.visible() and cmp.get_active_entry() then
+              cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+            else
+              fallback()
+            end
+          end,
+          s = cmp.mapping.confirm({ select = true }),
+        }),
         -- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#confirm-candidate-on-tab-immediately-when-theres-only-one-completion-entry
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
