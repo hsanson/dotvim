@@ -25,6 +25,8 @@ return {
         revision = "master",
         generate_requires_npm = false,
         requires_generate_from_grammar = false,
+        requires = { "asciidoc_inline" },
+        queries = "queries/asciidoc/",
       },
       tier = 2,
     }
@@ -37,6 +39,7 @@ return {
         revision = "master",
         generate_requires_npm = false,
         requires_generate_from_grammar = false,
+        queries = "queries/asciidoc_inline",
       },
       tier = 2,
     }

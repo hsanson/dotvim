@@ -1,6 +1,7 @@
 return {
   "MeanderingProgrammer/render-markdown.nvim",
   ft = { "markdown", "AgenticChat" },
+  enabled = false,
   config = function()
     require("render-markdown").setup({
       file_types = {
