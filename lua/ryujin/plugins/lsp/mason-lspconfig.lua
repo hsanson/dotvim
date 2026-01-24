@@ -17,7 +17,6 @@ return {
         "jdtls",
         "jsonls",
         "kotlin_lsp",
-        "ltex_plus",
         "lua_ls",
         "postgres_lsp",
         "rubocop",

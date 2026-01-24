@@ -364,7 +364,6 @@ return {
       "jsonls",
       "kotlin_lsp",
       "kulala_ls",
-      "ltex_plus",
       "lua_ls",
       "postgres_lsp",
       "ruby_lsp",
