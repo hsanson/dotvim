@@ -8,6 +8,9 @@ return {
       filetypes = { "markdown", "AgenticChat", "latex", "yaml", "asciidoc", "typst" },
       icon_provider = "mini",
     },
+    yaml = {
+      enable = false,
+    },
     asciidoc = {
       document_attributes = {
         enable = false,
