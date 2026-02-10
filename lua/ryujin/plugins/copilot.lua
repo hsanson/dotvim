@@ -9,7 +9,7 @@ return {
       suggestion = { enabled = false },
       panel = { enabled = false },
       -- Specify the model to use
-      copilot_model = "claude-sonnet-4", -- Or "sonnet-3.7"
+      copilot_model = "gpt-41-copilot", -- Or "gpt-4o-copilot" or "gpt-35-turbo"
     })
   end,
 }
