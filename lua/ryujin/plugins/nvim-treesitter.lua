@@ -26,13 +26,11 @@ return {
       "julia", "kotlin", "latex", "lua", "luadoc", "make",
       "markdown", "markdown_inline", "mermaid", "muttrc", "php", "po",
       "promql", "pug", "python", "readline", "regex", "ruby", "rust", "sql",
-      "ssh_config", "swift", "terraform", "tmux", "toml", "tsv", "typescript",
+      "ssh_config", "swift", "terraform", "toml", "tsv", "typescript",
       "typst", "vala", "vim", "vimdoc", "vue", "xml", "yaml", "zathurarc",
     }
 
-    for _, parser in ipairs(parsers) do
-      treesitter.install(parser)
-    end
+    treesitter.install(parsers)
 
     local patterns = {}
     for _, parser in ipairs(parsers) do
