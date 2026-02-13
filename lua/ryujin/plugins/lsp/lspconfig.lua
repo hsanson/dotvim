@@ -6,6 +6,9 @@ return {
 
     local opts = { noremap = true, silent = true }
 
+    -- LSP logs can grow a lot if not put under control.
+    vim.lsp.set_log_level("error")
+
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(ev)
