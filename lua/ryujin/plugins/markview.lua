@@ -12,6 +12,10 @@ return {
       enable = false,
     },
     asciidoc = {
+      list_items = {
+        shift_width = 2,
+        wrap = true,
+      },
       document_attributes = {
         enable = false,
       },
