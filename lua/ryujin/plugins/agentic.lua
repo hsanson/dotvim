@@ -7,6 +7,11 @@ return {
   opts = {
     -- Available by default: "claude-acp" | "gemini-acp" | "codex-acp" | "opencode-acp"
     provider = "opencode-acp", -- setting the name here is all you need to get started
+    acp_providiers = {
+      ["opencode-acp"] = {
+        command = "~/.local/bin/opencode",
+      }
+    },
     debug = true,
     keymaps = {
       -- Keybindings for ALL buffers in the widget (chat, prompt, code, files)
