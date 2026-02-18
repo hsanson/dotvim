@@ -1,5 +1,7 @@
 return {
   "folke/snacks.nvim",
+  lazy = false,
+  priority = 1000,
   opts = {
     picker = { enabled = true, },
     input = { enabled = true },
@@ -16,7 +18,8 @@ return {
       }
     }
   },
-  config = function()
+  config = function(_, opts)
+    require("snacks").setup(opts)
     -- Helper function to find or create a named tab
     local function find_or_create_tab(tab_name)
       local tabpages = vim.api.nvim_list_tabpages()

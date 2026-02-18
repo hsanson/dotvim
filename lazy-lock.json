@@ -12,7 +12,6 @@
   "copilot.lua": { "branch": "master", "commit": "dd3e345d59051464573d821b042f0a0c82410b5d" },
   "coverage-lualine": { "branch": "main", "commit": "af0271e89b78a08e5ec8d55200cf0733ee777b11" },
   "cyberdream.nvim": { "branch": "main", "commit": "a68ffa6af98bf1fc88f33a071c51a188ec85c725" },
-  "endec.nvim": { "branch": "main", "commit": "3765f250064040725fa637e9a308253e1421b1fd" },
   "evangelion.nvim": { "branch": "main", "commit": "08cf52a0931a81bf5b64c93b744e136b5edb6d85" },
   "img-clip.nvim": { "branch": "main", "commit": "b6ddfb97b5600d99afe3452d707444afda658aca" },
   "kanagawa.nvim": { "branch": "master", "commit": "aef7f5cec0a40dbe7f3304214850c472e2264b10" },
