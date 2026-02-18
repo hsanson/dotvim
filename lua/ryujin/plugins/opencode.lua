@@ -1,6 +1,6 @@
 return {
   "NickvanDyke/opencode.nvim",
-  enabled = false,
+  enabled = true,
   config = function()
     -- Declare vim globals for type checking
     local vim = vim

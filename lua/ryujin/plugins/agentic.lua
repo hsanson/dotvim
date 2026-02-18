@@ -1,6 +1,6 @@
 return {
   "carlos-algms/agentic.nvim",
-  enabled = true,
+  enabled = false,
 
   event = "VeryLazy",
 
