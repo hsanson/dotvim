@@ -6,8 +6,8 @@ return {
     local vim = vim
 
     vim.g.opencode_opts = {
-      providers = {
-        enabled = "snacks",
+      provider = {
+        enabled = "tmux",
       },
       ask = {
         snacks = {

@@ -148,6 +148,9 @@ local lualine = {
             show_colors = false,
             show_loading = true,
           },
+          {
+            require("opencode").statusline
+          }
         },
         lualine_y = {
           {
