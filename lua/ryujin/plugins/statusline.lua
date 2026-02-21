@@ -98,6 +98,7 @@ local lualine = {
             "help",
             "terminal",
             "nofile",
+            "trouble",
           },
         },
         ignore_focus = {},
