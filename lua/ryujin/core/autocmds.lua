@@ -54,5 +54,5 @@ augroup('SnacksGroup', { clear = true })
 autocmd('FileType', {
   group = 'SnacksGroup',
   pattern = { 'snacks_picker_input'},
-  command = "ALEDisable"
+  command = "ALEDisableBuffer"
 })
