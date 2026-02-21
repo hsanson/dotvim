@@ -30,9 +30,13 @@ local function run_cmd_with_count(cmd)
   end
 end
 
+vim.keymap.set("n", "<localleader>re", function()
+  open_repl()
+end, {desc = "Open Python REPL"})
+
 vim.keymap.set("n", "<localleader>rt", function()
   open_repl()
-end, {desc = "Open SQL REPL"})
+end, {desc = "Open Python REPL"})
 
 vim.keymap.set("n", "<localleader>rr", "", {
   callback = run_cmd_with_count("REPLSendOperator"),
@@ -46,8 +50,8 @@ vim.keymap.set("v", "<localleader>rr", "", {
 
 vim.keymap.set("n", "<localleader>rf", function()
   open_repl()
-  require("usql.yarepl").send_file()
-end, { desc = "Send SQL file" })
+  require("usql.yarepl").send_buffer()
+end, { desc = "Send Python file" })
 
 vim.keymap.set("n", "<localleader>rc", "REPLCleanup<CR>", {
   desc = "Clear REPLs.",

@@ -11,12 +11,6 @@ local function open_repl()
   end
 end
 
-local function run_cmd_with_count(cmd)
-  return function()
-    vim.cmd(string.format("%d%s", vim.v.count, cmd))
-  end
-end
-
 vim.keymap.set("n", "<localleader>rt", function()
   open_repl()
 end, {desc = "Open SQL REPL"})
