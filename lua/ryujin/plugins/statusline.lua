@@ -184,11 +184,11 @@ local lualine = {
         lualine_c = { filename_module },
         lualine_x = {},
         lualine_y = {
-					{
-						"lualine-coverage",
-						scope = "file",
-					},
-				},
+          {
+            "lualine-coverage",
+            scope = "file",
+          },
+        },
         lualine_z = { "encoding", "fileformat" },
       },
       inactive_winbar = {
