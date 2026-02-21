@@ -54,14 +54,11 @@ return {
           vim.lsp.buf.format({ async = true })
         end, opts)
 
-        -- Enable inlay hints if server supports them
-        local id = vim.tbl_get(ev, "data", "client_id")
-        local client = id and vim.lsp.get_client_by_id(id)
-
-        -- Inlay hits throw many disrupting errors.
-        -- if client and client:supports_method("textDocument/inlayHint") then
-        --   vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
-        -- end
+        opts.desc = "Toggle inlay hints"
+        keymap.set("n", "<leader>ih", function()
+          vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+          vim.notify("Inlay hints " .. (vim.lsp.inlay_hint.is_enabled() and "enabled" or "disabled"))
+        end, opts)
       end,
     })
 
@@ -102,6 +99,15 @@ return {
       capabilities = capabilities,
       settings = {
         gopls = {
+          hints = {
+            rangeVariableType = true,
+            parameterNames = true,
+            constantValues = true,
+            assignmentValues = true,
+            compositeLiteralFields = true,
+            compositeLiteralTypes = true,
+            functiotypeParameters = true,
+          },
           completeUnimported = true,
           usePlaceholders = true,
           analyses = {
@@ -230,8 +236,10 @@ return {
             globals = {
               "vim",
               "require",
+              "Snacks",
             },
           },
+          hint = { enable = true },
           workspace = {
             useGitIgnore = true,
             maxPreload = 1000,

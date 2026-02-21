@@ -48,11 +48,11 @@ return {
     _G.find_or_create_tab = find_or_create_tab
   end,
   keys = {
-    { "<leader>ff", function() Snacks.picker("files", { hidden = true }) end, desc = "File picker" },
-    { "<leader>fc", function() Snacks.picker("colorschemes") end, desc = "Colorscheme picker" },
-    { "<leader>fb", function() Snacks.picker("buffers") end, desc = "Buffers picker" },
+    { "<leader>ff", function() require("snacks").picker("files", { hidden = true }) end, desc = "File picker" },
+    { "<leader>fc", function() require("snacks").picker("colorschemes") end, desc = "Colorscheme picker" },
+    { "<leader>fb", function() require("snacks").picker("buffers") end, desc = "Buffers picker" },
     { "<leader>ft", function()
-      Snacks.picker("grep", {
+      require("snacks").picker("grep", {
         dirs = { "~/Seafile/Notes/Allm" },
         search = "\\[\\s*\\]",
         regex = true,
@@ -60,13 +60,13 @@ return {
       })
     end, desc = "Todo picker" },
     { "<leader>fn", function()
-      Snacks.picker("files", {
+      require("snacks").picker("files", {
         dirs = { "~/Seafile/Notes" },
         ft = { "adoc" }
       })
     end, desc = "Notes picker" },
     { "<leader>fg", function()
-      Snacks.picker("grep", {
+      require("snacks").picker("grep", {
         args = { "--hidden", "--glob", "!**/node_modules/*", "--glob", "!**/.git/*", "--glob", "!**/.gradle/*" },
         live = true
       })
@@ -75,7 +75,7 @@ return {
       _G.find_or_create_tab("kulala")
       local http_path = vim.fn.expand("~/.config/rest")
       vim.cmd("lcd " .. http_path)
-      Snacks.picker("files", {
+      require("snacks").picker("files", {
         dirs = { http_path },
         ft = { "http" }
       })
@@ -84,7 +84,7 @@ return {
       _G.find_or_create_tab("usql")
       local queries_path = vim.fn.expand("~/.config/sqls/queries")
       vim.cmd("lcd " .. queries_path)
-      Snacks.picker("files", {
+      require("snacks").picker("files", {
         dirs = { queries_path },
         ft = { "sql" }
       })
