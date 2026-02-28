@@ -244,9 +244,13 @@ return {
             useGitIgnore = true,
             maxPreload = 1000,
             preloadFileSize = 100,
-            ignoreDir = { ".git", "node_modules", "dist", "build" },
+            ignoreDir = {
+              ".git", "node_modules", "dist",
+              "build", "lua-language-server",
+              "target"
+            },
             checkThirdParty = false,
-            library = vim.api.nvim_get_runtime_file("", true),
+            library = vim.env.VIMRUNTIME,
           },
           telemetry = {
             enable = false,
