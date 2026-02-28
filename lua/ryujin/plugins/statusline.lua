@@ -91,6 +91,8 @@ local lualine = {
             'AgenticInput',
             'AgenticCode',
             'AgenticFiles',
+            "opencode",
+            "opencode_output",
             "dap-view",
             "dap-repl",
             "nvim-dap-view",
@@ -149,9 +151,6 @@ local lualine = {
             show_colors = false,
             show_loading = true,
           },
-          {
-            require("opencode").statusline
-          }
         },
         lualine_y = {
           {

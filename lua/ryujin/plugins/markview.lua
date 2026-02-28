@@ -1,11 +1,22 @@
 return {
   "OXY2DEV/markview.nvim",
-  ft = { "markdown", "AgenticChat", "latex", "yaml", "asciidoc", "typst" },
+  ft = {
+    "markdown", "AgenticChat", "latex",
+    "yaml", "asciidoc", "typst", "opencode_output"
+  },
   lazy = false,
 
   opts = {
     preview = {
-      filetypes = { "markdown", "AgenticChat", "latex", "yaml", "asciidoc", "typst" },
+      filetypes = {
+        "markdown",
+        "AgenticChat",
+        "latex",
+        "yaml",
+        "asciidoc",
+        "typst",
+        "opencode_output"
+      },
       icon_provider = "mini",
     },
     yaml = {

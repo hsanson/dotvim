@@ -3,10 +3,47 @@ return {
   lazy = false,
   priority = 1000,
   opts = {
-    picker = { enabled = true, },
+    picker = {
+      enabled = true,
+      actions = {
+        opencode_send = function(picker)
+          local selected = picker:selected({ fallback = true })
+          if selected and #selected > 0 then
+            local files = {}
+            for _, item in ipairs(selected) do
+              local path = Snacks.picker.util.path(item)
+              if path then
+                table.insert(files, path)
+              end
+            end
+            picker:close()
+
+            if #files > 0 then
+              require("opencode.core").open({
+                new_session = false,
+                focus = "input",
+                start_insert = true,
+              })
+
+              local context = require("opencode.context")
+              for _, file in ipairs(files) do
+                context.add_file(file)
+              end
+            end
+          end
+        end,
+      },
+      win = {
+        input = {
+          keys = {
+            ["<C-o>"] = { "opencode_send", mode = { "n", "i" } },
+          },
+        },
+      },
+    },
     input = { enabled = true },
     notifier = { enabled = true },
-    statuscolumn= { enabled = true },
+    statuscolumn = { enabled = true },
     terminal = {
       enabled = true,
       win = {
@@ -48,9 +85,18 @@ return {
     _G.find_or_create_tab = find_or_create_tab
   end,
   keys = {
-    { "<leader>ff", function() require("snacks").picker("files", { hidden = true }) end, desc = "File picker" },
-    { "<leader>fc", function() require("snacks").picker("colorschemes") end, desc = "Colorscheme picker" },
-    { "<leader>fb", function() require("snacks").picker("buffers") end, desc = "Buffers picker" },
+    { "<leader>ff", function()
+      require("snacks").picker("files", { hidden = true })
+    end, desc = "File picker" },
+
+    { "<leader>fc", function()
+      require("snacks").picker("colorschemes")
+    end, desc = "Colorscheme picker" },
+
+    { "<leader>fb", function()
+      require("snacks").picker("buffers")
+    end, desc = "Buffers picker" },
+
     { "<leader>ft", function()
       require("snacks").picker("grep", {
         dirs = { "~/Seafile/Notes/Allm" },
@@ -59,18 +105,24 @@ return {
         live = false
       })
     end, desc = "Todo picker" },
+
     { "<leader>fn", function()
       require("snacks").picker("files", {
         dirs = { "~/Seafile/Notes" },
         ft = { "adoc" }
       })
     end, desc = "Notes picker" },
+
     { "<leader>fg", function()
       require("snacks").picker("grep", {
-        args = { "--hidden", "--glob", "!**/node_modules/*", "--glob", "!**/.git/*", "--glob", "!**/.gradle/*" },
+        args = { 
+          "--hidden", "--glob", "!**/node_modules/*",
+          "--glob", "!**/.git/*", "--glob", "!**/.gradle/*"
+        },
         live = true
       })
     end, desc = "Live grep" },
+
     { "<leader>fh", function()
       _G.find_or_create_tab("kulala")
       local http_path = vim.fn.expand("~/.config/rest")
@@ -80,6 +132,7 @@ return {
         ft = { "http" }
       })
     end, desc = "Open Kulala tab" },
+
     { "<leader>fs", function()
       _G.find_or_create_tab("usql")
       local queries_path = vim.fn.expand("~/.config/sqls/queries")
