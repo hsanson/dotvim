@@ -355,7 +355,7 @@ return {
 
     vim.lsp.enable({
       "bashls",
-      "bqls",
+      "sqls",
       "cssls",
       "docker_compose_language_service",
       "dockerls",

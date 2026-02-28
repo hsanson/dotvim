@@ -10,5 +10,7 @@ vim.filetype.add({
       end
       return 'yaml'
     end,
+    usql = "usql",
+    sql = "usql",
   },
 })

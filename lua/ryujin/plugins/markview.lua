@@ -22,7 +22,6 @@ return {
       tocs = {
         enable = false,
       }
-
     }
   },
 };

@@ -14,16 +14,57 @@ return {
     -- New architectural way to require treesitter
     local treesitter = require("nvim-treesitter")
     local textobjects = require("nvim-treesitter-textobjects")
-    local parser_config = require("nvim-treesitter.parsers")
+
+    -- Register custom parsers via User TSUpdate autocmd so they survive
+    -- reload_parsers() cache invalidation on :TSUpdate
+    vim.api.nvim_create_autocmd('User', {
+      pattern = 'TSUpdate',
+      callback = function()
+        local parser_config = require("nvim-treesitter.parsers")
+
+        -- Asciidoc
+        parser_config.asciidoc = {
+          install_info = {
+            url = "https://github.com/cathaysia/tree-sitter-asciidoc",
+            revision = "master",
+            location = "tree-sitter-asciidoc",
+            queries = "queries/asciidoc",
+          },
+          requires = { "asciidoc_inline" },
+          tier = 2,
+        }
+
+        -- Asciidoc Inline
+        parser_config.asciidoc_inline = {
+          install_info = {
+            url = "https://github.com/cathaysia/tree-sitter-asciidoc",
+            revision = "master",
+            location = "tree-sitter-asciidoc_inline",
+            queries = "queries/asciidoc_inline",
+          },
+          tier = 2,
+        }
+
+        -- USQL
+        parser_config.usql = {
+          install_info = {
+            url = "https://github.com/hsanson/tree-sitter-usql",
+            revision = "main",
+            queries = "queries",
+          },
+          tier = 2,
+        }
+      end,
+    })
 
     -- Install parsers
     local parsers = {
-      "awk", "bash", "bibtex", "c", "cmake", "cpp", "css", "csv",
-      "dart", "diff", "dockerfile", "git_config", "git_rebase", "gitcommit",
-      "gitignore", "gnuplot", "go", "gomod", "gosum", "gowork", "gpg",
-      "graphql", "groovy", "helm", "html", "http", "hurl", "ini", "java",
-      "javadoc", "javascript", "jinja", "jinja_inline", "jq", "json", "json5",
-      "julia", "kotlin", "latex", "lua", "luadoc", "make",
+      "awk", "bash", "bibtex", "c", "cmake",
+      "cpp", "css", "csv", "dart", "diff", "dockerfile", "git_config",
+      "git_rebase", "gitcommit", "gitignore", "gnuplot", "go", "gomod", "gosum",
+      "gowork", "gpg", "graphql", "groovy", "helm", "html", "http", "hurl", "ini",
+      "java", "javadoc", "javascript", "jinja", "jinja_inline", "jq", "json",
+      "json5", "julia", "kotlin", "latex", "lua", "luadoc", "make",
       "markdown", "markdown_inline", "mermaid", "muttrc", "php", "po",
       "promql", "pug", "python", "readline", "regex", "ruby", "rust", "sql",
       "ssh_config", "swift", "terraform", "toml", "tsv", "typescript",
@@ -41,44 +82,20 @@ return {
     end
 
     vim.treesitter.language.register("groovy", "Jenkinsfile")
+
+    -- Add custom parser filetypes to the patterns list
+    table.insert(patterns, "usql")
+    table.insert(patterns, "asciidoc")
+
     vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
     vim.wo[0][0].foldmethod = 'expr'
 
     vim.api.nvim_create_autocmd('FileType', {
       pattern = patterns,
       callback = function()
-        vim.treesitter.start()
+        pcall(vim.treesitter.start)
       end,
     })
-
-    -- Custom Parser Configurations
-
-    -- Asciidoc
-    parser_config.asciidoc = {
-      install_info = {
-        url = "https://github.com/cathaysia/tree-sitter-asciidoc.git",
-        files = { "tree-sitter-asciidoc/src/parser.c", "tree-sitter-asciidoc/src/scanner.c" },
-        revision = "master",
-        generate_requires_npm = false,
-        requires_generate_from_grammar = false,
-        requires = { "asciidoc_inline" },
-        queries = "queries/asciidoc/",
-      },
-      tier = 2,
-    }
-
-    -- Asciidoc Inline
-    parser_config.asciidoc_inline = {
-      install_info = {
-        url = "https://github.com/cathaysia/tree-sitter-asciidoc.git",
-        files = { "tree-sitter-asciidoc_inline/src/parser.c", "tree-sitter-asciidoc_inline/src/scanner.c" },
-        revision = "master",
-        generate_requires_npm = false,
-        requires_generate_from_grammar = false,
-        queries = "queries/asciidoc_inline",
-      },
-      tier = 2,
-    }
 
     textobjects.setup({
       select = {
@@ -177,11 +194,11 @@ return {
     local ts_repeat_move = require "nvim-treesitter-textobjects.repeatable_move"
 
     -- Repeat movement with ; and ,
-    -- ensure ; goes forward and , goes backward regardless of the last direction
+    -- ensure ; goes forward and, goes backward regardless of the last direction
     vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move_next)
     vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_previous)
 
-    -- Optionally, make builtin f, F, t, T also repeatable with ; and ,
+    -- Optionally, make built-in f, F, t, T also repeatable with ; and,
     vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f_expr, { expr = true })
     vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F_expr, { expr = true })
     vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t_expr, { expr = true })
