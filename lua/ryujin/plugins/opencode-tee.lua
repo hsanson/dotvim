@@ -21,8 +21,8 @@ return {
           ['<S-Tab>'] = { 'switch_mode' },                               -- Switch between modes (build/plan)
         },
         input_window = {
+          ['<esc>'] = false,                                  -- Many times I accidentally close OpenCode when I wanted to exit insert mode.
           ['<C-s>'] = { 'submit_input_prompt', mode = { 'n', 'i' } }, -- Submit prompt (normal mode and insert mode)
-          ['<esc>'] = { 'close' },                                     -- Close UI windows
           ['<C-c>'] = { 'cancel' },                                    -- Cancel opencode request while it is running
           ['~'] = { 'mention_file', mode = 'i' },                      -- Pick a file and add to context. See File Mentions section
           ['@'] = { 'mention', mode = 'i' },                           -- Insert mention (file/agent)
@@ -37,12 +37,15 @@ return {
           ['<S-Tab>'] = { 'switch_mode' },                               -- Switch between modes (build/plan)
         },
         output_window = {
-          ['<esc>'] = { 'close' },                            -- Close UI windows
+          ['<esc>'] = false,                                  -- Many times I accidentally close OpenCode when I wanted to exit insert mode.
           ['<C-c>'] = { 'cancel' },                           -- Cancel opencode request while it is running
           [']]'] = { 'next_message' },                        -- Navigate to next message in the conversation
           ['[['] = { 'prev_message' },                        -- Navigate to previous message in the conversation
           ['<tab>'] = { 'toggle_pane', mode = { 'n', 'i' } }, -- Toggle between input and output panes
           ['i'] = { 'focus_input', 'n' },                     -- Focus on input window and enter insert mode at the end of the input from the output window
+          ['a'] = { 'focus_input', 'n' },                     -- Focus on input window and enter insert mode at the end of the input from the output window
+          ['I'] = { 'focus_input', 'n' },                     -- Focus on input window and enter insert mode at the end of the input from the output window
+          ['A'] = { 'focus_input', 'n' },                     -- Focus on input window and enter insert mode at the end of the input from the output window
           ['<M-r>'] = { 'cycle_variant', mode = { 'n' } },    -- Cycle through available model variants
           ['<leader>oS'] = { 'select_child_session' },        -- Select and load a child session
           ['<leader>oD'] = { 'debug_message' },               -- Open raw message in new buffer for debugging
