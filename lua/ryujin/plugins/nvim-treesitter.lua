@@ -4,7 +4,6 @@ return {
   build = ":TSUpdate",
   branch = "main",
   dependencies = {
-    "cathaysia/tree-sitter-asciidoc",
     {
       "nvim-treesitter/nvim-treesitter-textobjects",
       branch = "main"
@@ -17,44 +16,48 @@ return {
 
     -- Register custom parsers via User TSUpdate autocmd so they survive
     -- reload_parsers() cache invalidation on :TSUpdate
+    local function register_custom_parsers()
+      local parser_config = require("nvim-treesitter.parsers")
+
+      -- Asciidoc
+      parser_config.asciidoc = {
+        install_info = {
+          url = "https://github.com/cathaysia/tree-sitter-asciidoc",
+          revision = "master",
+          location = "tree-sitter-asciidoc",
+          queries = "queries/asciidoc",
+        },
+        requires = { "asciidoc_inline" },
+        tier = 2,
+      }
+
+      -- Asciidoc Inline
+      parser_config.asciidoc_inline = {
+        install_info = {
+          url = "https://github.com/cathaysia/tree-sitter-asciidoc",
+          revision = "master",
+          location = "tree-sitter-asciidoc_inline",
+          queries = "queries/asciidoc_inline",
+        },
+        tier = 2,
+      }
+
+      -- USQL
+      parser_config.usql = {
+        install_info = {
+          url = "https://github.com/hsanson/tree-sitter-usql",
+          revision = "main",
+          queries = "queries",
+        },
+        tier = 2,
+      }
+    end
+
+    -- Register now for immediate use, and on TSUpdate to survive cache invalidation
+    register_custom_parsers()
     vim.api.nvim_create_autocmd('User', {
       pattern = 'TSUpdate',
-      callback = function()
-        local parser_config = require("nvim-treesitter.parsers")
-
-        -- Asciidoc
-        parser_config.asciidoc = {
-          install_info = {
-            url = "https://github.com/cathaysia/tree-sitter-asciidoc",
-            revision = "master",
-            location = "tree-sitter-asciidoc",
-            queries = "queries/asciidoc",
-          },
-          requires = { "asciidoc_inline" },
-          tier = 2,
-        }
-
-        -- Asciidoc Inline
-        parser_config.asciidoc_inline = {
-          install_info = {
-            url = "https://github.com/cathaysia/tree-sitter-asciidoc",
-            revision = "master",
-            location = "tree-sitter-asciidoc_inline",
-            queries = "queries/asciidoc_inline",
-          },
-          tier = 2,
-        }
-
-        -- USQL
-        parser_config.usql = {
-          install_info = {
-            url = "https://github.com/hsanson/tree-sitter-usql",
-            revision = "main",
-            queries = "queries",
-          },
-          tier = 2,
-        }
-      end,
+      callback = register_custom_parsers,
     })
 
     -- Install parsers
