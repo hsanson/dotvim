@@ -8,8 +8,12 @@ vim.g["maplocalleader"] = " "
 -- Window Management
 vim.keymap.set("n", "<leader>s", "<cmd>split<cr>", { desc = "Split window" })
 vim.keymap.set("n", "<leader>v", "<cmd>vsplit<cr>", { desc = "Vertical split window" })
-vim.keymap.set("n", "<leader>x", "<cmd>close!<cr>", { desc = "Close buffer." })
-vim.keymap.set("n", "<leader>q", "<cmd>:wqa<cr>", { desc = "Quit neovim" })
+
+-- Save and quit
+vim.keymap.set("n", "<C-s>", "<cmd>:up<cr>", { desc = "Save buffer." })
+vim.keymap.set("n", "<C-x>", "<cmd>:up<cr>:qa<cr>", { desc = "Save & quit neovim" })
+vim.keymap.set("n", "<A-s>", "<cmd>:up<cr>", { desc = "Save buffer." })
+vim.keymap.set("n", "<A-x>", "<cmd>:up<cr>:qa<cr>", { desc = "Save & quit neovim" })
 
 -- Window Navigation
 vim.keymap.set("n", "<leader>h", "<C-w>h", { desc = "Jump left pane" })
