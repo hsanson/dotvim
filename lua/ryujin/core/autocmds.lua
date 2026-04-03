@@ -47,13 +47,16 @@ autocmd("User", {
 })
 
 -- Disable ALE in snacks picker input. This is required because for
--- some unknown reason if ALE is enabled with Neovim diagnostics then
+-- some unknown reason if enabled with Neovim diagnostics then
 -- when typing in live_grep provider the cursor gets moved randomly
 -- one character back making typing impossible.
+-- https://github.com/neovim/neovim/issues/38632
 augroup('SnacksGroup', { clear = true })
 autocmd('FileType', {
   group = 'SnacksGroup',
   pattern = { 'snacks_picker_input'},
+  command = "ALEDisableBuffer"
+})
 
 -------------------------------------------------------------------------------
 -- Support Ghostty progress bar
