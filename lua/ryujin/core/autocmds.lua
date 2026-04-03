@@ -54,5 +54,25 @@ augroup('SnacksGroup', { clear = true })
 autocmd('FileType', {
   group = 'SnacksGroup',
   pattern = { 'snacks_picker_input'},
-  command = "ALEDisableBuffer"
+
+-------------------------------------------------------------------------------
+-- Support Ghostty progress bar
+-- https://www.reddit.com/r/neovim/comments/1rcvliq/comment/o73wdkc/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+vim.api.nvim_create_autocmd("LspProgress", {
+    callback = function(ev)
+        local value = ev.data.params.value or {}
+        if not value.kind then return end
+
+        local status = value.kind == "end" and 0 or 1
+        local percent = value.percentage or 0
+
+        local osc_seq = string.format("\27]9;4;%d;%d\a", status, percent)
+
+        if os.getenv("TMUX") then
+            osc_seq = string.format("\27Ptmux;\27%s\27\\", osc_seq)
+        end
+
+        io.stdout:write(osc_seq)
+        io.stdout:flush()
+    end,
 })
