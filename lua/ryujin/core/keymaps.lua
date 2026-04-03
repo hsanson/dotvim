@@ -23,8 +23,8 @@ vim.keymap.set("n", "<leader>l", "<C-w>l", { desc = "Jump right pane" })
 
 -- Tab Navigation
 vim.keymap.set("n", "<leader>tt", "<cmd>tabnext<cr>", { desc = "Next tab" })
-vim.keymap.set("n", "<leader>tp", "<cmd>tabprev<cr>", { desc = "Prev tab" })
-vim.keymap.set("n", "<leader>tn", "<cmd>tabprev<cr>", { desc = "Next tab" })
+vim.keymap.set("n", "<leader>tx", "<cmd>tabclose<cr>", { desc = "Close tab" })
+vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<cr>", { desc = "New tab" })
 
 -- Remap number increment/decrement so it does not conflict with tmux
 -- control keys (C-a)
