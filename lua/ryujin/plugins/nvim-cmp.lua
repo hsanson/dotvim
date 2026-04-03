@@ -148,7 +148,7 @@ return {
 
     -- Disable `nvim-cmp` in agentic input buffer to avoid
     -- conflicting with its own completion system.
-    cmp.setup.filetype({ 'AgenticInput' }, {
+    cmp.setup.filetype({ 'AgenticInput', 'snacks_picker_input' }, {
       enabled = false,
     })
 
