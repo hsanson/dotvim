@@ -160,6 +160,19 @@ return {
       }
     end
 
+    if not configs.kotlin_lsp then
+      configs.kotlin_lsp = {
+        default_config = {
+          cmd       = { '/path/to/kotlin-lsp' },
+          filetypes = { 'kotlin', 'java' },
+          root_markers  = {
+            'build.gradle', 'build.gradle.kts', 'pom.xml', 'settings.gradle', '.git'
+          },
+          settings  = {},
+        },
+      }
+    end
+
     -- Configure tinymist
     vim.lsp.config("tinymist", {
       settings = {
@@ -372,6 +385,7 @@ return {
       "jsonls",
       "kotlin_lsp",
       "kulala_ls",
+      "kotlin_lsp",
       "lua_ls",
       "postgres_lsp",
       "ruby_lsp",
