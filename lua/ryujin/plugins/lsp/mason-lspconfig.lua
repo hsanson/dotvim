@@ -14,7 +14,6 @@ return {
         "graphql",
         "harper_ls",
         "html",
-        "jdtls",
         "jsonls",
         "kotlin_lsp",
         "lua_ls",

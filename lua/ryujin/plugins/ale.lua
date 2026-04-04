@@ -58,6 +58,7 @@ return {
         hurl = { "hurlfmt" },
         javascript = { "eslint" },
         kotlin = { "ktlint" },
+        java = {},
         latex = { "proselint", "lacheck" },
         mail = { "proselint", "write-good" },
         markdown = { "markdownlint" },
