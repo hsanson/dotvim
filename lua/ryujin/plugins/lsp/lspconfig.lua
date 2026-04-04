@@ -163,7 +163,7 @@ return {
     if not configs.kotlin_lsp then
       configs.kotlin_lsp = {
         default_config = {
-          cmd       = { '/path/to/kotlin-lsp' },
+          cmd       = { "$HOME/.cargo/bin/kotlin-lsp" },
           filetypes = { 'kotlin', 'java' },
           root_markers  = {
             'build.gradle', 'build.gradle.kts', 'pom.xml', 'settings.gradle', '.git'
@@ -385,7 +385,6 @@ return {
       "jsonls",
       "kotlin_lsp",
       "kulala_ls",
-      "kotlin_lsp",
       "lua_ls",
       "postgres_lsp",
       "ruby_lsp",

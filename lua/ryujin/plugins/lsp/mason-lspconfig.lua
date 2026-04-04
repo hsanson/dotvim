@@ -15,7 +15,6 @@ return {
         "harper_ls",
         "html",
         "jsonls",
-        "kotlin_lsp",
         "lua_ls",
         "postgres_lsp",
         "rubocop",
