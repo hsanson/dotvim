@@ -28,8 +28,8 @@ vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<cr>", { desc = "New tab" })
 
 -- Remap number increment/decrement so it does not conflict with tmux
 -- control keys (C-a)
-vim.keymap.set("n", "<A-a>", "<C-a>", { desc = "Increment number" })
-vim.keymap.set("n", "<A-x>", "<C-x>", { desc = "Decrement number" })
+-- vim.keymap.set("n", "<A-a>", "<C-a>", { desc = "Increment number" })
+-- vim.keymap.set("n", "<A-x>", "<C-x>", { desc = "Decrement number" })
 
 -- Disable accidental Ex mode
 vim.keymap.set("n", "Q", "<nop>", { desc = "Force quit neovim" })
