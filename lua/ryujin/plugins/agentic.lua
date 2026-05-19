@@ -1,15 +1,15 @@
 return {
   "carlos-algms/agentic.nvim",
-  enabled = false,
+  enabled = true,
 
   event = "VeryLazy",
 
   opts = {
     -- Available by default: "claude-acp" | "gemini-acp" | "codex-acp" | "opencode-acp"
-    provider = "opencode-acp", -- setting the name here is all you need to get started
-    acp_providiers = {
+    provider = vim.uv.os_uname().sysname == "Darwin" and "claude-agent-acp" or "opencode-acp",
+    acp_providers = {
       ["opencode-acp"] = {
-        command = "~/.local/bin/opencode",
+        command = "opencode",
       }
     },
     debug = true,

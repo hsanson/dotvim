@@ -1,6 +1,7 @@
 return {
   "sudo-tee/opencode.nvim",
   name = "opencode-tee",
+  enabled = false,
   config = function()
     require("opencode").setup({
       preferred_picker = 'snacks',
