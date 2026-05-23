@@ -5,9 +5,8 @@ return {
   ft = "typst",
   config = function()
     require("typst-preview").setup({
-      -- Use mason-installed tinymist
       dependencies_bin = {
-        ["tinymist"] = vim.fn.stdpath("data") .. "/mason/bin/tinymist",
+        ["tinymist"] = "tinymist",
         ["websocat"] = "websocat", -- Use system-installed websocat
       },
     })

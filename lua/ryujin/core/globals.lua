@@ -12,8 +12,3 @@ g.symbol_info = ""
 g.symbol_gradle = ""
 g.symbol_android = ""
 g.symbol_progress = ""
-
--- Mason configuration
-g.package_installed = "󰏗"
-g.package_pending = "󱧘"
-g.package_uninstalled = "󱧖"
