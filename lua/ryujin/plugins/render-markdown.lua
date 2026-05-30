@@ -1,11 +1,11 @@
 return {
   "MeanderingProgrammer/render-markdown.nvim",
-  ft = { "markdown", "AgenticChat" },
+  ft = { "markdown", "AgenticChat", "kulala_ui" },
   enabled = false,
   config = function()
     require("render-markdown").setup({
       file_types = {
-        "markdown", "AgenticChat"
+        "markdown", "AgenticChat", "kulala_ui"
       },
       heading = {
         icons = { "󰬺 ", "󰬻 ", "󰬼 ", "󰬽 ", "󰬾 ", "󰬿 " },

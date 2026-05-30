@@ -24,29 +24,6 @@ return {
         },
         global_keymaps = false,
         kulala_keymaps = true,
-        contenttypes = {
-          ["application/vnd.api+json"] = {
-            ft = "json",
-            formatter = { "jq", "." },
-            pathresolver = require("kulala.parser.jsonpath").parse,
-          },
-          ["application/json"] = {
-            ft = "json",
-            formatter = { "jq", "." },
-            pathresolver = require("kulala.parser.jsonpath").parse,
-          },
-          ["application/xml"] = {
-            ft = "xml",
-            formatter = { "xmllint", "--format", "-" },
-            pathresolver = { "xmllint", "--xpath", "{{path}}", "-" },
-          },
-          ["text/html"] = {
-            ft = "html",
-            formatter = { "xmllint", "--format", "--html", "-" },
-            pathresolver = {},
-          },
-        },
-        additional_curl_options = {},
       })
     end
   },
