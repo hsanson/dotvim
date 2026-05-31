@@ -147,18 +147,7 @@ return {
       },
     })
 
-    -- Add kulala_ls as valid LSP to lsp-config
     local configs = require("lspconfig.configs")
-
-    if not configs.kulala_ls then
-      configs.kulala_ls = {
-        default_config = {
-          cmd = { "kulala-ls", "--stdio" },
-          root_markers = { "http-client.env.json" },
-          filetypes = { "http" },
-        },
-      }
-    end
 
     if not configs.kotlin_lsp then
       configs.kotlin_lsp = {
@@ -180,11 +169,6 @@ return {
         exportPdf = "onType",
         semanticTokens = "disable",
       },
-    })
-
-    -- Configure kulala_ls
-    vim.lsp.config("kulala_ls", {
-      capabilities = capabilities,
     })
 
     -- harper: ignore
@@ -384,7 +368,6 @@ return {
       "jdtls",
       "jsonls",
       "kotlin_lsp",
-      "kulala_ls",
       "lua_ls",
       "postgres_lsp",
       "ruby_lsp",
