@@ -12,7 +12,7 @@ return {
         environment_scope = "g",
         ui = {
           winbar = true,
-          default_winbar_panes = { "body", "headers", "headers_body", "script_output" },
+          default_winbar_panes = { "headers_body", "script_output" },
           icons = {
             inlay = {
               loading = " ",
