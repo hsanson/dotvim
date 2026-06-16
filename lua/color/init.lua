@@ -1,0 +1,13 @@
+require("color.bamboo")
+require("color.evangelion")
+require("color.kanagawa")
+require("color.lemon")
+require("color.neovim_ayu")
+require("color.nightfly")
+require("color.onedark")
+require("color.tokyonight")
+require("color.transparent")
+require("color.pastel")
+require("color.cyberdream")
+-- last-color must be last: it recalls the previously selected colorscheme
+require("color.last")

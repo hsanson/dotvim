@@ -1,0 +1,186 @@
+-- nvim-treesitter-textobjects must be in rtp before treesitter config
+vim.pack.add({
+  { src = 'https://github.com/nvim-treesitter/nvim-treesitter-textobjects', version = 'main' },
+}, { load = true })
+
+vim.pack.add({
+  { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' },
+}, { load = true })
+
+-- NOTE: Run :TSUpdate after installation to compile parsers.
+local treesitter = require('nvim-treesitter')
+local textobjects = require('nvim-treesitter-textobjects')
+
+-- Register custom parsers via User TSUpdate autocmd so they survive
+-- reload_parsers() cache invalidation on :TSUpdate
+local function register_custom_parsers()
+  local parser_config = require('nvim-treesitter.parsers')
+
+  parser_config.asciidoc = {
+    install_info = {
+      url = 'https://github.com/cathaysia/tree-sitter-asciidoc',
+      revision = 'master',
+      location = 'tree-sitter-asciidoc',
+      queries = 'queries/asciidoc',
+    },
+    requires = { 'asciidoc_inline' },
+    tier = 2,
+  }
+
+  parser_config.asciidoc_inline = {
+    install_info = {
+      url = 'https://github.com/cathaysia/tree-sitter-asciidoc',
+      revision = 'master',
+      location = 'tree-sitter-asciidoc_inline',
+      queries = 'queries/asciidoc_inline',
+    },
+    tier = 2,
+  }
+
+  parser_config.usql = {
+    install_info = {
+      url = 'https://github.com/hsanson/tree-sitter-usql',
+      revision = 'main',
+      queries = 'queries',
+    },
+    tier = 2,
+  }
+end
+
+register_custom_parsers()
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'TSUpdate',
+  callback = register_custom_parsers,
+})
+
+local parsers = {
+  'awk', 'bash', 'bibtex', 'c', 'cmake',
+  'cpp', 'css', 'csv', 'dart', 'diff', 'dockerfile', 'git_config',
+  'git_rebase', 'gitcommit', 'gitignore', 'gnuplot', 'go', 'gomod', 'gosum',
+  'gowork', 'gpg', 'graphql', 'groovy', 'helm', 'html', 'http', 'hurl', 'ini',
+  'java', 'javadoc', 'javascript', 'jinja', 'jinja_inline', 'jq', 'json',
+  'json5', 'julia', 'kotlin', 'latex', 'lua', 'luadoc', 'make',
+  'markdown', 'markdown_inline', 'mermaid', 'muttrc', 'php', 'po',
+  'promql', 'pug', 'python', 'readline', 'regex', 'ruby', 'rust', 'sql',
+  'ssh_config', 'swift', 'terraform', 'toml', 'tsv', 'typescript',
+  'typst', 'vala', 'vim', 'vimdoc', 'vue', 'xml', 'yaml', 'zathurarc',
+}
+
+treesitter.install(parsers)
+
+local patterns = {}
+for _, parser in ipairs(parsers) do
+  local parser_patterns = vim.treesitter.language.get_filetypes(parser)
+  for _, pp in pairs(parser_patterns) do
+    table.insert(patterns, pp)
+  end
+end
+
+vim.treesitter.language.register('groovy', 'Jenkinsfile')
+
+table.insert(patterns, 'usql')
+table.insert(patterns, 'asciidoc')
+
+vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.wo[0][0].foldmethod = 'expr'
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = patterns,
+  callback = function()
+    pcall(vim.treesitter.start)
+  end,
+})
+
+textobjects.setup({
+  select = {
+    enable = true,
+    lookahead = true,
+    selection_modes = {
+      ['@parameter.outer'] = 'v',
+      ['@function.outer'] = 'V',
+      ['@class.outer'] = '<c-v>',
+      ['@statement.outer'] = 'v',
+    },
+    include_surrounding_whitespace = false,
+  },
+  move = {
+    set_jumps = true,
+  },
+})
+
+local select = require('nvim-treesitter-textobjects.select')
+vim.keymap.set({ 'x', 'o' }, 'af', function()
+  select.select_textobject('@function.outer', 'textobjects')
+end, { desc = 'outer function' })
+vim.keymap.set({ 'x', 'o' }, 'if', function()
+  select.select_textobject('@function.inner', 'textobjects')
+end, { desc = 'inner function' })
+vim.keymap.set({ 'x', 'o' }, 'ac', function()
+  select.select_textobject('@class.outer', 'textobjects')
+end, { desc = 'outer class' })
+vim.keymap.set({ 'x', 'o' }, 'ic', function()
+  select.select_textobject('@class.inner', 'textobjects')
+end, { desc = 'inner class' })
+vim.keymap.set({ 'x', 'o' }, 'as', function()
+  select.select_textobject('@statement.outer', 'textobjects')
+end, { desc = 'outer statement' })
+vim.keymap.set({ 'x', 'o' }, 'is', function()
+  select.select_textobject('@statement.inner', 'textobjects')
+end, { desc = 'inner statement' })
+
+local swap = require('nvim-treesitter-textobjects.swap')
+vim.keymap.set('n', '<leader>a', function()
+  swap.swap_next('@parameter.inner')
+end)
+vim.keymap.set('n', '<leader>A', function()
+  swap.swap_previous('@parameter.outer')
+end)
+
+local move = require('nvim-treesitter-textobjects.move')
+vim.keymap.set({ 'n', 'x', 'o' }, ']m', function()
+  move.goto_next_start('@function.outer', 'textobjects')
+end)
+vim.keymap.set({ 'n', 'x', 'o' }, ']]', function()
+  move.goto_next_start('@class.outer', 'textobjects')
+end)
+vim.keymap.set({ 'n', 'x', 'o' }, ']o', function()
+  move.goto_next_start({ '@loop.inner', '@loop.outer' }, 'textobjects')
+end)
+vim.keymap.set({ 'n', 'x', 'o' }, ']s', function()
+  move.goto_next_start('@local.scope', 'locals')
+end)
+vim.keymap.set({ 'n', 'x', 'o' }, ']z', function()
+  move.goto_next_start('@fold', 'folds')
+end)
+vim.keymap.set({ 'n', 'x', 'o' }, ']M', function()
+  move.goto_next_end('@function.outer', 'textobjects')
+end)
+vim.keymap.set({ 'n', 'x', 'o' }, '][', function()
+  move.goto_next_end('@class.outer', 'textobjects')
+end)
+vim.keymap.set({ 'n', 'x', 'o' }, '[m', function()
+  move.goto_previous_start('@function.outer', 'textobjects')
+end)
+vim.keymap.set({ 'n', 'x', 'o' }, '[[', function()
+  move.goto_previous_start('@class.outer', 'textobjects')
+end)
+vim.keymap.set({ 'n', 'x', 'o' }, '[M', function()
+  move.goto_previous_end('@function.outer', 'textobjects')
+end)
+vim.keymap.set({ 'n', 'x', 'o' }, '[]', function()
+  move.goto_previous_end('@class.outer', 'textobjects')
+end)
+vim.keymap.set({ 'n', 'x', 'o' }, ']d', function()
+  move.goto_next('@conditional.outer', 'textobjects')
+end)
+vim.keymap.set({ 'n', 'x', 'o' }, '[d', function()
+  move.goto_previous('@conditional.outer', 'textobjects')
+end)
+
+local ts_repeat_move = require('nvim-treesitter-textobjects.repeatable_move')
+vim.keymap.set({ 'n', 'x', 'o' }, ';', ts_repeat_move.repeat_last_move_next)
+vim.keymap.set({ 'n', 'x', 'o' }, ',', ts_repeat_move.repeat_last_move_previous)
+vim.keymap.set({ 'n', 'x', 'o' }, 'f', ts_repeat_move.builtin_f_expr, { expr = true })
+vim.keymap.set({ 'n', 'x', 'o' }, 'F', ts_repeat_move.builtin_F_expr, { expr = true })
+vim.keymap.set({ 'n', 'x', 'o' }, 't', ts_repeat_move.builtin_t_expr, { expr = true })
+vim.keymap.set({ 'n', 'x', 'o' }, 'T', ts_repeat_move.builtin_T_expr, { expr = true })

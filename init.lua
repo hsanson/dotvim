@@ -1,2 +1,3 @@
-require("ryujin.core")
-require("ryujin.lazy")
+require("core")
+require("color")
+require("pack")

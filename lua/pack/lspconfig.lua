@@ -1,0 +1,266 @@
+vim.pack.add({ 'https://github.com/neovim/nvim-lspconfig' }, { load = true })
+
+local keymap = vim.keymap
+local opts = { noremap = true, silent = true }
+
+vim.lsp.log.set_level('error')
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    opts.buffer = ev.buf
+
+    opts.desc = 'Show LSP references'
+    keymap.set('n', 'gr', function() require('snacks').picker.lsp_references() end, opts)
+
+    opts.desc = 'Go to declaration'
+    keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+
+    opts.desc = 'Show LSP definitions'
+    keymap.set('n', 'gd', function() require('snacks').picker.lsp_definitions() end, opts)
+
+    opts.desc = 'Show LSP implementations'
+    keymap.set('n', 'gi', function() require('snacks').picker.lsp_implementations() end, opts)
+
+    opts.desc = 'Show LSP type definitions'
+    keymap.set('n', 'gt', function() require('snacks').picker.lsp_type_definitions() end, opts)
+
+    opts.desc = 'Show code actions'
+    keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
+
+    opts.desc = 'Smart rename'
+    keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+
+    opts.desc = 'Show buffer diagnostics'
+    keymap.set('n', '<leader>D', function() require('snacks').picker.diagnostics({ bufnr = 0 }) end, opts)
+
+    opts.desc = 'Show line diagnostics'
+    keymap.set('n', '<leader>d', vim.diagnostic.open_float, opts)
+
+    opts.desc = 'Go to previous diagnostics'
+    keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1 }) end, opts)
+
+    opts.desc = 'Go to next diagnostics'
+    keymap.set('n', ']d', function() vim.diagnostic.jump({ count = 1 }) end, opts)
+
+    opts.desc = 'Show documentation'
+    keymap.set('n', '<leader>gh', vim.lsp.buf.signature_help, opts)
+
+    opts.desc = 'LSP Format buffer'
+    keymap.set('n', '<leader>gf', function()
+      vim.lsp.buf.format({ async = true })
+    end, opts)
+
+    opts.desc = 'Toggle inlay hints'
+    keymap.set('n', '<leader>ih', function()
+      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+      vim.notify('Inlay hints ' .. (vim.lsp.inlay_hint.is_enabled() and 'enabled' or 'disabled'))
+    end, opts)
+  end,
+})
+
+local capabilities = vim.tbl_extend(
+  'keep',
+  vim.lsp.protocol.make_client_capabilities(),
+  require('cmp_nvim_lsp').default_capabilities()
+)
+
+vim.diagnostic.config({
+  signs = {
+    text = {
+      [vim.diagnostic.severity.WARN] = vim.g['symbol_warn'],
+      [vim.diagnostic.severity.ERROR] = vim.g['symbol_error'],
+      [vim.diagnostic.severity.INFO] = vim.g['symbol_info'],
+      [vim.diagnostic.severity.HINT] = vim.g['symbol_hint'],
+    },
+  },
+})
+
+vim.lsp.config('cssls', { capabilities = capabilities })
+vim.lsp.config('docker_compose_language_service', { capabilities = capabilities })
+vim.lsp.config('dockerls', { capabilities = capabilities })
+
+vim.lsp.config('gopls', {
+  capabilities = capabilities,
+  settings = {
+    gopls = {
+      hints = {
+        rangeVariableType = true,
+        parameterNames = true,
+        constantValues = true,
+        assignmentValues = true,
+        compositeLiteralFields = true,
+        compositeLiteralTypes = true,
+        functiotypeParameters = true,
+      },
+      completeUnimported = true,
+      usePlaceholders = true,
+      analyses = {
+        unusedparams = true,
+      },
+    },
+  },
+})
+
+vim.lsp.config('graphql', { capabilities = capabilities })
+
+vim.lsp.config('html', {
+  capabilities = capabilities,
+  filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss' },
+})
+
+vim.lsp.config('jedi_language_server', { capabilities = capabilities })
+
+vim.lsp.config('jsonls', {
+  capabilities = capabilities,
+  settings = {
+    json = {
+      format = { enable = true },
+      schemas = {
+        {
+          fileMatch = { 'db/flows/*/questions.json' },
+          url = '.fhir.schema.json',
+        },
+      },
+    },
+  },
+})
+
+local configs = require('lspconfig.configs')
+
+if not configs.kotlin_lsp then
+  configs.kotlin_lsp = {
+    default_config = {
+      cmd = { '$HOME/.cargo/bin/kotlin-lsp' },
+      filetypes = { 'kotlin', 'java' },
+      root_markers = {
+        'build.gradle', 'build.gradle.kts', 'pom.xml', 'settings.gradle', '.git',
+      },
+      settings = {},
+    },
+  }
+end
+
+vim.lsp.config('tinymist', {
+  settings = {
+    formatterMode = 'typstyle',
+    exportPdf = 'onType',
+    semanticTokens = 'disable',
+  },
+})
+
+vim.lsp.config('vale_ls', {
+  capabilities = capabilities,
+  root_markers = { '.vale.ini', '.git' },
+  settings = {
+    filetypes = { 'markdown', 'text', 'tex', 'rst', 'asciidoc' },
+  },
+})
+
+vim.lsp.config('harper_ls', {
+  capabilities = capabilities,
+  settings = {
+    ['harper-ls'] = {
+      linters = {
+        LongSentences = false,
+      },
+      codeActions = {
+        ForceStable = true,
+      },
+      markdown = {
+        isolateEnglish = true,
+      },
+    },
+  },
+})
+
+vim.lsp.config('lua_ls', {
+  capabilities = capabilities,
+  settings = {
+    Lua = {
+      runtime = { version = 'LuaJIT' },
+      completion = { callSnippet = 'Replace' },
+      diagnostics = {
+        globals = { 'vim', 'require', 'Snacks' },
+      },
+      hint = { enable = true },
+      workspace = {
+        useGitIgnore = true,
+        maxPreload = 1000,
+        preloadFileSize = 100,
+        ignoreDir = {
+          '.git', 'node_modules', 'dist', 'build',
+          'lua-language-server', 'target',
+        },
+        checkThirdParty = false,
+        library = vim.env.VIMRUNTIME,
+      },
+      telemetry = { enable = false },
+    },
+  },
+})
+
+vim.lsp.config('ruby_lsp', {
+  capabilities = capabilities,
+  init_options = {
+    enabledFeatures = {
+      'documentSymbols', 'foldingRanges', 'selectionRanges',
+      'semanticHighlighting', 'completion', 'hover', 'signatureHelp',
+      'definition', 'typeDefinition', 'implementation', 'references',
+      'documentHighlight', 'codeAction', 'codeLens', 'formatting',
+      'onTypeFormatting', 'rename', 'diagnostics', 'inlayHints',
+      'workspaceSymbol', 'documentLink', 'callHierarchy', 'executeCommand',
+    },
+    formatter = 'standard',
+    linters = { 'standard' },
+  },
+})
+
+vim.lsp.config('vacuum', {
+  capabilities = capabilities,
+  root_markers = { 'vacuum.conf.yaml', '.git' },
+  cmd = { 'vacuum', 'language-server', '--config', 'vacuum.conf.yaml', '--ignore-file', '.vacuum/ignore.yaml' },
+  filetypes = { 'yaml.openapi', 'json.openapi', 'openapi.yaml', 'openapi.json' },
+})
+
+vim.lsp.config('tailwindcss', { capabilities = capabilities })
+vim.lsp.config('terraformls', { capabilities = capabilities })
+
+vim.lsp.config('texlab', {
+  capabilities = capabilities,
+  settings = {
+    texlab = {
+      build = {
+        onSave = true,
+        auxDirectory = './out',
+        logDirectory = './out',
+        pdfDirectory = './out',
+        executable = 'latexmk',
+        args = {
+          '-verbose', '-pdf', '-synctex=1', '-interaction=nonstopmode',
+          '-auxdir=./out', '-outdir=./out', '%f',
+        },
+        forwardSearchAfter = true,
+      },
+      chktex = {
+        onEdit = true,
+        onOpenAndSave = true,
+      },
+      forwardSearch = {
+        executable = 'zathura',
+        args = { '--synctex-forward', '%l:1:%f', '%p' },
+      },
+    },
+  },
+})
+
+vim.lsp.config('vimls', { capabilities = capabilities })
+vim.lsp.config('vue_ls', { capabilities = capabilities })
+
+vim.lsp.enable({
+  'bashls', 'sqls', 'cssls', 'docker_compose_language_service', 'dockerls',
+  'gh_actions_ls', 'gopls', 'graphql', 'harper_ls', 'html', 'jdtls',
+  'jsonls', 'kotlin_lsp', 'lua_ls', 'postgres_lsp', 'ruby_lsp', 'spectral',
+  'tailwindcss', 'terraformls', 'texlab', 'tinymist', 'vacuum', 'vale_ls',
+  'vimls', 'vue_ls',
+})
