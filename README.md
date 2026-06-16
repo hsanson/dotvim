@@ -9,7 +9,7 @@ These configuration files work on recent Ubuntu and Debian distributions.
 
 ## Usage
 
-Install `Neovim v0.10.0` or newer and clone this repo inside your XDG\_CONFIG\_HOME
+Install `Neovim v0.12.1` or newer and clone this repo inside your XDG\_CONFIG\_HOME
 or ~/.config folder:
 
     git clone https://github.com/hsanson/dotvim $HOME/.config/nvim
