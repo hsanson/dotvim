@@ -1,162 +1,98 @@
--- cmp source dependencies loaded first, then nvim-cmp
-vim.pack.add({ 'https://github.com/hrsh7th/cmp-nvim-lsp' }, { load = true })
-vim.pack.add({ 'https://github.com/hrsh7th/cmp-buffer' }, { load = true })
-vim.pack.add({ 'https://github.com/hrsh7th/cmp-path' }, { load = true })
-vim.pack.add({ 'https://github.com/hrsh7th/cmp-cmdline' }, { load = true })
+vim.pack.add({ 'https://github.com/fang2hou/blink-copilot' }, { load = true })
+vim.pack.add({ 'https://github.com/Saghen/blink.lib' }, { load = true })
+vim.pack.add({ 'https://github.com/Saghen/blink.cmp' }, { load = true })
 
-vim.pack.add({ 'https://github.com/hrsh7th/nvim-cmp' }, { load = true })
+local blink = require('blink.cmp')
 
-local cmp = require('cmp')
-
-local kind_icons = {
-  Text = '󰉿',
-  Method = 'm',
-  Function = '󰊕',
-  Constructor = '',
-  Field = '',
-  Variable = '󰀫',
-  Class = '󰠱',
-  Interface = '',
-  Module = '',
-  Property = '',
-  Unit = '',
-  Value = '',
-  Enum = '󰕘',
-  Keyword = '󰌋',
-  Snippet = '',
-  Color = '󰏘',
-  File = '󰈙',
-  Reference = '',
-  Folder = '󰉋',
-  EnumMember = '󰕘',
-  Constant = '󰏿',
-  Struct = '',
-  Event = '󰉁',
-  Operator = '󰆕',
-  TypeParameter = '󰅲',
-  Copilot = '',
-}
-
--- Stops autocompletion from showing menu unless there is a char typed.
--- https://github.com/zbirenbaum/copilot-cmp?tab=readme-ov-file#tab-completion-configuration-highly-recommended
-local has_words_before = function()
-  if vim.api.nvim_buf_get_option(0, 'buftype') == 'prompt' then
-    return false
+local function ensure_blink_native_matcher()
+  local lib_dir = vim.fn.stdpath('data') .. '/site/pack/core/opt/blink.cmp/lib'
+  local has_native = #vim.fn.glob(lib_dir .. '/*', false, true) > 0
+  if has_native then
+    return
   end
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match('^%s*$') == nil
+
+  local ok, build = pcall(blink.build)
+  if ok and build and build.pwait then
+    pcall(function() build:pwait() end)
+  end
 end
 
-cmp.setup({
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'copilot' },
-    { name = 'buffer' },
-    { name = 'path' },
+ensure_blink_native_matcher()
+
+blink.setup({
+  enabled = function()
+    -- Disable in specific filetypes
+    local disabled_filetypes = {
+      'NvimTree',
+      'AgenticInput',
+      'snacks_picker_input',
+    }
+
+    if vim.tbl_contains(disabled_filetypes, vim.bo.filetype) then
+      return false
+    end
+
+    -- Ensure it doesn't trigger in prompt buffers
+    if vim.bo.buftype == 'prompt' then
+      return false
+    end
+
+    return true
+  end,
+
+  keymap = {
+    preset = 'none',
+    ['<C-k>'] = { 'select_prev', 'fallback' },
+    ['<C-j>'] = { 'select_next', 'fallback' },
+    ['<CR>'] = { 'accept', 'fallback' },
+    ['<Tab>'] = { 'select_next', 'snippet_forward', 'fallback' },
+    ['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
   },
 
-  mapping = cmp.mapping.preset.insert({
-    ['<C-k>'] = cmp.mapping.select_prev_item({ behavior = 'select' }),
-    ['<C-j>'] = cmp.mapping.select_next_item({ behavior = 'select' }),
-
-    ['<CR>'] = cmp.mapping({
-      i = function(fallback)
-        if cmp.visible() and cmp.get_active_entry() then
-          cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
-        else
-          fallback()
-        end
-      end,
-      s = cmp.mapping.confirm({ select = true }),
-    }),
-
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        if #cmp.get_entries() == 1 then
-          cmp.confirm({ select = true })
-        else
-          cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-        end
-      elseif has_words_before() then
-        cmp.complete()
-        if #cmp.get_entries() == 1 then
-          cmp.confirm({ select = true })
-        end
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-  }),
-
-  formatting = {
-    fields = { 'kind', 'abbr', 'menu' },
-    format = function(entry, vim_item)
-      vim_item.kind = string.format('%s', kind_icons[vim_item.kind])
-      vim_item.menu = ({
-        nvim_lsp = '[LSP]',
-        luasnip = '[Snippet]',
-        buffer = '[Buffer]',
-        path = '[Path]',
-        copilot = '[Copilot]',
-      })[entry.source.name]
-      return vim_item
-    end,
-  },
-
-  snippet = {
-    expand = function(args)
-      vim.snippet.expand(args.body)
-    end,
-  },
-
-  window = {
-    completion = {
-      border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
+  completion = {
+    trigger = {
+      prefetch_on_insert = false,
+      show_on_trigger_character = false,
+    },
+    list = {
+      selection = {
+        preselect = false,
+        auto_insert = false,
+      },
+    },
+    menu = {
+      border = 'rounded',
     },
     documentation = {
-      border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
+      auto_show = true,
+      window = {
+        border = 'rounded',
+      },
+    },
+    ghost_text = {
+      enabled = false,
     },
   },
 
-  experimental = {
-    ghost_text = false,
-    native_menu = false,
-  },
-})
-
-cmp.setup.cmdline({ '/', '?' }, {
-  mapping = cmp.mapping.preset.cmdline(),
   sources = {
-    { name = 'buffer' },
+    min_keyword_length = 2,
+    default = { 'lsp', 'copilot', 'buffer', 'path' },
+    providers = {
+      lsp = {
+        timeout_ms = 300,
+      },
+      buffer = {
+        min_keyword_length = 3,
+      },
+      copilot = {
+        name = 'copilot',
+        module = 'blink-copilot',
+        score_offset = 100,
+        async = true,
+        timeout_ms = 300,
+        min_keyword_length = 3,
+      },
+    },
   },
-})
 
--- Disable nvim-cmp in agentic and snacks picker input buffers
-cmp.setup.filetype({ 'AgenticInput', 'snacks_picker_input' }, {
-  enabled = false,
-})
-
-cmp.setup.cmdline(':', {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = cmp.config.sources({
-    { name = 'path' },
-  }, {
-    { name = 'cmdline' },
-  }),
-  matching = {
-    disallow_symbol_nonprefix_matching = false,
-    disallow_fuzzy_matching = false,
-    disallow_fullfuzzy_matching = false,
-    disallow_partial_matching = false,
-    disallow_partial_fuzzy_matching = false,
-    disallow_prefix_unmatching = false,
-  },
 })

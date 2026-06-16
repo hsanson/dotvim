@@ -16,12 +16,11 @@ require("pack.which_key")
 -- Treesitter
 require("pack.nvim_treesitter")
 
--- Completion stack (sources before engine, engine before LSP)
+-- Completion stack (engine before LSP)
 require("pack.copilot")
-require("pack.copilot_cmp")
 require("pack.cmp")
 
--- LSP (needs cmp_nvim_lsp already in rtp)
+-- LSP (needs blink.cmp capabilities)
 require("pack.lspconfig")
 
 -- Statusline (component deps loaded inside lualine.lua before setup)

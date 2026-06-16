@@ -62,7 +62,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 local capabilities = vim.tbl_extend(
   'keep',
   vim.lsp.protocol.make_client_capabilities(),
-  require('cmp_nvim_lsp').default_capabilities()
+  require('blink.cmp').get_lsp_capabilities()
 )
 
 vim.diagnostic.config({
