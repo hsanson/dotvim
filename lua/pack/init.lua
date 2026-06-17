@@ -23,6 +23,10 @@ require("pack.cmp")
 -- LSP (needs blink.cmp capabilities)
 require("pack.lspconfig")
 
+-- yarepl (depends on usql, loaded above) must come before lualine because
+-- the usql lualine component require("usql") -> require("yarepl") at load time.
+require("pack.yarepl")
+
 -- Statusline (component deps loaded inside lualine.lua before setup)
 require("pack.lualine")
 
@@ -55,5 +59,4 @@ require("pack.origami")
 require("pack.pantran")
 require("pack.sops")
 require("pack.typst_preview")
-require("pack.yarepl")          -- depends on usql (loaded above)
 require("pack.neomutt")
