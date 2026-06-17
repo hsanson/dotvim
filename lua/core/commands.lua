@@ -19,3 +19,9 @@ vim.api.nvim_create_user_command('GenPass', function(opts)
     local password = vim.fn.system(cmd):gsub("%s+", "")
     vim.api.nvim_put({password}, 'c', true, true)
 end, { nargs = '?' })
+
+-------------------------------------------------------------------------------
+-- Updade packages
+vim.api.nvim_create_user_command('Packupdate', function(opts)
+    vim.pack.update(opts.fargs)
+end, { nargs = '*' })
