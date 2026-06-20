@@ -103,7 +103,7 @@ end, { desc = 'Todo picker' })
 vim.keymap.set('n', '<leader>fn', function()
   require('snacks').picker('files', {
     dirs = { '~/Seafile/Notes' },
-    ft = { 'adoc' },
+    ft = { 'adoc', 'md' },
   })
 end, { desc = 'Notes picker' })
 
