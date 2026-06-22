@@ -64,6 +64,7 @@ local parsers = {
   'promql', 'pug', 'python', 'readline', 'regex', 'ruby', 'rust', 'sql',
   'ssh_config', 'swift', 'terraform', 'toml', 'tsv', 'typescript',
   'typst', 'vala', 'vim', 'vimdoc', 'vue', 'xml', 'yaml', 'zathurarc',
+  'gdscript', 'godot_resource', 'gdshader'
 }
 
 treesitter.install(parsers)

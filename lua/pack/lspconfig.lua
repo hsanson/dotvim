@@ -102,6 +102,7 @@ vim.lsp.config('gopls', {
   },
 })
 
+vim.lsp.config('gdscript', { capabilities = capabilities })
 vim.lsp.config('graphql', { capabilities = capabilities })
 
 vim.lsp.config('html', {
@@ -259,7 +260,7 @@ vim.lsp.config('vue_ls', { capabilities = capabilities })
 
 vim.lsp.enable({
   'bashls', 'sqls', 'cssls', 'docker_compose_language_service', 'dockerls',
-  'gh_actions_ls', 'gopls', 'graphql', 'harper_ls', 'html', 'jdtls',
+  'gdscript', 'gh_actions_ls', 'gopls', 'graphql', 'harper_ls', 'html', 'jdtls',
   'jsonls', 'kotlin_lsp', 'lua_ls', 'postgres_lsp', 'ruby_lsp', 'spectral',
   'tailwindcss', 'terraformls', 'texlab', 'tinymist', 'vacuum', 'vale_ls',
   'vimls', 'vue_ls',
