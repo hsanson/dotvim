@@ -23,5 +23,10 @@ end, { nargs = '?' })
 -------------------------------------------------------------------------------
 -- Updade packages
 vim.api.nvim_create_user_command('Packupdate', function(opts)
+  local len = #opts.fargs
+  if len > 0 then
     vim.pack.update(opts.fargs)
+  else
+    vim.pack.update()
+  end
 end, { nargs = '*' })
