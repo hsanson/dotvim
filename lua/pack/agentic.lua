@@ -1,7 +1,7 @@
 vim.pack.add({ 'https://github.com/carlos-algms/agentic.nvim' }, { load = true })
 
 require('agentic').setup({
-  provider = vim.uv.os_uname().sysname == 'Darwin' and 'claude-agent-acp' or 'opencode-acp',
+  provider = vim.uv.os_uname().sysname == 'Darwin' and 'claude-agent-acp' or 'codex-acp',
   acp_providers = {
     ['opencode-acp'] = {
       command = 'opencode',
