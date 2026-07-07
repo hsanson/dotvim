@@ -49,7 +49,7 @@
       "src": "https://github.com/AndreM222/copilot-lualine"
     },
     "copilot.lua": {
-      "rev": "760912b5992e1d6437378a9c7f2b0cb950966cf5",
+      "rev": "d521d3959f81f4fa58870ed329754f1dd5057511",
       "src": "https://github.com/zbirenbaum/copilot.lua"
     },
     "coverage-lualine": {
@@ -101,7 +101,7 @@
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "markview.nvim": {
-      "rev": "a2a07154b495367e4d609dd83c73120f1d058c75",
+      "rev": "092c0872fd2437b3b862d253910981142d2465aa",
       "src": "https://github.com/OXY2DEV/markview.nvim"
     },
     "mini.nvim": {
@@ -167,7 +167,7 @@
       "src": "https://github.com/martineausimon/nvim-lilypond-suite"
     },
     "nvim-lspconfig": {
-      "rev": "292f44408498103c47996ff5c18fd366293840d8",
+      "rev": "d224a1920728ba129880efc700d4a0180ac4ecbb",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -175,7 +175,7 @@
       "src": "https://github.com/nvim-neotest/nvim-nio"
     },
     "nvim-origami": {
-      "rev": "2ce07161353d8345966a2bee02408d012ca25df0",
+      "rev": "02312301df125908031b27dc556adb4cd81893d6",
       "src": "https://github.com/chrisgrieser/nvim-origami"
     },
     "nvim-treesitter": {
@@ -242,7 +242,7 @@
       "src": "https://github.com/milanglacier/yarepl.nvim"
     },
     "yazi.nvim": {
-      "rev": "39fefe6b78cf589f3f689c9d552951cde25f6d09",
+      "rev": "6d037aa8f41cb4f187014a859ea65b4af8378750",
       "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }

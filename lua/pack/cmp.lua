@@ -5,15 +5,17 @@ vim.pack.add({ 'https://github.com/Saghen/blink.cmp' }, { load = true })
 local blink = require('blink.cmp')
 
 local function ensure_blink_native_matcher()
-  local lib_dir = vim.fn.stdpath('data') .. '/site/pack/core/opt/blink.cmp/lib'
-  local has_native = #vim.fn.glob(lib_dir .. '/*', false, true) > 0
-  if has_native then
+  if blink.library_available() then
     return
   end
 
-  local ok, build = pcall(blink.build)
+  local ok, build = pcall(function()
+    return blink.build({ force = true })
+  end)
   if ok and build and build.pwait then
-    pcall(function() build:pwait() end)
+    pcall(function()
+      build:pwait()
+    end)
   end
 end
 
