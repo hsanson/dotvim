@@ -76,6 +76,36 @@ vim.diagnostic.config({
   },
 })
 
+local ros2_compose_dir = '/home/ryujin/Projects/docker/gazebo'
+
+vim.lsp.config('clangd', {
+  capabilities = capabilities,
+  cmd = {
+    'docker',
+    'compose',
+    '--project-directory',
+    ros2_compose_dir,
+    'exec',
+    '-T',
+    'ros2',
+    'bash',
+    '-lc',
+    table.concat({
+      'source /opt/ros/${ROS_DISTRO:-jazzy}/setup.bash',
+      'if [ -f /workspaces/ros2_ws/install/setup.bash ]; then source /workspaces/ros2_ws/install/setup.bash; fi',
+      'exec clangd --background-index --clang-tidy --path-mappings='
+        .. ros2_compose_dir
+        .. '=/workspaces',
+    }, ' && '),
+  },
+  root_markers = {
+    'compile_commands.json',
+    'compile_flags.txt',
+    'package.xml',
+    'CMakeLists.txt',
+    '.git',
+  },
+})
 vim.lsp.config('cssls', { capabilities = capabilities })
 vim.lsp.config('docker_compose_language_service', { capabilities = capabilities })
 vim.lsp.config('dockerls', { capabilities = capabilities })
@@ -259,7 +289,7 @@ vim.lsp.config('vimls', { capabilities = capabilities })
 vim.lsp.config('vue_ls', { capabilities = capabilities })
 
 vim.lsp.enable({
-  'bashls', 'sqls', 'cssls', 'docker_compose_language_service', 'dockerls',
+  'bashls', 'sqls', 'clangd', 'cssls', 'docker_compose_language_service', 'dockerls',
   'gdscript', 'gh_actions_ls', 'gopls', 'graphql', 'harper_ls', 'html', 'jdtls',
   'jsonls', 'kotlin_lsp', 'lua_ls', 'postgres_lsp', 'ruby_lsp', 'spectral',
   'tailwindcss', 'terraformls', 'texlab', 'tinymist', 'vacuum', 'vale_ls',

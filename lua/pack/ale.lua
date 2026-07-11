@@ -47,7 +47,9 @@ dev.load_dev('~/Projects/vim/ale', function()
     linters = {
       ansible = { 'ansible-lint' },
       bib = { 'bibclean' },
-      c = { 'clangd' },
+      c = {},
+      cpp = {},
+      hpp = {},
       dockerfile = { 'dockerfile_lint' },
       go = { 'golangci-lint' },
       help = {},
