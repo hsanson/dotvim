@@ -46,9 +46,18 @@ vim.api.nvim_create_autocmd('LspAttach', {
     opts.desc = 'Show documentation'
     keymap.set('n', '<leader>gh', vim.lsp.buf.signature_help, opts)
 
-    opts.desc = 'LSP Format buffer'
+    opts.desc = 'Format buffer with LSP or ALE'
     keymap.set('n', '<leader>gf', function()
-      vim.lsp.buf.format({ async = true })
+      local clients = vim.lsp.get_clients({
+        bufnr = 0,
+        method = 'textDocument/formatting',
+      })
+
+      if #clients > 0 then
+        vim.lsp.buf.format({ async = true })
+      else
+        vim.cmd.ALEFix()
+      end
     end, opts)
 
     opts.desc = 'Toggle inlay hints'
