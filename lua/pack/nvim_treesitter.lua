@@ -60,10 +60,10 @@ local parsers = {
   'gowork', 'gpg', 'graphql', 'groovy', 'helm', 'html', 'http', 'hurl', 'ini',
   'java', 'javadoc', 'javascript', 'jinja', 'jinja_inline', 'jq', 'json',
   'json5', 'julia', 'kotlin', 'latex', 'lua', 'luadoc', 'make',
-  'markdown', 'markdown_inline', 'mermaid', 'muttrc', 'php', 'po',
+  'markdown', 'markdown_inline', 'mermaid', 'php', 'po',
   'promql', 'pug', 'python', 'readline', 'regex', 'ruby', 'rust', 'sql',
   'ssh_config', 'swift', 'terraform', 'toml', 'tsv', 'typescript',
-  'typst', 'vala', 'vim', 'vimdoc', 'vue', 'xml', 'yaml', 'zathurarc',
+  'typst', 'vala', 'vim', 'vimdoc', 'vue', 'xml', 'yaml',
   'gdscript', 'godot_resource', 'gdshader'
 }
 
