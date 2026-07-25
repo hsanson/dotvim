@@ -1,5 +1,29 @@
 -- ale: linter/fixer engine (dev plugin, loaded from local source)
 local dev = require('pack.util')
+
+-- Function to dynamically pass the global config only if a local one is missing
+local function get_markdownlint_options()
+  -- Look for common local project configuration profiles
+  local local_config = vim.fs.find({
+    '.markdownlint-cli2.yaml',
+    '.markdownlint-cli2.jsonc',
+    '.markdownlint-cli2.json',
+    '.markdownlint.yaml',
+    '.markdownlint.json'
+  }, {
+    upward = true,
+    path = vim.fs.dirname(vim.api.nvim_buf_get_name(0))
+  })[1]
+
+  -- If a local file exists, return an empty string so markdownlint auto-detects it
+  if local_config then
+    return ""
+  else
+    -- Fallback explicitly to your global file profile path
+    return "--config " .. vim.fn.expand("~/.markdownlint-cli2.yaml")
+  end
+end
+
 dev.load_dev('~/Projects/vim/ale', function()
   local g = vim.g
 
@@ -30,6 +54,7 @@ dev.load_dev('~/Projects/vim/ale', function()
     ruby_rubocop_auto_correct_all = 1,
     fix_on_save = 0,
     lua_stylua_options = '--indent-type Spaces --indent-width 2',
+    markdown_markdownlint_options = get_markdownlint_options(),
 
     fixers = {
       ['*'] = { 'remove_trailing_lines', 'trim_whitespace' },
@@ -42,6 +67,7 @@ dev.load_dev('~/Projects/vim/ale', function()
       yaml = { 'prettier' },
       ruby = { 'rubocop' },
       kotlin = { 'ktlint' },
+      markdown = { 'mdformat' },
     },
 
     linters = {

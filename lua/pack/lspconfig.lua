@@ -293,5 +293,5 @@ vim.lsp.enable({
   'gdscript', 'gh_actions_ls', 'gopls', 'graphql', 'harper_ls', 'html', 'jdtls',
   'jsonls', 'kotlin_lsp', 'lua_ls', 'postgres_lsp', 'ruby_lsp', 'spectral',
   'tailwindcss', 'terraformls', 'texlab', 'tinymist', 'vacuum', 'vale_ls',
-  'vimls', 'vue_ls',
+  'vimls', 'vue_ls', 'marksman'
 })
