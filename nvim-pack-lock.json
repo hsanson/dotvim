@@ -17,7 +17,7 @@
       "src": "https://github.com/fang2hou/blink-copilot"
     },
     "blink.cmp": {
-      "rev": "0f54bd78892f587db4dcf100a23eaddfc2a9df7d",
+      "rev": "1e4a8fb9708bbaa35addaa198638feed622d56ae",
       "src": "https://github.com/Saghen/blink.cmp"
     },
     "blink.lib": {
@@ -167,7 +167,7 @@
       "src": "https://github.com/martineausimon/nvim-lilypond-suite"
     },
     "nvim-lspconfig": {
-      "rev": "d592c1e6ad9a0a01b3d5ed3f0345d68407167181",
+      "rev": "7ab79bb1b57160a537f427ac8a6026102f12b701",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -179,7 +179,7 @@
       "src": "https://github.com/chrisgrieser/nvim-origami"
     },
     "nvim-treesitter": {
-      "rev": "0153df68b44fa97a3e11696ca55cbdd7a6d42398",
+      "rev": "61df84986b4b4ec469ee745a182e433d49f8c27e",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
@@ -221,7 +221,7 @@
       "src": "https://github.com/folke/tokyonight.nvim"
     },
     "touchup.nvim": {
-      "rev": "8a536aa2963cb228cfb2d89a8adfa75a77fa6ad8",
+      "rev": "9410a8640262f9b43ce04b0779d2c66134ae311b",
       "src": "https://github.com/noisesfromspace/touchup.nvim"
     },
     "transparent.nvim": {
@@ -246,7 +246,7 @@
       "src": "https://github.com/milanglacier/yarepl.nvim"
     },
     "yazi.nvim": {
-      "rev": "b8b07a7c568549db1025529a8d62981e178f1253",
+      "rev": "0f912425d5c79f14cc66be90844e2fe49e5dab8c",
       "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }
