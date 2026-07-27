@@ -20,7 +20,7 @@ local function get_markdownlint_options()
     return ""
   else
     -- Fallback explicitly to your global file profile path
-    return "--config " .. vim.fn.expand("~/.markdownlint-cli2.yaml")
+    return "--config " .. vim.fn.expand("~/.config/markdownlint/config.yaml")
   end
 end
 
