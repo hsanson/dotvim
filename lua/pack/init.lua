@@ -49,7 +49,7 @@ require("pack.diffs")
 require("pack.yazi")
 
 -- Misc tools
-require("pack.agentic")
+-- require("pack.agentic")
 require("pack.img_clip")
 require("pack.kulala")
 require("pack.lilypond")
