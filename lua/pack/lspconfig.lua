@@ -189,14 +189,6 @@ vim.lsp.config('tinymist', {
   },
 })
 
-vim.lsp.config('vale_ls', {
-  capabilities = capabilities,
-  root_markers = { '.vale.ini', '.git' },
-  settings = {
-    filetypes = { 'markdown', 'text', 'tex', 'rst', 'asciidoc' },
-  },
-})
-
 vim.lsp.config('harper_ls', {
   capabilities = capabilities,
   settings = {
@@ -301,6 +293,6 @@ vim.lsp.enable({
   'bashls', 'sqls', 'clangd', 'cssls', 'docker_compose_language_service', 'dockerls',
   'gdscript', 'gh_actions_ls', 'gopls', 'graphql', 'harper_ls', 'html', 'jdtls',
   'jsonls', 'kotlin_lsp', 'lua_ls', 'postgres_lsp', 'ruby_lsp', 'spectral',
-  'tailwindcss', 'terraformls', 'texlab', 'tinymist', 'vacuum', 'vale_ls',
-  'vimls', 'vue_ls', 'marksman', 'neocmake'
+  'tailwindcss', 'terraformls', 'texlab', 'tinymist', 'vacuum',
+  'vimls', 'vue_ls', 'marksman'
 })
