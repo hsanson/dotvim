@@ -10,9 +10,9 @@ require('kulala').setup({
     default_winbar_panes = { 'headers_body', 'script_output' },
     icons = {
       inlay = {
-        loading = ' ',
-        done = ' ',
-        error = ' ',
+        loading = ' ',
+        done = ' ',
+        error = ' ',
       },
       lualine = '🐼',
     },

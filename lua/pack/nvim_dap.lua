@@ -66,7 +66,7 @@ vim.fn.sign_define('DapBreakpoint', { text = '󰏃 ', texthl = 'DapBreakpointCol
 vim.fn.sign_define('DapBreakpointCondition', { text = '󰏃 ', texthl = 'DapBreakpointColor', linehl = '', numhl = '' })
 vim.fn.sign_define('DapLogPoint', { text = '󰏃 ', texthl = 'DapBreakpointColor', linehl = '', numhl = '' })
 vim.fn.sign_define('DapBreakpointRejected', { text = '󰏃 ', texthl = 'DapRejectedColor', linehl = '', numhl = '' })
-vim.fn.sign_define('DapStopped', { text = ' ', texthl = 'DapStoppedColor', linehl = '', numhl = '' })
+vim.fn.sign_define('DapStopped', { text = ' ', texthl = 'DapStoppedColor', linehl = '', numhl = '' })
 
 local opts = { noremap = true, silent = true, desc = 'DAP continue' }
 vim.keymap.set('n', '<Left>', function() require('dap').continue() end, opts)

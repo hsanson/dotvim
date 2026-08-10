@@ -40,7 +40,7 @@ dev.load_dev('~/Projects/vim/ale', function()
     echo_msg_warning_str = g['symbol_warn'] or '⚠',
     writegood_options = '--no-passive --no-weasel --no-tooWordy --no-adverb',
     virtualtext_cursor = 1,
-    virtualtext_prefix = ' ',
+    virtualtext_prefix = ' ',
     floating_preview = 0,
     hover_to_preview = 0,
     hover_to_floating_preview = 0,

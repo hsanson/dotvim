@@ -28,9 +28,9 @@ local filename_module = {
   shorting_target = 40,
   symbols = {
     modified = 'ﰂ ',
-    readonly = ' ',
+    readonly = ' ',
     unnamed = '[No Name]',
-    newfile = ' ',
+    newfile = ' ',
   },
 }
 
@@ -38,9 +38,9 @@ local diff_module = {
   'diff',
   colored = false,
   symbols = {
-    added = ' ',
-    modified = ' ',
-    removed = ' ',
+    added = ' ',
+    modified = ' ',
+    removed = ' ',
   },
 }
 
@@ -48,8 +48,8 @@ local function progress_module()
   local cur = vim.fn.line('.')
   local total = vim.fn.line('$')
   local icons = {
-    '', '', '', '', '', '', '', '',
-    '', '', '', '', '', '', '',
+    '', '', '', '', '', '', '', '',
+    '', '', '', '', '', '', '',
   }
   local percent = math.floor(cur / total * 100)
   local position = 1 + math.floor(percent / (100 / (#icons - 1)))
@@ -96,7 +96,7 @@ require('lualine').setup({
       function() return current_root() end,
     },
     lualine_c = {
-      { 'branch', icon = '' },
+      { 'branch', icon = '' },
       diff_module,
     },
     lualine_x = {
@@ -106,11 +106,11 @@ require('lualine').setup({
         symbols = {
           status = {
             icons = {
-              enabled = ' ',
-              sleep = ' ',
-              disabled = ' ',
-              warning = ' ',
-              unknown = ' ',
+              enabled = ' ',
+              sleep = ' ',
+              disabled = ' ',
+              warning = ' ',
+              unknown = ' ',
             },
             hl = {
               enabled = '#50FA7B',
