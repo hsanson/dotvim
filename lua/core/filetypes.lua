@@ -1,6 +1,7 @@
 vim.filetype.add({
   extension = {
     http = 'http',
+    hledger = 'ledger',
     yaml = function(_, bufnr)
       local content = vim.api.nvim_buf_get_lines(bufnr, 0, 20, false)
       for _, line in ipairs(content) do
