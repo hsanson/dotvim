@@ -5,7 +5,7 @@
       "src": "https://github.com/Kaikacy/Lemons.nvim"
     },
     "agentic.nvim": {
-      "rev": "42291a18abff5906326e3e289ded41da8126f31a",
+      "rev": "9945381350664ab3057d480e5cee02a328ef21d5",
       "src": "https://github.com/carlos-algms/agentic.nvim"
     },
     "bamboo.nvim": {
@@ -17,11 +17,11 @@
       "src": "https://github.com/fang2hou/blink-copilot"
     },
     "blink.cmp": {
-      "rev": "dbcf63b90b358f058637ea370202e3849013383b",
+      "rev": "8ca29c2eb34f5ce4770bffc0d62e6f636a4e8526",
       "src": "https://github.com/Saghen/blink.cmp"
     },
     "blink.lib": {
-      "rev": "2789206e10a0e4880f808c2aaf52bc57d876b481",
+      "rev": "c8fdc12c8a2fab6cf786dd7141a283f8079f902b",
       "src": "https://github.com/Saghen/blink.lib"
     },
     "cmp-buffer": {
@@ -49,7 +49,7 @@
       "src": "https://github.com/AndreM222/copilot-lualine"
     },
     "copilot.lua": {
-      "rev": "0f616b9a51cb9e2498834dfd99f6da6966158eba",
+      "rev": "7e6723aabea044519462958ffcea68d7985c5ed0",
       "src": "https://github.com/zbirenbaum/copilot.lua"
     },
     "coverage-lualine": {
@@ -57,11 +57,11 @@
       "src": "https://github.com/hsanson/coverage-lualine"
     },
     "cyberdream.nvim": {
-      "rev": "b9cc88378b776f33d3ea77164716f37c3f13ef72",
+      "rev": "d0e6e837b0248e3507f3a295deb4661221610e78",
       "src": "https://github.com/scottmckendry/cyberdream.nvim"
     },
     "diffs.nvim": {
-      "rev": "70882fe6364dfe7f46463b712c6e0e0c0712b408",
+      "rev": "e6d3aa4bb400287ba1a612e28b5cd55e0ba15726",
       "src": "https://github.com/barrettruth/diffs.nvim"
     },
     "evangelion.nvim": {
@@ -77,7 +77,7 @@
       "src": "https://github.com/rebelot/kanagawa.nvim"
     },
     "kulala.nvim": {
-      "rev": "e4e8615dc07d9423f3dd52ad5af962db09d26a52",
+      "rev": "7c10bd7b56f11dca25e5e948f817ca4eee1cb669",
       "src": "https://github.com/mistweaverco/kulala.nvim"
     },
     "last-color.nvim": {
@@ -118,12 +118,12 @@
       "src": "https://github.com/nvim-neotest/neotest"
     },
     "neotest-golang": {
-      "rev": "5b15cab0e2475b036c2e2067b2a973b9e4ea3180",
+      "rev": "05cd7bf89a146cf1fa2848a9fe277a1e68a3a51d",
       "src": "https://github.com/fredrikaverpil/neotest-golang",
       "version": ">=0.0.0"
     },
     "neotest-java": {
-      "rev": "c16df20f0b8061e6b0f1fe57a56eb7e737574b88",
+      "rev": "ed5360c9213d0bbde93fc3aeb4fa560cd95cce59",
       "src": "https://github.com/rcasia/neotest-java"
     },
     "neotest-kotlin": {
@@ -155,7 +155,7 @@
       "src": "https://github.com/leoluz/nvim-dap-go"
     },
     "nvim-dap-view": {
-      "rev": "b8c8aa91f42055d7f69012587cde4f1d99f2a701",
+      "rev": "43a2ccf5618ea26a9b11575ff18ded1cc82746bf",
       "src": "https://github.com/igorlfs/nvim-dap-view"
     },
     "nvim-dap-virtual-text": {
@@ -167,7 +167,7 @@
       "src": "https://github.com/martineausimon/nvim-lilypond-suite"
     },
     "nvim-lspconfig": {
-      "rev": "b7b920947f21339ee41fbb38c79d6445e12900aa",
+      "rev": "43ed3797b266e1ee8d222e491379ad471c9d3146",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -175,11 +175,11 @@
       "src": "https://github.com/nvim-neotest/nvim-nio"
     },
     "nvim-origami": {
-      "rev": "02312301df125908031b27dc556adb4cd81893d6",
+      "rev": "a137d35eaabb7cd7be89228229c1aa5b057f5ed7",
       "src": "https://github.com/chrisgrieser/nvim-origami"
     },
     "nvim-treesitter": {
-      "rev": "61df84986b4b4ec469ee745a182e433d49f8c27e",
+      "rev": "c9f9ed6c1892f629ea399f4ee7905f2686fa13f2",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
@@ -225,7 +225,7 @@
       "src": "https://github.com/folke/tokyonight.nvim"
     },
     "touchup.nvim": {
-      "rev": "9410a8640262f9b43ce04b0779d2c66134ae311b",
+      "rev": "1f07cc5299d750feb963a12c86b2e0c19de82971",
       "src": "https://github.com/noisesfromspace/touchup.nvim"
     },
     "transparent.nvim": {
@@ -246,11 +246,11 @@
       "src": "https://github.com/folke/which-key.nvim"
     },
     "yarepl.nvim": {
-      "rev": "f6f07e7e593091364d8bef8a0d2eba68fadbe5b4",
+      "rev": "6a0eac671af452a110b7cae4c23d20249c2db541",
       "src": "https://github.com/milanglacier/yarepl.nvim"
     },
     "yazi.nvim": {
-      "rev": "840b9792a6ec97afce384f6821e64409510d6246",
+      "rev": "325eefb600fe293aff8a0f988f0c7e2dcff8ff66",
       "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }

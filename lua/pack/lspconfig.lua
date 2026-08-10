@@ -289,10 +289,17 @@ vim.lsp.config('texlab', {
 vim.lsp.config('vimls', { capabilities = capabilities })
 vim.lsp.config('vue_ls', { capabilities = capabilities })
 
+vim.lsp.config('hledger_lsp', {
+  capabilities = capabilities,
+  cmd = { 'hledger-lsp' },
+  filetypes = { 'ledger' },
+  root_markers = { 'main.journal', '.git' },
+})
+
 vim.lsp.enable({
   'bashls', 'sqls', 'clangd', 'cssls', 'docker_compose_language_service', 'dockerls',
   'gdscript', 'gh_actions_ls', 'gopls', 'graphql', 'harper_ls', 'html', 'jdtls',
   'jsonls', 'kotlin_lsp', 'lua_ls', 'postgres_lsp', 'ruby_lsp', 'spectral',
   'tailwindcss', 'terraformls', 'texlab', 'tinymist', 'vacuum',
-  'vimls', 'vue_ls', 'marksman'
+  'vimls', 'vue_ls', 'marksman', 'hledger_lsp'
 })
