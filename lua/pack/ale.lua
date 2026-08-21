@@ -56,7 +56,7 @@ dev.load_dev('~/Projects/vim/ale', function()
     lua_stylua_options = '--indent-type Spaces --indent-width 2',
     markdown_markdownlint_options = get_markdownlint_options(),
     markdown_mdformat_use_global = 1,
-    markdown_mdformat_options = '--wrap 120',
+    markdown_mdformat_options = '--wrap 80',
 
     fixers = {
       ['*'] = { 'remove_trailing_lines', 'trim_whitespace' },
