@@ -146,6 +146,10 @@ opt.textwidth = 80
 -------------------------------------------------------------------------------
 -- Enable experimental UI2
 -- :h ui2
+opt.messagesopt:append({
+  "maxheight:100", -- Maximum expanded cmdline height as a percentage of 'lines'.
+  "timeout:4000", -- Time a message is visible in the message window.
+})
 require('vim._core.ui2').enable({
   enable = true, -- Whether to enable or disable the UI.
   msg = { -- Options related to the message module.
@@ -154,15 +158,11 @@ require('vim._core.ui2').enable({
     ---@type string|table<string, 'cmd'|'msg'|'pager'> Default message target
     ---or table mapping |ui-messages| kinds and triggers to a target.
     targets = 'cmd',
-    cmd = { -- Options related to messages in the cmdline window.
-      height = 0.9999 -- Maximum height while expanded for messages beyond 'cmdheight'.
-    },
     dialog = { -- Options related to dialog window.
       height = 0.9999, -- Maximum height.
     },
     msg = { -- Options related to msg window.
       height = 0.9999, -- Maximum height.
-      timeout = 4000, -- Time a message is visible in the message window.
     },
     pager = { -- Options related to message window.
       height = 0.9999, -- Maximum height.
