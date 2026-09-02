@@ -188,6 +188,10 @@
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
       "version": "'main'"
     },
+    "omarchy-theme.nvim": {
+      "rev": "84156929141c8f517965b92f9fd84af1cb8ac117",
+      "src": "https://github.com/EskelinenAntti/omarchy-theme.nvim"
+    },
     "onedark.nvim": {
       "rev": "df4792accde9db0043121f32628bcf8e645d9aea",
       "src": "https://github.com/navarasu/onedark.nvim"
@@ -227,10 +231,6 @@
     "touchup.nvim": {
       "rev": "efc7df43515aeb29c84ef088f0197bde83e9ce12",
       "src": "https://github.com/noisesfromspace/touchup.nvim"
-    },
-    "transparent.nvim": {
-      "rev": "e00ca1cf09caef575edf8da7e5a8b9193893b4c7",
-      "src": "https://github.com/xiyaowong/transparent.nvim"
     },
     "typst-preview.nvim": {
       "rev": "1c2e19486397be1c580b560fc50ee36abe329c46",

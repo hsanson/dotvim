@@ -6,8 +6,9 @@ require("color.neovim_ayu")
 require("color.nightfly")
 require("color.onedark")
 require("color.tokyonight")
-require("color.transparent")
 require("color.pastel")
 require("color.cyberdream")
--- last-color must be last: it recalls the previously selected colorscheme
+-- Load the plugin before last-color may recall it, then make Omarchy authoritative.
+local omarchy = require("color.omarchy")
 require("color.last")
+omarchy.apply()
