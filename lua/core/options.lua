@@ -144,27 +144,30 @@ opt.textwidth = 80
 
 
 -------------------------------------------------------------------------------
--- Enable experimental UI2
+-- Enable experimental UI2 when the private API is available.
 -- :h ui2
-require('vim._core.ui2').enable({
-  enable = true, -- Whether to enable or disable the UI.
-  msg = { -- Options related to the message module.
-    ---@type 'cmd'|'msg' Default message target, either in the
-    ---cmdline or in a separate ephemeral message window.
-    ---@type string|table<string, 'cmd'|'msg'|'pager'> Default message target
-    ---or table mapping |ui-messages| kinds and triggers to a target.
-    targets = 'cmd',
-    dialog = { -- Options related to dialog window.
-      height = 0.9999, -- Maximum height.
+local has_ui2, ui2 = pcall(require, 'vim._core.ui2')
+if has_ui2 and type(ui2.enable) == 'function' then
+  pcall(ui2.enable, {
+    enable = true, -- Whether to enable or disable the UI.
+    msg = { -- Options related to the message module.
+      ---@type 'cmd'|'msg' Default message target, either in the
+      ---cmdline or in a separate ephemeral message window.
+      ---@type string|table<string, 'cmd'|'msg'|'pager'> Default message target
+      ---or table mapping |ui-messages| kinds and triggers to a target.
+      targets = 'cmd',
+      dialog = { -- Options related to dialog window.
+        height = 0.9999, -- Maximum height.
+      },
+      msg = { -- Options related to msg window.
+        height = 0.9999, -- Maximum height.
+      },
+      pager = { -- Options related to message window.
+        height = 0.9999, -- Maximum height.
+      },
     },
-    msg = { -- Options related to msg window.
-      height = 0.9999, -- Maximum height.
-    },
-    pager = { -- Options related to message window.
-      height = 0.9999, -- Maximum height.
-    },
-  },
-})
+  })
+end
 
 -------------------------------------------------------------------------------
 -- Enable undotree
