@@ -78,5 +78,5 @@ opts.desc = 'DAP step out'
 vim.keymap.set('n', '<Up>', function() require('dap').step_out() end, opts)
 opts.desc = 'DAP toggle breakpoint'
 vim.keymap.set('n', '<leader>nt', function() require('dap').toggle_breakpoint() end, opts)
-opts.desc = 'DAP watch'
-vim.keymap.set('n', '<leader>nw', function() require('dap').toggle_breakpoint() end, opts)
+opts.desc = 'DAP add watch'
+vim.keymap.set('n', '<leader>nw', function() require('dap-view').add_expr() end, opts)
