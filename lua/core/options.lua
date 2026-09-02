@@ -146,10 +146,6 @@ opt.textwidth = 80
 -------------------------------------------------------------------------------
 -- Enable experimental UI2
 -- :h ui2
-opt.messagesopt:append({
-  "maxheight:100", -- Maximum expanded cmdline height as a percentage of 'lines'.
-  "timeout:4000", -- Time a message is visible in the message window.
-})
 require('vim._core.ui2').enable({
   enable = true, -- Whether to enable or disable the UI.
   msg = { -- Options related to the message module.
