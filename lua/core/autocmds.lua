@@ -34,15 +34,15 @@ autocmd('TextYankPost', {
   end
 })
 
--- Run help tags after Lazy update.
-autocmd("User", {
-  -- インストール、アップデート、または同期（Sync）の完了後に実行
-  pattern = { "LazyInstall", "LazyUpdate", "LazySync" },
-  callback = function()
-    -- ヘルプタグの生成を実行
-    vim.cmd("silent! helptags ALL")
-    -- 完了を通知（任意）
-    vim.notify("Updated helptags", vim.log.levels.INFO)
+autocmd("PackChanged", {
+  callback = function(ev)
+    local _, kind = ev.data.spec.name, ev.data.kind
+    if kind == 'update' or kind == 'install' then
+      local doc_dir = ev.data.path .. '/doc'
+      if vim.fn.isdirectory(doc_dir) == 1 then
+        vim.cmd('helptags ' .. doc_dir)
+      end
+    end
   end,
 })
 
