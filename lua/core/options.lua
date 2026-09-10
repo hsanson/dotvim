@@ -30,6 +30,7 @@ opt.background = "dark"
 opt.showmatch = false -- Do not highlight matching parenthesis
 opt.showtabline = 0 -- Disable tabline
 opt.timeoutlen = 400
+opt.winborder = "rounded"
 
 -- Box drawing Unicode characters:
 -- https://shapecatcher.com/unicode/block/Box_Drawing
