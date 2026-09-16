@@ -45,7 +45,8 @@ require("pack.nvim_coverage")
 require("pack.ale")
 
 -- File management
-require("pack.diffs")
+-- require("pack.diffs")
+require("pack.diffview-plus")
 require("pack.yazi")
 
 -- Misc tools

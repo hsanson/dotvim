@@ -17,7 +17,7 @@
       "src": "https://github.com/fang2hou/blink-copilot"
     },
     "blink.cmp": {
-      "rev": "3b60c1d949e87ae2c822b4d70781c986e0bcb38a",
+      "rev": "473c928d8b9b5b3f638cd085a01899972cf205c6",
       "src": "https://github.com/Saghen/blink.cmp"
     },
     "blink.lib": {
@@ -29,7 +29,7 @@
       "src": "https://github.com/AndreM222/copilot-lualine"
     },
     "copilot.lua": {
-      "rev": "69fa45f8bcde5aaf436b43ff208c36d7c6ee5b42",
+      "rev": "b2b899f93544047ac94d452ecd5af1e63a94377a",
       "src": "https://github.com/zbirenbaum/copilot.lua"
     },
     "coverage-lualine": {
@@ -41,8 +41,12 @@
       "src": "https://github.com/scottmckendry/cyberdream.nvim"
     },
     "diffs.nvim": {
-      "rev": "fed0ebb08ada8ba069e23990f87582ce47007407",
+      "rev": "0de2d75a6d92107aac21b84cd51cca4058e561f5",
       "src": "https://github.com/barrettruth/diffs.nvim"
+    },
+    "diffview-plus.nvim": {
+      "rev": "be86a001f13b4d307814bd6e06eac429a2777ae8",
+      "src": "https://github.com/dlyongemallo/diffview-plus.nvim"
     },
     "evangelion.nvim": {
       "rev": "08cf52a0931a81bf5b64c93b744e136b5edb6d85",
@@ -123,7 +127,7 @@
       "src": "https://github.com/andythigpen/nvim-coverage"
     },
     "nvim-dap": {
-      "rev": "c9a0738e45f1bd41d792a126941348dce661cf9b",
+      "rev": "cfa2d58f4537aca6ca83e2de1a0d9f1491121264",
       "src": "https://github.com/mfussenegger/nvim-dap"
     },
     "nvim-dap-go": {
@@ -155,7 +159,7 @@
       "src": "https://github.com/chrisgrieser/nvim-origami"
     },
     "nvim-treesitter": {
-      "rev": "d4d59cb369da46b95699bd2200efbcffc6dadb3b",
+      "rev": "9a168f6357ed21c3a636e1727bc7d382abc451b8",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
@@ -165,7 +169,7 @@
       "version": "'main'"
     },
     "omarchy-theme.nvim": {
-      "rev": "82bc2681e0be1f63f4ad59518a4e3d1cfd415bd1",
+      "rev": "a82a3e6444f75a8447889d559321514c7fac51a4",
       "src": "https://github.com/EskelinenAntti/omarchy-theme.nvim"
     },
     "onedark.nvim": {
@@ -185,7 +189,7 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "render-markdown.nvim": {
-      "rev": "4663eb3ecd538bd5062628fb6d95bbe6bdca78f6",
+      "rev": "640a3ec6d538bad17c328be373c7cad0293d9589",
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
     "rooter.nvim": {
@@ -197,7 +201,7 @@
       "src": "https://github.com/folke/snacks.nvim"
     },
     "sops.nvim": {
-      "rev": "4de0cb71746d7a6de6311c85bc39873e56bcefc7",
+      "rev": "26592d8fab2a4c133d2a5d95e90d2ba54eb3c018",
       "src": "https://github.com/trixnz/sops.nvim"
     },
     "tokyonight.nvim": {
@@ -226,7 +230,7 @@
       "src": "https://github.com/milanglacier/yarepl.nvim"
     },
     "yazi.nvim": {
-      "rev": "c99f88a672b915c508748a723c17c4d5c3cc6f8b",
+      "rev": "415d7ab69a5d969ce63e10ea2824aaab8d0a2a46",
       "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }
