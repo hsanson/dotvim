@@ -79,3 +79,12 @@ vim.api.nvim_create_autocmd("LspProgress", {
         io.stdout:flush()
     end,
 })
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(ctx)
+    local client = vim.lsp.get_client_by_id(ctx.data.client_id)
+    if client and client:supports_method("textDocument/foldingRange") then
+      vim.wo[ctx.win].foldexpr = "v:lua.vim.lsp.foldexpr()"
+    end
+  end,
+})

@@ -104,6 +104,8 @@ opt.smartindent = true
 -------------------------------------------------------------------------------
 -- Fold Settings
 -------------------------------------------------------------------------------
+opt.foldmethod = "expr"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 opt.foldenable = true
 opt.foldlevelstart = 99
 opt.foldlevel = 99

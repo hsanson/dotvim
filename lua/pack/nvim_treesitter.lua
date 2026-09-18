@@ -82,9 +82,6 @@ vim.treesitter.language.register('groovy', 'Jenkinsfile')
 table.insert(patterns, 'usql')
 table.insert(patterns, 'asciidoc')
 
-vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-vim.wo[0][0].foldmethod = 'expr'
-
 vim.api.nvim_create_autocmd('FileType', {
   pattern = patterns,
   callback = function()
