@@ -85,7 +85,7 @@
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "markview.nvim": {
-      "rev": "5d9fc2aa6dd1c2fbdc7a68bc79b300e9967b21ff",
+      "rev": "190bb227c9d3eb4451b81fa16ea3d2efde2d67c5",
       "src": "https://github.com/OXY2DEV/markview.nvim"
     },
     "mini.nvim": {
@@ -147,7 +147,7 @@
       "src": "https://github.com/martineausimon/nvim-lilypond-suite"
     },
     "nvim-lspconfig": {
-      "rev": "ac9d2f7c4757db6320cab6697fe73e5e8adb2457",
+      "rev": "98e5981d14057a54cd49a35fb280dfd275ff65f8",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -230,7 +230,7 @@
       "src": "https://github.com/milanglacier/yarepl.nvim"
     },
     "yazi.nvim": {
-      "rev": "415d7ab69a5d969ce63e10ea2824aaab8d0a2a46",
+      "rev": "11acd14495f32dbf05e0aebdfb133f4b60397325",
       "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }
