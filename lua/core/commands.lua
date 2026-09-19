@@ -30,3 +30,22 @@ vim.api.nvim_create_user_command('Packupdate', function(opts)
     vim.pack.update()
   end
 end, { nargs = '*' })
+
+vim.api.nvim_create_user_command('Packclean', function(opts)
+  local len = #opts.fargs
+  if len > 0 then
+    vim.pack.del(opts.fargs)
+  else
+    local inactive = {}
+    for _, p in ipairs(vim.pack.get()) do
+      if not p.active then
+        table.insert(inactive, p.spec.name)
+      end
+    end
+    if #inactive > 0 then
+      vim.pack.del(inactive)
+    else
+      vim.notify("No inactive packages to clean.", vim.log.levels.INFO)
+    end
+  end
+end, { nargs = '*' })

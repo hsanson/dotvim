@@ -4,10 +4,6 @@
       "rev": "d51885d1886b8acc28850e1f8285a1f461e9b0a2",
       "src": "https://github.com/Kaikacy/Lemons.nvim"
     },
-    "agentic.nvim": {
-      "rev": "81628c1dc07edadd1c2c3c27d8dbcb424da1dea0",
-      "src": "https://github.com/carlos-algms/agentic.nvim"
-    },
     "bamboo.nvim": {
       "rev": "1309bc88bffcf1bedc3e84e7fa9004de93da774a",
       "src": "https://github.com/ribru17/bamboo.nvim"
@@ -44,10 +40,6 @@
       "rev": "0de2d75a6d92107aac21b84cd51cca4058e561f5",
       "src": "https://github.com/barrettruth/diffs.nvim"
     },
-    "diffview-plus.nvim": {
-      "rev": "be86a001f13b4d307814bd6e06eac429a2777ae8",
-      "src": "https://github.com/dlyongemallo/diffview-plus.nvim"
-    },
     "evangelion.nvim": {
       "rev": "08cf52a0931a81bf5b64c93b744e136b5edb6d85",
       "src": "https://github.com/xero/evangelion.nvim"
@@ -83,10 +75,6 @@
     "lualine.nvim": {
       "rev": "221ce6b2d999187044529f49da6554a92f740a96",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
-    },
-    "markview.nvim": {
-      "rev": "190bb227c9d3eb4451b81fa16ea3d2efde2d67c5",
-      "src": "https://github.com/OXY2DEV/markview.nvim"
     },
     "mini.nvim": {
       "rev": "1345d191bb3da9c7b0e977f4387c5761f9bff68d",
@@ -154,10 +142,6 @@
       "rev": "edcc181a875301dd21840189aa2f2f9ad69fc172",
       "src": "https://github.com/nvim-neotest/nvim-nio"
     },
-    "nvim-origami": {
-      "rev": "a137d35eaabb7cd7be89228229c1aa5b057f5ed7",
-      "src": "https://github.com/chrisgrieser/nvim-origami"
-    },
     "nvim-treesitter": {
       "rev": "9a168f6357ed21c3a636e1727bc7d382abc451b8",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
@@ -207,10 +191,6 @@
     "tokyonight.nvim": {
       "rev": "cdc07ac78467a233fd62c493de29a17e0cf2b2b6",
       "src": "https://github.com/folke/tokyonight.nvim"
-    },
-    "touchup.nvim": {
-      "rev": "efc7df43515aeb29c84ef088f0197bde83e9ce12",
-      "src": "https://github.com/noisesfromspace/touchup.nvim"
     },
     "typst-preview.nvim": {
       "rev": "1c2e19486397be1c580b560fc50ee36abe329c46",
