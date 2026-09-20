@@ -141,6 +141,19 @@ vim.lsp.config('gopls', {
   },
 })
 
+vim.lsp.config('basedpyright', {
+  capabilities = capabilities,
+  settings = {
+    basedpyright = {
+      analysis = {
+        typeCheckingMode = "basic",
+        autoSearchPaths = true,
+        diagnosticMode = "openFilesOnly",
+      },
+    },
+  },
+})
+
 vim.lsp.config('gdscript', { capabilities = capabilities })
 vim.lsp.config('graphql', { capabilities = capabilities })
 
@@ -301,5 +314,5 @@ vim.lsp.enable({
   'gdscript', 'gh_actions_ls', 'gopls', 'graphql', 'harper_ls', 'html', 'jdtls',
   'jsonls', 'kotlin_lsp', 'lua_ls', 'postgres_lsp', 'ruby_lsp', 'spectral',
   'tailwindcss', 'terraformls', 'texlab', 'tinymist', 'vacuum',
-  'vimls', 'vue_ls', 'marksman', 'hledger_lsp'
+  'vimls', 'vue_ls', 'marksman', 'hledger_lsp', 'basedpyright'
 })
