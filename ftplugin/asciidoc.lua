@@ -12,5 +12,5 @@ opt.linebreak = true
 vim.keymap.set("n", "j", "gj")
 vim.keymap.set("n", "k", "gk")
 vim.keymap.set("n", "<localleader>rr", function()
-  vim.cmd("silent! LivePreview start")
+  vim.notify("No asciidoc preview plugin available")
 end, { silent = true, desc = "Preview", buffer = true })

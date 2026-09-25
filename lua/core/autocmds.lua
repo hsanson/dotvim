@@ -1,5 +1,5 @@
-local augroup = vim.api.nvim_create_augroup   -- Create/get autocommand group
-local autocmd = vim.api.nvim_create_autocmd   -- Create autocommand
+local augroup = vim.api.nvim_create_augroup -- Create/get autocommand group
+local autocmd = vim.api.nvim_create_autocmd -- Create autocommand
 
 -------------------------------------------------------------------------------
 -- vim-android
@@ -34,6 +34,7 @@ autocmd('TextYankPost', {
   end
 })
 
+-- Build help tags whenever a plugin is installed or updated.
 autocmd("PackChanged", {
   callback = function(ev)
     local _, kind = ev.data.spec.name, ev.data.kind
@@ -41,6 +42,20 @@ autocmd("PackChanged", {
       local doc_dir = ev.data.path .. '/doc'
       if vim.fn.isdirectory(doc_dir) == 1 then
         vim.cmd('helptags ' .. doc_dir)
+      end
+    end
+  end,
+})
+
+-- Build vellum plugin binary when installed or updated.
+autocmd("PackChanged", {
+  callback = function(ev)
+    local name, kind = ev.data.spec.name, ev.data.kind
+    if name == "vellum.nvim" then
+      if kind == 'update' or kind == 'install' then
+        vim.system({ "npm", "ci" }, {
+          cwd = ev.data.path .. "/render",
+        }):wait()
       end
     end
   end,
@@ -54,7 +69,7 @@ autocmd("PackChanged", {
 augroup('SnacksGroup', { clear = true })
 autocmd('FileType', {
   group = 'SnacksGroup',
-  pattern = { 'snacks_picker_input'},
+  pattern = { 'snacks_picker_input' },
   command = "ALEDisableBuffer"
 })
 
@@ -62,22 +77,22 @@ autocmd('FileType', {
 -- Support Ghostty progress bar
 -- https://www.reddit.com/r/neovim/comments/1rcvliq/comment/o73wdkc/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 vim.api.nvim_create_autocmd("LspProgress", {
-    callback = function(ev)
-        local value = ev.data.params.value or {}
-        if not value.kind then return end
+  callback = function(ev)
+    local value = ev.data.params.value or {}
+    if not value.kind then return end
 
-        local status = value.kind == "end" and 0 or 1
-        local percent = value.percentage or 0
+    local status = value.kind == "end" and 0 or 1
+    local percent = value.percentage or 0
 
-        local osc_seq = string.format("\27]9;4;%d;%d\a", status, percent)
+    local osc_seq = string.format("\27]9;4;%d;%d\a", status, percent)
 
-        if os.getenv("TMUX") then
-            osc_seq = string.format("\27Ptmux;\27%s\27\\", osc_seq)
-        end
+    if os.getenv("TMUX") then
+      osc_seq = string.format("\27Ptmux;\27%s\27\\", osc_seq)
+    end
 
-        io.stdout:write(osc_seq)
-        io.stdout:flush()
-    end,
+    io.stdout:write(osc_seq)
+    io.stdout:flush()
+  end,
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
