@@ -95,11 +95,26 @@ vim.api.nvim_create_autocmd("LspProgress", {
   end,
 })
 
-vim.api.nvim_create_autocmd("LspAttach", {
+-- Set LSP `foldexpr` if LSP is attached and it supports folding.
+vim.api.nvim_create_autocmd({ "BufEnter", "LspAttach", "LspDetach" }, {
   callback = function(ctx)
-    local client = vim.lsp.get_client_by_id(ctx.data.client_id)
-    if client and client:supports_method("textDocument/foldingRange") then
-      vim.wo[ctx.win].foldexpr = "v:lua.vim.lsp.foldexpr()"
+    local detached_client_id = ctx.event == "LspDetach" and ctx.data and ctx.data.client_id or nil
+    local has_lsp_folding = false
+
+    for _, client in ipairs(vim.lsp.get_clients({ bufnr = ctx.buf })) do
+      if client.id ~= detached_client_id and client:supports_method("textDocument/foldingRange") then
+        has_lsp_folding = true
+        break
+      end
+    end
+
+    local foldexpr = has_lsp_folding
+      and "v:lua.vim.lsp.foldexpr()"
+      or "v:lua.vim.treesitter.foldexpr()"
+
+    for _, win in ipairs(vim.fn.win_findbuf(ctx.buf)) do
+      vim.api.nvim_set_option_value("foldmethod", "expr", { win = win, scope = "local" })
+      vim.api.nvim_set_option_value("foldexpr", foldexpr, { win = win, scope = "local" })
     end
   end,
 })
