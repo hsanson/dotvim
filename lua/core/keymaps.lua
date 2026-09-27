@@ -11,9 +11,7 @@ vim.keymap.set("n", "<leader>v", "<cmd>vsplit<cr>", { desc = "Vertical split win
 
 -- Save and quit
 vim.keymap.set("n", "<C-s>", "<cmd>:up<cr>", { desc = "Save buffer." })
-vim.keymap.set("n", "<C-x>", "<cmd>:up<cr>:qa<cr>", { desc = "Save & quit neovim" })
 vim.keymap.set("n", "<A-s>", "<cmd>:up<cr>", { desc = "Save buffer." })
-vim.keymap.set("n", "<A-x>", "<cmd>:up<cr>:qa<cr>", { desc = "Save & quit neovim" })
 
 -- Window Navigation
 vim.keymap.set("n", "<leader>h", "<C-w>h", { desc = "Jump left pane" })
@@ -26,20 +24,31 @@ vim.keymap.set("n", "<leader>tt", "<cmd>tabnext<cr>", { desc = "Next tab" })
 vim.keymap.set("n", "<leader>tx", "<cmd>tabclose<cr>", { desc = "Close tab" })
 vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<cr>", { desc = "New tab" })
 
--- Remap number increment/decrement so it does not conflict with tmux
--- control keys (C-a)
--- vim.keymap.set("n", "<A-a>", "<C-a>", { desc = "Increment number" })
--- vim.keymap.set("n", "<A-x>", "<C-x>", { desc = "Decrement number" })
-
 -- Disable accidental Ex mode
 vim.keymap.set("n", "Q", "<nop>", { desc = "Force quit neovim" })
 
--- Page scroll on Mac
-vim.keymap.set("n", "<A-f>", "<C-f>")
-vim.keymap.set("n", "<A-b>", "<C-b>")
+-- Centered page scroll
+vim.keymap.set("n", "<C-f>", "<C-d>zz", { desc = "Centered half-page down" })
+vim.keymap.set("n", "<C-b>", "<C-u>zz", { desc = "Centered half-page up" })
+vim.keymap.set("n", "<A-f>", "<C-d>zz", { desc = "Centered half-page down" })
+vim.keymap.set("n", "<A-b>", "<C-u>zz", { desc = "Centered half-page up" })
+
+-- Centered search
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
 
 -- Terminal
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- Primary clipboard copy via mouse
 vim.keymap.set("v", "<LeftRelease>", '"*ygv')
+
+-- Visual block move
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move visual block down" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move visual block up" })
+
+-- Join lines
+vim.keymap.set("n", "J", "mzJ'z", { desc = "Join lines without moving cursor" })
+
+-- Paste without replacing register
+vim.keymap.set("x", "p", "\"_dP", { desc = "Visual paste without replacing register" })
