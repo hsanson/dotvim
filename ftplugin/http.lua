@@ -1,39 +1,23 @@
-vim.keymap.set('n', '<localleader>rr', function()
-    require('kulala').run()
-  end, {
+vim.keymap.set('n', '<localleader>rr', '<Cmd>Rest run<CR>', {
   desc = 'Execute request under cursor',
   remap = false,
-  buffer = true
+  buffer = true,
 })
 
-vim.keymap.set('n', '<localleader>re', function()
-    require("kulala").set_selected_env()
-  end, {
-  desc = 'Select Kulala environment file',
+vim.keymap.set('n', '<localleader>re', '<Cmd>Rest env select<CR>', {
+  desc = 'Select rest.nvim environment file',
   remap = false,
-  buffer = true
+  buffer = true,
 })
 
-vim.keymap.set('n', '<localleader>rh', function()
-    require("kulala").toggle_view()
-  end, {
-  desc = 'Toogle headers and body response views',
+vim.keymap.set('n', '<localleader>rh', '<Cmd>Rest open<CR>', {
+  desc = 'Open rest.nvim result pane',
   remap = false,
-  buffer = true
+  buffer = true,
 })
 
-vim.keymap.set('n', '<localleader>ri', function()
-    require("kulala").inspect()
-  end, {
-  desc = 'Inspect current request.',
+vim.keymap.set('n', '<localleader>ri', '<Cmd>Rest logs<CR>', {
+  desc = 'Open rest.nvim request logs',
   remap = false,
-  buffer = true
-})
-
-vim.keymap.set('n', '<localleader>rt', function()
-    require("kulala.ui.auth_manager").open_auth_config()
-  end, {
-  desc = 'Open auth manager',
-  remap = false,
-  buffer = true
+  buffer = true,
 })

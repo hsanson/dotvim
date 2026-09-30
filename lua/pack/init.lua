@@ -16,6 +16,8 @@ require("pack.which_key")
 -- Treesitter
 require("pack.nvim_treesitter")
 
+-- rest.nvim must load before lualine so its status component is available.
+require("pack.rest")
 -- Completion stack (engine before LSP)
 require("pack.copilot")
 require("pack.cmp")
@@ -50,7 +52,6 @@ require("pack.yazi")
 
 -- Misc tools
 require("pack.img_clip")
-require("pack.kulala")
 require("pack.lilypond")
 require("pack.vellum")
 require("pack.pantran")

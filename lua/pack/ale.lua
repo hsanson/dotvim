@@ -61,7 +61,6 @@ dev.load_dev('~/Projects/vim/ale', function()
     fixers = {
       ['*'] = { 'remove_trailing_lines', 'trim_whitespace' },
       go = { 'gofmt', 'goimports' },
-      http = { 'kulala_fmt' },
       bib = { 'bibclean' },
       python = { 'ruff', "ruff_format" },
       lua = { 'stylua' },

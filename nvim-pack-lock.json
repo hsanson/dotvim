@@ -44,6 +44,10 @@
       "rev": "08cf52a0931a81bf5b64c93b744e136b5edb6d85",
       "src": "https://github.com/xero/evangelion.nvim"
     },
+    "fidget.nvim": {
+      "rev": "9e0201673e08e997e7cf52afca5565c70bd117f3",
+      "src": "https://github.com/j-hui/fidget.nvim"
+    },
     "img-clip.nvim": {
       "rev": "99848daf801789dbebe2192b475eb887d375002c",
       "src": "https://github.com/HakonHarnes/img-clip.nvim"
@@ -52,10 +56,6 @@
       "rev": "bb85e4bfc8d89b0e62c8fa53ccdd13d12e2f77b3",
       "src": "https://github.com/rebelot/kanagawa.nvim"
     },
-    "kulala.nvim": {
-      "rev": "c5df922c79cffe35784c46e9cce665d6db452712",
-      "src": "https://github.com/dont-be-evil-company/kulala.nvim"
-    },
     "last-color.nvim": {
       "rev": "000e3e50047602f4b9725dd33aff631018592595",
       "src": "https://github.com/raddari/last-color.nvim"
@@ -63,6 +63,10 @@
     "lsp-progress.nvim": {
       "rev": "f6d5af10563b895ff846346f57cbd4451439f4c1",
       "src": "https://github.com/linrongbin16/lsp-progress.nvim"
+    },
+    "lua-mimetypes": {
+      "rev": "7c899be0c402067d11e50d802f0135ba64eccb51",
+      "src": "https://github.com/lunarmodules/lua-mimetypes"
     },
     "lualine-lsp-status": {
       "rev": "1218d51d4d0b8881a598a77e5d9f334ac31c6cc7",
@@ -168,6 +172,10 @@
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
+    "rest.nvim": {
+      "rev": "714d5512aaec5565d55652480c16c26f8d95645d",
+      "src": "https://github.com/rest-nvim/rest.nvim"
+    },
     "rooter.nvim": {
       "rev": "e052796c241d244446e670f1216e73d8ab3e121f",
       "src": "https://github.com/wsdjeg/rooter.nvim"
@@ -200,6 +208,10 @@
     "which-key.nvim": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
       "src": "https://github.com/folke/which-key.nvim"
+    },
+    "xml2lua": {
+      "rev": "b0d2b0b156b4e66078da2dc4b31d978daa69b3ef",
+      "src": "https://github.com/manoelcampos/xml2lua"
     },
     "yarepl.nvim": {
       "rev": "6a0eac671af452a110b7cae4c23d20249c2db541",

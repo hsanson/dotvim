@@ -118,14 +118,14 @@ vim.keymap.set('n', '<leader>fg', function()
 end, { desc = 'Live grep' })
 
 vim.keymap.set('n', '<leader>fh', function()
-  _G.find_or_create_tab('kulala')
+  _G.find_or_create_tab('rest')
   local http_path = vim.fn.expand('~/.config/rest')
   vim.cmd('lcd ' .. http_path)
   require('snacks').picker('files', {
     dirs = { http_path },
     ft = { 'http' },
   })
-end, { desc = 'Open Kulala tab' })
+end, { desc = 'Open rest tab' })
 
 vim.keymap.set('n', '<leader>fs', function()
   _G.find_or_create_tab('usql')

@@ -77,7 +77,7 @@ require('lualine').setup({
       winbar = {
         'AgenticChat', 'AgenticInput', 'AgenticCode', 'AgenticFiles',
         'opencode', 'opencode_output', 'dap-view', 'dap-repl',
-        'nvim-dap-view', 'kulala_ui', 'help', 'terminal', 'nofile',
+        'nvim-dap-view', 'rest_nvim_result', 'help', 'terminal', 'nofile',
         'trouble',
       },
     },
@@ -100,7 +100,7 @@ require('lualine').setup({
       diff_module,
     },
     lualine_x = {
-      'kulala',
+      'rest',
       {
         'copilot',
         symbols = {
