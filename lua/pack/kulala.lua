@@ -1,4 +1,4 @@
-vim.pack.add({ 'https://github.com/mistweaverco/kulala.nvim' }, { load = true })
+vim.pack.add({ 'https://github.com/dont-be-evil-company/kulala.nvim' }, { load = true })
 
 require('kulala').setup({
   default_view = 'headers_body',

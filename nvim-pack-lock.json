@@ -25,7 +25,7 @@
       "src": "https://github.com/AndreM222/copilot-lualine"
     },
     "copilot.lua": {
-      "rev": "f76a0a281de089e27b605ec8017093f1aab73b07",
+      "rev": "9c8b172570105d31ff707cb0d62897f79c2ddb1f",
       "src": "https://github.com/zbirenbaum/copilot.lua"
     },
     "coverage-lualine": {
@@ -37,7 +37,7 @@
       "src": "https://github.com/scottmckendry/cyberdream.nvim"
     },
     "diffs.nvim": {
-      "rev": "a23dededa53e7af276a0472941c2c5d3fc990aad",
+      "rev": "ae999b3602c451d74755b0ca248714400b8c249a",
       "src": "https://github.com/barrettruth/diffs.nvim"
     },
     "evangelion.nvim": {
@@ -53,8 +53,8 @@
       "src": "https://github.com/rebelot/kanagawa.nvim"
     },
     "kulala.nvim": {
-      "rev": "dcad056448773ae5b54cadbfdbd188a599cfebd3",
-      "src": "https://github.com/mistweaverco/kulala.nvim"
+      "rev": "c5df922c79cffe35784c46e9cce665d6db452712",
+      "src": "https://github.com/dont-be-evil-company/kulala.nvim"
     },
     "last-color.nvim": {
       "rev": "000e3e50047602f4b9725dd33aff631018592595",
@@ -131,7 +131,7 @@
       "src": "https://github.com/martineausimon/nvim-lilypond-suite"
     },
     "nvim-lspconfig": {
-      "rev": "046b1a797af1effe8e0474b9af9657a3761ec58a",
+      "rev": "a9bb4d5f4276aa5cddc015faa3ecc5a7b5a26b14",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -139,7 +139,7 @@
       "src": "https://github.com/nvim-neotest/nvim-nio"
     },
     "nvim-treesitter": {
-      "rev": "f603a2f4da48728f80257fb5fbb90145fd1dc173",
+      "rev": "728e031f6b11d03d1f0708b7dc4fb0f1d9c8a137",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
@@ -206,7 +206,7 @@
       "src": "https://github.com/milanglacier/yarepl.nvim"
     },
     "yazi.nvim": {
-      "rev": "6f3af1192226c5b6bd22f1450fc1bc9b61568c2c",
+      "rev": "688d1d48ef91bb1d29092d808a512f3293dfb34d",
       "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }
