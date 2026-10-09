@@ -58,6 +58,7 @@ require('snacks').setup({
     },
     win = {
       input = {
+        wo = { virtualedit = 'all' },
         keys = {
           ['<C-o>'] = { 'opencode_send', mode = { 'n', 'i' } },
         },
