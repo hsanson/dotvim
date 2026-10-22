@@ -13,7 +13,7 @@
       "src": "https://github.com/fang2hou/blink-copilot"
     },
     "blink.cmp": {
-      "rev": "8219b58f1c11a2fb1644d3c7116c509fa8348ec0",
+      "rev": "b72ed05dd452690181837d484984144a64709f17",
       "src": "https://github.com/Saghen/blink.cmp"
     },
     "blink.lib": {
@@ -25,7 +25,7 @@
       "src": "https://github.com/AndreM222/copilot-lualine"
     },
     "copilot.lua": {
-      "rev": "9c8b172570105d31ff707cb0d62897f79c2ddb1f",
+      "rev": "9d23575513f1d934c28b9f933b9dd680c0dcd9e3",
       "src": "https://github.com/zbirenbaum/copilot.lua"
     },
     "coverage-lualine": {
@@ -33,11 +33,11 @@
       "src": "https://github.com/hsanson/coverage-lualine"
     },
     "cyberdream.nvim": {
-      "rev": "b3f4ef5e9b8ee370c913a48b63e130b730ee8782",
+      "rev": "642c55ad2225f9f4809905918121b2c6d252ad58",
       "src": "https://github.com/scottmckendry/cyberdream.nvim"
     },
     "diffs.nvim": {
-      "rev": "ae999b3602c451d74755b0ca248714400b8c249a",
+      "rev": "009849a5ca22846effb2d161c3aac34167e872f5",
       "src": "https://github.com/barrettruth/diffs.nvim"
     },
     "evangelion.nvim": {
@@ -123,7 +123,7 @@
       "src": "https://github.com/leoluz/nvim-dap-go"
     },
     "nvim-dap-view": {
-      "rev": "e766b3d8acef97e7e8b29f7f421aa4977b9978e1",
+      "rev": "b4486a6e83c45db4712849c09a76ef95b41a2133",
       "src": "https://github.com/igorlfs/nvim-dap-view"
     },
     "nvim-dap-virtual-text": {
@@ -135,7 +135,7 @@
       "src": "https://github.com/martineausimon/nvim-lilypond-suite"
     },
     "nvim-lspconfig": {
-      "rev": "3e8d598d3b5f8338a41699c436e5fa11d2666cf0",
+      "rev": "77b7432d4770d23b277d37923e5a08a442d8bb07",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -143,7 +143,7 @@
       "src": "https://github.com/nvim-neotest/nvim-nio"
     },
     "nvim-treesitter": {
-      "rev": "e6be2ff65d89df5039cad7a422600757bbf81d02",
+      "rev": "29212d826054bb2948fa9d3a99eca9bf6a050eb2",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
@@ -218,7 +218,7 @@
       "src": "https://github.com/milanglacier/yarepl.nvim"
     },
     "yazi.nvim": {
-      "rev": "688d1d48ef91bb1d29092d808a512f3293dfb34d",
+      "rev": "9507ba68dcd7cd199fed649a931f3711aeb78034",
       "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }
