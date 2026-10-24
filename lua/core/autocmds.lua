@@ -34,6 +34,22 @@ autocmd('TextYankPost', {
   end
 })
 
+-- Refresh an active MdKite preview when entering another Markdown buffer.
+augroup('MdKiteRefresh', { clear = true })
+autocmd('BufEnter', {
+  group = 'MdKiteRefresh',
+  callback = function()
+    if vim.bo.filetype ~= 'markdown' then
+      return
+    end
+
+    local mdkite = require('mdkite')
+    if mdkite._server_instance or mdkite._is_primary == false then
+      vim.cmd('MdKite')
+    end
+  end,
+})
+
 -- Build help tags whenever a plugin is installed or updated.
 autocmd("PackChanged", {
   callback = function(ev)
@@ -47,19 +63,6 @@ autocmd("PackChanged", {
   end,
 })
 
--- Build vellum plugin binary when installed or updated.
-autocmd("PackChanged", {
-  callback = function(ev)
-    local name, kind = ev.data.spec.name, ev.data.kind
-    if name == "vellum.nvim" then
-      if kind == 'update' or kind == 'install' then
-        vim.system({ "npm", "ci" }, {
-          cwd = ev.data.path .. "/render",
-        }):wait()
-      end
-    end
-  end,
-})
 
 -- Disable ALE in snacks picker input. This is required because for
 -- some unknown reason if enabled with Neovim diagnostics then
