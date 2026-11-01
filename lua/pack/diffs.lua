@@ -5,5 +5,5 @@ vim.g.diffs = {
 }
 
 vim.pack.add({
-  'https://github.com/barrettruth/diffs.nvim',
+  'https://forge.barrettruth.com/barrettruth/diffs.nvim',
 })
