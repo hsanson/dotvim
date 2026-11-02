@@ -13,7 +13,7 @@
       "src": "https://github.com/fang2hou/blink-copilot"
     },
     "blink.cmp": {
-      "rev": "d4318ec75309a37e09757de0f16faa67bf22b890",
+      "rev": "eece1c590dc575d489589c95499ec3acbf004e42",
       "src": "https://github.com/Saghen/blink.cmp"
     },
     "blink.lib": {
@@ -222,7 +222,7 @@
       "src": "https://github.com/milanglacier/yarepl.nvim"
     },
     "yazi.nvim": {
-      "rev": "2603c6dbf128ca3c7586d099aa245142c44069b5",
+      "rev": "2fd35f8bed670bba3936796914b9bab5a3d8af6b",
       "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }
