@@ -52,7 +52,7 @@ require("pack.yazi")
 
 -- Misc tools
 require("pack.img_clip")
-require("pack.lilypond")
+require("pack.swara")
 require("pack.mdkite")
 require("pack.pantran")
 require("pack.sops")

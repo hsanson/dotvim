@@ -196,6 +196,10 @@
       "rev": "26592d8fab2a4c133d2a5d95e90d2ba54eb3c018",
       "src": "https://github.com/trixnz/sops.nvim"
     },
+    "swara": {
+      "rev": "f169d99e027c0a0cd683aa18c95e397e9dc13349",
+      "src": "https://github.com/anirbanchakraborty-dev/swara"
+    },
     "tokyonight.nvim": {
       "rev": "cdc07ac78467a233fd62c493de29a17e0cf2b2b6",
       "src": "https://github.com/folke/tokyonight.nvim"
