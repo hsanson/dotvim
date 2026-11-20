@@ -13,7 +13,7 @@
       "src": "https://github.com/fang2hou/blink-copilot"
     },
     "blink.cmp": {
-      "rev": "eece1c590dc575d489589c95499ec3acbf004e42",
+      "rev": "3d3631f641e6e9b60066f269f435d23c524ceeb0",
       "src": "https://github.com/Saghen/blink.cmp"
     },
     "blink.lib": {
@@ -25,7 +25,7 @@
       "src": "https://github.com/AndreM222/copilot-lualine"
     },
     "copilot.lua": {
-      "rev": "20ffcd5f1c902ad4efddfbe694f4261607fa6dcb",
+      "rev": "ba6c1c7e7b2b6b0a93838097bd09c7c83afa30d3",
       "src": "https://github.com/zbirenbaum/copilot.lua"
     },
     "coverage-lualine": {
@@ -33,11 +33,11 @@
       "src": "https://github.com/hsanson/coverage-lualine"
     },
     "cyberdream.nvim": {
-      "rev": "8ed987565d081a8ebeda0bac939c22a0f451d074",
+      "rev": "eafadf5712e447bb813f8f7eab8012d1391fdba2",
       "src": "https://github.com/scottmckendry/cyberdream.nvim"
     },
     "diffs.nvim": {
-      "rev": "c149ff062ade88e39903611c77ceaa408861cc6f",
+      "rev": "e313128621848cb6a244beb687272c1d542fb580",
       "src": "https://forge.barrettruth.com/barrettruth/diffs.nvim"
     },
     "evangelion.nvim": {
@@ -65,7 +65,7 @@
       "src": "https://github.com/raddari/last-color.nvim"
     },
     "lsp-progress.nvim": {
-      "rev": "f6d5af10563b895ff846346f57cbd4451439f4c1",
+      "rev": "b77b6ce147b3fcf4e851f0f9ecc3d42e9fd86bf8",
       "src": "https://github.com/linrongbin16/lsp-progress.nvim"
     },
     "lua-mimetypes": {
@@ -131,7 +131,7 @@
       "src": "https://github.com/leoluz/nvim-dap-go"
     },
     "nvim-dap-view": {
-      "rev": "b4486a6e83c45db4712849c09a76ef95b41a2133",
+      "rev": "1c3b9cc295303fc173f24d442739a8557e23e987",
       "src": "https://github.com/igorlfs/nvim-dap-view"
     },
     "nvim-dap-virtual-text": {
@@ -143,7 +143,7 @@
       "src": "https://github.com/martineausimon/nvim-lilypond-suite"
     },
     "nvim-lspconfig": {
-      "rev": "d8d2fda7aae57030452ce8cd6e770b1eb704514e",
+      "rev": "4648fd8ba5c678d7e2db75ae44ffac269bb589d8",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -151,7 +151,7 @@
       "src": "https://github.com/nvim-neotest/nvim-nio"
     },
     "nvim-treesitter": {
-      "rev": "a9c4e1457e2e59f1b82c8f78dcdb3b2517555200",
+      "rev": "37e52c733ada9d8d544d53a763140ef1ba404353",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
@@ -222,11 +222,11 @@
       "src": "https://github.com/manoelcampos/xml2lua"
     },
     "yarepl.nvim": {
-      "rev": "6a0eac671af452a110b7cae4c23d20249c2db541",
+      "rev": "f04d2ded07d26bf6c8355c8793d7d93c8e3af33e",
       "src": "https://github.com/milanglacier/yarepl.nvim"
     },
     "yazi.nvim": {
-      "rev": "2fd35f8bed670bba3936796914b9bab5a3d8af6b",
+      "rev": "bced2bd28da24b61c55acb02d93f4f3a3be63d76",
       "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }
